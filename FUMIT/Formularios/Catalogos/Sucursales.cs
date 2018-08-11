@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FUMIT
+namespace FUMIT.Formularios.Catalogos
 {
-    public partial class Form1 : Form
+    public partial class Sucursales : Form
     {
-        public Form1()
+        public Sucursales()
         {
             InitializeComponent();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
