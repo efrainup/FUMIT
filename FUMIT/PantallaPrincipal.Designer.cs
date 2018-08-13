@@ -66,6 +66,7 @@
             this.sucursalesToolStripMenuItem.Name = "sucursalesToolStripMenuItem";
             this.sucursalesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sucursalesToolStripMenuItem.Text = "Sucursales";
+            this.sucursalesToolStripMenuItem.Click += new System.EventHandler(this.sucursalesToolStripMenuItem_Click);
             // 
             // serviciosToolStripMenuItem
             // 
@@ -85,13 +86,13 @@
             // expedientesToolStripMenuItem
             // 
             this.expedientesToolStripMenuItem.Name = "expedientesToolStripMenuItem";
-            this.expedientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.expedientesToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.expedientesToolStripMenuItem.Text = "Expedientes";
             // 
             // contratosToolStripMenuItem
             // 
             this.contratosToolStripMenuItem.Name = "contratosToolStripMenuItem";
-            this.contratosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.contratosToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.contratosToolStripMenuItem.Text = "Contratos";
             // 
             // ayudaToolStripMenuItem

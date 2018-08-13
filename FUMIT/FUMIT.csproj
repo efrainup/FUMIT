@@ -32,7 +32,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Common.Logging, Version=2.1.2.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.2.1.2\lib\net40\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.Contrib, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EF6.Contrib.1.0.5\lib\net45\EntityFramework.Contrib.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,6 +59,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccesoDatos\IOperacionesAccesoDatos.cs" />
+    <Compile Include="AccesoDatos\ISucursales.cs" />
+    <Compile Include="AccesoDatos\SucursalesRepositorio.cs" />
+    <Compile Include="Entidades\BasedeDatosFUMIT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\FumitDbContext.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\FumitDbContextFactory.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\IFumitDbContext.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\Sucursal.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\SucursalConfiguration.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\Servicios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\Servicios.Designer.cs">
+      <DependentUpon>Servicios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Catalogos\Sucursales.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +107,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Recursos.resx</DependentUpon>
     </Compile>
+    <Compile Include="Utils\AppExtensions.cs" />
+    <EmbeddedResource Include="Formularios\Catalogos\Servicios.resx">
+      <DependentUpon>Servicios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Catalogos\Sucursales.resx">
       <DependentUpon>Sucursales.cs</DependentUpon>
     </EmbeddedResource>
@@ -83,6 +130,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Recursos.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Entidades\EF.Reverse.POCO.Core.ttinclude" />
+    <None Include="Entidades\EF.Reverse.POCO.ttinclude" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -108,6 +158,45 @@
   <ItemGroup>
     <Folder Include="Formularios\Ayuda\" />
     <Folder Include="Formularios\Clientes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Entidades\BasedeDatosFUMIT.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BasedeDatosFUMIT.cs</LastGenOutput>
+    </Content>
+    <Content Include="Resources\add.png" />
+    <Content Include="Resources\button_reload_01.png" />
+    <Content Include="Resources\cancel.png" />
+    <Content Include="Resources\check1.png" />
+    <Content Include="Resources\check_fact.png" />
+    <Content Include="Resources\close.png" />
+    <Content Include="Resources\copy.png" />
+    <Content Include="Resources\csv_text.png" />
+    <Content Include="Resources\database_link.png" />
+    <Content Include="Resources\delete.png" />
+    <Content Include="Resources\detalles.png" />
+    <Content Include="Resources\edit.png" />
+    <Content Include="Resources\editclear.png" />
+    <Content Include="Resources\edit_add.png" />
+    <Content Include="Resources\edit_clear.png" />
+    <Content Include="Resources\excelcv.png" />
+    <Content Include="Resources\exceldgb.png" />
+    <Content Include="Resources\gnome_edit_find %281%29.png" />
+    <Content Include="Resources\gnome_edit_find.png" />
+    <Content Include="Resources\invoice_information.png" />
+    <Content Include="Resources\list.png" />
+    <Content Include="Resources\network.png" />
+    <Content Include="Resources\preferences.png" />
+    <Content Include="Resources\procesando.gif" />
+    <Content Include="Resources\refresh.png" />
+    <Content Include="Resources\refresh1.png" />
+    <Content Include="Resources\refresh2.png" />
+    <Content Include="Resources\remove %281%29.png" />
+    <Content Include="Resources\search.png" />
+    <Content Include="Resources\sendftp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
