@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CommonServiceLocator;
+using FUMIT.AccesoDatos;
+using Unity;
+using Unity.Extension;
+
 
 namespace FUMIT
 {
@@ -14,6 +19,18 @@ namespace FUMIT
         [STAThread]
         static void Main()
         {
+
+            Unity.UnityContainer container = new Unity.UnityContainer();
+            Unity.ServiceLocation.UnityServiceLocator unityServiceLocator = new Unity.ServiceLocation.UnityServiceLocator(container);
+
+            container.RegisterType<AccesoDatos.IClientes, ClientesRepositorio>();
+            container.RegisterType<AccesoDatos.ISucursales, SucursalesRepositorio>();
+
+            CommonServiceLocator.ServiceLocator.SetLocatorProvider(() => unityServiceLocator);
+
+            
+
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new PantallaPrincipal());

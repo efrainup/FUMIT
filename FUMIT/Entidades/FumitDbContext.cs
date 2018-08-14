@@ -22,6 +22,12 @@ namespace FUMIT.Entidades
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.37.1.0")]
     public class FumitDbContext : System.Data.Entity.DbContext, IFumitDbContext
     {
+        public System.Data.Entity.DbSet<CicloFacturacionCliente> Ciclofacturacionclientes { get; set; } // CicloFacturacionCliente
+        public System.Data.Entity.DbSet<CiclosFacturacion> Ciclosfacturaciones { get; set; } // CiclosFacturacion
+        public System.Data.Entity.DbSet<Cliente> Clientes { get; set; } // Clientes
+        public System.Data.Entity.DbSet<Evento> Eventos { get; set; } // Eventos
+        public System.Data.Entity.DbSet<HistorialCliente> Historialclientes { get; set; } // HistorialCliente
+        public System.Data.Entity.DbSet<Servicio> Servicios { get; set; } // Servicios
         public System.Data.Entity.DbSet<Sucursal> Sucursales { get; set; } // Sucursales
 
         static FumitDbContext()
@@ -72,11 +78,23 @@ namespace FUMIT.Entidades
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Configurations.Add(new CicloFacturacionClienteConfiguration());
+            modelBuilder.Configurations.Add(new CiclosFacturacionConfiguration());
+            modelBuilder.Configurations.Add(new ClienteConfiguration());
+            modelBuilder.Configurations.Add(new EventoConfiguration());
+            modelBuilder.Configurations.Add(new HistorialClienteConfiguration());
+            modelBuilder.Configurations.Add(new ServicioConfiguration());
             modelBuilder.Configurations.Add(new SucursalConfiguration());
         }
 
         public static System.Data.Entity.DbModelBuilder CreateModel(System.Data.Entity.DbModelBuilder modelBuilder, string schema)
         {
+            modelBuilder.Configurations.Add(new CicloFacturacionClienteConfiguration(schema));
+            modelBuilder.Configurations.Add(new CiclosFacturacionConfiguration(schema));
+            modelBuilder.Configurations.Add(new ClienteConfiguration(schema));
+            modelBuilder.Configurations.Add(new EventoConfiguration(schema));
+            modelBuilder.Configurations.Add(new HistorialClienteConfiguration(schema));
+            modelBuilder.Configurations.Add(new ServicioConfiguration(schema));
             modelBuilder.Configurations.Add(new SucursalConfiguration(schema));
             return modelBuilder;
         }

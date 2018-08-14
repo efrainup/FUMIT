@@ -39,11 +39,11 @@ namespace ServiciosFUMIT.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Column(@"Nombre", Order = 3, TypeName = "varchar")]
         [Required(AllowEmptyStrings = true)]
-        [MaxLength(50)]
-        [StringLength(50)]
+        [MaxLength(120)]
+        [StringLength(120)]
         [Key]
         [Display(Name = "Nombre")]
-        public string Nombre { get; set; } // Nombre (Primary key) (length: 50)
+        public string Nombre { get; set; } // Nombre (Primary key) (length: 120)
 
         [Column(@"Direccion", Order = 4, TypeName = "varchar")]
         [MaxLength(250)]
@@ -79,6 +79,8 @@ namespace ServiciosFUMIT.Entities
 
         public Sucursal()
         {
+            Activo = true;
+            Borrado = false;
             InitializePartial();
         }
 

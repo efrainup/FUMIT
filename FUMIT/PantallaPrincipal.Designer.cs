@@ -37,6 +37,11 @@
             this.expedientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contratosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.operacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.programacionDeServiciosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.facturacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ciclosDeFactuacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.programacionDeServiciosSucursalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,6 +50,8 @@
             this.MenuPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.catálogosToolStripMenuItem,
             this.clientesToolStripMenuItem,
+            this.operacionToolStripMenuItem,
+            this.facturacionToolStripMenuItem,
             this.ayudaToolStripMenuItem});
             this.MenuPrincipal.Location = new System.Drawing.Point(0, 0);
             this.MenuPrincipal.Name = "MenuPrincipal";
@@ -86,13 +93,14 @@
             // expedientesToolStripMenuItem
             // 
             this.expedientesToolStripMenuItem.Name = "expedientesToolStripMenuItem";
-            this.expedientesToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.expedientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.expedientesToolStripMenuItem.Text = "Expedientes";
+            this.expedientesToolStripMenuItem.Click += new System.EventHandler(this.expedientesToolStripMenuItem_Click);
             // 
             // contratosToolStripMenuItem
             // 
             this.contratosToolStripMenuItem.Name = "contratosToolStripMenuItem";
-            this.contratosToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.contratosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.contratosToolStripMenuItem.Text = "Contratos";
             // 
             // ayudaToolStripMenuItem
@@ -100,6 +108,42 @@
             this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
             this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.ayudaToolStripMenuItem.Text = "Ayuda";
+            // 
+            // operacionToolStripMenuItem
+            // 
+            this.operacionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.programacionDeServiciosToolStripMenuItem,
+            this.programacionDeServiciosSucursalToolStripMenuItem});
+            this.operacionToolStripMenuItem.Name = "operacionToolStripMenuItem";
+            this.operacionToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
+            this.operacionToolStripMenuItem.Text = "Operacion";
+            // 
+            // programacionDeServiciosToolStripMenuItem
+            // 
+            this.programacionDeServiciosToolStripMenuItem.Name = "programacionDeServiciosToolStripMenuItem";
+            this.programacionDeServiciosToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
+            this.programacionDeServiciosToolStripMenuItem.Text = "Programacion de servicios";
+            this.programacionDeServiciosToolStripMenuItem.Click += new System.EventHandler(this.programacionDeServiciosToolStripMenuItem_Click);
+            // 
+            // facturacionToolStripMenuItem
+            // 
+            this.facturacionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ciclosDeFactuacionToolStripMenuItem});
+            this.facturacionToolStripMenuItem.Name = "facturacionToolStripMenuItem";
+            this.facturacionToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
+            this.facturacionToolStripMenuItem.Text = "Facturacion";
+            // 
+            // ciclosDeFactuacionToolStripMenuItem
+            // 
+            this.ciclosDeFactuacionToolStripMenuItem.Name = "ciclosDeFactuacionToolStripMenuItem";
+            this.ciclosDeFactuacionToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.ciclosDeFactuacionToolStripMenuItem.Text = "Ciclos de factuacion";
+            // 
+            // programacionDeServiciosSucursalToolStripMenuItem
+            // 
+            this.programacionDeServiciosSucursalToolStripMenuItem.Name = "programacionDeServiciosSucursalToolStripMenuItem";
+            this.programacionDeServiciosSucursalToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
+            this.programacionDeServiciosSucursalToolStripMenuItem.Text = "Programacion de servicios sucursal";
             // 
             // PantallaPrincipal
             // 
@@ -131,6 +175,11 @@
         private System.Windows.Forms.ToolStripMenuItem expedientesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem contratosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem operacionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem programacionDeServiciosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem programacionDeServiciosSucursalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem facturacionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ciclosDeFactuacionToolStripMenuItem;
     }
 }
 

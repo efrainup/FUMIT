@@ -1,0 +1,2 @@
+﻿CREATE USER [super] WITHOUT LOGIN;
+

@@ -7,34 +7,33 @@ using FUMIT.Entidades;
 
 namespace FUMIT.AccesoDatos
 {
-    public class SucursalesRepositorio : ISucursales
+    public class ClientesRepositorio : IClientes
     {
         FumitDbContext dbContext;
 
-        public SucursalesRepositorio()
+        public ClientesRepositorio()
         {
             dbContext = new FumitDbContext();
         }
 
-        public void Actualizar(Sucursal entidad)
+        public void Actualizar(Cliente entidad)
         {
             throw new NotImplementedException();
         }
 
-        public Task ActualizarAsync(Sucursal entidad)
+        public Task ActualizarAsync(Cliente entidad)
         {
             throw new NotImplementedException();
         }
 
-        public void Crear(Sucursal entidad)
+        public void Crear(Cliente entidad)
         {
-            dbContext.Sucursales.Add(entidad);
-            dbContext.SaveChanges();
+            throw new NotImplementedException();
         }
 
-        public async Task CrearAsync(Sucursal entidad)
+        public async Task CrearAsync(Cliente entidad)
         {
-            dbContext.Sucursales.Add(entidad);
+            dbContext.Clientes.Add(entidad);
             await dbContext.SaveChangesAsync();
         }
 
@@ -48,22 +47,22 @@ namespace FUMIT.AccesoDatos
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Sucursal> Recuperar()
+        public IEnumerable<Cliente> Recuperar()
         {
-            return dbContext.Sucursales.ToList();
+            return dbContext.Clientes.ToList();
         }
 
-        public Task<IEnumerable<Sucursal>> RecuperarAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Sucursal RecuperarPorId()
+        public Task<IEnumerable<Cliente>> RecuperarAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task<Sucursal> RecuperarPorIdAsync()
+        public Cliente RecuperarPorId()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Cliente> RecuperarPorIdAsync()
         {
             throw new NotImplementedException();
         }

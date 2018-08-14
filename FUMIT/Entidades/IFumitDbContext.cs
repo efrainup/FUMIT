@@ -20,6 +20,12 @@ namespace FUMIT.Entidades
 
     public interface IFumitDbContext : System.IDisposable
     {
+        System.Data.Entity.DbSet<CicloFacturacionCliente> Ciclofacturacionclientes { get; set; } // CicloFacturacionCliente
+        System.Data.Entity.DbSet<CiclosFacturacion> Ciclosfacturaciones { get; set; } // CiclosFacturacion
+        System.Data.Entity.DbSet<Cliente> Clientes { get; set; } // Clientes
+        System.Data.Entity.DbSet<Evento> Eventos { get; set; } // Eventos
+        System.Data.Entity.DbSet<HistorialCliente> Historialclientes { get; set; } // HistorialCliente
+        System.Data.Entity.DbSet<Servicio> Servicios { get; set; } // Servicios
         System.Data.Entity.DbSet<Sucursal> Sucursales { get; set; } // Sucursales
 
         int SaveChanges();
