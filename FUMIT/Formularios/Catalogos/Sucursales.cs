@@ -12,26 +12,83 @@ using FUMIT.Utils;
 
 namespace FUMIT.Formularios.Catalogos
 {
-    public partial class Sucursales : Form
+    public partial class Sucursales : Form, IModosEdicion
     {
+        protected bool modoEditar = false;
+        protected bool modoAgregar = false;
+
+
         [DefaultValue(false)]
         public bool CambiosPendientes { get; set; }
         public ISucursales DatosSucursales { get; set; }
-        public DataTable SucursalesDataTable { get; set; }
+        public bool ModoEditar
+        {
+            get
+            {
+                return modoEditar;
+            }
+            set
+            {
+                modoEditar = value;
+                if (value)
+                {
+                    EntrarModoEdicion();
+                }
+                else
+                {
+                    SalirModoEdicion();
+                }
+            }
+        }
+        public bool ModoAgregar { get
+            {
+                return modoAgregar;
+            }
+            set {
+                modoAgregar = value;
+                if (value)
+                {
+                    EntrarModoEdicion();
+                }
+                else
+                {
+                    SalirModoEdicion();
+                }
+            }
+        }
 
         public Sucursales()
         {
             InitializeComponent();
+        }
 
-            //TODO: Implementar inyeccion de dependencias
-            DatosSucursales = new SucursalesRepositorio();
-            IEnumerable<Entidades.Sucursal> coleccionSucursales = DatosSucursales.Recuperar();
-            foreach(Entidades.Sucursal sucursal in coleccionSucursales)
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            if (DesignMode)
             {
-                SucursalesDataTable.Rows.Add(new object[]{sucursal.SuscursalId,sucursal.Numero, sucursal.Nombre, sucursal.Estado, sucursal.Ciudad, sucursal.Direccion, sucursal.Activo });
-            }
 
-            
+            }
+            else
+            {
+                //TODO: Implementar inyeccion de dependencias
+                DatosSucursales = new SucursalesRepositorio();
+                IEnumerable<Entidades.Sucursal> coleccionSucursales = DatosSucursales.Recuperar();
+                foreach (Entidades.Sucursal sucursal in coleccionSucursales)
+                {
+                    ListaSucursales.Rows.Add(new object[] { sucursal.SuscursalId, sucursal.Numero, sucursal.Nombre, sucursal.Estado, sucursal.Ciudad, sucursal.Direccion, sucursal.Activo });
+                }
+            }
+        }
+
+        private void CargarSucursales()
+        {
+            IEnumerable<Entidades.Sucursal> coleccionSucursales = DatosSucursales.Recuperar();
+            foreach (Entidades.Sucursal sucursal in coleccionSucursales)
+            {
+                ListaSucursales.Rows.Add(new object[] { sucursal.SuscursalId, sucursal.Numero, sucursal.Nombre, sucursal.Estado, sucursal.Ciudad, sucursal.Direccion, sucursal.Activo });
+            }
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -82,43 +139,125 @@ namespace FUMIT.Formularios.Catalogos
 
         private void btnAgregarSucursal_Click(object sender, EventArgs e)
         {
-            btnEditarSucursal.Enabled = false;
-            btnAceptarAgregar.Visible = true;
-            btnCancelarEdicion.Visible = true;
-            btnCancelarEdicion.Enabled = true;
+            ModoAgregar = true;
 
-            //ListaSucursales.CurrentRow.Clone();
-            
             int rowId = ListaSucursales.Rows.Add();
 
             ListaSucursales.ReadOnly = false;
             ListaSucursales.Rows[rowId].Selected = true;
             ListaSucursales.Rows[rowId].ReadOnly = false;
-            
+
 
             ListaSucursales.BeginEdit(true);
         }
 
         private async void btnAceptarAgregar_Click(object sender, EventArgs e)
         {
-            int nuevoRegistro = ListaSucursales.NewRowIndex;
+            
             Entidades.Sucursal nuevaSucursal = new Entidades.Sucursal();
-            nuevaSucursal.Numero = ListaSucursales.Rows[nuevoRegistro].Cells["Numero"].Value.ToString();
-            nuevaSucursal.Nombre = ListaSucursales.Rows[nuevoRegistro].Cells["Nombre"].Value.ToString();
-            nuevaSucursal.Ciudad = ListaSucursales.Rows[nuevoRegistro].Cells["Ciudad"].Value.ToString();
-            nuevaSucursal.Estado = ListaSucursales.Rows[nuevoRegistro].Cells["Estado"].Value.ToString();
-            nuevaSucursal.Direccion = ListaSucursales.Rows[nuevoRegistro].Cells["Direccion"].Value.ToString();
-            nuevaSucursal.Activo = Convert.ToBoolean(ListaSucursales.Rows[nuevoRegistro].Cells["Estado"].Value);
 
-            await DatosSucursales.CrearAsync(nuevaSucursal);
+            nuevaSucursal.SuscursalId = Convert.ToInt32(lblIdSucursal.Text);
+            nuevaSucursal.Numero = txtNumero.Text;
+            nuevaSucursal.Nombre = txtNombre.Text;
+            nuevaSucursal.Ciudad = txtCiudad.Text;
+            nuevaSucursal.Estado = txtEstado.Text;
+            nuevaSucursal.Direccion = txtDireccion.Text;
+            nuevaSucursal.Activo = chkActivo.Checked;
 
+            if (ModoAgregar)
+            {
+                await DatosSucursales.CrearAsync(nuevaSucursal);
+            }
+            else if (ModoEditar)
+            {
+                await DatosSucursales.ActualizarAsync(nuevaSucursal);
+            }
+            CargarSucursales();
+
+            ModoAgregar = false;
+            ModoEditar = false;
+        }
+
+        private void btnCancelarEdicion_Click(object sender, EventArgs e)
+        {
+            if (ModoAgregar)
+            {
+                LimpiarCampos();
+            }
+
+            ModoEditar = false;
+            ModoAgregar = false;
+        }
+
+        private void LimpiarCampos()
+        {
+            txtNumero.Text = "";
+            txtNombre.Text = "";
+            txtCiudad.Text = "";
+            txtEstado.Text = "";
+            txtDireccion.Text = "";
+            chkActivo.Checked = false;
+
+            lblIdSucursal.Text = "0";
+
+            ListaSucursales_SelectionChanged(ListaSucursales, null);
+        }
+
+        private void btnEditarSucursal_Click(object sender, EventArgs e)
+        {
+            ModoEditar = true;
+            EntrarModoEdicion();
+        }
+
+        public void EntrarModoEdicion()
+        {
+            btnAgregarSucursal.Enabled = false;
+            btnEditarSucursal.Enabled = false;
+            btnAceptarAgregar.Enabled = true;
+            btnAceptarAgregar.Visible = true;
+            btnCancelarEdicion.Visible = true;
+            btnCancelarEdicion.Enabled = true;
+            txtNumero.Enabled = true;
+            txtNombre.Enabled = true;
+            txtDireccion.Enabled = true;
+            txtEstado.Enabled = true;
+            txtCiudad.Enabled = true;
+            chkActivo.Enabled = true;
+            ListaSucursales.Enabled = false;
+        }
+
+        public void SalirModoEdicion()
+        {
+            btnAceptarAgregar.Enabled = false;
             btnAceptarAgregar.Visible = false;
             btnCancelarEdicion.Visible = false;
             btnCancelarEdicion.Enabled = false;
             btnEditarSucursal.Enabled = true;
+            btnAgregarSucursal.Enabled = true;
+            txtDireccion.Enabled = false;
+            txtEstado.Enabled = false;
+            txtCiudad.Enabled = false;
+            chkActivo.Enabled = false;
+            ListaSucursales.Enabled = true;
+        }
 
-            ListaSucursales.CurrentRow.ReadOnly = true;
-            ListaSucursales.ReadOnly = true;
+        private void ListaSucursales_SelectionChanged(object sender, EventArgs e)
+        {
+            DataGridView senderGridView = sender as DataGridView;
+
+            if (senderGridView.SelectedRows.Count > 0 && !ModoAgregar)
+            {
+                DataGridViewRow row = senderGridView.SelectedRows[0];
+
+                lblIdSucursal.Text = row.Cells["SucursalId"].Value.ToString();
+                txtNumero.Text = row.Cells["Numero"].Value.ToString();
+                txtNombre.Text = row.Cells["Nombre"].Value.ToString();
+                txtEstado.Text = row.Cells["Estado"].Value.ToString();
+                txtCiudad.Text = row.Cells["Ciudad"].Value.ToString();
+                txtDireccion.Text = row.Cells["Direccion"].Value.ToString();
+                chkActivo.Checked = Convert.ToBoolean(row.Cells["Activo"].Value);
+            }
+
         }
     }
 }

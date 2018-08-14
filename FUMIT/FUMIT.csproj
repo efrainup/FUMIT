@@ -82,6 +82,7 @@
     <Compile Include="Entidades\SucursalConfiguration.cs">
       <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Catalogos\IModosEdicion.cs" />
     <Compile Include="Formularios\Catalogos\Servicios.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -45,7 +45,7 @@
             this.colNombre,
             this.colDescripcion,
             this.colActivo});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 29);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 96);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(422, 150);
             this.dataGridView1.TabIndex = 0;
@@ -68,7 +68,7 @@
             // lblServicios
             // 
             this.lblServicios.AutoSize = true;
-            this.lblServicios.Location = new System.Drawing.Point(12, 13);
+            this.lblServicios.Location = new System.Drawing.Point(12, 80);
             this.lblServicios.Name = "lblServicios";
             this.lblServicios.Size = new System.Drawing.Size(108, 13);
             this.lblServicios.TabIndex = 1;
@@ -77,7 +77,7 @@
             // checkedListBox1
             // 
             this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(440, 29);
+            this.checkedListBox1.Location = new System.Drawing.Point(440, 96);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(194, 154);
             this.checkedListBox1.TabIndex = 2;
@@ -85,7 +85,7 @@
             // lblSucursalesServicio
             // 
             this.lblSucursalesServicio.AutoSize = true;
-            this.lblSucursalesServicio.Location = new System.Drawing.Point(437, 13);
+            this.lblSucursalesServicio.Location = new System.Drawing.Point(437, 80);
             this.lblSucursalesServicio.Name = "lblSucursalesServicio";
             this.lblSucursalesServicio.Size = new System.Drawing.Size(119, 13);
             this.lblSucursalesServicio.TabIndex = 3;
