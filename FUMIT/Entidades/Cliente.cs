@@ -25,35 +25,30 @@ namespace FUMIT.Entidades
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column(@"ClienteId", Order = 1, TypeName = "int")]
+        [Index(@"PK_Clientes", 1, IsUnique = true, IsClustered = true)]
         [Required]
         [Key]
         [Display(Name = "Cliente ID")]
         public int ClienteId { get; set; } // ClienteId (Primary key)
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Column(@"SucursalId", Order = 2, TypeName = "int")]
         [Required]
-        [Key]
         [Display(Name = "Sucursal ID")]
-        public int SucursalId { get; set; } // SucursalId (Primary key)
+        public int SucursalId { get; set; } // SucursalId
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Column(@"Clave", Order = 3, TypeName = "varchar")]
         [Required(AllowEmptyStrings = true)]
         [MaxLength(10)]
         [StringLength(10)]
-        [Key]
         [Display(Name = "Clave")]
-        public string Clave { get; set; } // Clave (Primary key) (length: 10)
+        public string Clave { get; set; } // Clave (length: 10)
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Column(@"Nombre", Order = 4, TypeName = "varchar")]
         [Required(AllowEmptyStrings = true)]
         [MaxLength(150)]
         [StringLength(150)]
-        [Key]
         [Display(Name = "Nombre")]
-        public string Nombre { get; set; } // Nombre (Primary key) (length: 150)
+        public string Nombre { get; set; } // Nombre (length: 150)
 
         [Column(@"SucursalCliente", Order = 5, TypeName = "varchar")]
         [MaxLength(80)]
@@ -61,23 +56,19 @@ namespace FUMIT.Entidades
         [Display(Name = "Sucursal cliente")]
         public string SucursalCliente { get; set; } // SucursalCliente (length: 80)
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Column(@"RFC", Order = 6, TypeName = "varchar")]
         [Required(AllowEmptyStrings = true)]
         [MaxLength(13)]
         [StringLength(13)]
-        [Key]
         [Display(Name = "Rfc")]
-        public string Rfc { get; set; } // RFC (Primary key) (length: 13)
+        public string Rfc { get; set; } // RFC (length: 13)
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Column(@"Direccion", Order = 7, TypeName = "varchar")]
         [Required(AllowEmptyStrings = true)]
         [MaxLength(150)]
         [StringLength(150)]
-        [Key]
         [Display(Name = "Direccion")]
-        public string Direccion { get; set; } // Direccion (Primary key) (length: 150)
+        public string Direccion { get; set; } // Direccion (length: 150)
 
         [Column(@"Ubicacion", Order = 8, TypeName = "varchar")]
         [MaxLength(30)]
@@ -103,13 +94,11 @@ namespace FUMIT.Entidades
         [Display(Name = "Correo")]
         public string Correo { get; set; } // Correo (length: 80)
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Column(@"FechaCreacion", Order = 12, TypeName = "datetime")]
         [Required]
-        [Key]
         [DataType(DataType.DateTime)]
         [Display(Name = "Fecha creacion")]
-        public System.DateTime FechaCreacion { get; set; } // FechaCreacion (Primary key)
+        public System.DateTime FechaCreacion { get; set; } // FechaCreacion
 
         [Column(@"Observaciones", Order = 13, TypeName = "varchar")]
         [MaxLength(250)]
@@ -117,33 +106,32 @@ namespace FUMIT.Entidades
         [Display(Name = "Observaciones")]
         public string Observaciones { get; set; } // Observaciones (length: 250)
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Column(@"Moroso", Order = 14, TypeName = "bit")]
         [Required]
-        [Key]
         [Display(Name = "Moroso")]
-        public bool Moroso { get; set; } // Moroso (Primary key)
+        public bool Moroso { get; set; } // Moroso
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Column(@"Bloqueado", Order = 15, TypeName = "bit")]
         [Required]
-        [Key]
         [Display(Name = "Bloqueado")]
-        public bool Bloqueado { get; set; } // Bloqueado (Primary key)
+        public bool Bloqueado { get; set; } // Bloqueado
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Column(@"Activo", Order = 16, TypeName = "bit")]
         [Required]
-        [Key]
         [Display(Name = "Activo")]
-        public bool Activo { get; set; } // Activo (Primary key)
+        public bool Activo { get; set; } // Activo
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Column(@"Borrado", Order = 17, TypeName = "bit")]
         [Required]
-        [Key]
         [Display(Name = "Borrado")]
-        public bool Borrado { get; set; } // Borrado (Primary key)
+        public bool Borrado { get; set; } // Borrado
+
+        // Reverse navigation
+
+        /// <summary>
+        /// Child Programacionserviciosclientes where [ProgramacionServiciosClientes].[ClienteId] point to this entity (FK_ProgramacionServiciosClientes_Clientes)
+        /// </summary>
+        public virtual System.Collections.Generic.ICollection<Programacionservicioscliente> Programacionserviciosclientes { get; set; } // ProgramacionServiciosClientes.FK_ProgramacionServiciosClientes_Clientes
 
         // Foreign keys
 
@@ -154,6 +142,7 @@ namespace FUMIT.Entidades
 
         public Cliente()
         {
+            Programacionserviciosclientes = new System.Collections.Generic.List<Programacionservicioscliente>();
             InitializePartial();
         }
 

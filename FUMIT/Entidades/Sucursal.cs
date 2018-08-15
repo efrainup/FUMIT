@@ -82,6 +82,10 @@ namespace FUMIT.Entidades
         /// Child Clientes where [Clientes].[SucursalId] point to this entity (FK_Clientes_Sucursales)
         /// </summary>
         public virtual System.Collections.Generic.ICollection<Cliente> Clientes { get; set; } // Clientes.FK_Clientes_Sucursales
+        /// <summary>
+        /// Child Programacionservicios where [ProgramacionServicios].[SucursalId] point to this entity (FK_ProgramacionServicios_Sucursales)
+        /// </summary>
+        public virtual System.Collections.Generic.ICollection<Programacionservicio> Programacionservicios { get; set; } // ProgramacionServicios.FK_ProgramacionServicios_Sucursales
 
         public Sucursal()
         {
@@ -89,6 +93,7 @@ namespace FUMIT.Entidades
             Borrado = false;
             Ciclosfacturaciones = new System.Collections.Generic.List<CiclosFacturacion>();
             Clientes = new System.Collections.Generic.List<Cliente>();
+            Programacionservicios = new System.Collections.Generic.List<Programacionservicio>();
             InitializePartial();
         }
 

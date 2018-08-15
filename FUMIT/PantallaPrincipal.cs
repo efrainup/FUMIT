@@ -14,6 +14,7 @@ namespace FUMIT
     {
         protected Formularios.Catalogos.Sucursales formulariosSucursales;
         protected Formularios.Catalogos.Servicios formularioServicios;
+        protected Formularios.Operacion.ProgramacionServiciosSucursales formularioProgramacionServiciosSucursales;
 
         public Formularios.Catalogos.Sucursales FormularioSucursales {
             get
@@ -35,7 +36,17 @@ namespace FUMIT
                 return formularioServicios;
             }
         }
+        public Formularios.Operacion.ProgramacionServiciosSucursales FormularioProgramacionServiciosSucursales
+        {
+            get
+            {
+                formularioProgramacionServiciosSucursales = formularioProgramacionServiciosSucursales ?? new Formularios.Operacion.ProgramacionServiciosSucursales();
+                formularioProgramacionServiciosSucursales.MdiParent = this;
+                formularioProgramacionServiciosSucursales.Disposed += (sender, e) => formularioProgramacionServiciosSucursales = null;
 
+                return formularioProgramacionServiciosSucursales;
+            }
+        }
         public PantallaPrincipal()
         {
             InitializeComponent();
@@ -62,6 +73,11 @@ namespace FUMIT
         private void programacionDeServiciosToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void programacionDeServiciosSucursalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormularioProgramacionServiciosSucursales.Show();
         }
     }
 }

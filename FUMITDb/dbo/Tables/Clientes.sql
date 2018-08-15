@@ -16,6 +16,9 @@
     [Bloqueado]       BIT           NOT NULL,
     [Activo]          BIT           NOT NULL,
     [Borrado]         BIT           NOT NULL,
+    CONSTRAINT [PK_Clientes] PRIMARY KEY CLUSTERED ([ClienteId] ASC),
     CONSTRAINT [FK_Clientes_Sucursales] FOREIGN KEY ([SucursalId]) REFERENCES [dbo].[Sucursales] ([SucursalId])
 );
+
+
 

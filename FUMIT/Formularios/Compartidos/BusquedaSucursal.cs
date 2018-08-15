@@ -29,7 +29,7 @@ namespace FUMIT.Formularios.Compartidos
         {
             //SucursalesRepositorio = ServiceLocator.Current.GetInstance<ISucursales>();
 
-            SucursalesRepositorio = new SucursalesRepositorio();
+            SucursalesRepositorio = ServiceLocator.Current.GetInstance<ISucursales>();
 
             if (!DesignMode)
             {
@@ -50,6 +50,7 @@ namespace FUMIT.Formularios.Compartidos
 
         private void btnSelecciona_Click(object sender, EventArgs e)
         {
+
             Sucursal sucursal = sucursalDataGridView.SelectedRows[0].DataBoundItem as Sucursal;
             SucursalSeleccionada(this, sucursal);
             Close();

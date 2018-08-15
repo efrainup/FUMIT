@@ -7,7 +7,7 @@ using CommonServiceLocator;
 using FUMIT.AccesoDatos;
 using Unity;
 using Unity.Extension;
-
+using Unity.Lifetime;
 
 namespace FUMIT
 {
@@ -23,8 +23,11 @@ namespace FUMIT
             Unity.UnityContainer container = new Unity.UnityContainer();
             Unity.ServiceLocation.UnityServiceLocator unityServiceLocator = new Unity.ServiceLocation.UnityServiceLocator(container);
 
+            container.RegisterInstance<FUMIT.Entidades.FumitDbContext>(new Entidades.FumitDbContext());
             container.RegisterType<AccesoDatos.IClientes, ClientesRepositorio>();
             container.RegisterType<AccesoDatos.ISucursales, SucursalesRepositorio>();
+            container.RegisterType<IProgramacionServicios, ProgramacionServiciosRepositorio>();
+            container.RegisterType<IProgramacionServiciosCliente, ProgramacionServiciosClienteRepositorio>();
 
             CommonServiceLocator.ServiceLocator.SetLocatorProvider(() => unityServiceLocator);
 

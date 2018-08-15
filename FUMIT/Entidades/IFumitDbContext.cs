@@ -25,6 +25,8 @@ namespace FUMIT.Entidades
         System.Data.Entity.DbSet<Cliente> Clientes { get; set; } // Clientes
         System.Data.Entity.DbSet<Evento> Eventos { get; set; } // Eventos
         System.Data.Entity.DbSet<HistorialCliente> Historialclientes { get; set; } // HistorialCliente
+        System.Data.Entity.DbSet<Programacionservicio> Programacionservicios { get; set; } // ProgramacionServicios
+        System.Data.Entity.DbSet<Programacionservicioscliente> Programacionserviciosclientes { get; set; } // ProgramacionServiciosClientes
         System.Data.Entity.DbSet<Servicio> Servicios { get; set; } // Servicios
         System.Data.Entity.DbSet<Sucursal> Sucursales { get; set; } // Sucursales
 

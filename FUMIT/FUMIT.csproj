@@ -85,10 +85,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccesoDatos\AOperacionesBase.cs" />
     <Compile Include="AccesoDatos\ClientesRepositorio.cs" />
     <Compile Include="AccesoDatos\IClientes.cs" />
     <Compile Include="AccesoDatos\IOperacionesAccesoDatos.cs" />
+    <Compile Include="AccesoDatos\IProgramacionServicios.cs" />
+    <Compile Include="AccesoDatos\IProgramacionServiciosCliente.cs" />
     <Compile Include="AccesoDatos\ISucursales.cs" />
+    <Compile Include="AccesoDatos\ProgramacionServiciosClienteRepositorio.cs" />
+    <Compile Include="AccesoDatos\ProgramacionServiciosRepositorio.cs" />
     <Compile Include="AccesoDatos\SucursalesRepositorio.cs" />
     <Compile Include="Entidades\BasedeDatosFUMIT.cs">
       <AutoGen>True</AutoGen>
@@ -134,6 +139,18 @@
     <Compile Include="Entidades\IFumitDbContext.cs">
       <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entidades\Programacionservicio.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\ProgramacionservicioConfiguration.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\Programacionservicioscliente.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\ProgramacionserviciosclienteConfiguration.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entidades\Servicio.cs">
       <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
     </Compile>
@@ -171,11 +188,29 @@
     <Compile Include="Formularios\Clientes\ControlClientes.Designer.cs">
       <DependentUpon>ControlClientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Clientes\ProgramacionServiciosClientes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Formularios\Clientes\ProgramacionServiciosClientes.Designer.cs">
+      <DependentUpon>ProgramacionServiciosClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Compartidos\BusquedaClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Compartidos\BusquedaClientes.Designer.cs">
+      <DependentUpon>BusquedaClientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Compartidos\BusquedaSucursal.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Compartidos\BusquedaSucursal.Designer.cs">
       <DependentUpon>BusquedaSucursal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Operacion\ProgramacionServiciosSucursales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Operacion\ProgramacionServiciosSucursales.Designer.cs">
+      <DependentUpon>ProgramacionServiciosSucursales.cs</DependentUpon>
     </Compile>
     <Compile Include="PantallaPrincipal.cs">
       <SubType>Form</SubType>
@@ -203,8 +238,17 @@
     <EmbeddedResource Include="Formularios\Clientes\ControlClientes.resx">
       <DependentUpon>ControlClientes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Clientes\ProgramacionServiciosClientes.resx">
+      <DependentUpon>ProgramacionServiciosClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Compartidos\BusquedaClientes.resx">
+      <DependentUpon>BusquedaClientes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Compartidos\BusquedaSucursal.resx">
       <DependentUpon>BusquedaSucursal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Operacion\ProgramacionServiciosSucursales.resx">
+      <DependentUpon>ProgramacionServiciosSucursales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PantallaPrincipal.resx">
       <DependentUpon>PantallaPrincipal.cs</DependentUpon>
@@ -225,7 +269,13 @@
     <None Include="Entidades\EF.Reverse.POCO.Core.ttinclude" />
     <None Include="Entidades\EF.Reverse.POCO.ttinclude" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\FUMIT.Entidades.CicloFacturacionCliente.datasource" />
+    <None Include="Properties\DataSources\FUMIT.Entidades.CiclosFacturacion.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Cliente.datasource" />
+    <None Include="Properties\DataSources\FUMIT.Entidades.Evento.datasource" />
+    <None Include="Properties\DataSources\FUMIT.Entidades.HistorialCliente.datasource" />
+    <None Include="Properties\DataSources\FUMIT.Entidades.Programacionservicio.datasource" />
+    <None Include="Properties\DataSources\FUMIT.Entidades.Programacionservicioscliente.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Sucursal.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

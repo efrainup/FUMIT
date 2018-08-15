@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CommonServiceLocator;
 
 namespace FUMIT.Formularios.Clientes
 {
@@ -16,6 +17,12 @@ namespace FUMIT.Formularios.Clientes
         public IClientes RepositorioClientes { get; set; }
         IEnumerable<Entidades.Cliente> ListadoClientes;
         Compartidos.BusquedaSucursal formularioBusqueda;
+        public Entidades.Cliente ClienteActual { get
+            {
+                return (clienteBindingSource.Current as Entidades.Cliente);
+            }
+        }
+
 
         public Clientes()
         {
@@ -26,7 +33,7 @@ namespace FUMIT.Formularios.Clientes
         {
             if (!DesignMode)
             {
-                RepositorioClientes = new ClientesRepositorio();
+                RepositorioClientes = ServiceLocator.Current.GetInstance<IClientes>();
 
                 ListadoClientes = RepositorioClientes.Recuperar();
                 foreach(Entidades.Cliente cliente in ListadoClientes)
@@ -40,7 +47,15 @@ namespace FUMIT.Formularios.Clientes
         private async void clienteBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             var cliente = clienteBindingSource.Current as Entidades.Cliente;
-            await RepositorioClientes.CrearAsync(cliente);
+
+            if (cliente.ClienteId == 0)
+            {
+                await RepositorioClientes.CrearAsync(cliente);
+            }
+            else
+            {
+                await RepositorioClientes.ActualizarAsync(cliente);
+            }
 
         }
 
@@ -79,7 +94,8 @@ namespace FUMIT.Formularios.Clientes
 
         private void toolBtnBusqueda_Click(object sender, EventArgs e)
         {
-            
+            var busquedaClientes = new Formularios.Compartidos.BusquedaClientes();
+            busquedaClientes.Show();
         }
 
         private void btnBusquedaSucursal_Click(object sender, EventArgs e)
@@ -96,6 +112,33 @@ namespace FUMIT.Formularios.Clientes
 
             formularioBusqueda.Show(this);
             formularioBusqueda.Activate();
+        }
+
+        private void tabDatosCliente_TabIndexChanged(object sender, EventArgs e)
+        {
+            TabPage pagina = tabDatosCliente.TabPages[tabDatosCliente.TabIndex];
+            
+
+
+            switch (pagina.Name)
+            {
+                case "tabProgramacionServiciosCliente":
+                    
+                    if(programacionServiciosClientes1.ClienteId != ClienteActual.ClienteId)
+                    {
+                        programacionServiciosClientes1.ClienteId = ClienteActual.ClienteId;
+                    }
+
+                    break;
+            }
+
+
+          // 
+        }
+
+        private void tabProgramacionServiciosCliente_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

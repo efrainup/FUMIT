@@ -37,7 +37,6 @@
             this.btnSelecciona = new System.Windows.Forms.Button();
             this.sucursalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sucursalDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -112,7 +111,6 @@
             this.sucursalDataGridView.AutoGenerateColumns = false;
             this.sucursalDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.sucursalDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
@@ -122,18 +120,12 @@
             this.dataGridViewCheckBoxColumn2});
             this.sucursalDataGridView.DataSource = this.sucursalBindingSource;
             this.sucursalDataGridView.Location = new System.Drawing.Point(16, 66);
+            this.sucursalDataGridView.MultiSelect = false;
             this.sucursalDataGridView.Name = "sucursalDataGridView";
             this.sucursalDataGridView.ReadOnly = true;
+            this.sucursalDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.sucursalDataGridView.Size = new System.Drawing.Size(643, 220);
             this.sucursalDataGridView.TabIndex = 7;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "SuscursalId";
-            this.dataGridViewTextBoxColumn1.HeaderText = "SuscursalId";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
             // 
             // dataGridViewTextBoxColumn2
             // 

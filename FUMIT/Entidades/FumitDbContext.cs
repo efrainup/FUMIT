@@ -27,6 +27,8 @@ namespace FUMIT.Entidades
         public System.Data.Entity.DbSet<Cliente> Clientes { get; set; } // Clientes
         public System.Data.Entity.DbSet<Evento> Eventos { get; set; } // Eventos
         public System.Data.Entity.DbSet<HistorialCliente> Historialclientes { get; set; } // HistorialCliente
+        public System.Data.Entity.DbSet<Programacionservicio> Programacionservicios { get; set; } // ProgramacionServicios
+        public System.Data.Entity.DbSet<Programacionservicioscliente> Programacionserviciosclientes { get; set; } // ProgramacionServiciosClientes
         public System.Data.Entity.DbSet<Servicio> Servicios { get; set; } // Servicios
         public System.Data.Entity.DbSet<Sucursal> Sucursales { get; set; } // Sucursales
 
@@ -83,6 +85,8 @@ namespace FUMIT.Entidades
             modelBuilder.Configurations.Add(new ClienteConfiguration());
             modelBuilder.Configurations.Add(new EventoConfiguration());
             modelBuilder.Configurations.Add(new HistorialClienteConfiguration());
+            modelBuilder.Configurations.Add(new ProgramacionservicioConfiguration());
+            modelBuilder.Configurations.Add(new ProgramacionserviciosclienteConfiguration());
             modelBuilder.Configurations.Add(new ServicioConfiguration());
             modelBuilder.Configurations.Add(new SucursalConfiguration());
         }
@@ -94,6 +98,8 @@ namespace FUMIT.Entidades
             modelBuilder.Configurations.Add(new ClienteConfiguration(schema));
             modelBuilder.Configurations.Add(new EventoConfiguration(schema));
             modelBuilder.Configurations.Add(new HistorialClienteConfiguration(schema));
+            modelBuilder.Configurations.Add(new ProgramacionservicioConfiguration(schema));
+            modelBuilder.Configurations.Add(new ProgramacionserviciosclienteConfiguration(schema));
             modelBuilder.Configurations.Add(new ServicioConfiguration(schema));
             modelBuilder.Configurations.Add(new SucursalConfiguration(schema));
             return modelBuilder;
