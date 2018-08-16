@@ -15,6 +15,7 @@ namespace FUMIT
         protected Formularios.Catalogos.Sucursales formulariosSucursales;
         protected Formularios.Catalogos.Servicios formularioServicios;
         protected Formularios.Operacion.ProgramacionServiciosSucursales formularioProgramacionServiciosSucursales;
+        protected Formularios.Facturacion.CiclosFacturacion formularioCicloFacturacion;
 
         public Formularios.Catalogos.Sucursales FormularioSucursales {
             get
@@ -47,6 +48,8 @@ namespace FUMIT
                 return formularioProgramacionServiciosSucursales;
             }
         }
+        public Formularios.Facturacion.CiclosFacturacion FormularioCicloFacturacion { get; set; }
+
         public PantallaPrincipal()
         {
             InitializeComponent();
@@ -65,7 +68,7 @@ namespace FUMIT
 
         private void expedientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var t = new Formularios.Clientes.Clientes();
+            var t = new Formularios.Clientes.Expedientes();
             t.MdiParent = this;
             t.Show();
         }
@@ -78,6 +81,18 @@ namespace FUMIT
         private void programacionDeServiciosSucursalToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormularioProgramacionServiciosSucursales.Show();
+        }
+
+        private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var formularioAcercaDe = new Formularios.Ayuda.AcercaDe();
+            formularioAcercaDe.Show();
+
+        }
+
+        private void ciclosDeFactuacionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

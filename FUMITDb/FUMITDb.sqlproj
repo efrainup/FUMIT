@@ -74,5 +74,7 @@
     <Build Include="Security\super.sql" />
     <Build Include="Security\HINOJOSA_dah.Programador01.sql" />
     <Build Include="Security\RoleMemberships.sql" />
+    <Build Include="dbo\Tables\ProgramacionServiciosClientes_1.sql" />
+    <Build Include="dbo\Tables\ProgramacionServicios_1.sql" />
   </ItemGroup>
 </Project>

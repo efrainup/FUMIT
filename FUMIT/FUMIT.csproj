@@ -163,6 +163,12 @@
     <Compile Include="Entidades\SucursalConfiguration.cs">
       <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Ayuda\AcercaDe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Ayuda\AcercaDe.Designer.cs">
+      <DependentUpon>AcercaDe.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Catalogos\IModosEdicion.cs" />
     <Compile Include="Formularios\Catalogos\Servicios.cs">
       <SubType>Form</SubType>
@@ -176,11 +182,11 @@
     <Compile Include="Formularios\Catalogos\Sucursales.Designer.cs">
       <DependentUpon>Sucursales.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Clientes\Clientes.cs">
+    <Compile Include="Formularios\Clientes\Expedientes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Clientes\Clientes.Designer.cs">
-      <DependentUpon>Clientes.cs</DependentUpon>
+    <Compile Include="Formularios\Clientes\Expedientes.Designer.cs">
+      <DependentUpon>Expedientes.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Clientes\ControlClientes.cs">
       <SubType>Form</SubType>
@@ -206,6 +212,12 @@
     <Compile Include="Formularios\Compartidos\BusquedaSucursal.Designer.cs">
       <DependentUpon>BusquedaSucursal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Facturacion\CiclosFacturacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\CiclosFacturacion.Designer.cs">
+      <DependentUpon>CiclosFacturacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Operacion\ProgramacionServiciosSucursales.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,14 +238,17 @@
       <DependentUpon>Recursos.resx</DependentUpon>
     </Compile>
     <Compile Include="Utils\AppExtensions.cs" />
+    <EmbeddedResource Include="Formularios\Ayuda\AcercaDe.resx">
+      <DependentUpon>AcercaDe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Catalogos\Servicios.resx">
       <DependentUpon>Servicios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Catalogos\Sucursales.resx">
       <DependentUpon>Sucursales.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Clientes\Clientes.resx">
-      <DependentUpon>Clientes.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\Clientes\Expedientes.resx">
+      <DependentUpon>Expedientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Clientes\ControlClientes.resx">
       <DependentUpon>ControlClientes.cs</DependentUpon>
@@ -246,6 +261,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Compartidos\BusquedaSucursal.resx">
       <DependentUpon>BusquedaSucursal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Facturacion\CiclosFacturacion.resx">
+      <DependentUpon>CiclosFacturacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Operacion\ProgramacionServiciosSucursales.resx">
       <DependentUpon>ProgramacionServiciosSucursales.cs</DependentUpon>
@@ -300,7 +318,7 @@
     <None Include="Resources\Icono.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Formularios\Ayuda\" />
+    <Folder Include="Controles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Entidades\BasedeDatosFUMIT.tt">

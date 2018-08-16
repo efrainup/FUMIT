@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // conjunto de atributos. Cambie estos valores de atributo para modificar la información
 // asociada con un ensamblado.
 [assembly: AssemblyTitle("FUMIT")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Sistema para el control de operaciones de la Compañia Internacional de Fumigaciones")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Grupo Hinojosa")]
 [assembly: AssemblyProduct("FUMIT")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]

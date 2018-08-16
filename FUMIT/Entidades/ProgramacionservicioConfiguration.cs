@@ -18,18 +18,21 @@ namespace FUMIT.Entidades
 {
     using System.Runtime.Serialization;
 
-    // CiclosFacturacion
+    // ProgramacionServicios
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.37.1.0")]
-    public class CiclosFacturacionConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<CiclosFacturacion>
+    public class ProgramacionservicioConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<Programacionservicio>
     {
-        public CiclosFacturacionConfiguration()
+        public ProgramacionservicioConfiguration()
             : this("dbo")
         {
         }
 
-        public CiclosFacturacionConfiguration(string schema)
+        public ProgramacionservicioConfiguration(string schema)
         {
-            Property(x => x.Dia).IsUnicode(false);
+            Property(x => x.Nombre).IsOptional().IsUnicode(false);
+            Property(x => x.Dias).IsOptional().IsUnicode(false);
+            Property(x => x.Semana).IsOptional();
+            Property(x => x.Mes).IsOptional();
 
         }
     }

@@ -1,6 +1,6 @@
 ﻿namespace FUMIT.Formularios.Clientes
 {
-    partial class Clientes
+    partial class Expedientes
     {
         /// <summary>
         /// Required designer variable.
@@ -46,9 +46,10 @@
             System.Windows.Forms.Label sucursalIdLabel;
             System.Windows.Forms.Label telefonoLabel;
             System.Windows.Forms.Label ubicacionLabel;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Clientes));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Expedientes));
             this.clienteBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -91,9 +92,11 @@
             this.tabDatosCliente = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabProgramacionServiciosCliente = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.programacionServiciosClientes1 = new FUMIT.Formularios.Clientes.ProgramacionServiciosClientes();
+            this.tabContratos = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             activoLabel = new System.Windows.Forms.Label();
             bloqueadoLabel = new System.Windows.Forms.Label();
             borradoLabel = new System.Windows.Forms.Label();
@@ -113,12 +116,13 @@
             ubicacionLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingNavigator)).BeginInit();
             this.clienteBindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabDatosCliente.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabProgramacionServiciosCliente.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // activoLabel
@@ -316,6 +320,12 @@
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorAddNewItem.Text = "Agregar nuevo";
+            this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
+            // 
+            // clienteBindingSource
+            // 
+            this.clienteBindingSource.DataSource = typeof(FUMIT.Entidades.Cliente);
+            this.clienteBindingSource.CurrentItemChanged += new System.EventHandler(this.clienteBindingSource_CurrentItemChanged);
             // 
             // bindingNavigatorCountItem
             // 
@@ -332,6 +342,7 @@
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorDeleteItem.Text = "Eliminar";
+            this.bindingNavigatorDeleteItem.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click);
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -396,6 +407,7 @@
             // clienteBindingNavigatorSaveItem
             // 
             this.clienteBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.clienteBindingNavigatorSaveItem.Enabled = false;
             this.clienteBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("clienteBindingNavigatorSaveItem.Image")));
             this.clienteBindingNavigatorSaveItem.Name = "clienteBindingNavigatorSaveItem";
             this.clienteBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
@@ -602,12 +614,13 @@
             this.groupBox1.Controls.Add(this.sucursalIdTextBox);
             this.groupBox1.Controls.Add(sucursalClienteLabel);
             this.groupBox1.Controls.Add(this.rfcTextBox);
-            this.groupBox1.Location = new System.Drawing.Point(6, 6);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(760, 229);
+            this.groupBox1.Size = new System.Drawing.Size(919, 221);
             this.groupBox1.TabIndex = 35;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Datos del cliente";
+            this.groupBox1.Text = "Datos comerciales";
             // 
             // btnBusquedaSucursal
             // 
@@ -648,9 +661,10 @@
             this.groupBox2.Controls.Add(borradoLabel);
             this.groupBox2.Controls.Add(bloqueadoLabel);
             this.groupBox2.Controls.Add(this.bloqueadoCheckBox);
-            this.groupBox2.Location = new System.Drawing.Point(6, 241);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(3, 230);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(760, 159);
+            this.groupBox2.Size = new System.Drawing.Size(919, 221);
             this.groupBox2.TabIndex = 36;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Observaciones";
@@ -659,22 +673,25 @@
             // 
             this.tabDatosCliente.Controls.Add(this.tabPage1);
             this.tabDatosCliente.Controls.Add(this.tabProgramacionServiciosCliente);
+            this.tabDatosCliente.Controls.Add(this.tabContratos);
+            this.tabDatosCliente.Controls.Add(this.tabPage2);
             this.tabDatosCliente.Controls.Add(this.tabPage3);
-            this.tabDatosCliente.Location = new System.Drawing.Point(12, 28);
+            this.tabDatosCliente.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabDatosCliente.Location = new System.Drawing.Point(0, 25);
             this.tabDatosCliente.Name = "tabDatosCliente";
             this.tabDatosCliente.SelectedIndex = 0;
-            this.tabDatosCliente.Size = new System.Drawing.Size(915, 512);
+            this.tabDatosCliente.Size = new System.Drawing.Size(939, 527);
             this.tabDatosCliente.TabIndex = 37;
+            this.tabDatosCliente.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabDatosCliente_Selected);
             this.tabDatosCliente.TabIndexChanged += new System.EventHandler(this.tabDatosCliente_TabIndexChanged);
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Controls.Add(this.groupBox2);
+            this.tabPage1.Controls.Add(this.tableLayoutPanel1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(907, 486);
+            this.tabPage1.Size = new System.Drawing.Size(931, 501);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Informacion del cliente";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -685,11 +702,41 @@
             this.tabProgramacionServiciosCliente.Location = new System.Drawing.Point(4, 22);
             this.tabProgramacionServiciosCliente.Name = "tabProgramacionServiciosCliente";
             this.tabProgramacionServiciosCliente.Padding = new System.Windows.Forms.Padding(3);
-            this.tabProgramacionServiciosCliente.Size = new System.Drawing.Size(907, 486);
+            this.tabProgramacionServiciosCliente.Size = new System.Drawing.Size(931, 501);
             this.tabProgramacionServiciosCliente.TabIndex = 1;
             this.tabProgramacionServiciosCliente.Text = "Programacion de servicios";
             this.tabProgramacionServiciosCliente.UseVisualStyleBackColor = true;
-            this.tabProgramacionServiciosCliente.Click += new System.EventHandler(this.tabProgramacionServiciosCliente_Click);
+            // 
+            // programacionServiciosClientes1
+            // 
+            this.programacionServiciosClientes1.ClienteId = 0;
+            this.programacionServiciosClientes1.DataBindings.Add(new System.Windows.Forms.Binding("ClienteId", this.clienteBindingSource, "ClienteId", true));
+            this.programacionServiciosClientes1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.programacionServiciosClientes1.Location = new System.Drawing.Point(3, 3);
+            this.programacionServiciosClientes1.Name = "programacionServiciosClientes1";
+            this.programacionServiciosClientes1.ProgramacionServiciosClienteRepositorio = null;
+            this.programacionServiciosClientes1.Size = new System.Drawing.Size(925, 495);
+            this.programacionServiciosClientes1.TabIndex = 0;
+            // 
+            // tabContratos
+            // 
+            this.tabContratos.Location = new System.Drawing.Point(4, 22);
+            this.tabContratos.Name = "tabContratos";
+            this.tabContratos.Padding = new System.Windows.Forms.Padding(3);
+            this.tabContratos.Size = new System.Drawing.Size(907, 486);
+            this.tabContratos.TabIndex = 2;
+            this.tabContratos.Text = "Contratos";
+            this.tabContratos.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(907, 486);
+            this.tabPage2.TabIndex = 3;
+            this.tabPage2.Text = "Servicios Programados";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // tabPage3
             // 
@@ -697,23 +744,27 @@
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(907, 486);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.TabIndex = 4;
+            this.tabPage3.Text = "Ciclos de facturación";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // clienteBindingSource
+            // tableLayoutPanel1
             // 
-            this.clienteBindingSource.DataSource = typeof(FUMIT.Entidades.Cliente);
-            // 
-            // programacionServiciosClientes1
-            // 
-            this.programacionServiciosClientes1.ClienteId = 0;
-            this.programacionServiciosClientes1.DataBindings.Add(new System.Windows.Forms.Binding("ClienteId", this.clienteBindingSource, "ClienteId", true));
-            this.programacionServiciosClientes1.Location = new System.Drawing.Point(6, 18);
-            this.programacionServiciosClientes1.Name = "programacionServiciosClientes1";
-            this.programacionServiciosClientes1.ProgramacionServiciosClienteRepositorio = null;
-            this.programacionServiciosClientes1.Size = new System.Drawing.Size(851, 368);
-            this.programacionServiciosClientes1.TabIndex = 0;
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Controls.Add(this.groupBox2, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 4;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(925, 495);
+            this.tableLayoutPanel1.TabIndex = 37;
             // 
             // Clientes
             // 
@@ -728,6 +779,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingNavigator)).EndInit();
             this.clienteBindingNavigator.ResumeLayout(false);
             this.clienteBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -735,7 +787,7 @@
             this.tabDatosCliente.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabProgramacionServiciosCliente.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -789,6 +841,9 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabProgramacionServiciosCliente;
         private ProgramacionServiciosClientes programacionServiciosClientes1;
+        private System.Windows.Forms.TabPage tabContratos;
+        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

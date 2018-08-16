@@ -36,10 +36,12 @@ namespace FUMIT.Entidades
         [Display(Name = "Sucursal ID")]
         public int SucursalId { get; set; } // SucursalId
 
-        [Column(@"Dia", Order = 3, TypeName = "int")]
-        [Required]
+        [Column(@"Dia", Order = 3, TypeName = "varchar")]
+        [Required(AllowEmptyStrings = true)]
+        [MaxLength(100)]
+        [StringLength(100)]
         [Display(Name = "Dia")]
-        public int Dia { get; set; } // Dia
+        public string Dia { get; set; } // Dia (length: 100)
 
         [Column(@"Semana", Order = 4, TypeName = "int")]
         [Required]

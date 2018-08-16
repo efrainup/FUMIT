@@ -9,11 +9,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CommonServiceLocator;
+using System.Diagnostics;
 
 namespace FUMIT.Formularios.Clientes
 {
-    public partial class Clientes : Form
+    public partial class Expedientes : Form
     {
+
+        protected bool modoEdicion = false;
+
+
         public IClientes RepositorioClientes { get; set; }
         IEnumerable<Entidades.Cliente> ListadoClientes;
         Compartidos.BusquedaSucursal formularioBusqueda;
@@ -23,8 +28,26 @@ namespace FUMIT.Formularios.Clientes
             }
         }
 
+        public bool ModoEdicion {
+            get
+            {
+                return modoEdicion;
+            }
+            set
+            {
+                modoEdicion = value;
+                if (modoEdicion)
+                {
+                    clienteBindingNavigatorSaveItem.Enabled = true;
+                }
+                else
+                {
+                    clienteBindingNavigatorSaveItem.Enabled = false;
+                }
+            }
+        }
 
-        public Clientes()
+        public Expedientes()
         {
             InitializeComponent();
         }
@@ -95,6 +118,11 @@ namespace FUMIT.Formularios.Clientes
         private void toolBtnBusqueda_Click(object sender, EventArgs e)
         {
             var busquedaClientes = new Formularios.Compartidos.BusquedaClientes();
+            busquedaClientes.ClienteSeleccionado += (object senderC, Entidades.Cliente clienteSeleccionado) =>
+            {
+                int indice = clienteBindingSource.IndexOf(clienteSeleccionado);
+                clienteBindingSource.Position = indice;
+            };
             busquedaClientes.Show();
         }
 
@@ -136,9 +164,36 @@ namespace FUMIT.Formularios.Clientes
           // 
         }
 
-        private void tabProgramacionServiciosCliente_Click(object sender, EventArgs e)
+        private void tabDatosCliente_Selected(object sender, TabControlEventArgs e)
+        {
+            TabPage pagina = e.TabPage;
+
+            switch (pagina.Name)
+            {
+                case "tabProgramacionServiciosCliente":
+
+                    if (programacionServiciosClientes1.ClienteId != ClienteActual.ClienteId)
+                    {
+                        programacionServiciosClientes1.ClienteId = ClienteActual.ClienteId;
+                    }
+
+                    break;
+            }
+        }
+
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        {
+            ModoEdicion = true;
+        }
+
+        private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void clienteBindingSource_CurrentItemChanged(object sender, EventArgs e)
+        {
+            ModoEdicion = true;
         }
     }
 }
