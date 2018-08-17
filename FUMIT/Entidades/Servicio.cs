@@ -16,13 +16,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FUMIT.Entidades
 {
+    using System.ComponentModel;
     using System.Runtime.Serialization;
 
     // Servicios
     [Table("Servicios", Schema = "dbo")]
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.37.1.0")]
-    public partial class Servicio
+    public partial class Servicio: INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column(@"ServicioId", Order = 1, TypeName = "int")]
         [Index(@"PK__Servicios__117F9D94", 1, IsUnique = true, IsClustered = true)]
@@ -54,8 +58,16 @@ namespace FUMIT.Entidades
         [Display(Name = "Borrado")]
         public bool Borrado { get; set; } // Borrado
 
+        // Reverse navigation
+
+        /// <summary>
+        /// Child Serviciosprogramados where [ServiciosProgramados].[ServicioId] point to this entity (FK_ServiciosProgramados_Servicios)
+        /// </summary>
+        public virtual System.Collections.Generic.ICollection<Serviciosprogramado> Serviciosprogramados { get; set; } // ServiciosProgramados.FK_ServiciosProgramados_Servicios
+
         public Servicio()
         {
+            Serviciosprogramados = new System.Collections.Generic.List<Serviciosprogramado>();
             InitializePartial();
         }
 

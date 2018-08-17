@@ -125,5 +125,34 @@ namespace FUMIT.Formularios.Clientes
                 MessageBox.Show("Hubo un error al guardar. Favor de intentarlo nuevamente o contacte a sistemas.");
             }
         }
+
+        private async void btnProgramarServicios_Click(object sender, EventArgs e)
+        {
+            IServiciosProgramados serviciosProgramados = CommonServiceLocator.ServiceLocator.Current.GetInstance<IServiciosProgramados>();
+
+            DateTime fechaActual = ProgramacionServicioClienteActual.FechaInicio;
+
+            while(fechaActual <= ProgramacionServicioClienteActual.FechaTermino)
+            {
+                Entidades.Serviciosprogramado servicio = new Serviciosprogramado()
+                {
+                    ServicioProgramadoId = 0,
+                    ClienteId = ProgramacionServicioClienteActual.ClienteId,
+                    Cancelado = false,
+                    Tipo = "Programado",
+                    ServicioId = ProgramacionServicioClienteActual.ProgramacionServicioId,
+                    FechaServicio = fechaActual,
+                    Servicio = (new ServiciosRepositorio()).Recuperar().ToArray()[0],
+                     Clientes = ProgramacionServicioClienteActual.Clientes
+                };
+
+
+                await serviciosProgramados.CrearAsync(servicio);
+
+                fechaActual = fechaActual.AddDays(1);
+            }
+
+
+        }
     }
 }

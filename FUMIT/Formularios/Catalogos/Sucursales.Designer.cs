@@ -28,11 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sucursales));
             this.ListaSucursales = new System.Windows.Forms.DataGridView();
+            this.SucursalId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ciudad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Activo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.lblSucursales = new System.Windows.Forms.Label();
-            this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnSalir = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnAgregarSucursal = new System.Windows.Forms.ToolStripButton();
@@ -53,13 +57,7 @@
             this.chkActivo = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.lblIdSucursal = new System.Windows.Forms.Label();
-            this.SucursalId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ciudad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Activo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.ListaSucursales)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -88,6 +86,50 @@
             this.ListaSucursales.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.ListaSucursales_UserAddedRow);
             this.ListaSucursales.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.ListaSucursales_UserDeletedRow);
             // 
+            // SucursalId
+            // 
+            this.SucursalId.HeaderText = "SucursalId";
+            this.SucursalId.Name = "SucursalId";
+            this.SucursalId.ReadOnly = true;
+            this.SucursalId.Visible = false;
+            // 
+            // Numero
+            // 
+            this.Numero.HeaderText = "Numero";
+            this.Numero.Name = "Numero";
+            this.Numero.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // Estado
+            // 
+            this.Estado.HeaderText = "Estado";
+            this.Estado.Name = "Estado";
+            this.Estado.ReadOnly = true;
+            // 
+            // Ciudad
+            // 
+            this.Ciudad.HeaderText = "Ciudad";
+            this.Ciudad.Name = "Ciudad";
+            this.Ciudad.ReadOnly = true;
+            // 
+            // Direccion
+            // 
+            this.Direccion.HeaderText = "Direccion";
+            this.Direccion.Name = "Direccion";
+            this.Direccion.ReadOnly = true;
+            // 
+            // Activo
+            // 
+            this.Activo.HeaderText = "Activo";
+            this.Activo.Name = "Activo";
+            this.Activo.ReadOnly = true;
+            // 
             // lblSucursales
             // 
             this.lblSucursales.AutoSize = true;
@@ -96,27 +138,6 @@
             this.lblSucursales.Size = new System.Drawing.Size(112, 13);
             this.lblSucursales.TabIndex = 1;
             this.lblSucursales.Text = "Sucursales existentes:";
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Location = new System.Drawing.Point(581, 244);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(75, 23);
-            this.btnGuardar.TabIndex = 3;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnSalir.Location = new System.Drawing.Point(662, 244);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(75, 23);
-            this.btnSalir.TabIndex = 7;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // label1
             // 
@@ -133,7 +154,8 @@
             this.btnAgregarSucursal,
             this.btnEditarSucursal,
             this.btnCancelarEdicion,
-            this.btnAceptarAgregar});
+            this.btnAceptarAgregar,
+            this.toolStripButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(749, 25);
@@ -142,7 +164,7 @@
             // 
             // btnAgregarSucursal
             // 
-            this.btnAgregarSucursal.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarSucursal.Image")));
+            this.btnAgregarSucursal.Image = global::FUMIT.Recursos.add;
             this.btnAgregarSucursal.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAgregarSucursal.Name = "btnAgregarSucursal";
             this.btnAgregarSucursal.Size = new System.Drawing.Size(69, 22);
@@ -151,7 +173,7 @@
             // 
             // btnEditarSucursal
             // 
-            this.btnEditarSucursal.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarSucursal.Image")));
+            this.btnEditarSucursal.Image = global::FUMIT.Recursos.edit_add;
             this.btnEditarSucursal.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnEditarSucursal.Name = "btnEditarSucursal";
             this.btnEditarSucursal.Size = new System.Drawing.Size(57, 22);
@@ -161,7 +183,7 @@
             // btnCancelarEdicion
             // 
             this.btnCancelarEdicion.Enabled = false;
-            this.btnCancelarEdicion.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelarEdicion.Image")));
+            this.btnCancelarEdicion.Image = global::FUMIT.Recursos.cancel;
             this.btnCancelarEdicion.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCancelarEdicion.Name = "btnCancelarEdicion";
             this.btnCancelarEdicion.Size = new System.Drawing.Size(73, 22);
@@ -172,7 +194,7 @@
             // btnAceptarAgregar
             // 
             this.btnAceptarAgregar.Enabled = false;
-            this.btnAceptarAgregar.Image = ((System.Drawing.Image)(resources.GetObject("btnAceptarAgregar.Image")));
+            this.btnAceptarAgregar.Image = global::FUMIT.Recursos.check1;
             this.btnAceptarAgregar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAceptarAgregar.Name = "btnAceptarAgregar";
             this.btnAceptarAgregar.Size = new System.Drawing.Size(68, 22);
@@ -303,56 +325,18 @@
             this.lblIdSucursal.TabIndex = 24;
             this.lblIdSucursal.Text = "0";
             // 
-            // SucursalId
+            // toolStripButton1
             // 
-            this.SucursalId.HeaderText = "SucursalId";
-            this.SucursalId.Name = "SucursalId";
-            this.SucursalId.ReadOnly = true;
-            this.SucursalId.Visible = false;
-            // 
-            // Numero
-            // 
-            this.Numero.HeaderText = "Numero";
-            this.Numero.Name = "Numero";
-            this.Numero.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // Estado
-            // 
-            this.Estado.HeaderText = "Estado";
-            this.Estado.Name = "Estado";
-            this.Estado.ReadOnly = true;
-            // 
-            // Ciudad
-            // 
-            this.Ciudad.HeaderText = "Ciudad";
-            this.Ciudad.Name = "Ciudad";
-            this.Ciudad.ReadOnly = true;
-            // 
-            // Direccion
-            // 
-            this.Direccion.HeaderText = "Direccion";
-            this.Direccion.Name = "Direccion";
-            this.Direccion.ReadOnly = true;
-            // 
-            // Activo
-            // 
-            this.Activo.HeaderText = "Activo";
-            this.Activo.Name = "Activo";
-            this.Activo.ReadOnly = true;
+            this.toolStripButton1.Image = global::FUMIT.Recursos.delete;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(70, 22);
+            this.toolStripButton1.Text = "Eliminar";
             // 
             // Sucursales
             // 
-            this.AcceptButton = this.btnGuardar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.btnSalir;
             this.ClientSize = new System.Drawing.Size(749, 277);
             this.Controls.Add(this.lblIdSucursal);
             this.Controls.Add(this.label4);
@@ -370,8 +354,6 @@
             this.Controls.Add(this.lblSucursal);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnSalir);
-            this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.lblSucursales);
             this.Controls.Add(this.ListaSucursales);
             this.Name = "Sucursales";
@@ -388,8 +370,6 @@
 
         private System.Windows.Forms.DataGridView ListaSucursales;
         private System.Windows.Forms.Label lblSucursales;
-        private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton btnAgregarSucursal;
@@ -417,5 +397,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Ciudad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Direccion;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Activo;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }

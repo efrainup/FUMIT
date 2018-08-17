@@ -16,6 +16,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FUMIT.Entidades
 {
+    using System.ComponentModel;
     using System.Runtime.Serialization;
 
     public class FumitDbContextFactory : System.Data.Entity.Infrastructure.IDbContextFactory<FumitDbContext>

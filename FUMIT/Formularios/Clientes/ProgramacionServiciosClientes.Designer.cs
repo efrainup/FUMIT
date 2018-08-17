@@ -38,20 +38,32 @@
             System.Windows.Forms.Label programacionServicioIdLabel1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProgramacionServiciosClientes));
             this.programacionserviciosclienteBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.programacionserviciosclienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.programacionserviciosclienteDataGridView = new System.Windows.Forms.DataGridView();
+            this.activoCheckBox = new System.Windows.Forms.CheckBox();
+            this.clienteIdTextBox = new System.Windows.Forms.TextBox();
+            this.fechaInicioDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.fechaTerminoDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.programacionServiciosClienteIdTextBox = new System.Windows.Forms.TextBox();
+            this.nombreTextBox = new System.Windows.Forms.TextBox();
+            this.programacionServicioIdTextBox1 = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnProgramarServicios = new System.Windows.Forms.Button();
+            this.btnBusquedaProgramacionServicioPorNombre = new System.Windows.Forms.Button();
+            this.btnBusquedaProgramacionServicioPorId = new System.Windows.Forms.Button();
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.programacionserviciosclienteBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
-            this.programacionserviciosclienteDataGridView = new System.Windows.Forms.DataGridView();
+            this.programacionserviciosclienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,17 +73,6 @@
             this.dataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.activoCheckBox = new System.Windows.Forms.CheckBox();
-            this.clienteIdTextBox = new System.Windows.Forms.TextBox();
-            this.fechaInicioDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.fechaTerminoDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.programacionServiciosClienteIdTextBox = new System.Windows.Forms.TextBox();
-            this.nombreTextBox = new System.Windows.Forms.TextBox();
-            this.programacionServicioIdTextBox1 = new System.Windows.Forms.TextBox();
-            this.btnBusquedaProgramacionServicioPorId = new System.Windows.Forms.Button();
-            this.btnBusquedaProgramacionServicioPorNombre = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             activoLabel = new System.Windows.Forms.Label();
             clienteIdLabel = new System.Windows.Forms.Label();
             fechaInicioLabel = new System.Windows.Forms.Label();
@@ -81,10 +82,10 @@
             programacionServicioIdLabel1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.programacionserviciosclienteBindingNavigator)).BeginInit();
             this.programacionserviciosclienteBindingNavigator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.programacionserviciosclienteBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.programacionserviciosclienteDataGridView)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.programacionserviciosclienteBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // activoLabel
@@ -181,54 +182,12 @@
             this.programacionserviciosclienteBindingNavigator.TabIndex = 0;
             this.programacionserviciosclienteBindingNavigator.Text = "bindingNavigator1";
             // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = global::FUMIT.Recursos.add;
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Agregar nuevo";
-            this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
-            // 
-            // programacionserviciosclienteBindingSource
-            // 
-            this.programacionserviciosclienteBindingSource.DataSource = typeof(FUMIT.Entidades.Programacionservicioscliente);
-            this.programacionserviciosclienteBindingSource.CurrentItemChanged += new System.EventHandler(this.programacionserviciosclienteBindingSource_CurrentItemChanged);
-            // 
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
             this.bindingNavigatorCountItem.Size = new System.Drawing.Size(37, 22);
             this.bindingNavigatorCountItem.Text = "de {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Número total de elementos";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Eliminar";
-            // 
-            // bindingNavigatorMoveFirstItem
-            // 
-            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
-            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
-            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveFirstItem.Text = "Mover primero";
-            // 
-            // bindingNavigatorMovePreviousItem
-            // 
-            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
-            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
-            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMovePreviousItem.Text = "Mover anterior";
             // 
             // bindingNavigatorSeparator
             // 
@@ -249,38 +208,10 @@
             this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
             this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // bindingNavigatorMoveNextItem
-            // 
-            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
-            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
-            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveNextItem.Text = "Mover siguiente";
-            // 
-            // bindingNavigatorMoveLastItem
-            // 
-            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
-            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
-            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveLastItem.Text = "Mover último";
-            // 
             // bindingNavigatorSeparator2
             // 
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // programacionserviciosclienteBindingNavigatorSaveItem
-            // 
-            this.programacionserviciosclienteBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.programacionserviciosclienteBindingNavigatorSaveItem.Enabled = false;
-            this.programacionserviciosclienteBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("programacionserviciosclienteBindingNavigatorSaveItem.Image")));
-            this.programacionserviciosclienteBindingNavigatorSaveItem.Name = "programacionserviciosclienteBindingNavigatorSaveItem";
-            this.programacionserviciosclienteBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
-            this.programacionserviciosclienteBindingNavigatorSaveItem.Text = "Guardar datos";
-            this.programacionserviciosclienteBindingNavigatorSaveItem.Click += new System.EventHandler(this.programacionserviciosclienteBindingNavigatorSaveItem_Click);
             // 
             // programacionserviciosclienteDataGridView
             // 
@@ -302,60 +233,6 @@
             this.programacionserviciosclienteDataGridView.Name = "programacionserviciosclienteDataGridView";
             this.programacionserviciosclienteDataGridView.Size = new System.Drawing.Size(848, 199);
             this.programacionserviciosclienteDataGridView.TabIndex = 1;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "ProgramacionServiciosClienteId";
-            this.dataGridViewTextBoxColumn1.HeaderText = "ProgramacionServiciosClienteId";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "ProgramacionServicioId";
-            this.dataGridViewTextBoxColumn2.HeaderText = "ProgramacionServicioId";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "ClienteId";
-            this.dataGridViewTextBoxColumn3.HeaderText = "ClienteId";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "FechaInicio";
-            this.dataGridViewTextBoxColumn4.HeaderText = "FechaInicio";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "FechaTermino";
-            this.dataGridViewTextBoxColumn5.HeaderText = "FechaTermino";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.DataPropertyName = "Activo";
-            this.dataGridViewCheckBoxColumn1.HeaderText = "Activo";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            // 
-            // dataGridViewCheckBoxColumn2
-            // 
-            this.dataGridViewCheckBoxColumn2.DataPropertyName = "Borrado";
-            this.dataGridViewCheckBoxColumn2.HeaderText = "Borrado";
-            this.dataGridViewCheckBoxColumn2.Name = "dataGridViewCheckBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "Clientes";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Clientes";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "Programacionservicio";
-            this.dataGridViewTextBoxColumn7.HeaderText = "Programacionservicio";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             // 
             // activoCheckBox
             // 
@@ -417,31 +294,9 @@
             this.programacionServicioIdTextBox1.TabIndex = 21;
             this.programacionServicioIdTextBox1.TextChanged += new System.EventHandler(this.programacionServicioIdTextBox1_TextChanged);
             // 
-            // btnBusquedaProgramacionServicioPorId
-            // 
-            this.btnBusquedaProgramacionServicioPorId.Enabled = false;
-            this.btnBusquedaProgramacionServicioPorId.Image = global::FUMIT.Recursos.search;
-            this.btnBusquedaProgramacionServicioPorId.Location = new System.Drawing.Point(226, 62);
-            this.btnBusquedaProgramacionServicioPorId.Name = "btnBusquedaProgramacionServicioPorId";
-            this.btnBusquedaProgramacionServicioPorId.Size = new System.Drawing.Size(31, 23);
-            this.btnBusquedaProgramacionServicioPorId.TabIndex = 40;
-            this.btnBusquedaProgramacionServicioPorId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBusquedaProgramacionServicioPorId.UseVisualStyleBackColor = true;
-            this.btnBusquedaProgramacionServicioPorId.Click += new System.EventHandler(this.btnBusquedaProgramacionServicioPorId_Click);
-            // 
-            // btnBusquedaProgramacionServicioPorNombre
-            // 
-            this.btnBusquedaProgramacionServicioPorNombre.Enabled = false;
-            this.btnBusquedaProgramacionServicioPorNombre.Image = global::FUMIT.Recursos.search;
-            this.btnBusquedaProgramacionServicioPorNombre.Location = new System.Drawing.Point(644, 34);
-            this.btnBusquedaProgramacionServicioPorNombre.Name = "btnBusquedaProgramacionServicioPorNombre";
-            this.btnBusquedaProgramacionServicioPorNombre.Size = new System.Drawing.Size(31, 23);
-            this.btnBusquedaProgramacionServicioPorNombre.TabIndex = 41;
-            this.btnBusquedaProgramacionServicioPorNombre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBusquedaProgramacionServicioPorNombre.UseVisualStyleBackColor = true;
-            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnProgramarServicios);
             this.groupBox1.Controls.Add(programacionServiciosClienteIdLabel);
             this.groupBox1.Controls.Add(this.btnBusquedaProgramacionServicioPorNombre);
             this.groupBox1.Controls.Add(this.programacionServiciosClienteIdTextBox);
@@ -482,6 +337,162 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(854, 409);
             this.tableLayoutPanel1.TabIndex = 43;
             // 
+            // btnProgramarServicios
+            // 
+            this.btnProgramarServicios.Location = new System.Drawing.Point(700, 169);
+            this.btnProgramarServicios.Name = "btnProgramarServicios";
+            this.btnProgramarServicios.Size = new System.Drawing.Size(142, 23);
+            this.btnProgramarServicios.TabIndex = 42;
+            this.btnProgramarServicios.Text = "Programar Servicios";
+            this.btnProgramarServicios.UseVisualStyleBackColor = true;
+            this.btnProgramarServicios.Click += new System.EventHandler(this.btnProgramarServicios_Click);
+            // 
+            // btnBusquedaProgramacionServicioPorNombre
+            // 
+            this.btnBusquedaProgramacionServicioPorNombre.Enabled = false;
+            this.btnBusquedaProgramacionServicioPorNombre.Image = global::FUMIT.Recursos.search;
+            this.btnBusquedaProgramacionServicioPorNombre.Location = new System.Drawing.Point(644, 34);
+            this.btnBusquedaProgramacionServicioPorNombre.Name = "btnBusquedaProgramacionServicioPorNombre";
+            this.btnBusquedaProgramacionServicioPorNombre.Size = new System.Drawing.Size(31, 23);
+            this.btnBusquedaProgramacionServicioPorNombre.TabIndex = 41;
+            this.btnBusquedaProgramacionServicioPorNombre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBusquedaProgramacionServicioPorNombre.UseVisualStyleBackColor = true;
+            // 
+            // btnBusquedaProgramacionServicioPorId
+            // 
+            this.btnBusquedaProgramacionServicioPorId.Enabled = false;
+            this.btnBusquedaProgramacionServicioPorId.Image = global::FUMIT.Recursos.search;
+            this.btnBusquedaProgramacionServicioPorId.Location = new System.Drawing.Point(226, 62);
+            this.btnBusquedaProgramacionServicioPorId.Name = "btnBusquedaProgramacionServicioPorId";
+            this.btnBusquedaProgramacionServicioPorId.Size = new System.Drawing.Size(31, 23);
+            this.btnBusquedaProgramacionServicioPorId.TabIndex = 40;
+            this.btnBusquedaProgramacionServicioPorId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBusquedaProgramacionServicioPorId.UseVisualStyleBackColor = true;
+            this.btnBusquedaProgramacionServicioPorId.Click += new System.EventHandler(this.btnBusquedaProgramacionServicioPorId_Click);
+            // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Image = global::FUMIT.Recursos.add;
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Text = "Agregar nuevo";
+            this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Text = "Eliminar";
+            // 
+            // bindingNavigatorMoveFirstItem
+            // 
+            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
+            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
+            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveFirstItem.Text = "Mover primero";
+            // 
+            // bindingNavigatorMovePreviousItem
+            // 
+            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
+            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
+            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMovePreviousItem.Text = "Mover anterior";
+            // 
+            // bindingNavigatorMoveNextItem
+            // 
+            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
+            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
+            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveNextItem.Text = "Mover siguiente";
+            // 
+            // bindingNavigatorMoveLastItem
+            // 
+            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
+            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
+            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveLastItem.Text = "Mover último";
+            // 
+            // programacionserviciosclienteBindingNavigatorSaveItem
+            // 
+            this.programacionserviciosclienteBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.programacionserviciosclienteBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("programacionserviciosclienteBindingNavigatorSaveItem.Image")));
+            this.programacionserviciosclienteBindingNavigatorSaveItem.Name = "programacionserviciosclienteBindingNavigatorSaveItem";
+            this.programacionserviciosclienteBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
+            this.programacionserviciosclienteBindingNavigatorSaveItem.Text = "Guardar datos";
+            this.programacionserviciosclienteBindingNavigatorSaveItem.Click += new System.EventHandler(this.programacionserviciosclienteBindingNavigatorSaveItem_Click);
+            // 
+            // programacionserviciosclienteBindingSource
+            // 
+            this.programacionserviciosclienteBindingSource.DataSource = typeof(FUMIT.Entidades.Programacionservicioscliente);
+            this.programacionserviciosclienteBindingSource.CurrentItemChanged += new System.EventHandler(this.programacionserviciosclienteBindingSource_CurrentItemChanged);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "ProgramacionServiciosClienteId";
+            this.dataGridViewTextBoxColumn1.HeaderText = "ProgramacionServiciosClienteId";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "ProgramacionServicioId";
+            this.dataGridViewTextBoxColumn2.HeaderText = "ProgramacionServicioId";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "ClienteId";
+            this.dataGridViewTextBoxColumn3.HeaderText = "ClienteId";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "FechaInicio";
+            this.dataGridViewTextBoxColumn4.HeaderText = "FechaInicio";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "FechaTermino";
+            this.dataGridViewTextBoxColumn5.HeaderText = "FechaTermino";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.DataPropertyName = "Activo";
+            this.dataGridViewCheckBoxColumn1.HeaderText = "Activo";
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            // 
+            // dataGridViewCheckBoxColumn2
+            // 
+            this.dataGridViewCheckBoxColumn2.DataPropertyName = "Borrado";
+            this.dataGridViewCheckBoxColumn2.HeaderText = "Borrado";
+            this.dataGridViewCheckBoxColumn2.Name = "dataGridViewCheckBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Clientes";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Clientes";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "Programacionservicio";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Programacionservicio";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            // 
             // ProgramacionServiciosClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -494,11 +505,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.programacionserviciosclienteBindingNavigator)).EndInit();
             this.programacionserviciosclienteBindingNavigator.ResumeLayout(false);
             this.programacionserviciosclienteBindingNavigator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.programacionserviciosclienteBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.programacionserviciosclienteDataGridView)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.programacionserviciosclienteBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -541,5 +552,6 @@
         private System.Windows.Forms.Button btnBusquedaProgramacionServicioPorNombre;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button btnProgramarServicios;
     }
 }

@@ -16,13 +16,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FUMIT.Entidades
 {
+    using System.ComponentModel;
     using System.Runtime.Serialization;
 
     // Clientes
     [Table("Clientes", Schema = "dbo")]
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.37.1.0")]
-    public partial class Cliente
+    public partial class Cliente: INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column(@"ClienteId", Order = 1, TypeName = "int")]
         [Index(@"PK_Clientes", 1, IsUnique = true, IsClustered = true)]
@@ -129,9 +133,17 @@ namespace FUMIT.Entidades
         // Reverse navigation
 
         /// <summary>
+        /// Child Historialclientes where [HistorialCliente].[ClienteId] point to this entity (FK_HistorialCliente_Clientes)
+        /// </summary>
+        public virtual System.Collections.Generic.ICollection<HistorialCliente> Historialclientes { get; set; } // HistorialCliente.FK_HistorialCliente_Clientes
+        /// <summary>
         /// Child Programacionserviciosclientes where [ProgramacionServiciosClientes].[ClienteId] point to this entity (FK_ProgramacionServiciosClientes_Clientes)
         /// </summary>
         public virtual System.Collections.Generic.ICollection<Programacionservicioscliente> Programacionserviciosclientes { get; set; } // ProgramacionServiciosClientes.FK_ProgramacionServiciosClientes_Clientes
+        /// <summary>
+        /// Child Serviciosprogramados where [ServiciosProgramados].[ClienteId] point to this entity (FK_ServiciosProgramados_Clientes)
+        /// </summary>
+        public virtual System.Collections.Generic.ICollection<Serviciosprogramado> Serviciosprogramados { get; set; } // ServiciosProgramados.FK_ServiciosProgramados_Clientes
 
         // Foreign keys
 
@@ -142,7 +154,9 @@ namespace FUMIT.Entidades
 
         public Cliente()
         {
+            Historialclientes = new System.Collections.Generic.List<HistorialCliente>();
             Programacionserviciosclientes = new System.Collections.Generic.List<Programacionservicioscliente>();
+            Serviciosprogramados = new System.Collections.Generic.List<Serviciosprogramado>();
             InitializePartial();
         }
 

@@ -48,7 +48,7 @@ namespace FUMIT.AccesoDatos
             dbContext.SaveChanges();
         }
 
-        public async Task ActualizarAsync(T entidad)
+        public virtual async Task ActualizarAsync(T entidad)
         {
             PropertyInfo keyProperty = entidad.GetType().GetProperties().FirstOrDefault(f => f.GetCustomAttribute<System.ComponentModel.DataAnnotations.KeyAttribute>() != null);
 

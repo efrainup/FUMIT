@@ -16,13 +16,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FUMIT.Entidades
 {
+    using System.ComponentModel;
     using System.Runtime.Serialization;
 
     // ProgramacionServicios
     [Table("ProgramacionServicios", Schema = "dbo")]
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.37.1.0")]
-    public partial class Programacionservicio
+    public partial class Programacionservicio: INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column(@"ProgramacionServicioId", Order = 1, TypeName = "int")]
         [Index(@"PK_ProgramacionServicios", 1, IsUnique = true, IsClustered = true)]

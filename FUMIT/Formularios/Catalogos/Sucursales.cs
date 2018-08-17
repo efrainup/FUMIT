@@ -85,6 +85,7 @@ namespace FUMIT.Formularios.Catalogos
         private void CargarSucursales()
         {
             IEnumerable<Entidades.Sucursal> coleccionSucursales = DatosSucursales.Recuperar();
+            ListaSucursales.Rows.Clear();
             foreach (Entidades.Sucursal sucursal in coleccionSucursales)
             {
                 ListaSucursales.Rows.Add(new object[] { sucursal.SucursalId, sucursal.Numero, sucursal.Nombre, sucursal.Estado, sucursal.Ciudad, sucursal.Direccion, sucursal.Activo });
@@ -93,33 +94,12 @@ namespace FUMIT.Formularios.Catalogos
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (!CambiosPendientes)
-            {
-                foreach(DataGridViewRow registro in ListaSucursales.Rows)
-                {
-                    //if(registro.... .State == DataGridViewElementStates..
-                }
-                
-                //Cargar todas las sucursales existentes
-                ListaSucursales.DataSource = DatosSucursales.Recuperar();
-                
-            }
+            
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            if (CambiosPendientes)
-            {
-                DialogResult resultadoDialogo = MessageBox.Show("Hay cambios que aún no se han guardado ¿Desea guardar los cambios?", "Sucursales", MessageBoxButtons.YesNoCancel,MessageBoxIcon.None,MessageBoxDefaultButton.Button1);
-                if (resultadoDialogo == DialogResult.Cancel)
-                {
-                    return;
-                } else if (resultadoDialogo == DialogResult.Yes)
-                {
-                    btnGuardar_Click(sender, e);
-                }
-            }
-            this.Close();
+           
         }
 
         private void ListaSucursales_UserAddedRow(object sender, DataGridViewRowEventArgs e)

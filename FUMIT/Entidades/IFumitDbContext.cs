@@ -16,6 +16,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FUMIT.Entidades
 {
+    using System.ComponentModel;
     using System.Runtime.Serialization;
 
     public interface IFumitDbContext : System.IDisposable
@@ -28,6 +29,7 @@ namespace FUMIT.Entidades
         System.Data.Entity.DbSet<Programacionservicio> Programacionservicios { get; set; } // ProgramacionServicios
         System.Data.Entity.DbSet<Programacionservicioscliente> Programacionserviciosclientes { get; set; } // ProgramacionServiciosClientes
         System.Data.Entity.DbSet<Servicio> Servicios { get; set; } // Servicios
+        System.Data.Entity.DbSet<Serviciosprogramado> Serviciosprogramados { get; set; } // ServiciosProgramados
         System.Data.Entity.DbSet<Sucursal> Sucursales { get; set; } // Sucursales
 
         int SaveChanges();

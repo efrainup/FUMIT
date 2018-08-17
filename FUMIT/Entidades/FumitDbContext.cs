@@ -16,6 +16,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FUMIT.Entidades
 {
+    using System.ComponentModel;
     using System.Runtime.Serialization;
 
 
@@ -30,6 +31,7 @@ namespace FUMIT.Entidades
         public System.Data.Entity.DbSet<Programacionservicio> Programacionservicios { get; set; } // ProgramacionServicios
         public System.Data.Entity.DbSet<Programacionservicioscliente> Programacionserviciosclientes { get; set; } // ProgramacionServiciosClientes
         public System.Data.Entity.DbSet<Servicio> Servicios { get; set; } // Servicios
+        public System.Data.Entity.DbSet<Serviciosprogramado> Serviciosprogramados { get; set; } // ServiciosProgramados
         public System.Data.Entity.DbSet<Sucursal> Sucursales { get; set; } // Sucursales
 
         static FumitDbContext()
@@ -88,6 +90,7 @@ namespace FUMIT.Entidades
             modelBuilder.Configurations.Add(new ProgramacionservicioConfiguration());
             modelBuilder.Configurations.Add(new ProgramacionserviciosclienteConfiguration());
             modelBuilder.Configurations.Add(new ServicioConfiguration());
+            modelBuilder.Configurations.Add(new ServiciosprogramadoConfiguration());
             modelBuilder.Configurations.Add(new SucursalConfiguration());
         }
 
@@ -101,6 +104,7 @@ namespace FUMIT.Entidades
             modelBuilder.Configurations.Add(new ProgramacionservicioConfiguration(schema));
             modelBuilder.Configurations.Add(new ProgramacionserviciosclienteConfiguration(schema));
             modelBuilder.Configurations.Add(new ServicioConfiguration(schema));
+            modelBuilder.Configurations.Add(new ServiciosprogramadoConfiguration(schema));
             modelBuilder.Configurations.Add(new SucursalConfiguration(schema));
             return modelBuilder;
         }

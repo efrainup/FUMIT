@@ -16,13 +16,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FUMIT.Entidades
 {
+    using System.ComponentModel;
     using System.Runtime.Serialization;
 
     // CiclosFacturacion
     [Table("CiclosFacturacion", Schema = "dbo")]
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.37.1.0")]
-    public partial class CiclosFacturacion
+    public partial class CiclosFacturacion: INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Column(@"CicloFacturacionId", Order = 1, TypeName = "int")]
         [Index(@"PK_CiclosFacturacion", 1, IsUnique = true, IsClustered = true)]

@@ -14,5 +14,19 @@ namespace FUMIT.AccesoDatos
         {
             return dbSet.Where(w => w.SucursalId == sucursalId).AsEnumerable();
         }
+
+        public new async Task ActualizarAsync(Programacionservicio entidad)
+        {
+            Programacionservicio objetoActualizar = dbSet.FirstOrDefault(f => f.ProgramacionServicioId == entidad.ProgramacionServicioId);
+
+            PropertyInfo[] propiedades = objetoActualizar.GetType().GetProperties();
+
+            foreach (PropertyInfo propiedad in propiedades)
+            {
+                propiedad.SetValue(objetoActualizar, propiedad.GetValue(entidad));
+            }
+
+            await dbContext.SaveChangesAsync();
+        }
     }
 }

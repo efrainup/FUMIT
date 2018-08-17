@@ -19,18 +19,18 @@ namespace FUMIT.Entidades
     using System.ComponentModel;
     using System.Runtime.Serialization;
 
-    // HistorialCliente
+    // ServiciosProgramados
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.37.1.0")]
-    public class HistorialClienteConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<HistorialCliente>
+    public class ServiciosprogramadoConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<Serviciosprogramado>
     {
-        public HistorialClienteConfiguration()
+        public ServiciosprogramadoConfiguration()
             : this("dbo")
         {
         }
 
-        public HistorialClienteConfiguration(string schema)
+        public ServiciosprogramadoConfiguration(string schema)
         {
-            Property(x => x.Observaciones).IsOptional().IsUnicode(false);
+            Property(x => x.Tipo).IsOptional().IsUnicode(false);
 
         }
     }

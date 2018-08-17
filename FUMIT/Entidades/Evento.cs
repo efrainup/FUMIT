@@ -16,13 +16,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FUMIT.Entidades
 {
+    using System.ComponentModel;
     using System.Runtime.Serialization;
 
     // Eventos
     [Table("Eventos", Schema = "dbo")]
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.37.1.0")]
-    public partial class Evento
+    public partial class Evento: INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column(@"EventoClienteId", Order = 1, TypeName = "int")]
         [Index(@"PK_Eventos", 1, IsUnique = true, IsClustered = true)]
@@ -56,9 +60,17 @@ namespace FUMIT.Entidades
         [Display(Name = "Borrado")]
         public bool Borrado { get; set; } // Borrado
 
+        // Reverse navigation
+
+        /// <summary>
+        /// Child Historialclientes where [HistorialCliente].[EventoClienteId] point to this entity (FK_HistorialCliente_Eventos)
+        /// </summary>
+        public virtual System.Collections.Generic.ICollection<HistorialCliente> Historialclientes { get; set; } // HistorialCliente.FK_HistorialCliente_Eventos
+
         public Evento()
         {
             Borrado = false;
+            Historialclientes = new System.Collections.Generic.List<HistorialCliente>();
             InitializePartial();
         }
 

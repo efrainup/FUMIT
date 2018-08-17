@@ -10,18 +10,23 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CommonServiceLocator;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 
 namespace FUMIT.Formularios.Clientes
 {
-    public partial class Expedientes : Form
+    public partial class Expedientes : Form, INotifyPropertyChanged
     {
 
         protected bool modoEdicion = false;
+        protected bool modoNormal = true;
 
 
         public IClientes RepositorioClientes { get; set; }
         IEnumerable<Entidades.Cliente> ListadoClientes;
         Compartidos.BusquedaSucursal formularioBusqueda;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public Entidades.Cliente ClienteActual { get
             {
                 return (clienteBindingSource.Current as Entidades.Cliente);
@@ -38,13 +43,39 @@ namespace FUMIT.Formularios.Clientes
                 modoEdicion = value;
                 if (modoEdicion)
                 {
+                    ModoNormal = false;
                     clienteBindingNavigatorSaveItem.Enabled = true;
+                    tsbCancelarEdicion.Enabled = true;
+                    tsbCancelarEdicion.Visible = true;
                 }
                 else
                 {
+                    ModoNormal = true;
                     clienteBindingNavigatorSaveItem.Enabled = false;
+                    tsbCancelarEdicion.Enabled = false;
+                    tsbCancelarEdicion.Visible = false;
                 }
+
+               
+                NotifyPropertyChanged();
             }
+        }
+        public bool ModoNormal
+        {
+            get
+            {
+                return modoNormal;
+            }
+            set
+            {
+                modoNormal = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public Expedientes()
@@ -64,6 +95,7 @@ namespace FUMIT.Formularios.Clientes
                     clienteBindingSource.Add(cliente);
                 }
 
+                expedientesBindingSource.DataSource = this;
             }
         }
 
@@ -193,7 +225,26 @@ namespace FUMIT.Formularios.Clientes
 
         private void clienteBindingSource_CurrentItemChanged(object sender, EventArgs e)
         {
+            //clienteBindingSource.chang
+            //ModoEdicion = true;
+        }
+
+        private void tsbEdit_Click(object sender, EventArgs e)
+        {
             ModoEdicion = true;
+        }
+
+        private void tsbCancelarEdicion_Click(object sender, EventArgs e)
+        {
+            ModoEdicion = false;
+            if(ClienteActual.ClienteId == 0)
+            {
+                clienteBindingSource.RemoveCurrent();
+            }
+            else
+            {
+                clienteBindingSource.ResetCurrentItem();
+            }
         }
     }
 }
