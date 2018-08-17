@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CiclosFacturacion));
             System.Windows.Forms.Label activoLabel;
             System.Windows.Forms.Label cicloFacturacionIdLabel;
             System.Windows.Forms.Label diaLabel;
@@ -39,19 +38,20 @@
             System.Windows.Forms.Label sucursalIdLabel;
             System.Windows.Forms.Label nombreLabel;
             System.Windows.Forms.Label numeroLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CiclosFacturacion));
             this.ciclosFacturacionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ciclosFacturacionBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.ciclosFacturacionBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.activoCheckBox = new System.Windows.Forms.CheckBox();
             this.cicloFacturacionIdTextBox = new System.Windows.Forms.TextBox();
@@ -67,6 +67,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnBusquedaSucursal = new System.Windows.Forms.Button();
             activoLabel = new System.Windows.Forms.Label();
             cicloFacturacionIdLabel = new System.Windows.Forms.Label();
             diaLabel = new System.Windows.Forms.Label();
@@ -83,6 +84,91 @@
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // activoLabel
+            // 
+            activoLabel.AutoSize = true;
+            activoLabel.Location = new System.Drawing.Point(9, 84);
+            activoLabel.Name = "activoLabel";
+            activoLabel.Size = new System.Drawing.Size(40, 13);
+            activoLabel.TabIndex = 1;
+            activoLabel.Text = "Activo:";
+            // 
+            // cicloFacturacionIdLabel
+            // 
+            cicloFacturacionIdLabel.AutoSize = true;
+            cicloFacturacionIdLabel.Location = new System.Drawing.Point(6, 27);
+            cicloFacturacionIdLabel.Name = "cicloFacturacionIdLabel";
+            cicloFacturacionIdLabel.Size = new System.Drawing.Size(104, 13);
+            cicloFacturacionIdLabel.TabIndex = 3;
+            cicloFacturacionIdLabel.Text = "Ciclo Facturacion Id:";
+            // 
+            // diaLabel
+            // 
+            diaLabel.AutoSize = true;
+            diaLabel.Location = new System.Drawing.Point(3, 6);
+            diaLabel.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
+            diaLabel.Name = "diaLabel";
+            diaLabel.Size = new System.Drawing.Size(208, 13);
+            diaLabel.TabIndex = 5;
+            diaLabel.Text = "El ciclo de facturación se realizará los días";
+            // 
+            // mesLabel
+            // 
+            mesLabel.AutoSize = true;
+            mesLabel.Location = new System.Drawing.Point(165, 32);
+            mesLabel.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
+            mesLabel.Name = "mesLabel";
+            mesLabel.Size = new System.Drawing.Size(26, 13);
+            mesLabel.TabIndex = 7;
+            mesLabel.Text = "mes";
+            // 
+            // porDefectoLabel
+            // 
+            porDefectoLabel.AutoSize = true;
+            porDefectoLabel.Location = new System.Drawing.Point(9, 54);
+            porDefectoLabel.Name = "porDefectoLabel";
+            porDefectoLabel.Size = new System.Drawing.Size(67, 13);
+            porDefectoLabel.TabIndex = 9;
+            porDefectoLabel.Text = "Por Defecto:";
+            // 
+            // semanaLabel
+            // 
+            semanaLabel.AutoSize = true;
+            semanaLabel.Location = new System.Drawing.Point(474, 6);
+            semanaLabel.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
+            semanaLabel.Name = "semanaLabel";
+            semanaLabel.Size = new System.Drawing.Size(55, 13);
+            semanaLabel.TabIndex = 11;
+            semanaLabel.Text = "semana(s)";
+            // 
+            // sucursalIdLabel
+            // 
+            sucursalIdLabel.AutoSize = true;
+            sucursalIdLabel.Location = new System.Drawing.Point(337, 31);
+            sucursalIdLabel.Name = "sucursalIdLabel";
+            sucursalIdLabel.Size = new System.Drawing.Size(63, 13);
+            sucursalIdLabel.TabIndex = 13;
+            sucursalIdLabel.Text = "Sucursal Id:";
+            // 
+            // nombreLabel
+            // 
+            nombreLabel.AutoSize = true;
+            nombreLabel.Location = new System.Drawing.Point(337, 57);
+            nombreLabel.Name = "nombreLabel";
+            nombreLabel.Size = new System.Drawing.Size(47, 13);
+            nombreLabel.TabIndex = 15;
+            nombreLabel.Text = "Nombre:";
+            // 
+            // numeroLabel
+            // 
+            numeroLabel.AutoSize = true;
+            numeroLabel.Location = new System.Drawing.Point(337, 81);
+            numeroLabel.Name = "numeroLabel";
+            numeroLabel.Size = new System.Drawing.Size(47, 13);
+            numeroLabel.TabIndex = 17;
+            numeroLabel.Text = "Numero:";
+            numeroLabel.Click += new System.EventHandler(this.numeroLabel_Click);
             // 
             // ciclosFacturacionBindingSource
             // 
@@ -118,6 +204,32 @@
             this.ciclosFacturacionBindingNavigator.TabIndex = 0;
             this.ciclosFacturacionBindingNavigator.Text = "bindingNavigator1";
             // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Image = global::FUMIT.Recursos.add;
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Text = "Agregar nuevo";
+            this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(37, 22);
+            this.bindingNavigatorCountItem.Text = "de {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Número total de elementos";
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Text = "Eliminar";
+            // 
             // bindingNavigatorMoveFirstItem
             // 
             this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -150,16 +262,9 @@
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Posición actual";
             // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(37, 22);
-            this.bindingNavigatorCountItem.Text = "de {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Número total de elementos";
-            // 
             // bindingNavigatorSeparator1
             // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
             this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // bindingNavigatorMoveNextItem
@@ -182,26 +287,8 @@
             // 
             // bindingNavigatorSeparator2
             // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = global::FUMIT.Recursos.add;
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Agregar nuevo";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Eliminar";
             // 
             // ciclosFacturacionBindingNavigatorSaveItem
             // 
@@ -211,15 +298,7 @@
             this.ciclosFacturacionBindingNavigatorSaveItem.Name = "ciclosFacturacionBindingNavigatorSaveItem";
             this.ciclosFacturacionBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
             this.ciclosFacturacionBindingNavigatorSaveItem.Text = "Guardar datos";
-            // 
-            // activoLabel
-            // 
-            activoLabel.AutoSize = true;
-            activoLabel.Location = new System.Drawing.Point(9, 84);
-            activoLabel.Name = "activoLabel";
-            activoLabel.Size = new System.Drawing.Size(40, 13);
-            activoLabel.TabIndex = 1;
-            activoLabel.Text = "Activo:";
+            this.ciclosFacturacionBindingNavigatorSaveItem.Click += new System.EventHandler(this.ciclosFacturacionBindingNavigatorSaveItem_Click);
             // 
             // activoCheckBox
             // 
@@ -230,15 +309,6 @@
             this.activoCheckBox.TabIndex = 2;
             this.activoCheckBox.UseVisualStyleBackColor = true;
             // 
-            // cicloFacturacionIdLabel
-            // 
-            cicloFacturacionIdLabel.AutoSize = true;
-            cicloFacturacionIdLabel.Location = new System.Drawing.Point(6, 27);
-            cicloFacturacionIdLabel.Name = "cicloFacturacionIdLabel";
-            cicloFacturacionIdLabel.Size = new System.Drawing.Size(104, 13);
-            cicloFacturacionIdLabel.TabIndex = 3;
-            cicloFacturacionIdLabel.Text = "Ciclo Facturacion Id:";
-            // 
             // cicloFacturacionIdTextBox
             // 
             this.cicloFacturacionIdTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ciclosFacturacionBindingSource, "CicloFacturacionId", true));
@@ -248,16 +318,6 @@
             this.cicloFacturacionIdTextBox.Size = new System.Drawing.Size(104, 20);
             this.cicloFacturacionIdTextBox.TabIndex = 4;
             // 
-            // diaLabel
-            // 
-            diaLabel.AutoSize = true;
-            diaLabel.Location = new System.Drawing.Point(3, 6);
-            diaLabel.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
-            diaLabel.Name = "diaLabel";
-            diaLabel.Size = new System.Drawing.Size(208, 13);
-            diaLabel.TabIndex = 5;
-            diaLabel.Text = "El ciclo de facturación se realizará los días";
-            // 
             // diaTextBox
             // 
             this.diaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ciclosFacturacionBindingSource, "Dia", true));
@@ -266,16 +326,6 @@
             this.diaTextBox.Size = new System.Drawing.Size(104, 20);
             this.diaTextBox.TabIndex = 6;
             // 
-            // mesLabel
-            // 
-            mesLabel.AutoSize = true;
-            mesLabel.Location = new System.Drawing.Point(165, 32);
-            mesLabel.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
-            mesLabel.Name = "mesLabel";
-            mesLabel.Size = new System.Drawing.Size(26, 13);
-            mesLabel.TabIndex = 7;
-            mesLabel.Text = "mes";
-            // 
             // mesTextBox
             // 
             this.mesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ciclosFacturacionBindingSource, "Mes", true));
@@ -283,15 +333,6 @@
             this.mesTextBox.Name = "mesTextBox";
             this.mesTextBox.Size = new System.Drawing.Size(104, 20);
             this.mesTextBox.TabIndex = 8;
-            // 
-            // porDefectoLabel
-            // 
-            porDefectoLabel.AutoSize = true;
-            porDefectoLabel.Location = new System.Drawing.Point(9, 54);
-            porDefectoLabel.Name = "porDefectoLabel";
-            porDefectoLabel.Size = new System.Drawing.Size(67, 13);
-            porDefectoLabel.TabIndex = 9;
-            porDefectoLabel.Text = "Por Defecto:";
             // 
             // porDefectoCheckBox
             // 
@@ -302,16 +343,6 @@
             this.porDefectoCheckBox.TabIndex = 10;
             this.porDefectoCheckBox.UseVisualStyleBackColor = true;
             // 
-            // semanaLabel
-            // 
-            semanaLabel.AutoSize = true;
-            semanaLabel.Location = new System.Drawing.Point(474, 6);
-            semanaLabel.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
-            semanaLabel.Name = "semanaLabel";
-            semanaLabel.Size = new System.Drawing.Size(55, 13);
-            semanaLabel.TabIndex = 11;
-            semanaLabel.Text = "semana(s)";
-            // 
             // semanaTextBox
             // 
             this.semanaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ciclosFacturacionBindingSource, "Semana", true));
@@ -319,15 +350,6 @@
             this.semanaTextBox.Name = "semanaTextBox";
             this.semanaTextBox.Size = new System.Drawing.Size(104, 20);
             this.semanaTextBox.TabIndex = 12;
-            // 
-            // sucursalIdLabel
-            // 
-            sucursalIdLabel.AutoSize = true;
-            sucursalIdLabel.Location = new System.Drawing.Point(337, 31);
-            sucursalIdLabel.Name = "sucursalIdLabel";
-            sucursalIdLabel.Size = new System.Drawing.Size(63, 13);
-            sucursalIdLabel.TabIndex = 13;
-            sucursalIdLabel.Text = "Sucursal Id:";
             // 
             // sucursalIdTextBox
             // 
@@ -337,15 +359,6 @@
             this.sucursalIdTextBox.Size = new System.Drawing.Size(104, 20);
             this.sucursalIdTextBox.TabIndex = 14;
             // 
-            // nombreLabel
-            // 
-            nombreLabel.AutoSize = true;
-            nombreLabel.Location = new System.Drawing.Point(337, 57);
-            nombreLabel.Name = "nombreLabel";
-            nombreLabel.Size = new System.Drawing.Size(47, 13);
-            nombreLabel.TabIndex = 15;
-            nombreLabel.Text = "Nombre:";
-            // 
             // nombreTextBox
             // 
             this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ciclosFacturacionBindingSource, "Sucursal.Nombre", true));
@@ -354,16 +367,6 @@
             this.nombreTextBox.Size = new System.Drawing.Size(100, 20);
             this.nombreTextBox.TabIndex = 16;
             this.nombreTextBox.TextChanged += new System.EventHandler(this.nombreTextBox_TextChanged);
-            // 
-            // numeroLabel
-            // 
-            numeroLabel.AutoSize = true;
-            numeroLabel.Location = new System.Drawing.Point(337, 81);
-            numeroLabel.Name = "numeroLabel";
-            numeroLabel.Size = new System.Drawing.Size(47, 13);
-            numeroLabel.TabIndex = 17;
-            numeroLabel.Text = "Numero:";
-            numeroLabel.Click += new System.EventHandler(this.numeroLabel_Click);
             // 
             // numeroTextBox
             // 
@@ -411,6 +414,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnBusquedaSucursal);
             this.groupBox1.Controls.Add(cicloFacturacionIdLabel);
             this.groupBox1.Controls.Add(this.sucursalIdTextBox);
             this.groupBox1.Controls.Add(nombreLabel);
@@ -447,6 +451,17 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(568, 271);
             this.tableLayoutPanel1.TabIndex = 22;
             // 
+            // btnBusquedaSucursal
+            // 
+            this.btnBusquedaSucursal.Image = global::FUMIT.Recursos.search;
+            this.btnBusquedaSucursal.Location = new System.Drawing.Point(512, 48);
+            this.btnBusquedaSucursal.Name = "btnBusquedaSucursal";
+            this.btnBusquedaSucursal.Size = new System.Drawing.Size(31, 23);
+            this.btnBusquedaSucursal.TabIndex = 40;
+            this.btnBusquedaSucursal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBusquedaSucursal.UseVisualStyleBackColor = true;
+            this.btnBusquedaSucursal.Click += new System.EventHandler(this.btnBusquedaSucursal_Click);
+            // 
             // CiclosFacturacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -456,6 +471,7 @@
             this.Controls.Add(this.ciclosFacturacionBindingNavigator);
             this.Name = "CiclosFacturacion";
             this.Text = "Ciclos de facturacion";
+            this.Load += new System.EventHandler(this.CiclosFacturacion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ciclosFacturacionBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ciclosFacturacionBindingNavigator)).EndInit();
             this.ciclosFacturacionBindingNavigator.ResumeLayout(false);
@@ -500,5 +516,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button btnBusquedaSucursal;
     }
 }

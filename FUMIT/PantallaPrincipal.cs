@@ -48,7 +48,15 @@ namespace FUMIT
                 return formularioProgramacionServiciosSucursales;
             }
         }
-        public Formularios.Facturacion.CiclosFacturacion FormularioCicloFacturacion { get; set; }
+        public Formularios.Facturacion.CiclosFacturacion FormularioCicloFacturacion { get
+            {
+                formularioCicloFacturacion = formularioCicloFacturacion ?? new Formularios.Facturacion.CiclosFacturacion();
+                formularioCicloFacturacion.MdiParent = this;
+                formularioCicloFacturacion.Disposed += (sender, e) => formularioCicloFacturacion = null;
+
+                return formularioCicloFacturacion;
+            }
+        }
 
         public PantallaPrincipal()
         {
@@ -92,7 +100,7 @@ namespace FUMIT
 
         private void ciclosDeFactuacionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            FormularioCicloFacturacion.Show();
         }
     }
 }

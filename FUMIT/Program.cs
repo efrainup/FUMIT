@@ -28,7 +28,9 @@ namespace FUMIT
             container.RegisterType<AccesoDatos.ISucursales, SucursalesRepositorio>();
             container.RegisterType<IProgramacionServicios, ProgramacionServiciosRepositorio>();
             container.RegisterType<IProgramacionServiciosCliente, ProgramacionServiciosClienteRepositorio>();
+            container.RegisterType<ICiclosFacturacion, CiclosFacturacionRepositorio>();
 
+            
             CommonServiceLocator.ServiceLocator.SetLocatorProvider(() => unityServiceLocator);
 
             

@@ -86,7 +86,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccesoDatos\AOperacionesBase.cs" />
+    <Compile Include="AccesoDatos\CiclosFacturacionRepositorio.cs" />
     <Compile Include="AccesoDatos\ClientesRepositorio.cs" />
+    <Compile Include="AccesoDatos\ICiclosFacturacion.cs" />
     <Compile Include="AccesoDatos\IClientes.cs" />
     <Compile Include="AccesoDatos\IOperacionesAccesoDatos.cs" />
     <Compile Include="AccesoDatos\IProgramacionServicios.cs" />
