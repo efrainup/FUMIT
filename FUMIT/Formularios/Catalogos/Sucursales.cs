@@ -77,7 +77,7 @@ namespace FUMIT.Formularios.Catalogos
                 IEnumerable<Entidades.Sucursal> coleccionSucursales = DatosSucursales.Recuperar();
                 foreach (Entidades.Sucursal sucursal in coleccionSucursales)
                 {
-                    ListaSucursales.Rows.Add(new object[] { sucursal.SuscursalId, sucursal.Numero, sucursal.Nombre, sucursal.Estado, sucursal.Ciudad, sucursal.Direccion, sucursal.Activo });
+                    ListaSucursales.Rows.Add(new object[] { sucursal.SucursalId, sucursal.Numero, sucursal.Nombre, sucursal.Estado, sucursal.Ciudad, sucursal.Direccion, sucursal.Activo });
                 }
             }
         }
@@ -87,7 +87,7 @@ namespace FUMIT.Formularios.Catalogos
             IEnumerable<Entidades.Sucursal> coleccionSucursales = DatosSucursales.Recuperar();
             foreach (Entidades.Sucursal sucursal in coleccionSucursales)
             {
-                ListaSucursales.Rows.Add(new object[] { sucursal.SuscursalId, sucursal.Numero, sucursal.Nombre, sucursal.Estado, sucursal.Ciudad, sucursal.Direccion, sucursal.Activo });
+                ListaSucursales.Rows.Add(new object[] { sucursal.SucursalId, sucursal.Numero, sucursal.Nombre, sucursal.Estado, sucursal.Ciudad, sucursal.Direccion, sucursal.Activo });
             }
         }
 
@@ -156,7 +156,7 @@ namespace FUMIT.Formularios.Catalogos
             
             Entidades.Sucursal nuevaSucursal = new Entidades.Sucursal();
 
-            nuevaSucursal.SuscursalId = Convert.ToInt32(lblIdSucursal.Text);
+            nuevaSucursal.SucursalId = Convert.ToInt32(lblIdSucursal.Text);
             nuevaSucursal.Numero = txtNumero.Text;
             nuevaSucursal.Nombre = txtNombre.Text;
             nuevaSucursal.Ciudad = txtCiudad.Text;

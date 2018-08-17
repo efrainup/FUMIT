@@ -89,6 +89,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BaseDeDatosFUMIT.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Cliente.cs">
+      <DependentUpon>BaseDeDatosFUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ClienteConfiguration.cs">
+      <DependentUpon>BaseDeDatosFUMIT.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\FumitDbContext.cs">
       <DependentUpon>BaseDeDatosFUMIT.tt</DependentUpon>
     </Compile>

@@ -20,6 +20,7 @@ namespace ServiciosFUMIT.Entities
 
     public interface IFumitDbContext : System.IDisposable
     {
+        System.Data.Entity.DbSet<Cliente> Clientes { get; set; } // Clientes
         System.Data.Entity.DbSet<Sucursal> Sucursales { get; set; } // Sucursales
 
         int SaveChanges();

@@ -24,11 +24,12 @@ namespace FUMIT.Entidades
     public partial class Sucursal
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column(@"SuscursalId", Order = 1, TypeName = "int")]
+        [Column(@"SucursalId", Order = 1, TypeName = "int")]
+        [Index(@"PK_Sucursales", 1, IsUnique = true, IsClustered = true)]
         [Required]
         [Key]
-        [Display(Name = "Suscursal ID")]
-        public int SuscursalId { get; set; } // SuscursalId (Primary key)
+        [Display(Name = "Sucursal ID")]
+        public int SucursalId { get; set; } // SucursalId (Primary key)
 
         [Column(@"Numero", Order = 2, TypeName = "varchar")]
         [MaxLength(5)]
@@ -36,14 +37,12 @@ namespace FUMIT.Entidades
         [Display(Name = "Numero")]
         public string Numero { get; set; } // Numero (length: 5)
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Column(@"Nombre", Order = 3, TypeName = "varchar")]
         [Required(AllowEmptyStrings = true)]
-        [MaxLength(50)]
-        [StringLength(50)]
-        [Key]
+        [MaxLength(120)]
+        [StringLength(120)]
         [Display(Name = "Nombre")]
-        public string Nombre { get; set; } // Nombre (Primary key) (length: 50)
+        public string Nombre { get; set; } // Nombre (length: 120)
 
         [Column(@"Direccion", Order = 4, TypeName = "varchar")]
         [MaxLength(250)]
@@ -63,22 +62,38 @@ namespace FUMIT.Entidades
         [Display(Name = "Ciudad")]
         public string Ciudad { get; set; } // Ciudad (length: 50)
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Column(@"Activo", Order = 7, TypeName = "bit")]
         [Required]
-        [Key]
         [Display(Name = "Activo")]
-        public bool Activo { get; set; } // Activo (Primary key)
+        public bool Activo { get; set; } // Activo
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Column(@"Borrado", Order = 8, TypeName = "bit")]
         [Required]
-        [Key]
         [Display(Name = "Borrado")]
-        public bool Borrado { get; set; } // Borrado (Primary key)
+        public bool Borrado { get; set; } // Borrado
+
+        // Reverse navigation
+
+        /// <summary>
+        /// Child Ciclosfacturaciones where [CiclosFacturacion].[SucursalId] point to this entity (FK_CiclosFacturacion_Sucursales)
+        /// </summary>
+        public virtual System.Collections.Generic.ICollection<CiclosFacturacion> Ciclosfacturaciones { get; set; } // CiclosFacturacion.FK_CiclosFacturacion_Sucursales
+        /// <summary>
+        /// Child Clientes where [Clientes].[SucursalId] point to this entity (FK_Clientes_Sucursales)
+        /// </summary>
+        public virtual System.Collections.Generic.ICollection<Cliente> Clientes { get; set; } // Clientes.FK_Clientes_Sucursales
+        /// <summary>
+        /// Child Programacionservicios where [ProgramacionServicios].[SucursalId] point to this entity (FK_ProgramacionServicios_Sucursales)
+        /// </summary>
+        public virtual System.Collections.Generic.ICollection<Programacionservicio> Programacionservicios { get; set; } // ProgramacionServicios.FK_ProgramacionServicios_Sucursales
 
         public Sucursal()
         {
+            Activo = true;
+            Borrado = false;
+            Ciclosfacturaciones = new System.Collections.Generic.List<CiclosFacturacion>();
+            Clientes = new System.Collections.Generic.List<Cliente>();
+            Programacionservicios = new System.Collections.Generic.List<Programacionservicio>();
             InitializePartial();
         }
 

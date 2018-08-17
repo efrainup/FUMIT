@@ -22,6 +22,7 @@ namespace ServiciosFUMIT.Entities
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.37.1.0")]
     public class FumitDbContext : System.Data.Entity.DbContext, IFumitDbContext
     {
+        public System.Data.Entity.DbSet<Cliente> Clientes { get; set; } // Clientes
         public System.Data.Entity.DbSet<Sucursal> Sucursales { get; set; } // Sucursales
 
         static FumitDbContext()
@@ -72,11 +73,13 @@ namespace ServiciosFUMIT.Entities
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Configurations.Add(new ClienteConfiguration());
             modelBuilder.Configurations.Add(new SucursalConfiguration());
         }
 
         public static System.Data.Entity.DbModelBuilder CreateModel(System.Data.Entity.DbModelBuilder modelBuilder, string schema)
         {
+            modelBuilder.Configurations.Add(new ClienteConfiguration(schema));
             modelBuilder.Configurations.Add(new SucursalConfiguration(schema));
             return modelBuilder;
         }
