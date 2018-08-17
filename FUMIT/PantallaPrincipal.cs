@@ -51,5 +51,11 @@ namespace FUMIT
             FormularioSucursales.Show();
             FormularioSucursales.Activate();
         }
+
+        private void serviciosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormularioServicios.Show();
+            FormularioServicios.Activate();
+        }
     }
 }
