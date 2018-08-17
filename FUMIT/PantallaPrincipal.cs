@@ -102,5 +102,11 @@ namespace FUMIT
         {
             FormularioCicloFacturacion.Show();
         }
+
+        private void serviciosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormularioServicios.Show();
+            FormularioServicios.Activate();
+        }
     }
 }

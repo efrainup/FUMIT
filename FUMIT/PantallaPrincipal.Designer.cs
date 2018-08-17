@@ -99,6 +99,7 @@
             this.serviciosToolStripMenuItem.Name = "serviciosToolStripMenuItem";
             this.serviciosToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.serviciosToolStripMenuItem.Text = "Servicios";
+            this.serviciosToolStripMenuItem.Click += new System.EventHandler(this.serviciosToolStripMenuItem_Click);
             // 
             // equipoToolStripMenuItem
             // 
