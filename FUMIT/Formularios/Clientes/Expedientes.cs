@@ -246,5 +246,10 @@ namespace FUMIT.Formularios.Clientes
                 clienteBindingSource.ResetCurrentItem();
             }
         }
+
+        private void programacionServiciosClientes1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

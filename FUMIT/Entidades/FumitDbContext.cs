@@ -32,7 +32,9 @@ namespace FUMIT.Entidades
         public System.Data.Entity.DbSet<Programacionservicioscliente> Programacionserviciosclientes { get; set; } // ProgramacionServiciosClientes
         public System.Data.Entity.DbSet<Servicio> Servicios { get; set; } // Servicios
         public System.Data.Entity.DbSet<Serviciosprogramado> Serviciosprogramados { get; set; } // ServiciosProgramados
+        public System.Data.Entity.DbSet<Serviciossucursal> Serviciossucursales { get; set; } // ServiciosSucursales
         public System.Data.Entity.DbSet<Sucursal> Sucursales { get; set; } // Sucursales
+        public System.Data.Entity.DbSet<Vsprogramacionservicioscliente> Vsprogramacionserviciosclientes { get; set; } // vsProgramacionServiciosClientes
 
         static FumitDbContext()
         {
@@ -91,7 +93,9 @@ namespace FUMIT.Entidades
             modelBuilder.Configurations.Add(new ProgramacionserviciosclienteConfiguration());
             modelBuilder.Configurations.Add(new ServicioConfiguration());
             modelBuilder.Configurations.Add(new ServiciosprogramadoConfiguration());
+            modelBuilder.Configurations.Add(new ServiciossucursalConfiguration());
             modelBuilder.Configurations.Add(new SucursalConfiguration());
+            modelBuilder.Configurations.Add(new VsprogramacionserviciosclienteConfiguration());
         }
 
         public static System.Data.Entity.DbModelBuilder CreateModel(System.Data.Entity.DbModelBuilder modelBuilder, string schema)
@@ -105,7 +109,9 @@ namespace FUMIT.Entidades
             modelBuilder.Configurations.Add(new ProgramacionserviciosclienteConfiguration(schema));
             modelBuilder.Configurations.Add(new ServicioConfiguration(schema));
             modelBuilder.Configurations.Add(new ServiciosprogramadoConfiguration(schema));
+            modelBuilder.Configurations.Add(new ServiciossucursalConfiguration(schema));
             modelBuilder.Configurations.Add(new SucursalConfiguration(schema));
+            modelBuilder.Configurations.Add(new VsprogramacionserviciosclienteConfiguration(schema));
             return modelBuilder;
         }
     }

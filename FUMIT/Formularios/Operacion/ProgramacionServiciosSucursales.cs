@@ -295,11 +295,14 @@ namespace FUMIT.Formularios.Operacion
 
         private void programacionservicioBindingSource_CurrentChanged(object sender, EventArgs e)
         {
-            int[] dias = ProgramacionServicioActual.Dias.Split(',').Select(s => Convert.ToInt32(s)).ToArray();
-            
-            for(int i=0; (i < dias.Length) && (i<8); i++)
+            if (ProgramacionServicioActual.Dias != null)
             {
-                chkListDiasSemana.SetItemChecked(i, i+1 == dias[i]);
+                int[] dias = ProgramacionServicioActual.Dias.Split(',').Select(s => Convert.ToInt32(s)).ToArray();
+
+                for (int i = 0; (i < dias.Length) && (i < 8); i++)
+                {
+                    chkListDiasSemana.SetItemChecked(i, i + 1 == dias[i]);
+                }
             }
 
         }

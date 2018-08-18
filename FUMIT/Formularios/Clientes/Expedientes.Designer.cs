@@ -49,6 +49,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Expedientes));
             this.clienteBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -59,9 +60,12 @@
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbEdit = new System.Windows.Forms.ToolStripButton();
+            this.tsbCancelarEdicion = new System.Windows.Forms.ToolStripButton();
             this.clienteBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.toolBtnBusqueda = new System.Windows.Forms.ToolStripButton();
             this.claveTextBox = new System.Windows.Forms.TextBox();
+            this.expedientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.clienteIdTextBox = new System.Windows.Forms.TextBox();
             this.contactoTextBox = new System.Windows.Forms.TextBox();
             this.correoTextBox = new System.Windows.Forms.TextBox();
@@ -91,17 +95,14 @@
             this.bloqueadoCheckBox = new System.Windows.Forms.CheckBox();
             this.groupBoxAsignacion = new System.Windows.Forms.GroupBox();
             this.tabProgramacionServiciosCliente = new System.Windows.Forms.TabPage();
+            this.programacionServiciosClientes1 = new FUMIT.Formularios.Clientes.ProgramacionServiciosClientes();
             this.tabContratos = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.expedientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.programacionServiciosClientes1 = new FUMIT.Formularios.Clientes.ProgramacionServiciosClientes();
             this.cicloFacturacionClientes1 = new FUMIT.Formularios.Clientes.CicloFacturacionClientes();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.historialCliente1 = new FUMIT.Formularios.Clientes.HistorialCliente();
-            this.tsbEdit = new System.Windows.Forms.ToolStripButton();
-            this.tsbCancelarEdicion = new System.Windows.Forms.ToolStripButton();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             claveLabel = new System.Windows.Forms.Label();
             clienteIdLabel = new System.Windows.Forms.Label();
             contactoLabel = new System.Windows.Forms.Label();
@@ -121,6 +122,8 @@
             morosoLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingNavigator)).BeginInit();
             this.clienteBindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.expedientesBindingSource)).BeginInit();
             this.groupBoxDatosComerciales.SuspendLayout();
             this.tabDatosCliente.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -130,8 +133,7 @@
             this.tabProgramacionServiciosCliente.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.expedientesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // claveLabel
@@ -331,6 +333,10 @@
             this.bindingNavigatorAddNewItem.Text = "Agregar";
             this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
             // 
+            // clienteBindingSource
+            // 
+            this.clienteBindingSource.DataSource = typeof(FUMIT.Entidades.Cliente);
+            // 
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
@@ -407,6 +413,26 @@
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
+            // tsbEdit
+            // 
+            this.tsbEdit.Image = global::FUMIT.Recursos.edit_add;
+            this.tsbEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbEdit.Name = "tsbEdit";
+            this.tsbEdit.Size = new System.Drawing.Size(57, 22);
+            this.tsbEdit.Text = "Editar";
+            this.tsbEdit.Click += new System.EventHandler(this.tsbEdit_Click);
+            // 
+            // tsbCancelarEdicion
+            // 
+            this.tsbCancelarEdicion.Enabled = false;
+            this.tsbCancelarEdicion.Image = global::FUMIT.Recursos.cancel;
+            this.tsbCancelarEdicion.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbCancelarEdicion.Name = "tsbCancelarEdicion";
+            this.tsbCancelarEdicion.Size = new System.Drawing.Size(73, 22);
+            this.tsbCancelarEdicion.Text = "Cancelar";
+            this.tsbCancelarEdicion.Visible = false;
+            this.tsbCancelarEdicion.Click += new System.EventHandler(this.tsbCancelarEdicion_Click);
+            // 
             // clienteBindingNavigatorSaveItem
             // 
             this.clienteBindingNavigatorSaveItem.Enabled = false;
@@ -435,6 +461,10 @@
             this.claveTextBox.ReadOnly = true;
             this.claveTextBox.Size = new System.Drawing.Size(57, 20);
             this.claveTextBox.TabIndex = 1;
+            // 
+            // expedientesBindingSource
+            // 
+            this.expedientesBindingSource.DataSource = typeof(FUMIT.Formularios.Clientes.Expedientes);
             // 
             // clienteIdTextBox
             // 
@@ -594,6 +624,7 @@
             // sucursalFUMITTextBox
             // 
             this.sucursalFUMITTextBox.DataBindings.Add(new System.Windows.Forms.Binding("ReadOnly", this.expedientesBindingSource, "ModoNormal", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.sucursalFUMITTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "Sucursal.Nombre", true));
             this.sucursalFUMITTextBox.Location = new System.Drawing.Point(98, 50);
             this.sucursalFUMITTextBox.Name = "sucursalFUMITTextBox";
             this.sucursalFUMITTextBox.ReadOnly = true;
@@ -639,6 +670,7 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
@@ -764,6 +796,18 @@
             this.tabProgramacionServiciosCliente.Text = "Programacion de servicios";
             this.tabProgramacionServiciosCliente.UseVisualStyleBackColor = true;
             // 
+            // programacionServiciosClientes1
+            // 
+            this.programacionServiciosClientes1.ClienteId = 0;
+            this.programacionServiciosClientes1.DataBindings.Add(new System.Windows.Forms.Binding("ClienteId", this.clienteBindingSource, "ClienteId", true));
+            this.programacionServiciosClientes1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.programacionServiciosClientes1.Location = new System.Drawing.Point(3, 3);
+            this.programacionServiciosClientes1.Name = "programacionServiciosClientes1";
+            this.programacionServiciosClientes1.ProgramacionServiciosClienteRepositorio = null;
+            this.programacionServiciosClientes1.Size = new System.Drawing.Size(917, 495);
+            this.programacionServiciosClientes1.TabIndex = 0;
+            this.programacionServiciosClientes1.Load += new System.EventHandler(this.programacionServiciosClientes1_Load);
+            // 
             // tabContratos
             // 
             this.tabContratos.Location = new System.Drawing.Point(4, 22);
@@ -795,6 +839,14 @@
             this.tabPage3.Text = "Ciclos de facturación";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // cicloFacturacionClientes1
+            // 
+            this.cicloFacturacionClientes1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cicloFacturacionClientes1.Location = new System.Drawing.Point(3, 3);
+            this.cicloFacturacionClientes1.Name = "cicloFacturacionClientes1";
+            this.cicloFacturacionClientes1.Size = new System.Drawing.Size(917, 495);
+            this.cicloFacturacionClientes1.TabIndex = 0;
+            // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.historialCliente1);
@@ -806,33 +858,6 @@
             this.tabPage4.Text = "Historial";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // clienteBindingSource
-            // 
-            this.clienteBindingSource.DataSource = typeof(FUMIT.Entidades.Cliente);
-            // 
-            // expedientesBindingSource
-            // 
-            this.expedientesBindingSource.DataSource = typeof(FUMIT.Formularios.Clientes.Expedientes);
-            // 
-            // programacionServiciosClientes1
-            // 
-            this.programacionServiciosClientes1.ClienteId = 0;
-            this.programacionServiciosClientes1.DataBindings.Add(new System.Windows.Forms.Binding("ClienteId", this.clienteBindingSource, "ClienteId", true));
-            this.programacionServiciosClientes1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.programacionServiciosClientes1.Location = new System.Drawing.Point(3, 3);
-            this.programacionServiciosClientes1.Name = "programacionServiciosClientes1";
-            this.programacionServiciosClientes1.ProgramacionServiciosClienteRepositorio = null;
-            this.programacionServiciosClientes1.Size = new System.Drawing.Size(917, 495);
-            this.programacionServiciosClientes1.TabIndex = 0;
-            // 
-            // cicloFacturacionClientes1
-            // 
-            this.cicloFacturacionClientes1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cicloFacturacionClientes1.Location = new System.Drawing.Point(3, 3);
-            this.cicloFacturacionClientes1.Name = "cicloFacturacionClientes1";
-            this.cicloFacturacionClientes1.Size = new System.Drawing.Size(917, 495);
-            this.cicloFacturacionClientes1.TabIndex = 0;
-            // 
             // historialCliente1
             // 
             this.historialCliente1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -841,25 +866,9 @@
             this.historialCliente1.Size = new System.Drawing.Size(917, 495);
             this.historialCliente1.TabIndex = 0;
             // 
-            // tsbEdit
+            // errorProvider1
             // 
-            this.tsbEdit.Image = global::FUMIT.Recursos.edit_add;
-            this.tsbEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEdit.Name = "tsbEdit";
-            this.tsbEdit.Size = new System.Drawing.Size(57, 22);
-            this.tsbEdit.Text = "Editar";
-            this.tsbEdit.Click += new System.EventHandler(this.tsbEdit_Click);
-            // 
-            // tsbCancelarEdicion
-            // 
-            this.tsbCancelarEdicion.Enabled = false;
-            this.tsbCancelarEdicion.Image = global::FUMIT.Recursos.cancel;
-            this.tsbCancelarEdicion.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbCancelarEdicion.Name = "tsbCancelarEdicion";
-            this.tsbCancelarEdicion.Size = new System.Drawing.Size(73, 22);
-            this.tsbCancelarEdicion.Text = "Cancelar";
-            this.tsbCancelarEdicion.Visible = false;
-            this.tsbCancelarEdicion.Click += new System.EventHandler(this.tsbCancelarEdicion_Click);
+            this.errorProvider1.ContainerControl = this;
             // 
             // Expedientes
             // 
@@ -874,6 +883,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingNavigator)).EndInit();
             this.clienteBindingNavigator.ResumeLayout(false);
             this.clienteBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.expedientesBindingSource)).EndInit();
             this.groupBoxDatosComerciales.ResumeLayout(false);
             this.groupBoxDatosComerciales.PerformLayout();
             this.tabDatosCliente.ResumeLayout(false);
@@ -886,8 +897,7 @@
             this.tabProgramacionServiciosCliente.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.expedientesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -950,5 +960,6 @@
         private System.Windows.Forms.BindingSource expedientesBindingSource;
         private System.Windows.Forms.ToolStripButton tsbEdit;
         private System.Windows.Forms.ToolStripButton tsbCancelarEdicion;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

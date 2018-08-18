@@ -30,7 +30,9 @@ namespace FUMIT.Entidades
         System.Data.Entity.DbSet<Programacionservicioscliente> Programacionserviciosclientes { get; set; } // ProgramacionServiciosClientes
         System.Data.Entity.DbSet<Servicio> Servicios { get; set; } // Servicios
         System.Data.Entity.DbSet<Serviciosprogramado> Serviciosprogramados { get; set; } // ServiciosProgramados
+        System.Data.Entity.DbSet<Serviciossucursal> Serviciossucursales { get; set; } // ServiciosSucursales
         System.Data.Entity.DbSet<Sucursal> Sucursales { get; set; } // Sucursales
+        System.Data.Entity.DbSet<Vsprogramacionservicioscliente> Vsprogramacionserviciosclientes { get; set; } // vsProgramacionServiciosClientes
 
         int SaveChanges();
         System.Threading.Tasks.Task<int> SaveChangesAsync();

@@ -54,6 +54,8 @@
             // 
             // GrdServicios
             // 
+            this.GrdServicios.AllowUserToAddRows = false;
+            this.GrdServicios.AllowUserToDeleteRows = false;
             this.GrdServicios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GrdServicios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colNombre,
@@ -61,6 +63,7 @@
             this.colActivo});
             this.GrdServicios.Location = new System.Drawing.Point(12, 101);
             this.GrdServicios.Name = "GrdServicios";
+            this.GrdServicios.ReadOnly = true;
             this.GrdServicios.Size = new System.Drawing.Size(422, 154);
             this.GrdServicios.TabIndex = 0;
             // 
@@ -68,17 +71,20 @@
             // 
             this.colNombre.HeaderText = "Nombre";
             this.colNombre.Name = "colNombre";
+            this.colNombre.ReadOnly = true;
             // 
             // colDescripcion
             // 
             this.colDescripcion.HeaderText = "Descripcion";
             this.colDescripcion.Name = "colDescripcion";
+            this.colDescripcion.ReadOnly = true;
             this.colDescripcion.Width = 179;
             // 
             // colActivo
             // 
             this.colActivo.HeaderText = "Activo";
             this.colActivo.Name = "colActivo";
+            this.colActivo.ReadOnly = true;
             // 
             // lblServicios
             // 
@@ -146,7 +152,6 @@
             this.btnEliminarServicio.Name = "btnEliminarServicio";
             this.btnEliminarServicio.Size = new System.Drawing.Size(70, 22);
             this.btnEliminarServicio.Text = "Eliminar";
-            this.btnEliminarServicio.Visible = false;
             this.btnEliminarServicio.Click += new System.EventHandler(this.btnEliminarServicio_Click);
             // 
             // btnGuardarServicio

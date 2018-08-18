@@ -108,5 +108,12 @@ namespace FUMIT
             FormularioServicios.Show();
             FormularioServicios.Activate();
         }
+
+        private void calendarioDeServiciosProgramadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var serviciosProgramados = new Formularios.Operacion.CalendarioServicios();
+            serviciosProgramados.MdiParent = this;
+            serviciosProgramados.Show();
+        }
     }
 }

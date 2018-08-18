@@ -154,6 +154,7 @@ namespace FUMIT.Entidades
 
         public Cliente()
         {
+            FechaCreacion = System.DateTime.Now;
             Historialclientes = new System.Collections.Generic.List<HistorialCliente>();
             Programacionserviciosclientes = new System.Collections.Generic.List<Programacionservicioscliente>();
             Serviciosprogramados = new System.Collections.Generic.List<Serviciosprogramado>();

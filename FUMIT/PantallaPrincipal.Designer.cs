@@ -166,6 +166,7 @@
             this.calendarioDeServiciosProgramadosToolStripMenuItem.Name = "calendarioDeServiciosProgramadosToolStripMenuItem";
             this.calendarioDeServiciosProgramadosToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.calendarioDeServiciosProgramadosToolStripMenuItem.Text = "Calendario de servicios programados";
+            this.calendarioDeServiciosProgramadosToolStripMenuItem.Click += new System.EventHandler(this.calendarioDeServiciosProgramadosToolStripMenuItem_Click);
             // 
             // serviciosProgramadosToolStripMenuItem
             // 

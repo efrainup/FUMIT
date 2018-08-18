@@ -172,7 +172,7 @@ namespace FUMIT.Formularios.Catalogos
                             chckServicios.Items.Clear();
                             foreach (DataRow Fila in Tabla.Rows)
                             {
-                                chckServicios.Items.Add("Nombre Sucursal", Convert.ToBoolean(Fila[2]));
+                                chckServicios.Items.Add(Fila[0].ToString());
                             }
                         }
                     }
@@ -197,7 +197,7 @@ namespace FUMIT.Formularios.Catalogos
         private void Servicios_Load(object sender, EventArgs e)
         {
             Buscar("SELECT Nombre, Descripcion, Activo FROM Servicios");
-            Sucursales("SELECT Nombre, Descripcion, Activo FROM Servicios");
+            Sucursales("SELECT Nombre FROM Sucursales WHERE Borrado=0");
         }        
     }
 }

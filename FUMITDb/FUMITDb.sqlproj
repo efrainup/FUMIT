@@ -76,5 +76,6 @@
     <Build Include="Security\RoleMemberships.sql" />
     <Build Include="dbo\Tables\ProgramacionServiciosClientes_1.sql" />
     <Build Include="dbo\Tables\ProgramacionServicios_1.sql" />
+    <Build Include="dbo\Tables\ServiciosProgramados.sql" />
   </ItemGroup>
 </Project>

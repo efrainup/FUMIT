@@ -38,12 +38,18 @@
             System.Windows.Forms.Label programacionServicioIdLabel1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProgramacionServiciosClientes));
             this.programacionserviciosclienteBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.programacionserviciosclienteDataGridView = new System.Windows.Forms.DataGridView();
+            this.programacionserviciosclienteBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.activoCheckBox = new System.Windows.Forms.CheckBox();
             this.clienteIdTextBox = new System.Windows.Forms.TextBox();
             this.fechaInicioDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -52,18 +58,23 @@
             this.nombreTextBox = new System.Windows.Forms.TextBox();
             this.programacionServicioIdTextBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnProgramarServicios = new System.Windows.Forms.Button();
             this.btnBusquedaProgramacionServicioPorNombre = new System.Windows.Forms.Button();
             this.btnBusquedaProgramacionServicioPorId = new System.Windows.Forms.Button();
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
-            this.programacionserviciosclienteBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
-            this.programacionserviciosclienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.programacionserviciosclienteDataGridView = new System.Windows.Forms.DataGridView();
+            this.Programacionservicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vsprogramacionserviciosclienteDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewCheckBoxColumn4 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.vsprogramacionserviciosclienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,7 +83,7 @@
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.programacionserviciosclienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             activoLabel = new System.Windows.Forms.Label();
             clienteIdLabel = new System.Windows.Forms.Label();
             fechaInicioLabel = new System.Windows.Forms.Label();
@@ -82,9 +93,12 @@
             programacionServicioIdLabel1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.programacionserviciosclienteBindingNavigator)).BeginInit();
             this.programacionserviciosclienteBindingNavigator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.programacionserviciosclienteDataGridView)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.programacionserviciosclienteDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vsprogramacionserviciosclienteDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vsprogramacionserviciosclienteBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.programacionserviciosclienteBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -182,12 +196,47 @@
             this.programacionserviciosclienteBindingNavigator.TabIndex = 0;
             this.programacionserviciosclienteBindingNavigator.Text = "bindingNavigator1";
             // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.Image = global::FUMIT.Recursos.add;
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(69, 22);
+            this.bindingNavigatorAddNewItem.Text = "Agregar";
+            this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
+            // 
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
             this.bindingNavigatorCountItem.Size = new System.Drawing.Size(37, 22);
             this.bindingNavigatorCountItem.Text = "de {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Número total de elementos";
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(70, 22);
+            this.bindingNavigatorDeleteItem.Text = "Eliminar";
+            // 
+            // bindingNavigatorMoveFirstItem
+            // 
+            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
+            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
+            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveFirstItem.Text = "Mover primero";
+            // 
+            // bindingNavigatorMovePreviousItem
+            // 
+            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
+            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
+            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMovePreviousItem.Text = "Mover anterior";
             // 
             // bindingNavigatorSeparator
             // 
@@ -208,31 +257,36 @@
             this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
             this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
+            // bindingNavigatorMoveNextItem
+            // 
+            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
+            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
+            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveNextItem.Text = "Mover siguiente";
+            // 
+            // bindingNavigatorMoveLastItem
+            // 
+            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
+            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
+            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveLastItem.Text = "Mover último";
+            // 
             // bindingNavigatorSeparator2
             // 
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // programacionserviciosclienteDataGridView
+            // programacionserviciosclienteBindingNavigatorSaveItem
             // 
-            this.programacionserviciosclienteDataGridView.AutoGenerateColumns = false;
-            this.programacionserviciosclienteDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.programacionserviciosclienteDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewCheckBoxColumn1,
-            this.dataGridViewCheckBoxColumn2,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7});
-            this.programacionserviciosclienteDataGridView.DataSource = this.programacionserviciosclienteBindingSource;
-            this.programacionserviciosclienteDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.programacionserviciosclienteDataGridView.Location = new System.Drawing.Point(3, 207);
-            this.programacionserviciosclienteDataGridView.Name = "programacionserviciosclienteDataGridView";
-            this.programacionserviciosclienteDataGridView.Size = new System.Drawing.Size(848, 199);
-            this.programacionserviciosclienteDataGridView.TabIndex = 1;
+            this.programacionserviciosclienteBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("programacionserviciosclienteBindingNavigatorSaveItem.Image")));
+            this.programacionserviciosclienteBindingNavigatorSaveItem.Name = "programacionserviciosclienteBindingNavigatorSaveItem";
+            this.programacionserviciosclienteBindingNavigatorSaveItem.Size = new System.Drawing.Size(69, 22);
+            this.programacionserviciosclienteBindingNavigatorSaveItem.Text = "Guardar";
+            this.programacionserviciosclienteBindingNavigatorSaveItem.Click += new System.EventHandler(this.programacionserviciosclienteBindingNavigatorSaveItem_Click);
             // 
             // activoCheckBox
             // 
@@ -279,7 +333,7 @@
             // 
             // nombreTextBox
             // 
-            this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programacionserviciosclienteBindingSource, "Programacionservicio.Nombre", true));
+            this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programacionserviciosclienteBindingSource, "Programacionservicio.Nombre", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.nombreTextBox.Location = new System.Drawing.Point(347, 36);
             this.nombreTextBox.Name = "nombreTextBox";
             this.nombreTextBox.Size = new System.Drawing.Size(291, 20);
@@ -316,26 +370,11 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(848, 198);
+            this.groupBox1.Size = new System.Drawing.Size(848, 188);
             this.groupBox1.TabIndex = 42;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Programacion de servicio";
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.programacionserviciosclienteDataGridView, 0, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 25);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(854, 409);
-            this.tableLayoutPanel1.TabIndex = 43;
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // btnProgramarServicios
             // 
@@ -370,128 +409,213 @@
             this.btnBusquedaProgramacionServicioPorId.UseVisualStyleBackColor = true;
             this.btnBusquedaProgramacionServicioPorId.Click += new System.EventHandler(this.btnBusquedaProgramacionServicioPorId_Click);
             // 
-            // bindingNavigatorAddNewItem
+            // tableLayoutPanel1
             // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = global::FUMIT.Recursos.add;
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Agregar nuevo";
-            this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Controls.Add(this.vsprogramacionserviciosclienteDataGridView, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.programacionserviciosclienteDataGridView, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 25);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(854, 409);
+            this.tableLayoutPanel1.TabIndex = 43;
             // 
-            // bindingNavigatorDeleteItem
+            // errorProvider1
             // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Eliminar";
+            this.errorProvider1.ContainerControl = this;
             // 
-            // bindingNavigatorMoveFirstItem
+            // programacionserviciosclienteDataGridView
             // 
-            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
-            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
-            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveFirstItem.Text = "Mover primero";
+            this.programacionserviciosclienteDataGridView.AllowUserToAddRows = false;
+            this.programacionserviciosclienteDataGridView.AllowUserToDeleteRows = false;
+            this.programacionserviciosclienteDataGridView.AutoGenerateColumns = false;
+            this.programacionserviciosclienteDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.programacionserviciosclienteDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewCheckBoxColumn1,
+            this.dataGridViewCheckBoxColumn2,
+            this.Programacionservicio,
+            this.dataGridViewTextBoxColumn6});
+            this.programacionserviciosclienteDataGridView.DataSource = this.programacionserviciosclienteBindingSource;
+            this.programacionserviciosclienteDataGridView.Location = new System.Drawing.Point(3, 391);
+            this.programacionserviciosclienteDataGridView.Name = "programacionserviciosclienteDataGridView";
+            this.programacionserviciosclienteDataGridView.ReadOnly = true;
+            this.programacionserviciosclienteDataGridView.Size = new System.Drawing.Size(416, 15);
+            this.programacionserviciosclienteDataGridView.TabIndex = 44;
+            this.programacionserviciosclienteDataGridView.Visible = false;
             // 
-            // bindingNavigatorMovePreviousItem
+            // Programacionservicio
             // 
-            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
-            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
-            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMovePreviousItem.Text = "Mover anterior";
+            this.Programacionservicio.DataPropertyName = "Programacionservicio.Nombre";
+            this.Programacionservicio.HeaderText = "Programacionservicio";
+            this.Programacionservicio.Name = "Programacionservicio";
+            this.Programacionservicio.ReadOnly = true;
             // 
-            // bindingNavigatorMoveNextItem
+            // vsprogramacionserviciosclienteDataGridView
             // 
-            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
-            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
-            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveNextItem.Text = "Mover siguiente";
+            this.vsprogramacionserviciosclienteDataGridView.AllowUserToAddRows = false;
+            this.vsprogramacionserviciosclienteDataGridView.AllowUserToDeleteRows = false;
+            this.vsprogramacionserviciosclienteDataGridView.AutoGenerateColumns = false;
+            this.vsprogramacionserviciosclienteDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.vsprogramacionserviciosclienteDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn12,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn10,
+            this.dataGridViewTextBoxColumn11,
+            this.dataGridViewCheckBoxColumn3,
+            this.dataGridViewCheckBoxColumn4});
+            this.vsprogramacionserviciosclienteDataGridView.DataSource = this.vsprogramacionserviciosclienteBindingSource;
+            this.vsprogramacionserviciosclienteDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.vsprogramacionserviciosclienteDataGridView.Location = new System.Drawing.Point(3, 197);
+            this.vsprogramacionserviciosclienteDataGridView.Name = "vsprogramacionserviciosclienteDataGridView";
+            this.vsprogramacionserviciosclienteDataGridView.ReadOnly = true;
+            this.vsprogramacionserviciosclienteDataGridView.Size = new System.Drawing.Size(848, 188);
+            this.vsprogramacionserviciosclienteDataGridView.TabIndex = 46;
             // 
-            // bindingNavigatorMoveLastItem
+            // dataGridViewTextBoxColumn12
             // 
-            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
-            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
-            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveLastItem.Text = "Mover último";
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "Nombre";
+            this.dataGridViewTextBoxColumn12.HeaderText = "Nombre";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.dataGridViewTextBoxColumn12.ReadOnly = true;
             // 
-            // programacionserviciosclienteBindingNavigatorSaveItem
+            // dataGridViewTextBoxColumn7
             // 
-            this.programacionserviciosclienteBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.programacionserviciosclienteBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("programacionserviciosclienteBindingNavigatorSaveItem.Image")));
-            this.programacionserviciosclienteBindingNavigatorSaveItem.Name = "programacionserviciosclienteBindingNavigatorSaveItem";
-            this.programacionserviciosclienteBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
-            this.programacionserviciosclienteBindingNavigatorSaveItem.Text = "Guardar datos";
-            this.programacionserviciosclienteBindingNavigatorSaveItem.Click += new System.EventHandler(this.programacionserviciosclienteBindingNavigatorSaveItem_Click);
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "ProgramacionServiciosClienteId";
+            this.dataGridViewTextBoxColumn7.HeaderText = "ProgramacionServiciosClienteId";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.Visible = false;
             // 
-            // programacionserviciosclienteBindingSource
+            // dataGridViewTextBoxColumn8
             // 
-            this.programacionserviciosclienteBindingSource.DataSource = typeof(FUMIT.Entidades.Programacionservicioscliente);
-            this.programacionserviciosclienteBindingSource.CurrentItemChanged += new System.EventHandler(this.programacionserviciosclienteBindingSource_CurrentItemChanged);
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "ProgramacionServicioId";
+            this.dataGridViewTextBoxColumn8.HeaderText = "ProgramacionServicioId";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.dataGridViewTextBoxColumn8.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "ClienteId";
+            this.dataGridViewTextBoxColumn9.HeaderText = "ClienteId";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            this.dataGridViewTextBoxColumn9.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "FechaInicio";
+            this.dataGridViewTextBoxColumn10.HeaderText = "FechaInicio";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "FechaTermino";
+            this.dataGridViewTextBoxColumn11.HeaderText = "FechaTermino";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            // 
+            // dataGridViewCheckBoxColumn3
+            // 
+            this.dataGridViewCheckBoxColumn3.DataPropertyName = "Activo";
+            this.dataGridViewCheckBoxColumn3.HeaderText = "Activo";
+            this.dataGridViewCheckBoxColumn3.Name = "dataGridViewCheckBoxColumn3";
+            this.dataGridViewCheckBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewCheckBoxColumn4
+            // 
+            this.dataGridViewCheckBoxColumn4.DataPropertyName = "Borrado";
+            this.dataGridViewCheckBoxColumn4.HeaderText = "Borrado";
+            this.dataGridViewCheckBoxColumn4.Name = "dataGridViewCheckBoxColumn4";
+            this.dataGridViewCheckBoxColumn4.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn4.Visible = false;
+            // 
+            // vsprogramacionserviciosclienteBindingSource
+            // 
+            this.vsprogramacionserviciosclienteBindingSource.DataSource = typeof(FUMIT.Entidades.Vsprogramacionservicioscliente);
+            this.vsprogramacionserviciosclienteBindingSource.CurrentChanged += new System.EventHandler(this.vsprogramacionserviciosclienteBindingSource_CurrentChanged);
             // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "ProgramacionServiciosClienteId";
             this.dataGridViewTextBoxColumn1.HeaderText = "ProgramacionServiciosClienteId";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
             // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.DataPropertyName = "ProgramacionServicioId";
             this.dataGridViewTextBoxColumn2.HeaderText = "ProgramacionServicioId";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Visible = false;
             // 
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "ClienteId";
             this.dataGridViewTextBoxColumn3.HeaderText = "ClienteId";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Visible = false;
             // 
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "FechaInicio";
             this.dataGridViewTextBoxColumn4.HeaderText = "FechaInicio";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "FechaTermino";
             this.dataGridViewTextBoxColumn5.HeaderText = "FechaTermino";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
             // dataGridViewCheckBoxColumn1
             // 
             this.dataGridViewCheckBoxColumn1.DataPropertyName = "Activo";
             this.dataGridViewCheckBoxColumn1.HeaderText = "Activo";
             this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
             // 
             // dataGridViewCheckBoxColumn2
             // 
             this.dataGridViewCheckBoxColumn2.DataPropertyName = "Borrado";
             this.dataGridViewCheckBoxColumn2.HeaderText = "Borrado";
             this.dataGridViewCheckBoxColumn2.Name = "dataGridViewCheckBoxColumn2";
+            this.dataGridViewCheckBoxColumn2.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn2.Visible = false;
             // 
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.DataPropertyName = "Clientes";
             this.dataGridViewTextBoxColumn6.HeaderText = "Clientes";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Visible = false;
             // 
-            // dataGridViewTextBoxColumn7
+            // programacionserviciosclienteBindingSource
             // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "Programacionservicio";
-            this.dataGridViewTextBoxColumn7.HeaderText = "Programacionservicio";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.programacionserviciosclienteBindingSource.DataSource = typeof(FUMIT.Entidades.Programacionservicioscliente);
+            this.programacionserviciosclienteBindingSource.CurrentItemChanged += new System.EventHandler(this.programacionserviciosclienteBindingSource_CurrentItemChanged);
             // 
             // ProgramacionServiciosClientes
             // 
@@ -505,10 +629,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.programacionserviciosclienteBindingNavigator)).EndInit();
             this.programacionserviciosclienteBindingNavigator.ResumeLayout(false);
             this.programacionserviciosclienteBindingNavigator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.programacionserviciosclienteDataGridView)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.programacionserviciosclienteDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vsprogramacionserviciosclienteDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vsprogramacionserviciosclienteBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.programacionserviciosclienteBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -531,16 +658,6 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton programacionserviciosclienteBindingNavigatorSaveItem;
-        private System.Windows.Forms.DataGridView programacionserviciosclienteDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.CheckBox activoCheckBox;
         private System.Windows.Forms.TextBox clienteIdTextBox;
         private System.Windows.Forms.DateTimePicker fechaInicioDateTimePicker;
@@ -553,5 +670,26 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button btnProgramarServicios;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.BindingSource vsprogramacionserviciosclienteBindingSource;
+        private System.Windows.Forms.DataGridView vsprogramacionserviciosclienteDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn3;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn4;
+        private System.Windows.Forms.DataGridView programacionserviciosclienteDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Programacionservicio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
     }
 }

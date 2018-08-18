@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\Icono.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Common.Logging, Version=2.1.2.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
       <HintPath>..\packages\Common.Logging.2.1.2\lib\net40\Common.Logging.dll</HintPath>
@@ -101,11 +104,13 @@
     <Compile Include="AccesoDatos\IServicio.cs" />
     <Compile Include="AccesoDatos\IServiciosProgramados.cs" />
     <Compile Include="AccesoDatos\ISucursales.cs" />
+    <Compile Include="AccesoDatos\IVSProgramacionServiciosCliente.cs" />
     <Compile Include="AccesoDatos\ProgramacionServiciosClienteRepositorio.cs" />
     <Compile Include="AccesoDatos\ProgramacionServiciosRepositorio.cs" />
     <Compile Include="AccesoDatos\ServiciosProgramadosRepositorio.cs" />
     <Compile Include="AccesoDatos\ServiciosRepositorio.cs" />
     <Compile Include="AccesoDatos\SucursalesRepositorio.cs" />
+    <Compile Include="AccesoDatos\VSProgramacionServiciosClienteRepositorio.cs" />
     <Compile Include="Entidades\BasedeDatosFUMIT.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -174,14 +179,23 @@
     <Compile Include="Entidades\ServiciosprogramadoConfiguration.cs">
       <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entidades\Serviciossucursal.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\ServiciossucursalConfiguration.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entidades\Sucursal.cs">
       <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
     </Compile>
     <Compile Include="Entidades\SucursalConfiguration.cs">
       <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entidades\UserControl1.xaml.cs">
-      <DependentUpon>UserControl1.xaml</DependentUpon>
+    <Compile Include="Entidades\Vsprogramacionservicioscliente.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\VsprogramacionserviciosclienteConfiguration.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Ayuda\AcercaDe.cs">
       <SubType>Form</SubType>
@@ -250,6 +264,13 @@
     <Compile Include="Formularios\Facturacion\CiclosFacturacion.Designer.cs">
       <DependentUpon>CiclosFacturacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Operacion\CalendarioServicios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Operacion\CalendarioServicios.Designer.cs">
+      <DependentUpon>CalendarioServicios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Operacion\Class1.cs" />
     <Compile Include="Formularios\Operacion\ProgramacionServiciosSucursales.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -303,6 +324,9 @@
     <EmbeddedResource Include="Formularios\Facturacion\CiclosFacturacion.resx">
       <DependentUpon>CiclosFacturacion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Operacion\CalendarioServicios.resx">
+      <DependentUpon>CalendarioServicios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Operacion\ProgramacionServiciosSucursales.resx">
       <DependentUpon>ProgramacionServiciosSucursales.cs</DependentUpon>
     </EmbeddedResource>
@@ -333,6 +357,7 @@
     <None Include="Properties\DataSources\FUMIT.Entidades.Programacionservicio.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Programacionservicioscliente.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Sucursal.datasource" />
+    <None Include="Properties\DataSources\FUMIT.Entidades.Vsprogramacionservicioscliente.datasource" />
     <None Include="Properties\DataSources\FUMIT.Formularios.Clientes.Expedientes.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -402,12 +427,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="Entidades\UserControl1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

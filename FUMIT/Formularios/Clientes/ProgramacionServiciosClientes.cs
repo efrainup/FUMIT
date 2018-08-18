@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using FUMIT.AccesoDatos;
 using FUMIT.Entidades;
 using System.Diagnostics;
+using System.Data.Entity.Validation;
 
 namespace FUMIT.Formularios.Clientes
 {
@@ -56,11 +57,12 @@ namespace FUMIT.Formularios.Clientes
         protected void CargarDatos(int clienteId)
         {
             IEnumerable<Programacionservicioscliente> programacion = ProgramacionServiciosClienteRepositorio.RecuperarProgramacionServiciosClientePorIdCliente(clienteId);
+            IVSProgramacionServiciosCliente vsp = new VSProgramacionServiciosClienteRepositorio();
             //foreach (Programacionservicioscliente programacionObjeto in programacion)
             //{
             //    programacionserviciosclienteBindingSource.Add(programacionObjeto);
             //}
-            programacionserviciosclienteBindingSource.DataSource = programacion;
+            programacionserviciosclienteBindingSource.DataSource = new BindingList<Programacionservicioscliente>(programacion.ToList());
 
 
             if (programacionserviciosclienteBindingSource.Count > 0)
@@ -68,6 +70,9 @@ namespace FUMIT.Formularios.Clientes
                 btnBusquedaProgramacionServicioPorId.Enabled = true;
                 btnBusquedaProgramacionServicioPorNombre.Enabled = true;
             }
+
+
+            vsprogramacionserviciosclienteBindingSource.DataSource = vsp.Recuperar();
         }
 
         private void ProgramacionServiciosClientes_Load(object sender, EventArgs e)
@@ -120,7 +125,22 @@ namespace FUMIT.Formularios.Clientes
                 {
                     await ProgramacionServiciosClienteRepositorio.CrearAsync(ProgramacionServicioClienteActual);
                 }
-            }catch(Exception eexception)
+            }catch(DbEntityValidationException excepcionValidacion)
+            {
+                foreach(DbEntityValidationResult validacion in excepcionValidacion.EntityValidationErrors)
+                {
+                    foreach(DbValidationError errorvalidacion in validacion.ValidationErrors)
+                    {
+                        //this.Controls[0].DataBindings.Add()
+                        //errorProvider1.BindToDataAndErrors()
+                    }
+                }
+
+                //eexception.InnerException
+
+                //MessageBox.Show("Hubo un error al guardar. Favor de intentarlo nuevamente o contacte a sistemas.");
+            }
+            catch(Exception excepcion)
             {
                 MessageBox.Show("Hubo un error al guardar. Favor de intentarlo nuevamente o contacte a sistemas.");
             }
@@ -131,27 +151,44 @@ namespace FUMIT.Formularios.Clientes
             IServiciosProgramados serviciosProgramados = CommonServiceLocator.ServiceLocator.Current.GetInstance<IServiciosProgramados>();
 
             DateTime fechaActual = ProgramacionServicioClienteActual.FechaInicio;
+            int[] ds = ProgramacionServicioClienteActual.Programacionservicio.Dias.Split(',').Select(s => Convert.ToInt32(s.Replace("7", "0"))).ToArray();
 
-            while(fechaActual <= ProgramacionServicioClienteActual.FechaTermino)
+
+            while (fechaActual <= ProgramacionServicioClienteActual.FechaTermino)
             {
-                Entidades.Serviciosprogramado servicio = new Serviciosprogramado()
+                if (ds.Any(a => ((int)fechaActual.DayOfWeek).CompareTo(a) == 0))
                 {
-                    ServicioProgramadoId = 0,
-                    ClienteId = ProgramacionServicioClienteActual.ClienteId,
-                    Cancelado = false,
-                    Tipo = "Programado",
-                    ServicioId = ProgramacionServicioClienteActual.ProgramacionServicioId,
-                    FechaServicio = fechaActual,
-                    Servicio = (new ServiciosRepositorio()).Recuperar().ToArray()[0],
-                     Clientes = ProgramacionServicioClienteActual.Clientes
-                };
+                    
+
+                    Entidades.Serviciosprogramado servicio = new Serviciosprogramado()
+                    {
+                        ServicioProgramadoId = 0,
+                        ClienteId = ProgramacionServicioClienteActual.ClienteId,
+                        Cancelado = false,
+                        Tipo = "Programado",
+                        ServicioId = ProgramacionServicioClienteActual.ProgramacionServicioId,
+                        FechaServicio = fechaActual,
+                        Servicio = (new ServiciosRepositorio()).Recuperar().ToArray()[0],
+                        Clientes = ProgramacionServicioClienteActual.Clientes
+                    };
 
 
-                await serviciosProgramados.CrearAsync(servicio);
+                    await serviciosProgramados.CrearAsync(servicio);
+                }
 
                 fechaActual = fechaActual.AddDays(1);
             }
 
+
+        }
+
+        private void vsprogramacionserviciosclienteBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+            programacionserviciosclienteBindingSource.Position = vsprogramacionserviciosclienteBindingSource.Position;
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
 
         }
     }
