@@ -30,15 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label activoLabel;
-            System.Windows.Forms.Label clienteIdLabel;
             System.Windows.Forms.Label fechaInicioLabel;
             System.Windows.Forms.Label fechaTerminoLabel;
             System.Windows.Forms.Label programacionServiciosClienteIdLabel;
             System.Windows.Forms.Label nombreLabel;
-            System.Windows.Forms.Label programacionServicioIdLabel1;
+            System.Windows.Forms.Label nombreLabel1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProgramacionServiciosClientes));
             this.programacionserviciosclienteBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.programacionserviciosclienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -50,23 +50,21 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.programacionserviciosclienteBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
+            this.tsbCancelar = new System.Windows.Forms.ToolStripButton();
             this.activoCheckBox = new System.Windows.Forms.CheckBox();
-            this.clienteIdTextBox = new System.Windows.Forms.TextBox();
             this.fechaInicioDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.fechaTerminoDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.programacionServiciosClienteIdTextBox = new System.Windows.Forms.TextBox();
             this.nombreTextBox = new System.Windows.Forms.TextBox();
-            this.programacionServicioIdTextBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnBusquedaServicio = new System.Windows.Forms.Button();
+            this.servicioTextBox = new System.Windows.Forms.TextBox();
             this.btnProgramarServicios = new System.Windows.Forms.Button();
-            this.btnBusquedaProgramacionServicioPorNombre = new System.Windows.Forms.Button();
-            this.btnBusquedaProgramacionServicioPorId = new System.Windows.Forms.Button();
+            this.btnBusquedaHorario = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.programacionserviciosclienteDataGridView = new System.Windows.Forms.DataGridView();
-            this.Programacionservicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vsprogramacionserviciosclienteDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreHorarioProgramado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,55 +73,36 @@
             this.dataGridViewCheckBoxColumn3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewCheckBoxColumn4 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.vsprogramacionserviciosclienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.programacionserviciosclienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             activoLabel = new System.Windows.Forms.Label();
-            clienteIdLabel = new System.Windows.Forms.Label();
             fechaInicioLabel = new System.Windows.Forms.Label();
             fechaTerminoLabel = new System.Windows.Forms.Label();
             programacionServiciosClienteIdLabel = new System.Windows.Forms.Label();
             nombreLabel = new System.Windows.Forms.Label();
-            programacionServicioIdLabel1 = new System.Windows.Forms.Label();
+            nombreLabel1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.programacionserviciosclienteBindingNavigator)).BeginInit();
             this.programacionserviciosclienteBindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.programacionserviciosclienteBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.programacionserviciosclienteDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vsprogramacionserviciosclienteDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vsprogramacionserviciosclienteBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.programacionserviciosclienteBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // activoLabel
             // 
             activoLabel.AutoSize = true;
-            activoLabel.Location = new System.Drawing.Point(294, 65);
+            activoLabel.Location = new System.Drawing.Point(348, 97);
             activoLabel.Name = "activoLabel";
             activoLabel.Size = new System.Drawing.Size(40, 13);
             activoLabel.TabIndex = 2;
             activoLabel.Text = "Activo:";
             // 
-            // clienteIdLabel
-            // 
-            clienteIdLabel.AutoSize = true;
-            clienteIdLabel.Location = new System.Drawing.Point(6, 91);
-            clienteIdLabel.Name = "clienteIdLabel";
-            clienteIdLabel.Size = new System.Drawing.Size(54, 13);
-            clienteIdLabel.TabIndex = 4;
-            clienteIdLabel.Text = "Cliente Id:";
-            // 
             // fechaInicioLabel
             // 
             fechaInicioLabel.AutoSize = true;
-            fechaInicioLabel.Location = new System.Drawing.Point(6, 119);
+            fechaInicioLabel.Location = new System.Drawing.Point(6, 65);
             fechaInicioLabel.Name = "fechaInicioLabel";
             fechaInicioLabel.Size = new System.Drawing.Size(68, 13);
             fechaInicioLabel.TabIndex = 6;
@@ -132,7 +111,7 @@
             // fechaTerminoLabel
             // 
             fechaTerminoLabel.AutoSize = true;
-            fechaTerminoLabel.Location = new System.Drawing.Point(6, 145);
+            fechaTerminoLabel.Location = new System.Drawing.Point(6, 91);
             fechaTerminoLabel.Name = "fechaTerminoLabel";
             fechaTerminoLabel.Size = new System.Drawing.Size(81, 13);
             fechaTerminoLabel.TabIndex = 8;
@@ -143,28 +122,28 @@
             programacionServiciosClienteIdLabel.AutoSize = true;
             programacionServiciosClienteIdLabel.Location = new System.Drawing.Point(6, 39);
             programacionServiciosClienteIdLabel.Name = "programacionServiciosClienteIdLabel";
-            programacionServiciosClienteIdLabel.Size = new System.Drawing.Size(168, 13);
+            programacionServiciosClienteIdLabel.Size = new System.Drawing.Size(85, 13);
             programacionServiciosClienteIdLabel.TabIndex = 12;
-            programacionServiciosClienteIdLabel.Text = "Programacion Servicios Cliente Id:";
+            programacionServiciosClienteIdLabel.Text = "Programacion #:";
             // 
             // nombreLabel
             // 
             nombreLabel.AutoSize = true;
-            nombreLabel.Location = new System.Drawing.Point(294, 39);
+            nombreLabel.Location = new System.Drawing.Point(348, 39);
             nombreLabel.Name = "nombreLabel";
-            nombreLabel.Size = new System.Drawing.Size(47, 13);
+            nombreLabel.Size = new System.Drawing.Size(44, 13);
             nombreLabel.TabIndex = 18;
-            nombreLabel.Text = "Nombre:";
+            nombreLabel.Text = "Horario:";
             // 
-            // programacionServicioIdLabel1
+            // nombreLabel1
             // 
-            programacionServicioIdLabel1.AutoSize = true;
-            programacionServicioIdLabel1.Location = new System.Drawing.Point(6, 65);
-            programacionServicioIdLabel1.Name = "programacionServicioIdLabel1";
-            programacionServicioIdLabel1.Size = new System.Drawing.Size(128, 13);
-            programacionServicioIdLabel1.TabIndex = 20;
-            programacionServicioIdLabel1.Text = "Programacion Servicio Id:";
-            programacionServicioIdLabel1.Click += new System.EventHandler(this.programacionServicioIdLabel1_Click);
+            nombreLabel1.AutoSize = true;
+            nombreLabel1.Location = new System.Drawing.Point(348, 68);
+            nombreLabel1.Name = "nombreLabel1";
+            nombreLabel1.Size = new System.Drawing.Size(48, 13);
+            nombreLabel1.TabIndex = 43;
+            nombreLabel1.Text = "Servicio:";
+            nombreLabel1.Click += new System.EventHandler(this.nombreLabel1_Click);
             // 
             // programacionserviciosclienteBindingNavigator
             // 
@@ -184,7 +163,8 @@
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem,
-            this.programacionserviciosclienteBindingNavigatorSaveItem});
+            this.programacionserviciosclienteBindingNavigatorSaveItem,
+            this.tsbCancelar});
             this.programacionserviciosclienteBindingNavigator.Location = new System.Drawing.Point(0, 0);
             this.programacionserviciosclienteBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.programacionserviciosclienteBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -204,6 +184,11 @@
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(69, 22);
             this.bindingNavigatorAddNewItem.Text = "Agregar";
             this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
+            // 
+            // programacionserviciosclienteBindingSource
+            // 
+            this.programacionserviciosclienteBindingSource.DataSource = typeof(FUMIT.Entidades.Programacionservicioscliente);
+            this.programacionserviciosclienteBindingSource.CurrentItemChanged += new System.EventHandler(this.programacionserviciosclienteBindingSource_CurrentItemChanged);
             // 
             // bindingNavigatorCountItem
             // 
@@ -282,34 +267,37 @@
             // 
             // programacionserviciosclienteBindingNavigatorSaveItem
             // 
+            this.programacionserviciosclienteBindingNavigatorSaveItem.Enabled = false;
             this.programacionserviciosclienteBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("programacionserviciosclienteBindingNavigatorSaveItem.Image")));
             this.programacionserviciosclienteBindingNavigatorSaveItem.Name = "programacionserviciosclienteBindingNavigatorSaveItem";
             this.programacionserviciosclienteBindingNavigatorSaveItem.Size = new System.Drawing.Size(69, 22);
             this.programacionserviciosclienteBindingNavigatorSaveItem.Text = "Guardar";
             this.programacionserviciosclienteBindingNavigatorSaveItem.Click += new System.EventHandler(this.programacionserviciosclienteBindingNavigatorSaveItem_Click);
             // 
+            // tsbCancelar
+            // 
+            this.tsbCancelar.Enabled = false;
+            this.tsbCancelar.Image = global::FUMIT.Recursos.cancel;
+            this.tsbCancelar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbCancelar.Name = "tsbCancelar";
+            this.tsbCancelar.Size = new System.Drawing.Size(73, 22);
+            this.tsbCancelar.Text = "Cancelar";
+            this.tsbCancelar.Click += new System.EventHandler(this.tsbCancelar_Click);
+            // 
             // activoCheckBox
             // 
             this.activoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.programacionserviciosclienteBindingSource, "Activo", true));
-            this.activoCheckBox.Location = new System.Drawing.Point(347, 61);
+            this.activoCheckBox.Location = new System.Drawing.Point(401, 93);
             this.activoCheckBox.Name = "activoCheckBox";
             this.activoCheckBox.Size = new System.Drawing.Size(137, 24);
             this.activoCheckBox.TabIndex = 3;
             this.activoCheckBox.UseVisualStyleBackColor = true;
             // 
-            // clienteIdTextBox
-            // 
-            this.clienteIdTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programacionserviciosclienteBindingSource, "ClienteId", true));
-            this.clienteIdTextBox.Location = new System.Drawing.Point(180, 88);
-            this.clienteIdTextBox.Name = "clienteIdTextBox";
-            this.clienteIdTextBox.ReadOnly = true;
-            this.clienteIdTextBox.Size = new System.Drawing.Size(40, 20);
-            this.clienteIdTextBox.TabIndex = 5;
-            // 
             // fechaInicioDateTimePicker
             // 
             this.fechaInicioDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.programacionserviciosclienteBindingSource, "FechaInicio", true));
-            this.fechaInicioDateTimePicker.Location = new System.Drawing.Point(180, 115);
+            this.fechaInicioDateTimePicker.Enabled = false;
+            this.fechaInicioDateTimePicker.Location = new System.Drawing.Point(110, 65);
             this.fechaInicioDateTimePicker.Name = "fechaInicioDateTimePicker";
             this.fechaInicioDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.fechaInicioDateTimePicker.TabIndex = 7;
@@ -317,7 +305,8 @@
             // fechaTerminoDateTimePicker
             // 
             this.fechaTerminoDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.programacionserviciosclienteBindingSource, "FechaTermino", true));
-            this.fechaTerminoDateTimePicker.Location = new System.Drawing.Point(180, 141);
+            this.fechaTerminoDateTimePicker.Enabled = false;
+            this.fechaTerminoDateTimePicker.Location = new System.Drawing.Point(110, 91);
             this.fechaTerminoDateTimePicker.Name = "fechaTerminoDateTimePicker";
             this.fechaTerminoDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.fechaTerminoDateTimePicker.TabIndex = 9;
@@ -325,7 +314,7 @@
             // programacionServiciosClienteIdTextBox
             // 
             this.programacionServiciosClienteIdTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programacionserviciosclienteBindingSource, "ProgramacionServiciosClienteId", true));
-            this.programacionServiciosClienteIdTextBox.Location = new System.Drawing.Point(180, 36);
+            this.programacionServiciosClienteIdTextBox.Location = new System.Drawing.Point(110, 36);
             this.programacionServiciosClienteIdTextBox.Name = "programacionServiciosClienteIdTextBox";
             this.programacionServiciosClienteIdTextBox.ReadOnly = true;
             this.programacionServiciosClienteIdTextBox.Size = new System.Drawing.Size(40, 20);
@@ -334,38 +323,28 @@
             // nombreTextBox
             // 
             this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programacionserviciosclienteBindingSource, "Programacionservicio.Nombre", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.nombreTextBox.Location = new System.Drawing.Point(347, 36);
+            this.nombreTextBox.Location = new System.Drawing.Point(401, 36);
             this.nombreTextBox.Name = "nombreTextBox";
+            this.nombreTextBox.ReadOnly = true;
             this.nombreTextBox.Size = new System.Drawing.Size(291, 20);
             this.nombreTextBox.TabIndex = 19;
             // 
-            // programacionServicioIdTextBox1
-            // 
-            this.programacionServicioIdTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programacionserviciosclienteBindingSource, "Programacionservicio.ProgramacionServicioId", true));
-            this.programacionServicioIdTextBox1.Location = new System.Drawing.Point(180, 62);
-            this.programacionServicioIdTextBox1.Name = "programacionServicioIdTextBox1";
-            this.programacionServicioIdTextBox1.Size = new System.Drawing.Size(40, 20);
-            this.programacionServicioIdTextBox1.TabIndex = 21;
-            this.programacionServicioIdTextBox1.TextChanged += new System.EventHandler(this.programacionServicioIdTextBox1_TextChanged);
-            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnBusquedaServicio);
+            this.groupBox1.Controls.Add(nombreLabel1);
+            this.groupBox1.Controls.Add(this.servicioTextBox);
             this.groupBox1.Controls.Add(this.btnProgramarServicios);
             this.groupBox1.Controls.Add(programacionServiciosClienteIdLabel);
-            this.groupBox1.Controls.Add(this.btnBusquedaProgramacionServicioPorNombre);
+            this.groupBox1.Controls.Add(this.btnBusquedaHorario);
             this.groupBox1.Controls.Add(this.programacionServiciosClienteIdTextBox);
-            this.groupBox1.Controls.Add(this.btnBusquedaProgramacionServicioPorId);
             this.groupBox1.Controls.Add(this.fechaTerminoDateTimePicker);
             this.groupBox1.Controls.Add(nombreLabel);
             this.groupBox1.Controls.Add(fechaTerminoLabel);
             this.groupBox1.Controls.Add(this.nombreTextBox);
             this.groupBox1.Controls.Add(this.fechaInicioDateTimePicker);
-            this.groupBox1.Controls.Add(programacionServicioIdLabel1);
             this.groupBox1.Controls.Add(fechaInicioLabel);
-            this.groupBox1.Controls.Add(this.programacionServicioIdTextBox1);
-            this.groupBox1.Controls.Add(this.clienteIdTextBox);
             this.groupBox1.Controls.Add(activoLabel);
-            this.groupBox1.Controls.Add(clienteIdLabel);
             this.groupBox1.Controls.Add(this.activoCheckBox);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
@@ -376,9 +355,31 @@
             this.groupBox1.Text = "Programacion de servicio";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // btnBusquedaServicio
+            // 
+            this.btnBusquedaServicio.Enabled = false;
+            this.btnBusquedaServicio.Image = global::FUMIT.Recursos.search;
+            this.btnBusquedaServicio.Location = new System.Drawing.Point(698, 62);
+            this.btnBusquedaServicio.Name = "btnBusquedaServicio";
+            this.btnBusquedaServicio.Size = new System.Drawing.Size(31, 23);
+            this.btnBusquedaServicio.TabIndex = 45;
+            this.btnBusquedaServicio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBusquedaServicio.UseVisualStyleBackColor = true;
+            this.btnBusquedaServicio.Click += new System.EventHandler(this.btnBusquedaServicio_Click);
+            // 
+            // servicioTextBox
+            // 
+            this.servicioTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programacionserviciosclienteBindingSource, "Servicio.Nombre", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.servicioTextBox.Location = new System.Drawing.Point(401, 65);
+            this.servicioTextBox.Name = "servicioTextBox";
+            this.servicioTextBox.ReadOnly = true;
+            this.servicioTextBox.Size = new System.Drawing.Size(291, 20);
+            this.servicioTextBox.TabIndex = 44;
+            this.servicioTextBox.TextChanged += new System.EventHandler(this.nombreTextBox1_TextChanged);
+            // 
             // btnProgramarServicios
             // 
-            this.btnProgramarServicios.Location = new System.Drawing.Point(700, 169);
+            this.btnProgramarServicios.Location = new System.Drawing.Point(700, 159);
             this.btnProgramarServicios.Name = "btnProgramarServicios";
             this.btnProgramarServicios.Size = new System.Drawing.Size(142, 23);
             this.btnProgramarServicios.TabIndex = 42;
@@ -386,28 +387,17 @@
             this.btnProgramarServicios.UseVisualStyleBackColor = true;
             this.btnProgramarServicios.Click += new System.EventHandler(this.btnProgramarServicios_Click);
             // 
-            // btnBusquedaProgramacionServicioPorNombre
+            // btnBusquedaHorario
             // 
-            this.btnBusquedaProgramacionServicioPorNombre.Enabled = false;
-            this.btnBusquedaProgramacionServicioPorNombre.Image = global::FUMIT.Recursos.search;
-            this.btnBusquedaProgramacionServicioPorNombre.Location = new System.Drawing.Point(644, 34);
-            this.btnBusquedaProgramacionServicioPorNombre.Name = "btnBusquedaProgramacionServicioPorNombre";
-            this.btnBusquedaProgramacionServicioPorNombre.Size = new System.Drawing.Size(31, 23);
-            this.btnBusquedaProgramacionServicioPorNombre.TabIndex = 41;
-            this.btnBusquedaProgramacionServicioPorNombre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBusquedaProgramacionServicioPorNombre.UseVisualStyleBackColor = true;
-            // 
-            // btnBusquedaProgramacionServicioPorId
-            // 
-            this.btnBusquedaProgramacionServicioPorId.Enabled = false;
-            this.btnBusquedaProgramacionServicioPorId.Image = global::FUMIT.Recursos.search;
-            this.btnBusquedaProgramacionServicioPorId.Location = new System.Drawing.Point(226, 62);
-            this.btnBusquedaProgramacionServicioPorId.Name = "btnBusquedaProgramacionServicioPorId";
-            this.btnBusquedaProgramacionServicioPorId.Size = new System.Drawing.Size(31, 23);
-            this.btnBusquedaProgramacionServicioPorId.TabIndex = 40;
-            this.btnBusquedaProgramacionServicioPorId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBusquedaProgramacionServicioPorId.UseVisualStyleBackColor = true;
-            this.btnBusquedaProgramacionServicioPorId.Click += new System.EventHandler(this.btnBusquedaProgramacionServicioPorId_Click);
+            this.btnBusquedaHorario.Enabled = false;
+            this.btnBusquedaHorario.Image = global::FUMIT.Recursos.search;
+            this.btnBusquedaHorario.Location = new System.Drawing.Point(698, 34);
+            this.btnBusquedaHorario.Name = "btnBusquedaHorario";
+            this.btnBusquedaHorario.Size = new System.Drawing.Size(31, 23);
+            this.btnBusquedaHorario.TabIndex = 41;
+            this.btnBusquedaHorario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBusquedaHorario.UseVisualStyleBackColor = true;
+            this.btnBusquedaHorario.Click += new System.EventHandler(this.btnBusquedaHorario_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -415,7 +405,6 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.vsprogramacionserviciosclienteDataGridView, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.programacionserviciosclienteDataGridView, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 25);
@@ -428,41 +417,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(854, 409);
             this.tableLayoutPanel1.TabIndex = 43;
             // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            // 
-            // programacionserviciosclienteDataGridView
-            // 
-            this.programacionserviciosclienteDataGridView.AllowUserToAddRows = false;
-            this.programacionserviciosclienteDataGridView.AllowUserToDeleteRows = false;
-            this.programacionserviciosclienteDataGridView.AutoGenerateColumns = false;
-            this.programacionserviciosclienteDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.programacionserviciosclienteDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewCheckBoxColumn1,
-            this.dataGridViewCheckBoxColumn2,
-            this.Programacionservicio,
-            this.dataGridViewTextBoxColumn6});
-            this.programacionserviciosclienteDataGridView.DataSource = this.programacionserviciosclienteBindingSource;
-            this.programacionserviciosclienteDataGridView.Location = new System.Drawing.Point(3, 391);
-            this.programacionserviciosclienteDataGridView.Name = "programacionserviciosclienteDataGridView";
-            this.programacionserviciosclienteDataGridView.ReadOnly = true;
-            this.programacionserviciosclienteDataGridView.Size = new System.Drawing.Size(416, 15);
-            this.programacionserviciosclienteDataGridView.TabIndex = 44;
-            this.programacionserviciosclienteDataGridView.Visible = false;
-            // 
-            // Programacionservicio
-            // 
-            this.Programacionservicio.DataPropertyName = "Programacionservicio.Nombre";
-            this.Programacionservicio.HeaderText = "Programacionservicio";
-            this.Programacionservicio.Name = "Programacionservicio";
-            this.Programacionservicio.ReadOnly = true;
-            // 
             // vsprogramacionserviciosclienteDataGridView
             // 
             this.vsprogramacionserviciosclienteDataGridView.AllowUserToAddRows = false;
@@ -471,6 +425,7 @@
             this.vsprogramacionserviciosclienteDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.vsprogramacionserviciosclienteDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn12,
+            this.NombreHorarioProgramado,
             this.dataGridViewTextBoxColumn7,
             this.dataGridViewTextBoxColumn8,
             this.dataGridViewTextBoxColumn9,
@@ -492,6 +447,13 @@
             this.dataGridViewTextBoxColumn12.HeaderText = "Nombre";
             this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
             this.dataGridViewTextBoxColumn12.ReadOnly = true;
+            // 
+            // NombreHorarioProgramado
+            // 
+            this.NombreHorarioProgramado.DataPropertyName = "NombreHorarioProgramado";
+            this.NombreHorarioProgramado.HeaderText = "Horario";
+            this.NombreHorarioProgramado.Name = "NombreHorarioProgramado";
+            this.NombreHorarioProgramado.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn7
             // 
@@ -551,71 +513,9 @@
             this.vsprogramacionserviciosclienteBindingSource.DataSource = typeof(FUMIT.Entidades.Vsprogramacionservicioscliente);
             this.vsprogramacionserviciosclienteBindingSource.CurrentChanged += new System.EventHandler(this.vsprogramacionserviciosclienteBindingSource_CurrentChanged);
             // 
-            // dataGridViewTextBoxColumn1
+            // errorProvider1
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "ProgramacionServiciosClienteId";
-            this.dataGridViewTextBoxColumn1.HeaderText = "ProgramacionServiciosClienteId";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "ProgramacionServicioId";
-            this.dataGridViewTextBoxColumn2.HeaderText = "ProgramacionServicioId";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "ClienteId";
-            this.dataGridViewTextBoxColumn3.HeaderText = "ClienteId";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "FechaInicio";
-            this.dataGridViewTextBoxColumn4.HeaderText = "FechaInicio";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "FechaTermino";
-            this.dataGridViewTextBoxColumn5.HeaderText = "FechaTermino";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.DataPropertyName = "Activo";
-            this.dataGridViewCheckBoxColumn1.HeaderText = "Activo";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewCheckBoxColumn2
-            // 
-            this.dataGridViewCheckBoxColumn2.DataPropertyName = "Borrado";
-            this.dataGridViewCheckBoxColumn2.HeaderText = "Borrado";
-            this.dataGridViewCheckBoxColumn2.Name = "dataGridViewCheckBoxColumn2";
-            this.dataGridViewCheckBoxColumn2.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn2.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "Clientes";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Clientes";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Visible = false;
-            // 
-            // programacionserviciosclienteBindingSource
-            // 
-            this.programacionserviciosclienteBindingSource.DataSource = typeof(FUMIT.Entidades.Programacionservicioscliente);
-            this.programacionserviciosclienteBindingSource.CurrentItemChanged += new System.EventHandler(this.programacionserviciosclienteBindingSource_CurrentItemChanged);
+            this.errorProvider1.ContainerControl = this;
             // 
             // ProgramacionServiciosClientes
             // 
@@ -629,14 +529,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.programacionserviciosclienteBindingNavigator)).EndInit();
             this.programacionserviciosclienteBindingNavigator.ResumeLayout(false);
             this.programacionserviciosclienteBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.programacionserviciosclienteBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.programacionserviciosclienteDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vsprogramacionserviciosclienteDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vsprogramacionserviciosclienteBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.programacionserviciosclienteBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -659,21 +558,22 @@
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton programacionserviciosclienteBindingNavigatorSaveItem;
         private System.Windows.Forms.CheckBox activoCheckBox;
-        private System.Windows.Forms.TextBox clienteIdTextBox;
         private System.Windows.Forms.DateTimePicker fechaInicioDateTimePicker;
         private System.Windows.Forms.DateTimePicker fechaTerminoDateTimePicker;
         private System.Windows.Forms.TextBox programacionServiciosClienteIdTextBox;
         private System.Windows.Forms.TextBox nombreTextBox;
-        private System.Windows.Forms.TextBox programacionServicioIdTextBox1;
-        private System.Windows.Forms.Button btnBusquedaProgramacionServicioPorId;
-        private System.Windows.Forms.Button btnBusquedaProgramacionServicioPorNombre;
+        private System.Windows.Forms.Button btnBusquedaHorario;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button btnProgramarServicios;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.BindingSource vsprogramacionserviciosclienteBindingSource;
         private System.Windows.Forms.DataGridView vsprogramacionserviciosclienteDataGridView;
+        private System.Windows.Forms.ToolStripButton tsbCancelar;
+        private System.Windows.Forms.TextBox servicioTextBox;
+        private System.Windows.Forms.Button btnBusquedaServicio;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombreHorarioProgramado;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
@@ -681,15 +581,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn3;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn4;
-        private System.Windows.Forms.DataGridView programacionserviciosclienteDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Programacionservicio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
     }
 }

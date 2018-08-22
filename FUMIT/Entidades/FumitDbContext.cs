@@ -26,6 +26,7 @@ namespace FUMIT.Entidades
         public System.Data.Entity.DbSet<CicloFacturacionCliente> Ciclofacturacionclientes { get; set; } // CicloFacturacionCliente
         public System.Data.Entity.DbSet<CiclosFacturacion> Ciclosfacturaciones { get; set; } // CiclosFacturacion
         public System.Data.Entity.DbSet<Cliente> Clientes { get; set; } // Clientes
+        public System.Data.Entity.DbSet<Contacto> Contactos { get; set; } // Contactos
         public System.Data.Entity.DbSet<Evento> Eventos { get; set; } // Eventos
         public System.Data.Entity.DbSet<HistorialCliente> Historialclientes { get; set; } // HistorialCliente
         public System.Data.Entity.DbSet<Programacionservicio> Programacionservicios { get; set; } // ProgramacionServicios
@@ -87,6 +88,7 @@ namespace FUMIT.Entidades
             modelBuilder.Configurations.Add(new CicloFacturacionClienteConfiguration());
             modelBuilder.Configurations.Add(new CiclosFacturacionConfiguration());
             modelBuilder.Configurations.Add(new ClienteConfiguration());
+            modelBuilder.Configurations.Add(new ContactoConfiguration());
             modelBuilder.Configurations.Add(new EventoConfiguration());
             modelBuilder.Configurations.Add(new HistorialClienteConfiguration());
             modelBuilder.Configurations.Add(new ProgramacionservicioConfiguration());
@@ -103,6 +105,7 @@ namespace FUMIT.Entidades
             modelBuilder.Configurations.Add(new CicloFacturacionClienteConfiguration(schema));
             modelBuilder.Configurations.Add(new CiclosFacturacionConfiguration(schema));
             modelBuilder.Configurations.Add(new ClienteConfiguration(schema));
+            modelBuilder.Configurations.Add(new ContactoConfiguration(schema));
             modelBuilder.Configurations.Add(new EventoConfiguration(schema));
             modelBuilder.Configurations.Add(new HistorialClienteConfiguration(schema));
             modelBuilder.Configurations.Add(new ProgramacionservicioConfiguration(schema));

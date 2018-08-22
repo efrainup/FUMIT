@@ -54,84 +54,109 @@ namespace FUMIT.Entidades
         [Display(Name = "Nombre")]
         public string Nombre { get; set; } // Nombre (length: 150)
 
-        [Column(@"SucursalCliente", Order = 5, TypeName = "varchar")]
+        [Column(@"NombreFiscal", Order = 5, TypeName = "varchar")]
+        [MaxLength(180)]
+        [StringLength(180)]
+        [Display(Name = "Nombre fiscal")]
+        public string NombreFiscal { get; set; } // NombreFiscal (length: 180)
+
+        [Column(@"SucursalCliente", Order = 6, TypeName = "varchar")]
         [MaxLength(80)]
         [StringLength(80)]
         [Display(Name = "Sucursal cliente")]
         public string SucursalCliente { get; set; } // SucursalCliente (length: 80)
 
-        [Column(@"RFC", Order = 6, TypeName = "varchar")]
-        [Required(AllowEmptyStrings = true)]
+        [Column(@"PersonaMoral", Order = 7, TypeName = "bit")]
+        [Required]
+        [Display(Name = "Persona moral")]
+        public bool PersonaMoral { get; set; } // PersonaMoral
+
+        [Column(@"RFC", Order = 8, TypeName = "varchar")]
         [MaxLength(13)]
         [StringLength(13)]
         [Display(Name = "Rfc")]
         public string Rfc { get; set; } // RFC (length: 13)
 
-        [Column(@"Direccion", Order = 7, TypeName = "varchar")]
+        [Column(@"Direccion", Order = 9, TypeName = "varchar")]
         [Required(AllowEmptyStrings = true)]
         [MaxLength(150)]
         [StringLength(150)]
         [Display(Name = "Direccion")]
         public string Direccion { get; set; } // Direccion (length: 150)
 
-        [Column(@"Ubicacion", Order = 8, TypeName = "varchar")]
+        [Column(@"DireccionFiscal", Order = 10, TypeName = "varchar")]
+        [MaxLength(250)]
+        [StringLength(250)]
+        [Display(Name = "Direccion fiscal")]
+        public string DireccionFiscal { get; set; } // DireccionFiscal (length: 250)
+
+        [Column(@"Ubicacion", Order = 11, TypeName = "varchar")]
         [MaxLength(30)]
         [StringLength(30)]
         [Display(Name = "Ubicacion")]
         public string Ubicacion { get; set; } // Ubicacion (length: 30)
 
-        [Column(@"Contacto", Order = 9, TypeName = "varchar")]
+        [Column(@"Contacto", Order = 12, TypeName = "varchar")]
         [MaxLength(80)]
         [StringLength(80)]
         [Display(Name = "Contacto")]
         public string Contacto { get; set; } // Contacto (length: 80)
 
-        [Column(@"Telefono", Order = 10, TypeName = "varchar")]
+        [Column(@"Telefono", Order = 13, TypeName = "varchar")]
         [MaxLength(80)]
         [StringLength(80)]
         [Display(Name = "Telefono")]
         public string Telefono { get; set; } // Telefono (length: 80)
 
-        [Column(@"Correo", Order = 11, TypeName = "varchar")]
+        [Column(@"Correo", Order = 14, TypeName = "varchar")]
         [MaxLength(80)]
         [StringLength(80)]
         [Display(Name = "Correo")]
         public string Correo { get; set; } // Correo (length: 80)
 
-        [Column(@"FechaCreacion", Order = 12, TypeName = "datetime")]
+        [Column(@"FechaCreacion", Order = 15, TypeName = "datetime")]
         [Required]
         [DataType(DataType.DateTime)]
         [Display(Name = "Fecha creacion")]
         public System.DateTime FechaCreacion { get; set; } // FechaCreacion
 
-        [Column(@"Observaciones", Order = 13, TypeName = "varchar")]
+        [Column(@"Observaciones", Order = 16, TypeName = "varchar")]
         [MaxLength(250)]
         [StringLength(250)]
         [Display(Name = "Observaciones")]
         public string Observaciones { get; set; } // Observaciones (length: 250)
 
-        [Column(@"Moroso", Order = 14, TypeName = "bit")]
+        [Column(@"RequiereManifiesto", Order = 17, TypeName = "bit")]
+        [Required]
+        [Display(Name = "Requiere manifiesto")]
+        public bool RequiereManifiesto { get; set; } // RequiereManifiesto
+
+        [Column(@"Moroso", Order = 18, TypeName = "bit")]
         [Required]
         [Display(Name = "Moroso")]
         public bool Moroso { get; set; } // Moroso
 
-        [Column(@"Bloqueado", Order = 15, TypeName = "bit")]
+        [Column(@"Bloqueado", Order = 19, TypeName = "bit")]
         [Required]
         [Display(Name = "Bloqueado")]
         public bool Bloqueado { get; set; } // Bloqueado
 
-        [Column(@"Activo", Order = 16, TypeName = "bit")]
+        [Column(@"Activo", Order = 20, TypeName = "bit")]
         [Required]
         [Display(Name = "Activo")]
         public bool Activo { get; set; } // Activo
 
-        [Column(@"Borrado", Order = 17, TypeName = "bit")]
+        [Column(@"Borrado", Order = 21, TypeName = "bit")]
         [Required]
         [Display(Name = "Borrado")]
         public bool Borrado { get; set; } // Borrado
 
         // Reverse navigation
 
+        /// <summary>
+        /// Child Contactos where [Contactos].[ClienteId] point to this entity (FK_Contactos_Clientes)
+        /// </summary>
+        public virtual System.Collections.Generic.ICollection<Contacto> Contactos { get; set; } // Contactos.FK_Contactos_Clientes
         /// <summary>
         /// Child Historialclientes where [HistorialCliente].[ClienteId] point to this entity (FK_HistorialCliente_Clientes)
         /// </summary>
@@ -154,7 +179,10 @@ namespace FUMIT.Entidades
 
         public Cliente()
         {
+            PersonaMoral = false;
             FechaCreacion = System.DateTime.Now;
+            RequiereManifiesto = false;
+            Contactos = new System.Collections.Generic.List<Contacto>();
             Historialclientes = new System.Collections.Generic.List<HistorialCliente>();
             Programacionserviciosclientes = new System.Collections.Generic.List<Programacionservicioscliente>();
             Serviciosprogramados = new System.Collections.Generic.List<Serviciosprogramado>();

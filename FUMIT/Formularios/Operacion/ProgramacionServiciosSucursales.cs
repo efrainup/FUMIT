@@ -6,15 +6,18 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FUMIT.Formularios.Operacion
 {
-    public partial class ProgramacionServiciosSucursales : Form
+    public partial class ProgramacionServiciosSucursales : Form, INotifyPropertyChanged
     {
         private bool modoBusqueda = false;
+        private bool modoEditar = false;
+        private bool modoNormal = true;
         private int sucursalId;
 
         public Compartidos.BusquedaSucursal FormularioBusquedaSucursal { get; set; }
@@ -22,6 +25,7 @@ namespace FUMIT.Formularios.Operacion
         IEnumerable<Entidades.Programacionservicio> programacionServicios;
 
         public event EventHandler<Entidades.Programacionservicio> ProgramacionServicioSeleccionado;
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public Entidades.Programacionservicio ProgramacionServicioActual
         {
@@ -52,6 +56,35 @@ namespace FUMIT.Formularios.Operacion
                 }
             }
         }
+        public bool ModoEditar { 
+            get {
+                return modoEditar;
+            }
+            set
+            {
+                modoEditar = value;
+                ModoNormal = !modoEditar;
+                tsbCancelar.Enabled = modoEditar;
+                programacionservicioBindingNavigatorSaveItem.Enabled = modoEditar;
+                
+                NotifyPropertyChanged();
+            }
+        }
+        public bool ModoNormal
+        {
+            get
+            {
+                return modoNormal;
+            }
+            set
+            {
+                modoNormal = value;
+                bindingNavigatorAddNewItem.Enabled = modoNormal;
+                bindingNavigatorDeleteItem.Enabled = modoNormal;
+                toolStripButton1.Enabled = modoNormal;
+            }
+        }
+
         public int SucursalId
         {
             get
@@ -78,6 +111,10 @@ namespace FUMIT.Formularios.Operacion
             InitializeComponent();
         }
 
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
         private void mesLabel_Click(object sender, EventArgs e)
         {
 
@@ -115,6 +152,8 @@ namespace FUMIT.Formularios.Operacion
                     //sucursalIdTextBox.Text = sucursal.SucursalId.ToString();
                     (programacionservicioBindingSource.Current as Entidades.Programacionservicio).SucursalId = sucursal.SucursalId;
                     (programacionservicioBindingSource.Current as Entidades.Programacionservicio).Sucursal = sucursal;
+
+                    programacionservicioBindingSource.ResetBindings(false);
                 }
             };
 
@@ -132,8 +171,10 @@ namespace FUMIT.Formularios.Operacion
 
             if (numeroSemanas > 0)
             {
-                resultadoDias = ObtenerDiasTexto(diasProgramados, numeroSemanas);
-                
+                //Efrain Hernandez 20/08/2018: Solo se indica una semana debido a que si se establece
+                //Lunes cada 2 semanas, debería ser el día lunes cada 2 semanas y no el día lunes de cada semana.
+                resultadoDias = ObtenerDiasTexto(diasProgramados, 1);
+
                 if (resultadoDias.Length > 0)
                 {
                     resultadoDias = resultadoDias.Substring(0, resultadoDias.Length - 1);
@@ -272,6 +313,8 @@ namespace FUMIT.Formularios.Operacion
             {
                 await ProgramacionServicioRepositorio.CrearAsync(programacionServicioActual);
             }
+
+            ModoEditar = false;
         }
 
         private void ProgramacionServiciosSucursales_Load(object sender, EventArgs e)
@@ -279,6 +322,8 @@ namespace FUMIT.Formularios.Operacion
             ProgramacionServicioRepositorio = ServiceLocator.Current.GetInstance<IProgramacionServicios>();
             if (!DesignMode)
             {
+                programacionServiciosSucursalesbindingSource.DataSource = this;
+                programacionservicioBindingSource.Clear();
                 programacionServicios = ProgramacionServicioRepositorio.Recuperar();
                 foreach(Entidades.Programacionservicio programacionServicio in programacionServicios)
                 {
@@ -305,6 +350,30 @@ namespace FUMIT.Formularios.Operacion
                 }
             }
 
+        }
+
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        {
+            ModoEditar = true;
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            ModoEditar = true;
+        }
+
+        private void tsbCancelar_Click(object sender, EventArgs e)
+        {
+            if (ProgramacionServicioActual.ProgramacionServicioId == 0)
+            {
+                programacionservicioBindingSource.RemoveAt(programacionservicioBindingSource.Position);
+            }
+            else
+            {
+                programacionservicioBindingSource.ResetItem(programacionservicioBindingSource.Position);
+            }
+            
+            ModoEditar = false;
         }
     }
 }

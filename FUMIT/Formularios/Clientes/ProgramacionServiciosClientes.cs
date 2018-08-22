@@ -32,12 +32,42 @@ namespace FUMIT.Formularios.Clientes
                 }
             }
         }
+
+        protected bool modoEditar = false;
+        public bool ModoEditar
+        {
+            get
+            {
+                return modoEditar;
+            }
+            set
+            {
+                modoEditar = value;
+                bindingNavigatorAddNewItem.Enabled = !modoEditar;
+                bindingNavigatorDeleteItem.Enabled = !modoEditar;
+                tsbCancelar.Enabled = modoEditar;
+                programacionserviciosclienteBindingNavigatorSaveItem.Enabled = modoEditar;
+                fechaInicioDateTimePicker.Enabled = modoEditar;
+                fechaTerminoDateTimePicker.Enabled = modoEditar;
+                btnBusquedaHorario.Enabled = modoEditar;
+                btnBusquedaServicio.Enabled = modoEditar;
+                activoCheckBox.Enabled = modoEditar;
+            }
+        }
+        public bool ModoNormal {
+            get {
+                return !modoEditar;
+            }
+        }
+
         public IProgramacionServiciosCliente ProgramacionServiciosClienteRepositorio { get; set; }
         public Entidades.Programacionservicioscliente ProgramacionServicioClienteActual { get
             {
                 return (programacionserviciosclienteBindingSource.Current as Entidades.Programacionservicioscliente);
             }
         }
+
+
 
         public ProgramacionServiciosClientes()
         {
@@ -65,13 +95,6 @@ namespace FUMIT.Formularios.Clientes
             programacionserviciosclienteBindingSource.DataSource = new BindingList<Programacionservicioscliente>(programacion.ToList());
 
 
-            if (programacionserviciosclienteBindingSource.Count > 0)
-            {
-                btnBusquedaProgramacionServicioPorId.Enabled = true;
-                btnBusquedaProgramacionServicioPorNombre.Enabled = true;
-            }
-
-
             vsprogramacionserviciosclienteBindingSource.DataSource = vsp.Recuperar();
         }
 
@@ -86,9 +109,7 @@ namespace FUMIT.Formularios.Clientes
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
-            btnBusquedaProgramacionServicioPorId.Enabled = true;
-            btnBusquedaProgramacionServicioPorNombre.Enabled = true;
-            programacionserviciosclienteBindingNavigatorSaveItem.Enabled = true;
+            ModoEditar = true;
 
             ProgramacionServicioClienteActual.ClienteId = ClienteId;
         }
@@ -125,6 +146,8 @@ namespace FUMIT.Formularios.Clientes
                 {
                     await ProgramacionServiciosClienteRepositorio.CrearAsync(ProgramacionServicioClienteActual);
                 }
+
+                ModoEditar = false;
             }catch(DbEntityValidationException excepcionValidacion)
             {
                 foreach(DbEntityValidationResult validacion in excepcionValidacion.EntityValidationErrors)
@@ -153,10 +176,51 @@ namespace FUMIT.Formularios.Clientes
             DateTime fechaActual = ProgramacionServicioClienteActual.FechaInicio;
             int[] ds = ProgramacionServicioClienteActual.Programacionservicio.Dias.Split(',').Select(s => Convert.ToInt32(s.Replace("7", "0"))).ToArray();
 
+            //El conteo siempre comeinza a partir del proximo lunes.
+
+            //Si hay dias especificados, sin semanas ni meses, entonces el ciclo se repite cada x dias
+            //Ej. D=15,S=0,M=0 el ciclo se repite cada 15 dias.
+
+            //Si hay varios dias especificados, sin semanas ni meses, entonces el ciclo se repite cada x dias
+            //Ej. D=7,15 ,S=0,M=0 el ciclo se repite cada 15 dias (Se toma el último).
+
+            //Si hay semanas especificadas, entonces el ciclo se repite cada x semanas * 7
+
+            //Si hay meses especificados, entonces el ciclo se repite cada cambio de mes
+
+            int dia = 1;
+            int mes = 1;
+            int diasCiclo = 0;
+            int mesCiclo = 0;
+            bool cambioDeMes = false;
+
+            int i = 0;
+            if (fechaActual.DayOfWeek != DayOfWeek.Monday)
+            {
+                while (fechaActual.AddDays(i).DayOfWeek != DayOfWeek.Monday)
+                {
+                    i++;
+                };
+
+                dia = dia - i;
+            }
+
+            if (!ProgramacionServicioClienteActual.Programacionservicio.Semana.HasValue || ProgramacionServicioClienteActual.Programacionservicio.Semana.Value == 0)
+            {
+                diasCiclo = ds.Max();
+            }
+            else
+            {
+                diasCiclo = ProgramacionServicioClienteActual.Programacionservicio.Semana.Value * 7;
+            }
+
+            cambioDeMes = ProgramacionServicioClienteActual.Programacionservicio.Mes.HasValue && ProgramacionServicioClienteActual.Programacionservicio.Mes.Value > 0;
+
 
             while (fechaActual <= ProgramacionServicioClienteActual.FechaTermino)
             {
-                if (ds.Any(a => ((int)fechaActual.DayOfWeek).CompareTo(a) == 0))
+                
+                if (ds.Any(a => a==dia))
                 {
                     
 
@@ -166,9 +230,9 @@ namespace FUMIT.Formularios.Clientes
                         ClienteId = ProgramacionServicioClienteActual.ClienteId,
                         Cancelado = false,
                         Tipo = "Programado",
-                        ServicioId = ProgramacionServicioClienteActual.ProgramacionServicioId,
+                        ServicioId = ProgramacionServicioClienteActual.ServicioId,
                         FechaServicio = fechaActual,
-                        Servicio = (new ServiciosRepositorio()).Recuperar().ToArray()[0],
+                        Servicio = ProgramacionServicioClienteActual.Servicio,
                         Clientes = ProgramacionServicioClienteActual.Clientes
                     };
 
@@ -176,6 +240,25 @@ namespace FUMIT.Formularios.Clientes
                     await serviciosProgramados.CrearAsync(servicio);
                 }
 
+                //Se agrega un dia a la fecha actual.
+                //El contador de días se reinicia si se alcanza el ciclo de días o de mes
+                dia++;
+                if (cambioDeMes)
+                {
+                    if (fechaActual.AddDays(1).Month != fechaActual.Month)
+                    {
+                        mes++;
+                    }
+                    if(mes > mesCiclo)
+                    {
+                        mes = 1;
+                        dia = 1;
+                    }
+
+                }else if(dia > diasCiclo)
+                {
+                    dia = 1;
+                }
                 fechaActual = fechaActual.AddDays(1);
             }
 
@@ -190,6 +273,48 @@ namespace FUMIT.Formularios.Clientes
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void nombreLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nombreTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tsbCancelar_Click(object sender, EventArgs e)
+        {
+            ModoEditar = false;
+        }
+
+        private void btnBusquedaServicio_Click(object sender, EventArgs e)
+        {
+            var busquedaServicio = new Formularios.Compartidos.BusquedaServicio();
+            busquedaServicio.ServicioSeleccionado += (sender2, servicio) =>
+           {
+               ProgramacionServicioClienteActual.ServicioId = servicio.ServicioId;
+               ProgramacionServicioClienteActual.Servicio = servicio;
+               programacionserviciosclienteBindingSource.ResetBindings(false);
+           };
+            busquedaServicio.ShowDialog();
+        }
+
+        private void btnBusquedaHorario_Click(object sender, EventArgs e)
+        {
+            var formulario = new Formularios.Operacion.ProgramacionServiciosSucursales();
+            formulario.SucursalId = ClienteId;
+            formulario.ModoBusqueda = true;
+            formulario.Show();
+            formulario.ProgramacionServicioSeleccionado += (object sender2, Entidades.Programacionservicio resultado) =>
+            {
+                ProgramacionServicioClienteActual.ProgramacionServicioId = resultado.ProgramacionServicioId;
+                ProgramacionServicioClienteActual.Programacionservicio = resultado;
+
+                programacionserviciosclienteBindingSource.ResetBindings(false);
+            };
         }
     }
 }

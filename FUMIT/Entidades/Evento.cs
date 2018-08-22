@@ -60,6 +60,11 @@ namespace FUMIT.Entidades
         [Display(Name = "Borrado")]
         public bool Borrado { get; set; } // Borrado
 
+        [Column(@"Activo", Order = 6, TypeName = "bit")]
+        [Required]
+        [Display(Name = "Activo")]
+        public bool Activo { get; set; } // Activo
+
         // Reverse navigation
 
         /// <summary>
@@ -70,6 +75,7 @@ namespace FUMIT.Entidades
         public Evento()
         {
             Borrado = false;
+            Activo = true;
             Historialclientes = new System.Collections.Generic.List<HistorialCliente>();
             InitializePartial();
         }

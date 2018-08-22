@@ -10,8 +10,8 @@ namespace FUMIT.AccesoDatos
     {
         void Crear(T entidad);
         Task CrearAsync(T entidad);
-        T RecuperarPorId();
-        Task<T> RecuperarPorIdAsync();
+        T RecuperarPorId(int Id);
+        Task<T> RecuperarPorIdAsync(int Id);
         IEnumerable<T> Recuperar();
         Task<IEnumerable<T>> RecuperarAsync();
         void Actualizar(T entidad);

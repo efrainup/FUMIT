@@ -16,5 +16,10 @@ namespace FUMIT.Formularios.Catalogos
         {
             InitializeComponent();
         }
+
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

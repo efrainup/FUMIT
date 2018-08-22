@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using CommonServiceLocator;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using System.Data.Entity.Validation;
 
 namespace FUMIT.Formularios.Clientes
 {
@@ -24,6 +25,8 @@ namespace FUMIT.Formularios.Clientes
         public IClientes RepositorioClientes { get; set; }
         IEnumerable<Entidades.Cliente> ListadoClientes;
         Compartidos.BusquedaSucursal formularioBusqueda;
+        BindingList<Entidades.Cliente> bindingList;
+        Entidades.Cliente clienteBorrar;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -87,30 +90,57 @@ namespace FUMIT.Formularios.Clientes
         {
             if (!DesignMode)
             {
+                
                 RepositorioClientes = ServiceLocator.Current.GetInstance<IClientes>();
 
                 ListadoClientes = RepositorioClientes.Recuperar();
-                foreach(Entidades.Cliente cliente in ListadoClientes)
-                {
-                    clienteBindingSource.Add(cliente);
-                }
-
+                //foreach(Entidades.Cliente cliente in ListadoClientes)
+                //{
+                //    clienteBindingSource.Add(cliente);
+                //}
+                bindingList = new BindingList<Entidades.Cliente>(ListadoClientes.ToList());
+                clienteBindingSource.DataSource = bindingList;
                 expedientesBindingSource.DataSource = this;
             }
         }
 
         private async void clienteBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            var cliente = clienteBindingSource.Current as Entidades.Cliente;
+            try
+            {
+                var cliente = clienteBindingSource.Current as Entidades.Cliente;
 
-            if (cliente.ClienteId == 0)
-            {
-                await RepositorioClientes.CrearAsync(cliente);
+                if (cliente.ClienteId == 0)
+                {
+                    await RepositorioClientes.CrearAsync(cliente);
+                }
+                else
+                {
+                    await RepositorioClientes.ActualizarAsync(cliente);
+                }
             }
-            else
+            catch (DbEntityValidationException excepcionValidacion)
             {
-                await RepositorioClientes.ActualizarAsync(cliente);
+                string Mensaje = "";
+                foreach (DbEntityValidationResult validacion in excepcionValidacion.EntityValidationErrors)
+                {
+
+                    foreach (DbValidationError errorvalidacion in validacion.ValidationErrors)
+                    {
+                        Mensaje += $"•{errorvalidacion.ErrorMessage}";
+                        //this.Controls[0].DataBindings.Add()
+                    }
+
+                }
+                MessageBox.Show(Mensaje,"Errores de validacion");
+
             }
+            catch(Exception excepcion)
+            {
+                MessageBox.Show("Se produjo un error. Favor de intentar nuevamente", "Error");
+            }
+
+            ModoEdicion = false;
 
         }
 
@@ -161,12 +191,14 @@ namespace FUMIT.Formularios.Clientes
         private void btnBusquedaSucursal_Click(object sender, EventArgs e)
         {
             formularioBusqueda = new Compartidos.BusquedaSucursal();
-            
+
             formularioBusqueda.SucursalSeleccionada += (object senderSucursal, Entidades.Sucursal sucursal) =>
             {
                 if (sucursal != null)
                 {
-                    sucursalIdTextBox.Text = sucursal.SucursalId.ToString();
+                    ClienteActual.Sucursal = sucursal;
+                    ClienteActual.SucursalId = sucursal.SucursalId;
+                    clienteBindingSource.ResetBindings(false);
                 }
             };
 
@@ -220,7 +252,7 @@ namespace FUMIT.Formularios.Clientes
 
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void clienteBindingSource_CurrentItemChanged(object sender, EventArgs e)
@@ -250,6 +282,34 @@ namespace FUMIT.Formularios.Clientes
         private void programacionServiciosClientes1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void sucursalIdLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sucursalIdTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void clienteBindingSource_ListChanged(object sender, ListChangedEventArgs e)
+        {
+            if(e.ListChangedType == ListChangedType.ItemDeleted)
+            {
+                await RepositorioClientes.EliminarAsync(clienteBorrar.ClienteId);
+            }
+        }
+
+        private void bindingNavigatorDeleteItem_Click_1(object sender, EventArgs e)
+        {
+            string s = ClienteActual.ClienteId.ToString();
+        }
+
+        private void clienteBindingSource_CurrentItemChanged_1(object sender, EventArgs e)
+        {
+            clienteBorrar = ClienteActual;
         }
     }
 }

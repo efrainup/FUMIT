@@ -39,7 +39,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProgramacionServiciosSucursales));
             this.programacionservicioBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.programacionservicioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -51,6 +50,8 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.programacionservicioBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.tsbCancelar = new System.Windows.Forms.ToolStripButton();
             this.diasTextBox = new System.Windows.Forms.TextBox();
             this.mesTextBox = new System.Windows.Forms.TextBox();
             this.nombreTextBox = new System.Windows.Forms.TextBox();
@@ -66,6 +67,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnBusquedaSucursal = new System.Windows.Forms.Button();
             this.btnSeleccionar = new System.Windows.Forms.Button();
+            this.programacionServiciosSucursalesbindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.programacionservicioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             mesLabel = new System.Windows.Forms.Label();
             nombreLabel = new System.Windows.Forms.Label();
             programacionServicioIdLabel = new System.Windows.Forms.Label();
@@ -75,13 +78,14 @@
             numeroLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.programacionservicioBindingNavigator)).BeginInit();
             this.programacionservicioBindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.programacionServiciosSucursalesbindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.programacionservicioBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // mesLabel
             // 
             mesLabel.AutoSize = true;
-            mesLabel.Location = new System.Drawing.Point(549, 292);
+            mesLabel.Location = new System.Drawing.Point(549, 256);
             mesLabel.Name = "mesLabel";
             mesLabel.Size = new System.Drawing.Size(26, 13);
             mesLabel.TabIndex = 3;
@@ -108,7 +112,7 @@
             // semanaLabel
             // 
             semanaLabel.AutoSize = true;
-            semanaLabel.Location = new System.Drawing.Point(340, 292);
+            semanaLabel.Location = new System.Drawing.Point(340, 256);
             semanaLabel.Name = "semanaLabel";
             semanaLabel.Size = new System.Drawing.Size(97, 13);
             semanaLabel.TabIndex = 9;
@@ -117,17 +121,18 @@
             // sucursalIdLabel
             // 
             sucursalIdLabel.AutoSize = true;
-            sucursalIdLabel.Location = new System.Drawing.Point(16, 93);
+            sucursalIdLabel.Location = new System.Drawing.Point(363, 41);
             sucursalIdLabel.Name = "sucursalIdLabel";
             sucursalIdLabel.Size = new System.Drawing.Size(63, 13);
             sucursalIdLabel.TabIndex = 11;
             sucursalIdLabel.Text = "Sucursal Id:";
+            sucursalIdLabel.Visible = false;
             sucursalIdLabel.Click += new System.EventHandler(this.sucursalIdLabel_Click);
             // 
             // nombreLabel1
             // 
             nombreLabel1.AutoSize = true;
-            nombreLabel1.Location = new System.Drawing.Point(16, 149);
+            nombreLabel1.Location = new System.Drawing.Point(16, 120);
             nombreLabel1.Name = "nombreLabel1";
             nombreLabel1.Size = new System.Drawing.Size(51, 13);
             nombreLabel1.TabIndex = 13;
@@ -136,11 +141,11 @@
             // numeroLabel
             // 
             numeroLabel.AutoSize = true;
-            numeroLabel.Location = new System.Drawing.Point(16, 123);
+            numeroLabel.Location = new System.Drawing.Point(16, 94);
             numeroLabel.Name = "numeroLabel";
-            numeroLabel.Size = new System.Drawing.Size(89, 13);
+            numeroLabel.Size = new System.Drawing.Size(104, 13);
             numeroLabel.TabIndex = 15;
-            numeroLabel.Text = "Numero sucursal:";
+            numeroLabel.Text = "Numero de sucursal:";
             // 
             // programacionservicioBindingNavigator
             // 
@@ -160,7 +165,9 @@
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem,
-            this.programacionservicioBindingNavigatorSaveItem});
+            this.toolStripButton1,
+            this.programacionservicioBindingNavigatorSaveItem,
+            this.tsbCancelar});
             this.programacionservicioBindingNavigator.Location = new System.Drawing.Point(0, 0);
             this.programacionservicioBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.programacionservicioBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -168,23 +175,18 @@
             this.programacionservicioBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.programacionservicioBindingNavigator.Name = "programacionservicioBindingNavigator";
             this.programacionservicioBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.programacionservicioBindingNavigator.Size = new System.Drawing.Size(600, 25);
+            this.programacionservicioBindingNavigator.Size = new System.Drawing.Size(602, 25);
             this.programacionservicioBindingNavigator.TabIndex = 0;
             this.programacionservicioBindingNavigator.Text = "bindingNavigator1";
             // 
             // bindingNavigatorAddNewItem
             // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.bindingNavigatorAddNewItem.Image = global::FUMIT.Recursos.add;
             this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Agregar nuevo";
-            // 
-            // programacionservicioBindingSource
-            // 
-            this.programacionservicioBindingSource.DataSource = typeof(FUMIT.Entidades.Programacionservicio);
-            this.programacionservicioBindingSource.CurrentChanged += new System.EventHandler(this.programacionservicioBindingSource_CurrentChanged);
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(69, 22);
+            this.bindingNavigatorAddNewItem.Text = "Agregar";
+            this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
             // 
             // bindingNavigatorCountItem
             // 
@@ -195,11 +197,10 @@
             // 
             // bindingNavigatorDeleteItem
             // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
             this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(70, 22);
             this.bindingNavigatorDeleteItem.Text = "Eliminar";
             // 
             // bindingNavigatorMoveFirstItem
@@ -264,34 +265,59 @@
             // 
             // programacionservicioBindingNavigatorSaveItem
             // 
-            this.programacionservicioBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.programacionservicioBindingNavigatorSaveItem.Enabled = false;
             this.programacionservicioBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("programacionservicioBindingNavigatorSaveItem.Image")));
             this.programacionservicioBindingNavigatorSaveItem.Name = "programacionservicioBindingNavigatorSaveItem";
-            this.programacionservicioBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
-            this.programacionservicioBindingNavigatorSaveItem.Text = "Guardar datos";
+            this.programacionservicioBindingNavigatorSaveItem.Size = new System.Drawing.Size(69, 22);
+            this.programacionservicioBindingNavigatorSaveItem.Text = "Guardar";
             this.programacionservicioBindingNavigatorSaveItem.Click += new System.EventHandler(this.programacionservicioBindingNavigatorSaveItem_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Image = global::FUMIT.Recursos.edit_add;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(57, 22);
+            this.toolStripButton1.Text = "Editar";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // tsbCancelar
+            // 
+            this.tsbCancelar.Enabled = false;
+            this.tsbCancelar.Image = global::FUMIT.Recursos.cancel;
+            this.tsbCancelar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbCancelar.Name = "tsbCancelar";
+            this.tsbCancelar.Size = new System.Drawing.Size(73, 22);
+            this.tsbCancelar.Text = "Cancelar";
+            this.tsbCancelar.Click += new System.EventHandler(this.tsbCancelar_Click);
             // 
             // diasTextBox
             // 
-            this.diasTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programacionservicioBindingSource, "Dias", true));
-            this.diasTextBox.Location = new System.Drawing.Point(76, 289);
+            this.diasTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programacionservicioBindingSource, "Dias", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.diasTextBox.DataBindings.Add(new System.Windows.Forms.Binding("ReadOnly", this.programacionServiciosSucursalesbindingSource, "ModoNormal", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.diasTextBox.Location = new System.Drawing.Point(76, 253);
             this.diasTextBox.Name = "diasTextBox";
+            this.diasTextBox.ReadOnly = true;
             this.diasTextBox.Size = new System.Drawing.Size(100, 20);
-            this.diasTextBox.TabIndex = 5;
+            this.diasTextBox.TabIndex = 6;
             // 
             // mesTextBox
             // 
             this.mesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programacionservicioBindingSource, "Mes", true));
-            this.mesTextBox.Location = new System.Drawing.Point(443, 289);
+            this.mesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("ReadOnly", this.programacionServiciosSucursalesbindingSource, "ModoNormal", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.mesTextBox.Location = new System.Drawing.Point(443, 253);
             this.mesTextBox.Name = "mesTextBox";
+            this.mesTextBox.ReadOnly = true;
             this.mesTextBox.Size = new System.Drawing.Size(100, 20);
             this.mesTextBox.TabIndex = 8;
             // 
             // nombreTextBox
             // 
             this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programacionservicioBindingSource, "Nombre", true));
+            this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("ReadOnly", this.programacionServiciosSucursalesbindingSource, "ModoNormal", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.nombreTextBox.Location = new System.Drawing.Point(150, 60);
             this.nombreTextBox.Name = "nombreTextBox";
+            this.nombreTextBox.ReadOnly = true;
             this.nombreTextBox.Size = new System.Drawing.Size(180, 20);
             this.nombreTextBox.TabIndex = 1;
             // 
@@ -307,8 +333,10 @@
             // semanaTextBox
             // 
             this.semanaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programacionservicioBindingSource, "Semana", true));
-            this.semanaTextBox.Location = new System.Drawing.Point(234, 289);
+            this.semanaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("ReadOnly", this.programacionServiciosSucursalesbindingSource, "ModoNormal", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.semanaTextBox.Location = new System.Drawing.Point(234, 253);
             this.semanaTextBox.Name = "semanaTextBox";
+            this.semanaTextBox.ReadOnly = true;
             this.semanaTextBox.Size = new System.Drawing.Size(100, 20);
             this.semanaTextBox.TabIndex = 7;
             this.semanaTextBox.TextChanged += new System.EventHandler(this.semanaTextBox_TextChanged);
@@ -317,33 +345,37 @@
             // sucursalIdTextBox
             // 
             this.sucursalIdTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programacionservicioBindingSource, "SucursalId", true));
-            this.sucursalIdTextBox.Location = new System.Drawing.Point(150, 86);
+            this.sucursalIdTextBox.Location = new System.Drawing.Point(432, 38);
             this.sucursalIdTextBox.Name = "sucursalIdTextBox";
-            this.sucursalIdTextBox.Size = new System.Drawing.Size(180, 20);
+            this.sucursalIdTextBox.ReadOnly = true;
+            this.sucursalIdTextBox.Size = new System.Drawing.Size(78, 20);
             this.sucursalIdTextBox.TabIndex = 3;
+            this.sucursalIdTextBox.Visible = false;
             // 
             // nombreTextBox1
             // 
-            this.nombreTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programacionservicioBindingSource, "Sucursal.Nombre", true));
-            this.nombreTextBox1.Location = new System.Drawing.Point(150, 146);
+            this.nombreTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programacionservicioBindingSource, "Sucursal.Nombre", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.nombreTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("ReadOnly", this.programacionServiciosSucursalesbindingSource, "ModoNormal", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.nombreTextBox1.Location = new System.Drawing.Point(150, 117);
             this.nombreTextBox1.Name = "nombreTextBox1";
             this.nombreTextBox1.ReadOnly = true;
             this.nombreTextBox1.Size = new System.Drawing.Size(180, 20);
-            this.nombreTextBox1.TabIndex = 14;
+            this.nombreTextBox1.TabIndex = 4;
             // 
             // numeroTextBox
             // 
-            this.numeroTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programacionservicioBindingSource, "Sucursal.Numero", true));
-            this.numeroTextBox.Location = new System.Drawing.Point(150, 116);
+            this.numeroTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programacionservicioBindingSource, "Sucursal.Numero", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.numeroTextBox.DataBindings.Add(new System.Windows.Forms.Binding("ReadOnly", this.programacionServiciosSucursalesbindingSource, "ModoNormal", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.numeroTextBox.Location = new System.Drawing.Point(150, 87);
             this.numeroTextBox.Name = "numeroTextBox";
             this.numeroTextBox.ReadOnly = true;
             this.numeroTextBox.Size = new System.Drawing.Size(180, 20);
-            this.numeroTextBox.TabIndex = 16;
+            this.numeroTextBox.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 186);
+            this.label1.Location = new System.Drawing.Point(16, 150);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(266, 13);
             this.label1.TabIndex = 20;
@@ -352,22 +384,24 @@
             // chkListTipoProgramacion
             // 
             this.chkListTipoProgramacion.CheckOnClick = true;
+            this.chkListTipoProgramacion.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.programacionServiciosSucursalesbindingSource, "ModoEditar", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.chkListTipoProgramacion.Enabled = false;
             this.chkListTipoProgramacion.FormattingEnabled = true;
             this.chkListTipoProgramacion.Items.AddRange(new object[] {
             "Diaria",
             "Semanal",
             "Mensual",
             "Otra"});
-            this.chkListTipoProgramacion.Location = new System.Drawing.Point(19, 212);
+            this.chkListTipoProgramacion.Location = new System.Drawing.Point(19, 176);
             this.chkListTipoProgramacion.Name = "chkListTipoProgramacion";
             this.chkListTipoProgramacion.Size = new System.Drawing.Size(263, 64);
-            this.chkListTipoProgramacion.TabIndex = 4;
+            this.chkListTipoProgramacion.TabIndex = 5;
             this.chkListTipoProgramacion.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.chkListTipoProgramacion_ItemCheck);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(19, 292);
+            this.label2.Location = new System.Drawing.Point(19, 256);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 13);
             this.label2.TabIndex = 23;
@@ -376,6 +410,7 @@
             // chkListDiasSemana
             // 
             this.chkListDiasSemana.CheckOnClick = true;
+            this.chkListDiasSemana.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.programacionServiciosSucursalesbindingSource, "ModoEditar", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.chkListDiasSemana.Enabled = false;
             this.chkListDiasSemana.FormattingEnabled = true;
             this.chkListDiasSemana.Items.AddRange(new object[] {
@@ -386,16 +421,16 @@
             "Viernes",
             "Sabado",
             "Domingo"});
-            this.chkListDiasSemana.Location = new System.Drawing.Point(19, 315);
+            this.chkListDiasSemana.Location = new System.Drawing.Point(19, 279);
             this.chkListDiasSemana.Name = "chkListDiasSemana";
             this.chkListDiasSemana.Size = new System.Drawing.Size(157, 109);
-            this.chkListDiasSemana.TabIndex = 6;
+            this.chkListDiasSemana.TabIndex = 9;
             this.chkListDiasSemana.SelectedIndexChanged += new System.EventHandler(this.chkListDiasSemana_SelectedIndexChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(182, 292);
+            this.label3.Location = new System.Drawing.Point(182, 256);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 13);
             this.label3.TabIndex = 25;
@@ -403,18 +438,20 @@
             // 
             // btnBusquedaSucursal
             // 
+            this.btnBusquedaSucursal.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.programacionServiciosSucursalesbindingSource, "ModoEditar", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.btnBusquedaSucursal.Enabled = false;
             this.btnBusquedaSucursal.Image = global::FUMIT.Recursos.search;
             this.btnBusquedaSucursal.Location = new System.Drawing.Point(336, 84);
             this.btnBusquedaSucursal.Name = "btnBusquedaSucursal";
             this.btnBusquedaSucursal.Size = new System.Drawing.Size(31, 23);
-            this.btnBusquedaSucursal.TabIndex = 40;
+            this.btnBusquedaSucursal.TabIndex = 3;
             this.btnBusquedaSucursal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBusquedaSucursal.UseVisualStyleBackColor = true;
             this.btnBusquedaSucursal.Click += new System.EventHandler(this.btnBusquedaSucursal_Click);
             // 
             // btnSeleccionar
             // 
-            this.btnSeleccionar.Location = new System.Drawing.Point(513, 410);
+            this.btnSeleccionar.Location = new System.Drawing.Point(500, 365);
             this.btnSeleccionar.Name = "btnSeleccionar";
             this.btnSeleccionar.Size = new System.Drawing.Size(75, 23);
             this.btnSeleccionar.TabIndex = 41;
@@ -423,11 +460,20 @@
             this.btnSeleccionar.Visible = false;
             this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
             // 
+            // programacionServiciosSucursalesbindingSource
+            // 
+            this.programacionServiciosSucursalesbindingSource.DataSource = typeof(FUMIT.Formularios.Operacion.ProgramacionServiciosSucursales);
+            // 
+            // programacionservicioBindingSource
+            // 
+            this.programacionservicioBindingSource.DataSource = typeof(FUMIT.Entidades.Programacionservicio);
+            this.programacionservicioBindingSource.CurrentChanged += new System.EventHandler(this.programacionservicioBindingSource_CurrentChanged);
+            // 
             // ProgramacionServiciosSucursales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 445);
+            this.ClientSize = new System.Drawing.Size(602, 403);
             this.Controls.Add(this.btnSeleccionar);
             this.Controls.Add(this.btnBusquedaSucursal);
             this.Controls.Add(this.label3);
@@ -457,6 +503,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.programacionservicioBindingNavigator)).EndInit();
             this.programacionservicioBindingNavigator.ResumeLayout(false);
             this.programacionservicioBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.programacionServiciosSucursalesbindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.programacionservicioBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -494,5 +541,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnBusquedaSucursal;
         private System.Windows.Forms.Button btnSeleccionar;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton tsbCancelar;
+        private System.Windows.Forms.BindingSource programacionServiciosSucursalesbindingSource;
     }
 }

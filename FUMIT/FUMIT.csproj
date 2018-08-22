@@ -96,8 +96,10 @@
     <Compile Include="AccesoDatos\AOperacionesBase.cs" />
     <Compile Include="AccesoDatos\CiclosFacturacionRepositorio.cs" />
     <Compile Include="AccesoDatos\ClientesRepositorio.cs" />
+    <Compile Include="AccesoDatos\ContactosRepositorio.cs" />
     <Compile Include="AccesoDatos\ICiclosFacturacion.cs" />
     <Compile Include="AccesoDatos\IClientes.cs" />
+    <Compile Include="AccesoDatos\IContactos.cs" />
     <Compile Include="AccesoDatos\IOperacionesAccesoDatos.cs" />
     <Compile Include="AccesoDatos\IProgramacionServicios.cs" />
     <Compile Include="AccesoDatos\IProgramacionServiciosCliente.cs" />
@@ -132,6 +134,12 @@
       <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
     </Compile>
     <Compile Include="Entidades\ClienteConfiguration.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\Contacto.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\ContactoConfiguration.cs">
       <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
     </Compile>
     <Compile Include="Entidades\Evento.cs">
@@ -228,6 +236,12 @@
     <Compile Include="Formularios\Clientes\CicloFacturacionClientes.Designer.cs">
       <DependentUpon>CicloFacturacionClientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Clientes\Contactos.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Formularios\Clientes\Contactos.Designer.cs">
+      <DependentUpon>Contactos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Clientes\Expedientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -252,6 +266,12 @@
     <Compile Include="Formularios\Compartidos\BusquedaClientes.Designer.cs">
       <DependentUpon>BusquedaClientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Compartidos\BusquedaServicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Compartidos\BusquedaServicio.Designer.cs">
+      <DependentUpon>BusquedaServicio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Compartidos\BusquedaSucursal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -270,13 +290,14 @@
     <Compile Include="Formularios\Operacion\CalendarioServicios.Designer.cs">
       <DependentUpon>CalendarioServicios.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Operacion\Class1.cs" />
     <Compile Include="Formularios\Operacion\ProgramacionServiciosSucursales.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Operacion\ProgramacionServiciosSucursales.Designer.cs">
       <DependentUpon>ProgramacionServiciosSucursales.cs</DependentUpon>
     </Compile>
+    <Compile Include="INotificador.cs" />
+    <Compile Include="NotificadorBarraEstado.cs" />
     <Compile Include="PantallaPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -306,6 +327,9 @@
     <EmbeddedResource Include="Formularios\Clientes\CicloFacturacionClientes.resx">
       <DependentUpon>CicloFacturacionClientes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Clientes\Contactos.resx">
+      <DependentUpon>Contactos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Clientes\Expedientes.resx">
       <DependentUpon>Expedientes.cs</DependentUpon>
     </EmbeddedResource>
@@ -317,6 +341,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Compartidos\BusquedaClientes.resx">
       <DependentUpon>BusquedaClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Compartidos\BusquedaServicio.resx">
+      <DependentUpon>BusquedaServicio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Compartidos\BusquedaSucursal.resx">
       <DependentUpon>BusquedaSucursal.cs</DependentUpon>
@@ -352,13 +379,17 @@
     <None Include="Properties\DataSources\FUMIT.Entidades.CicloFacturacionCliente.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.CiclosFacturacion.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Cliente.datasource" />
+    <None Include="Properties\DataSources\FUMIT.Entidades.Contacto.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Evento.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.HistorialCliente.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Programacionservicio.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Programacionservicioscliente.datasource" />
+    <None Include="Properties\DataSources\FUMIT.Entidades.Servicio.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Sucursal.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Vsprogramacionservicioscliente.datasource" />
     <None Include="Properties\DataSources\FUMIT.Formularios.Clientes.Expedientes.datasource" />
+    <None Include="Properties\DataSources\FUMIT.Formularios.Clientes.ProgramacionServiciosClientes.datasource" />
+    <None Include="Properties\DataSources\FUMIT.Formularios.Operacion.ProgramacionServiciosSucursales.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

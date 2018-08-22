@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiciosFUMIT", "Servicios
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "FUMITDb", "FUMITDb\FUMITDb.sqlproj", "{CEADA336-A6A9-4F71-81BB-C8562614B400}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exportador_FUMIT", "Exportador_FUMIT\Exportador_FUMIT.csproj", "{C6821498-22BC-425C-A4E3-22246CD75A4A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{CEADA336-A6A9-4F71-81BB-C8562614B400}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEADA336-A6A9-4F71-81BB-C8562614B400}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CEADA336-A6A9-4F71-81BB-C8562614B400}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{C6821498-22BC-425C-A4E3-22246CD75A4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6821498-22BC-425C-A4E3-22246CD75A4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6821498-22BC-425C-A4E3-22246CD75A4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6821498-22BC-425C-A4E3-22246CD75A4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

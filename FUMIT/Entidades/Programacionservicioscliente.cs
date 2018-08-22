@@ -66,6 +66,11 @@ namespace FUMIT.Entidades
         [Display(Name = "Borrado")]
         public bool Borrado { get; set; } // Borrado
 
+        [Column(@"ServicioId", Order = 8, TypeName = "int")]
+        [Required]
+        [Display(Name = "Servicio ID")]
+        public int ServicioId { get; set; } // ServicioId
+
         // Foreign keys
 
         /// <summary>
@@ -77,6 +82,11 @@ namespace FUMIT.Entidades
         /// Parent Programacionservicio pointed by [ProgramacionServiciosClientes].([ProgramacionServicioId]) (FK_ProgramacionServiciosClientes_ProgramacionServicios)
         /// </summary>
         [ForeignKey("ProgramacionServicioId"), Required] public virtual Programacionservicio Programacionservicio { get; set; } // FK_ProgramacionServiciosClientes_ProgramacionServicios
+
+        /// <summary>
+        /// Parent Servicio pointed by [ProgramacionServiciosClientes].([ServicioId]) (FK_ProgramacionServiciosClientes_Servicios)
+        /// </summary>
+        [ForeignKey("ServicioId"), Required] public virtual Servicio Servicio { get; set; } // FK_ProgramacionServiciosClientes_Servicios
 
         public Programacionservicioscliente()
         {

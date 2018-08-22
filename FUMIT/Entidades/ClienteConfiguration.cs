@@ -32,9 +32,11 @@ namespace FUMIT.Entidades
         {
             Property(x => x.Clave).IsUnicode(false);
             Property(x => x.Nombre).IsUnicode(false);
+            Property(x => x.NombreFiscal).IsOptional().IsUnicode(false);
             Property(x => x.SucursalCliente).IsOptional().IsUnicode(false);
-            Property(x => x.Rfc).IsUnicode(false);
+            Property(x => x.Rfc).IsOptional().IsUnicode(false);
             Property(x => x.Direccion).IsUnicode(false);
+            Property(x => x.DireccionFiscal).IsOptional().IsUnicode(false);
             Property(x => x.Ubicacion).IsOptional().IsUnicode(false);
             Property(x => x.Contacto).IsOptional().IsUnicode(false);
             Property(x => x.Telefono).IsOptional().IsUnicode(false);

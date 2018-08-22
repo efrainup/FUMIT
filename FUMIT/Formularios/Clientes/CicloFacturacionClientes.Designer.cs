@@ -29,29 +29,26 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CicloFacturacionClientes));
             System.Windows.Forms.Label activoLabel;
-            System.Windows.Forms.Label cicloFacturacionClienteIdLabel;
-            System.Windows.Forms.Label cicloFacturacionIdLabel;
             System.Windows.Forms.Label fechaFinVigenciaLabel;
             System.Windows.Forms.Label fechaInicioVigenciaLabel;
-            System.Windows.Forms.Label servicioIdLabel;
             System.Windows.Forms.Label diaLabel;
             System.Windows.Forms.Label mesLabel;
             System.Windows.Forms.Label semanaLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CicloFacturacionClientes));
             this.cicloFacturacionClienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cicloFacturacionClienteBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.cicloFacturacionClienteBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.cicloFacturacionClienteDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,21 +61,15 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.activoCheckBox = new System.Windows.Forms.CheckBox();
-            this.cicloFacturacionClienteIdTextBox = new System.Windows.Forms.TextBox();
-            this.cicloFacturacionIdTextBox = new System.Windows.Forms.TextBox();
-            this.fechaFinVigenciaDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.fechaInicioVigenciaDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.servicioIdTextBox = new System.Windows.Forms.TextBox();
             this.diaTextBox = new System.Windows.Forms.TextBox();
             this.mesTextBox = new System.Windows.Forms.TextBox();
             this.semanaTextBox = new System.Windows.Forms.TextBox();
+            this.activoCheckBox = new System.Windows.Forms.CheckBox();
+            this.fechaFinVigenciaDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.fechaInicioVigenciaDateTimePicker = new System.Windows.Forms.DateTimePicker();
             activoLabel = new System.Windows.Forms.Label();
-            cicloFacturacionClienteIdLabel = new System.Windows.Forms.Label();
-            cicloFacturacionIdLabel = new System.Windows.Forms.Label();
             fechaFinVigenciaLabel = new System.Windows.Forms.Label();
             fechaInicioVigenciaLabel = new System.Windows.Forms.Label();
-            servicioIdLabel = new System.Windows.Forms.Label();
             diaLabel = new System.Windows.Forms.Label();
             mesLabel = new System.Windows.Forms.Label();
             semanaLabel = new System.Windows.Forms.Label();
@@ -89,6 +80,60 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // activoLabel
+            // 
+            activoLabel.AutoSize = true;
+            activoLabel.Location = new System.Drawing.Point(410, 109);
+            activoLabel.Name = "activoLabel";
+            activoLabel.Size = new System.Drawing.Size(40, 13);
+            activoLabel.TabIndex = 0;
+            activoLabel.Text = "Activo:";
+            // 
+            // fechaFinVigenciaLabel
+            // 
+            fechaFinVigenciaLabel.AutoSize = true;
+            fechaFinVigenciaLabel.Location = new System.Drawing.Point(22, 30);
+            fechaFinVigenciaLabel.Name = "fechaFinVigenciaLabel";
+            fechaFinVigenciaLabel.Size = new System.Drawing.Size(101, 13);
+            fechaFinVigenciaLabel.TabIndex = 6;
+            fechaFinVigenciaLabel.Text = "Fecha Fin Vigencia:";
+            // 
+            // fechaInicioVigenciaLabel
+            // 
+            fechaInicioVigenciaLabel.AutoSize = true;
+            fechaInicioVigenciaLabel.Location = new System.Drawing.Point(22, 56);
+            fechaInicioVigenciaLabel.Name = "fechaInicioVigenciaLabel";
+            fechaInicioVigenciaLabel.Size = new System.Drawing.Size(112, 13);
+            fechaInicioVigenciaLabel.TabIndex = 8;
+            fechaInicioVigenciaLabel.Text = "Fecha Inicio Vigencia:";
+            // 
+            // diaLabel
+            // 
+            diaLabel.AutoSize = true;
+            diaLabel.Location = new System.Drawing.Point(410, 26);
+            diaLabel.Name = "diaLabel";
+            diaLabel.Size = new System.Drawing.Size(26, 13);
+            diaLabel.TabIndex = 12;
+            diaLabel.Text = "Dia:";
+            // 
+            // mesLabel
+            // 
+            mesLabel.AutoSize = true;
+            mesLabel.Location = new System.Drawing.Point(410, 52);
+            mesLabel.Name = "mesLabel";
+            mesLabel.Size = new System.Drawing.Size(30, 13);
+            mesLabel.TabIndex = 14;
+            mesLabel.Text = "Mes:";
+            // 
+            // semanaLabel
+            // 
+            semanaLabel.AutoSize = true;
+            semanaLabel.Location = new System.Drawing.Point(410, 78);
+            semanaLabel.Name = "semanaLabel";
+            semanaLabel.Size = new System.Drawing.Size(49, 13);
+            semanaLabel.TabIndex = 16;
+            semanaLabel.Text = "Semana:";
             // 
             // cicloFacturacionClienteBindingSource
             // 
@@ -124,6 +169,31 @@
             this.cicloFacturacionClienteBindingNavigator.TabIndex = 0;
             this.cicloFacturacionClienteBindingNavigator.Text = "bindingNavigator1";
             // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Image = global::FUMIT.Recursos.add;
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Text = "Agregar nuevo";
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(37, 22);
+            this.bindingNavigatorCountItem.Text = "de {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Número total de elementos";
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Text = "Eliminar";
+            // 
             // bindingNavigatorMoveFirstItem
             // 
             this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -156,16 +226,9 @@
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Posición actual";
             // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(37, 22);
-            this.bindingNavigatorCountItem.Text = "de {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Número total de elementos";
-            // 
             // bindingNavigatorSeparator1
             // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
             this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // bindingNavigatorMoveNextItem
@@ -188,26 +251,8 @@
             // 
             // bindingNavigatorSeparator2
             // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = global::FUMIT.Recursos.add;
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Agregar nuevo";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Eliminar";
             // 
             // cicloFacturacionClienteBindingNavigatorSaveItem
             // 
@@ -328,136 +373,17 @@
             this.groupBox1.Controls.Add(this.semanaTextBox);
             this.groupBox1.Controls.Add(activoLabel);
             this.groupBox1.Controls.Add(this.activoCheckBox);
-            this.groupBox1.Controls.Add(cicloFacturacionClienteIdLabel);
-            this.groupBox1.Controls.Add(this.cicloFacturacionClienteIdTextBox);
-            this.groupBox1.Controls.Add(cicloFacturacionIdLabel);
-            this.groupBox1.Controls.Add(this.cicloFacturacionIdTextBox);
             this.groupBox1.Controls.Add(fechaFinVigenciaLabel);
             this.groupBox1.Controls.Add(this.fechaFinVigenciaDateTimePicker);
             this.groupBox1.Controls.Add(fechaInicioVigenciaLabel);
             this.groupBox1.Controls.Add(this.fechaInicioVigenciaDateTimePicker);
-            this.groupBox1.Controls.Add(servicioIdLabel);
-            this.groupBox1.Controls.Add(this.servicioIdTextBox);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(771, 204);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
-            // 
-            // activoLabel
-            // 
-            activoLabel.AutoSize = true;
-            activoLabel.Location = new System.Drawing.Point(22, 26);
-            activoLabel.Name = "activoLabel";
-            activoLabel.Size = new System.Drawing.Size(40, 13);
-            activoLabel.TabIndex = 0;
-            activoLabel.Text = "Activo:";
-            // 
-            // activoCheckBox
-            // 
-            this.activoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.cicloFacturacionClienteBindingSource, "Activo", true));
-            this.activoCheckBox.Location = new System.Drawing.Point(167, 21);
-            this.activoCheckBox.Name = "activoCheckBox";
-            this.activoCheckBox.Size = new System.Drawing.Size(200, 24);
-            this.activoCheckBox.TabIndex = 1;
-            this.activoCheckBox.Text = "checkBox1";
-            this.activoCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // cicloFacturacionClienteIdLabel
-            // 
-            cicloFacturacionClienteIdLabel.AutoSize = true;
-            cicloFacturacionClienteIdLabel.Location = new System.Drawing.Point(22, 54);
-            cicloFacturacionClienteIdLabel.Name = "cicloFacturacionClienteIdLabel";
-            cicloFacturacionClienteIdLabel.Size = new System.Drawing.Size(139, 13);
-            cicloFacturacionClienteIdLabel.TabIndex = 2;
-            cicloFacturacionClienteIdLabel.Text = "Ciclo Facturacion Cliente Id:";
-            // 
-            // cicloFacturacionClienteIdTextBox
-            // 
-            this.cicloFacturacionClienteIdTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cicloFacturacionClienteBindingSource, "CicloFacturacionClienteId", true));
-            this.cicloFacturacionClienteIdTextBox.Location = new System.Drawing.Point(167, 51);
-            this.cicloFacturacionClienteIdTextBox.Name = "cicloFacturacionClienteIdTextBox";
-            this.cicloFacturacionClienteIdTextBox.Size = new System.Drawing.Size(200, 20);
-            this.cicloFacturacionClienteIdTextBox.TabIndex = 3;
-            // 
-            // cicloFacturacionIdLabel
-            // 
-            cicloFacturacionIdLabel.AutoSize = true;
-            cicloFacturacionIdLabel.Location = new System.Drawing.Point(22, 80);
-            cicloFacturacionIdLabel.Name = "cicloFacturacionIdLabel";
-            cicloFacturacionIdLabel.Size = new System.Drawing.Size(104, 13);
-            cicloFacturacionIdLabel.TabIndex = 4;
-            cicloFacturacionIdLabel.Text = "Ciclo Facturacion Id:";
-            // 
-            // cicloFacturacionIdTextBox
-            // 
-            this.cicloFacturacionIdTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cicloFacturacionClienteBindingSource, "CicloFacturacionId", true));
-            this.cicloFacturacionIdTextBox.Location = new System.Drawing.Point(167, 77);
-            this.cicloFacturacionIdTextBox.Name = "cicloFacturacionIdTextBox";
-            this.cicloFacturacionIdTextBox.Size = new System.Drawing.Size(200, 20);
-            this.cicloFacturacionIdTextBox.TabIndex = 5;
-            // 
-            // fechaFinVigenciaLabel
-            // 
-            fechaFinVigenciaLabel.AutoSize = true;
-            fechaFinVigenciaLabel.Location = new System.Drawing.Point(22, 107);
-            fechaFinVigenciaLabel.Name = "fechaFinVigenciaLabel";
-            fechaFinVigenciaLabel.Size = new System.Drawing.Size(101, 13);
-            fechaFinVigenciaLabel.TabIndex = 6;
-            fechaFinVigenciaLabel.Text = "Fecha Fin Vigencia:";
-            // 
-            // fechaFinVigenciaDateTimePicker
-            // 
-            this.fechaFinVigenciaDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.cicloFacturacionClienteBindingSource, "FechaFinVigencia", true));
-            this.fechaFinVigenciaDateTimePicker.Location = new System.Drawing.Point(167, 103);
-            this.fechaFinVigenciaDateTimePicker.Name = "fechaFinVigenciaDateTimePicker";
-            this.fechaFinVigenciaDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.fechaFinVigenciaDateTimePicker.TabIndex = 7;
-            // 
-            // fechaInicioVigenciaLabel
-            // 
-            fechaInicioVigenciaLabel.AutoSize = true;
-            fechaInicioVigenciaLabel.Location = new System.Drawing.Point(22, 133);
-            fechaInicioVigenciaLabel.Name = "fechaInicioVigenciaLabel";
-            fechaInicioVigenciaLabel.Size = new System.Drawing.Size(112, 13);
-            fechaInicioVigenciaLabel.TabIndex = 8;
-            fechaInicioVigenciaLabel.Text = "Fecha Inicio Vigencia:";
-            // 
-            // fechaInicioVigenciaDateTimePicker
-            // 
-            this.fechaInicioVigenciaDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.cicloFacturacionClienteBindingSource, "FechaInicioVigencia", true));
-            this.fechaInicioVigenciaDateTimePicker.Location = new System.Drawing.Point(167, 129);
-            this.fechaInicioVigenciaDateTimePicker.Name = "fechaInicioVigenciaDateTimePicker";
-            this.fechaInicioVigenciaDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.fechaInicioVigenciaDateTimePicker.TabIndex = 9;
-            // 
-            // servicioIdLabel
-            // 
-            servicioIdLabel.AutoSize = true;
-            servicioIdLabel.Location = new System.Drawing.Point(22, 158);
-            servicioIdLabel.Name = "servicioIdLabel";
-            servicioIdLabel.Size = new System.Drawing.Size(60, 13);
-            servicioIdLabel.TabIndex = 10;
-            servicioIdLabel.Text = "Servicio Id:";
-            // 
-            // servicioIdTextBox
-            // 
-            this.servicioIdTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cicloFacturacionClienteBindingSource, "ServicioId", true));
-            this.servicioIdTextBox.Location = new System.Drawing.Point(167, 155);
-            this.servicioIdTextBox.Name = "servicioIdTextBox";
-            this.servicioIdTextBox.Size = new System.Drawing.Size(200, 20);
-            this.servicioIdTextBox.TabIndex = 11;
-            // 
-            // diaLabel
-            // 
-            diaLabel.AutoSize = true;
-            diaLabel.Location = new System.Drawing.Point(410, 26);
-            diaLabel.Name = "diaLabel";
-            diaLabel.Size = new System.Drawing.Size(26, 13);
-            diaLabel.TabIndex = 12;
-            diaLabel.Text = "Dia:";
+            this.groupBox1.Text = "Datos de ciclo de facturación";
             // 
             // diaTextBox
             // 
@@ -467,15 +393,6 @@
             this.diaTextBox.Size = new System.Drawing.Size(100, 20);
             this.diaTextBox.TabIndex = 13;
             // 
-            // mesLabel
-            // 
-            mesLabel.AutoSize = true;
-            mesLabel.Location = new System.Drawing.Point(410, 52);
-            mesLabel.Name = "mesLabel";
-            mesLabel.Size = new System.Drawing.Size(30, 13);
-            mesLabel.TabIndex = 14;
-            mesLabel.Text = "Mes:";
-            // 
             // mesTextBox
             // 
             this.mesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cicloFacturacionClienteBindingSource, "CiclosFacturacion.Mes", true));
@@ -484,15 +401,6 @@
             this.mesTextBox.Size = new System.Drawing.Size(100, 20);
             this.mesTextBox.TabIndex = 15;
             // 
-            // semanaLabel
-            // 
-            semanaLabel.AutoSize = true;
-            semanaLabel.Location = new System.Drawing.Point(410, 78);
-            semanaLabel.Name = "semanaLabel";
-            semanaLabel.Size = new System.Drawing.Size(49, 13);
-            semanaLabel.TabIndex = 16;
-            semanaLabel.Text = "Semana:";
-            // 
             // semanaTextBox
             // 
             this.semanaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cicloFacturacionClienteBindingSource, "CiclosFacturacion.Semana", true));
@@ -500,6 +408,31 @@
             this.semanaTextBox.Name = "semanaTextBox";
             this.semanaTextBox.Size = new System.Drawing.Size(100, 20);
             this.semanaTextBox.TabIndex = 17;
+            // 
+            // activoCheckBox
+            // 
+            this.activoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.cicloFacturacionClienteBindingSource, "Activo", true));
+            this.activoCheckBox.Location = new System.Drawing.Point(465, 109);
+            this.activoCheckBox.Name = "activoCheckBox";
+            this.activoCheckBox.Size = new System.Drawing.Size(200, 24);
+            this.activoCheckBox.TabIndex = 1;
+            this.activoCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // fechaFinVigenciaDateTimePicker
+            // 
+            this.fechaFinVigenciaDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.cicloFacturacionClienteBindingSource, "FechaFinVigencia", true));
+            this.fechaFinVigenciaDateTimePicker.Location = new System.Drawing.Point(167, 26);
+            this.fechaFinVigenciaDateTimePicker.Name = "fechaFinVigenciaDateTimePicker";
+            this.fechaFinVigenciaDateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.fechaFinVigenciaDateTimePicker.TabIndex = 7;
+            // 
+            // fechaInicioVigenciaDateTimePicker
+            // 
+            this.fechaInicioVigenciaDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.cicloFacturacionClienteBindingSource, "FechaInicioVigencia", true));
+            this.fechaInicioVigenciaDateTimePicker.Location = new System.Drawing.Point(167, 52);
+            this.fechaInicioVigenciaDateTimePicker.Name = "fechaInicioVigenciaDateTimePicker";
+            this.fechaInicioVigenciaDateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.fechaInicioVigenciaDateTimePicker.TabIndex = 9;
             // 
             // CicloFacturacionClientes
             // 
@@ -553,10 +486,7 @@
         private System.Windows.Forms.TextBox mesTextBox;
         private System.Windows.Forms.TextBox semanaTextBox;
         private System.Windows.Forms.CheckBox activoCheckBox;
-        private System.Windows.Forms.TextBox cicloFacturacionClienteIdTextBox;
-        private System.Windows.Forms.TextBox cicloFacturacionIdTextBox;
         private System.Windows.Forms.DateTimePicker fechaFinVigenciaDateTimePicker;
         private System.Windows.Forms.DateTimePicker fechaInicioVigenciaDateTimePicker;
-        private System.Windows.Forms.TextBox servicioIdTextBox;
     }
 }

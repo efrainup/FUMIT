@@ -76,13 +76,26 @@ namespace FUMIT.Entidades
         public bool Borrado { get; set; } // Borrado (Primary key)
 
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [Column(@"Nombre", Order = 8, TypeName = "nvarchar")]
+        [Column(@"ServicioId", Order = 8, TypeName = "int")]
+        [Required]
+        [Key]
+        [Display(Name = "Servicio ID")]
+        public int ServicioId { get; set; } // ServicioId (Primary key)
+
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Column(@"Nombre", Order = 9, TypeName = "nvarchar")]
         [Required(AllowEmptyStrings = true)]
         [MaxLength(50)]
         [StringLength(50)]
         [Key]
         [Display(Name = "Nombre")]
         public string Nombre { get; set; } // Nombre (Primary key) (length: 50)
+
+        [Column(@"NombreHorarioProgramado", Order = 10, TypeName = "varchar")]
+        [MaxLength(50)]
+        [StringLength(50)]
+        [Display(Name = "Nombre horario programado")]
+        public string NombreHorarioProgramado { get; set; } // NombreHorarioProgramado (length: 50)
 
         public Vsprogramacionservicioscliente()
         {

@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label borradoLabel;
             System.Windows.Forms.Label codigoLabel;
             System.Windows.Forms.Label descripcionLabel;
             System.Windows.Forms.Label eventoClienteIdLabel;
             System.Windows.Forms.Label nombreLabel;
+            System.Windows.Forms.Label activoLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Eventos));
             this.eventoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.eventoBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
@@ -49,29 +49,22 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.eventoBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
-            this.borradoCheckBox = new System.Windows.Forms.CheckBox();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.tsbCancelar = new System.Windows.Forms.ToolStripButton();
             this.codigoTextBox = new System.Windows.Forms.TextBox();
             this.descripcionTextBox = new System.Windows.Forms.TextBox();
             this.eventoClienteIdTextBox = new System.Windows.Forms.TextBox();
             this.nombreTextBox = new System.Windows.Forms.TextBox();
-            borradoLabel = new System.Windows.Forms.Label();
+            this.activoCheckBox = new System.Windows.Forms.CheckBox();
             codigoLabel = new System.Windows.Forms.Label();
             descripcionLabel = new System.Windows.Forms.Label();
             eventoClienteIdLabel = new System.Windows.Forms.Label();
             nombreLabel = new System.Windows.Forms.Label();
+            activoLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.eventoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eventoBindingNavigator)).BeginInit();
             this.eventoBindingNavigator.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // borradoLabel
-            // 
-            borradoLabel.AutoSize = true;
-            borradoLabel.Location = new System.Drawing.Point(12, 234);
-            borradoLabel.Name = "borradoLabel";
-            borradoLabel.Size = new System.Drawing.Size(47, 13);
-            borradoLabel.TabIndex = 1;
-            borradoLabel.Text = "Borrado:";
             // 
             // codigoLabel
             // 
@@ -109,6 +102,15 @@
             nombreLabel.TabIndex = 9;
             nombreLabel.Text = "Nombre:";
             // 
+            // activoLabel
+            // 
+            activoLabel.AutoSize = true;
+            activoLabel.Location = new System.Drawing.Point(22, 233);
+            activoLabel.Name = "activoLabel";
+            activoLabel.Size = new System.Drawing.Size(40, 13);
+            activoLabel.TabIndex = 11;
+            activoLabel.Text = "Activo:";
+            // 
             // eventoBindingSource
             // 
             this.eventoBindingSource.DataSource = typeof(FUMIT.Entidades.Evento);
@@ -130,8 +132,10 @@
             this.bindingNavigatorMoveLastItem,
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorAddNewItem,
+            this.toolStripButton1,
             this.bindingNavigatorDeleteItem,
-            this.eventoBindingNavigatorSaveItem});
+            this.eventoBindingNavigatorSaveItem,
+            this.tsbCancelar});
             this.eventoBindingNavigator.Location = new System.Drawing.Point(0, 0);
             this.eventoBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.eventoBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -139,18 +143,18 @@
             this.eventoBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.eventoBindingNavigator.Name = "eventoBindingNavigator";
             this.eventoBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.eventoBindingNavigator.Size = new System.Drawing.Size(518, 25);
+            this.eventoBindingNavigator.Size = new System.Drawing.Size(652, 25);
             this.eventoBindingNavigator.TabIndex = 0;
             this.eventoBindingNavigator.Text = "bindingNavigator1";
             // 
             // bindingNavigatorAddNewItem
             // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
+            this.bindingNavigatorAddNewItem.Image = global::FUMIT.Recursos.add;
             this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Agregar nuevo";
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(69, 22);
+            this.bindingNavigatorAddNewItem.Text = "Agregar";
+            this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
             // 
             // bindingNavigatorCountItem
             // 
@@ -161,11 +165,10 @@
             // 
             // bindingNavigatorDeleteItem
             // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
             this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(70, 22);
             this.bindingNavigatorDeleteItem.Text = "Eliminar";
             // 
             // bindingNavigatorMoveFirstItem
@@ -230,22 +233,28 @@
             // 
             // eventoBindingNavigatorSaveItem
             // 
-            this.eventoBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.eventoBindingNavigatorSaveItem.Enabled = false;
             this.eventoBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("eventoBindingNavigatorSaveItem.Image")));
             this.eventoBindingNavigatorSaveItem.Name = "eventoBindingNavigatorSaveItem";
-            this.eventoBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
-            this.eventoBindingNavigatorSaveItem.Text = "Guardar datos";
+            this.eventoBindingNavigatorSaveItem.Size = new System.Drawing.Size(69, 22);
+            this.eventoBindingNavigatorSaveItem.Text = "Guardar";
             // 
-            // borradoCheckBox
+            // toolStripButton1
             // 
-            this.borradoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.eventoBindingSource, "Borrado", true));
-            this.borradoCheckBox.Location = new System.Drawing.Point(109, 229);
-            this.borradoCheckBox.Name = "borradoCheckBox";
-            this.borradoCheckBox.Size = new System.Drawing.Size(104, 24);
-            this.borradoCheckBox.TabIndex = 2;
-            this.borradoCheckBox.Text = "checkBox1";
-            this.borradoCheckBox.UseVisualStyleBackColor = true;
+            this.toolStripButton1.Image = global::FUMIT.Recursos.edit_add;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(57, 22);
+            this.toolStripButton1.Text = "Editar";
+            // 
+            // tsbCancelar
+            // 
+            this.tsbCancelar.Enabled = false;
+            this.tsbCancelar.Image = global::FUMIT.Recursos.cancel;
+            this.tsbCancelar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbCancelar.Name = "tsbCancelar";
+            this.tsbCancelar.Size = new System.Drawing.Size(73, 22);
+            this.tsbCancelar.Text = "Cancelar";
             // 
             // codigoTextBox
             // 
@@ -280,13 +289,22 @@
             this.nombreTextBox.Size = new System.Drawing.Size(318, 20);
             this.nombreTextBox.TabIndex = 10;
             // 
+            // activoCheckBox
+            // 
+            this.activoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.eventoBindingSource, "Activo", true));
+            this.activoCheckBox.Location = new System.Drawing.Point(109, 228);
+            this.activoCheckBox.Name = "activoCheckBox";
+            this.activoCheckBox.Size = new System.Drawing.Size(104, 24);
+            this.activoCheckBox.TabIndex = 12;
+            this.activoCheckBox.UseVisualStyleBackColor = true;
+            // 
             // Eventos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(518, 323);
-            this.Controls.Add(borradoLabel);
-            this.Controls.Add(this.borradoCheckBox);
+            this.ClientSize = new System.Drawing.Size(652, 323);
+            this.Controls.Add(activoLabel);
+            this.Controls.Add(this.activoCheckBox);
             this.Controls.Add(codigoLabel);
             this.Controls.Add(this.codigoTextBox);
             this.Controls.Add(descripcionLabel);
@@ -323,10 +341,12 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton eventoBindingNavigatorSaveItem;
-        private System.Windows.Forms.CheckBox borradoCheckBox;
         private System.Windows.Forms.TextBox codigoTextBox;
         private System.Windows.Forms.TextBox descripcionTextBox;
         private System.Windows.Forms.TextBox eventoClienteIdTextBox;
         private System.Windows.Forms.TextBox nombreTextBox;
+        private System.Windows.Forms.CheckBox activoCheckBox;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton tsbCancelar;
     }
 }
