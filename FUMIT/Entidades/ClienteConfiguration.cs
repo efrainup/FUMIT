@@ -41,6 +41,7 @@ namespace FUMIT.Entidades
             Property(x => x.Contacto).IsOptional().IsUnicode(false);
             Property(x => x.Telefono).IsOptional().IsUnicode(false);
             Property(x => x.Correo).IsOptional().IsUnicode(false);
+            Property(x => x.FechaCreacion).IsOptional();
             Property(x => x.Observaciones).IsOptional().IsUnicode(false);
 
         }

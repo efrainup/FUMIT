@@ -57,6 +57,11 @@ namespace FUMIT.Entidades
         [Display(Name = "Observaciones")]
         public string Observaciones { get; set; } // Observaciones (length: 250)
 
+        [Column(@"Borrado", Order = 6, TypeName = "bit")]
+        [Required]
+        [Display(Name = "Borrado")]
+        public bool Borrado { get; set; } // Borrado
+
         // Foreign keys
 
         /// <summary>
@@ -71,6 +76,7 @@ namespace FUMIT.Entidades
 
         public HistorialCliente()
         {
+            Borrado = false;
             InitializePartial();
         }
 

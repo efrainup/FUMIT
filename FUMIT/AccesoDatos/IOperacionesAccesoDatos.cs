@@ -16,7 +16,7 @@ namespace FUMIT.AccesoDatos
         Task<IEnumerable<T>> RecuperarAsync();
         void Actualizar(T entidad);
         Task ActualizarAsync(T entidad);
-        void Eliminar(int id);
-        Task EliminarAsync(int id);
+        void Eliminar(T entidad);
+        Task EliminarAsync(T entidad);
     }
 }

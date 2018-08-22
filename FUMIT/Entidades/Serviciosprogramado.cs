@@ -62,6 +62,11 @@ namespace FUMIT.Entidades
         [Display(Name = "Cancelado")]
         public bool Cancelado { get; set; } // Cancelado
 
+        [Column(@"Borrado", Order = 7, TypeName = "bit")]
+        [Required]
+        [Display(Name = "Borrado")]
+        public bool Borrado { get; set; } // Borrado
+
         // Foreign keys
 
         /// <summary>
@@ -77,6 +82,7 @@ namespace FUMIT.Entidades
         public Serviciosprogramado()
         {
             Cancelado = false;
+            Borrado = false;
             InitializePartial();
         }
 

@@ -298,18 +298,20 @@ namespace FUMIT.Formularios.Clientes
         {
             if(e.ListChangedType == ListChangedType.ItemDeleted)
             {
-                await RepositorioClientes.EliminarAsync(clienteBorrar.ClienteId);
+                await RepositorioClientes.EliminarAsync(clienteBorrar);
             }
         }
 
-        private void bindingNavigatorDeleteItem_Click_1(object sender, EventArgs e)
-        {
-            string s = ClienteActual.ClienteId.ToString();
-        }
 
         private void clienteBindingSource_CurrentItemChanged_1(object sender, EventArgs e)
         {
             clienteBorrar = ClienteActual;
+        }
+
+        private async void bindingNavigatorDeleteItem_Click_2(object sender, EventArgs e)
+        {
+            await RepositorioClientes.EliminarAsync(ClienteActual);
+            clienteBindingSource.RemoveCurrent();
         }
     }
 }

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace FUMIT.AccesoDatos
 {
-    interface IVSProgramacionServiciosCliente : IOperacionesAccesoDatos<Entidades.Vsprogramacionservicioscliente>
+    public interface IVSProgramacionServiciosCliente : IOperacionesAccesoDatos<Entidades.Vsprogramacionservicioscliente>
     {
+        IEnumerable<Entidades.Vsprogramacionservicioscliente> RecuperarPorClienteId(int clienteId);
     }
 }

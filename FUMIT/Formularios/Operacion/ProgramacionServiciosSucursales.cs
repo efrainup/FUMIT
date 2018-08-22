@@ -163,24 +163,31 @@ namespace FUMIT.Formularios.Operacion
 
         private void chkListDiasSemana_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CheckedListBox.CheckedItemCollection DiasProgramacion = (sender as CheckedListBox).CheckedItems;
+            CheckedListBox checkedListBox = (sender as CheckedListBox);
+            CheckedListBox.CheckedItemCollection DiasProgramacion = checkedListBox.CheckedItems;
+
+            
+
             IEnumerable<string> diasProgramados = DiasProgramacion.Cast<String>().AsEnumerable();
 
             string resultadoDias = "";
-            int numeroSemanas = Convert.ToInt32(semanaTextBox.Text);
-
-            if (numeroSemanas > 0)
+            if (ProgramacionServicioActual.Semana.HasValue)
             {
-                //Efrain Hernandez 20/08/2018: Solo se indica una semana debido a que si se establece
-                //Lunes cada 2 semanas, debería ser el día lunes cada 2 semanas y no el día lunes de cada semana.
-                resultadoDias = ObtenerDiasTexto(diasProgramados, 1);
+                int numeroSemanas = Convert.ToInt32(ProgramacionServicioActual.Semana.Value);
 
-                if (resultadoDias.Length > 0)
+                if (numeroSemanas > 0)
                 {
-                    resultadoDias = resultadoDias.Substring(0, resultadoDias.Length - 1);
-                }
+                    //Efrain Hernandez 20/08/2018: Solo se indica una semana debido a que si se establece
+                    //Lunes cada 2 semanas, debería ser el día lunes cada 2 semanas y no el día lunes de cada semana.
+                    resultadoDias = ObtenerDiasTexto(diasProgramados, 1);
 
-                (programacionservicioBindingSource.Current as Entidades.Programacionservicio).Dias = resultadoDias;
+                    if (resultadoDias.Length > 0)
+                    {
+                        resultadoDias = resultadoDias.Substring(0, resultadoDias.Length - 1);
+                    }
+
+                    (programacionservicioBindingSource.Current as Entidades.Programacionservicio).Dias = resultadoDias;
+                }
             }
 
         }
@@ -306,7 +313,6 @@ namespace FUMIT.Formularios.Operacion
 
             if(programacionServicioActual.ProgramacionServicioId > 0)
             {
-                
                 await ProgramacionServicioRepositorio.ActualizarAsync(programacionServicioActual);
             }
             else
@@ -340,7 +346,15 @@ namespace FUMIT.Formularios.Operacion
 
         private void programacionservicioBindingSource_CurrentChanged(object sender, EventArgs e)
         {
-            if (ProgramacionServicioActual.Dias != null)
+
+            //Se limpia
+            for (int i = 0; i < 7; i++)
+            {
+                chkListDiasSemana.SetItemChecked(i,false);
+            }
+
+
+            if (ProgramacionServicioActual.Dias != null && ProgramacionServicioActual.Semana.HasValue && ProgramacionServicioActual.Semana.Value > 0)
             {
                 int[] dias = ProgramacionServicioActual.Dias.Split(',').Select(s => Convert.ToInt32(s)).ToArray();
 
@@ -374,6 +388,13 @@ namespace FUMIT.Formularios.Operacion
             }
             
             ModoEditar = false;
+        }
+
+        private async  void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
+        {
+            await ProgramacionServicioRepositorio.EliminarAsync(ProgramacionServicioActual);
+            programacionservicioBindingSource.RemoveCurrent();
+
         }
     }
 }

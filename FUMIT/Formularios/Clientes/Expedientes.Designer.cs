@@ -84,7 +84,7 @@
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker3 = new System.ComponentModel.BackgroundWorker();
             this.tabDatosCliente = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabInformacion = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBoxObservaciones = new System.Windows.Forms.GroupBox();
@@ -132,7 +132,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.expedientesBindingSource)).BeginInit();
             this.groupBoxDatosComerciales.SuspendLayout();
             this.tabDatosCliente.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tabInformacion.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBoxObservaciones.SuspendLayout();
@@ -312,7 +312,7 @@
             this.clienteBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
             this.clienteBindingNavigator.BindingSource = this.clienteBindingSource;
             this.clienteBindingNavigator.CountItem = this.bindingNavigatorCountItem;
-            this.clienteBindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
+            this.clienteBindingNavigator.DeleteItem = null;
             this.clienteBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bindingNavigatorMoveFirstItem,
             this.bindingNavigatorMovePreviousItem,
@@ -369,6 +369,7 @@
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(70, 22);
             this.bindingNavigatorDeleteItem.Text = "Eliminar";
+            this.bindingNavigatorDeleteItem.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click_2);
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -471,7 +472,7 @@
             // 
             // claveTextBox
             // 
-            this.claveTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "Clave", true));
+            this.claveTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "Clave", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.claveTextBox.DataBindings.Add(new System.Windows.Forms.Binding("ReadOnly", this.expedientesBindingSource, "ModoNormal", true));
             this.claveTextBox.Location = new System.Drawing.Point(281, 31);
             this.claveTextBox.Name = "claveTextBox";
@@ -485,7 +486,7 @@
             // 
             // clienteIdTextBox
             // 
-            this.clienteIdTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "ClienteId", true));
+            this.clienteIdTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "ClienteId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.clienteIdTextBox.Location = new System.Drawing.Point(99, 28);
             this.clienteIdTextBox.Name = "clienteIdTextBox";
             this.clienteIdTextBox.ReadOnly = true;
@@ -494,7 +495,7 @@
             // 
             // contactoTextBox
             // 
-            this.contactoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "Contacto", true));
+            this.contactoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "Contacto", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.contactoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("ReadOnly", this.expedientesBindingSource, "ModoNormal", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.contactoTextBox.Location = new System.Drawing.Point(99, 136);
             this.contactoTextBox.Name = "contactoTextBox";
@@ -504,7 +505,7 @@
             // 
             // direccionTextBox
             // 
-            this.direccionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "Direccion", true));
+            this.direccionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "Direccion", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.direccionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("ReadOnly", this.expedientesBindingSource, "ModoNormal", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.direccionTextBox.Location = new System.Drawing.Point(99, 106);
             this.direccionTextBox.Name = "direccionTextBox";
@@ -525,7 +526,7 @@
             // 
             // nombreTextBox
             // 
-            this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "Nombre", true));
+            this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "Nombre", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("ReadOnly", this.expedientesBindingSource, "ModoNormal", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.nombreTextBox.Location = new System.Drawing.Point(98, 54);
             this.nombreTextBox.Name = "nombreTextBox";
@@ -535,7 +536,7 @@
             // 
             // rfcTextBox
             // 
-            this.rfcTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "Rfc", true));
+            this.rfcTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "Rfc", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.rfcTextBox.DataBindings.Add(new System.Windows.Forms.Binding("ReadOnly", this.expedientesBindingSource, "ModoNormal", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.rfcTextBox.Location = new System.Drawing.Point(111, 71);
             this.rfcTextBox.Name = "rfcTextBox";
@@ -555,7 +556,7 @@
             // 
             // telefonoTextBox
             // 
-            this.telefonoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "Telefono", true));
+            this.telefonoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "Telefono", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.telefonoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("ReadOnly", this.expedientesBindingSource, "ModoNormal", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.telefonoTextBox.Location = new System.Drawing.Point(99, 162);
             this.telefonoTextBox.Name = "telefonoTextBox";
@@ -591,7 +592,7 @@
             // 
             // correoTextBox
             // 
-            this.correoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "Correo", true));
+            this.correoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "Correo", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.correoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("ReadOnly", this.expedientesBindingSource, "ModoNormal", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.correoTextBox.Location = new System.Drawing.Point(281, 162);
             this.correoTextBox.Name = "correoTextBox";
@@ -614,8 +615,8 @@
             // 
             // sucursalFUMITTextBox
             // 
+            this.sucursalFUMITTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "Sucursal.Nombre", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.sucursalFUMITTextBox.DataBindings.Add(new System.Windows.Forms.Binding("ReadOnly", this.expedientesBindingSource, "ModoNormal", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.sucursalFUMITTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "Sucursal.Nombre", true));
             this.sucursalFUMITTextBox.Location = new System.Drawing.Point(95, 22);
             this.sucursalFUMITTextBox.Name = "sucursalFUMITTextBox";
             this.sucursalFUMITTextBox.ReadOnly = true;
@@ -633,7 +634,7 @@
             // 
             // tabDatosCliente
             // 
-            this.tabDatosCliente.Controls.Add(this.tabPage1);
+            this.tabDatosCliente.Controls.Add(this.tabInformacion);
             this.tabDatosCliente.Controls.Add(this.tabContactos);
             this.tabDatosCliente.Controls.Add(this.tabProgramacionServiciosCliente);
             this.tabDatosCliente.Controls.Add(this.tabContratos);
@@ -649,16 +650,16 @@
             this.tabDatosCliente.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabDatosCliente_Selected);
             this.tabDatosCliente.TabIndexChanged += new System.EventHandler(this.tabDatosCliente_TabIndexChanged);
             // 
-            // tabPage1
+            // tabInformacion
             // 
-            this.tabPage1.Controls.Add(this.tableLayoutPanel1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(923, 501);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Informacion del cliente";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabInformacion.Controls.Add(this.tableLayoutPanel1);
+            this.tabInformacion.Location = new System.Drawing.Point(4, 22);
+            this.tabInformacion.Name = "tabInformacion";
+            this.tabInformacion.Padding = new System.Windows.Forms.Padding(3);
+            this.tabInformacion.Size = new System.Drawing.Size(923, 501);
+            this.tabInformacion.TabIndex = 0;
+            this.tabInformacion.Text = "Informacion del cliente";
+            this.tabInformacion.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
             // 
@@ -719,7 +720,7 @@
             // 
             // requiereManifiestoCheckBox
             // 
-            this.requiereManifiestoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.clienteBindingSource, "RequiereManifiesto", true));
+            this.requiereManifiestoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.clienteBindingSource, "RequiereManifiesto", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.requiereManifiestoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.expedientesBindingSource, "ModoEdicion", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.requiereManifiestoCheckBox.Enabled = false;
             this.requiereManifiestoCheckBox.Location = new System.Drawing.Point(130, 31);
@@ -730,7 +731,7 @@
             // 
             // morosoCheckBox
             // 
-            this.morosoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.clienteBindingSource, "Moroso", true));
+            this.morosoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.clienteBindingSource, "Moroso", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.morosoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.expedientesBindingSource, "ModoEdicion", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.morosoCheckBox.Enabled = false;
             this.morosoCheckBox.Location = new System.Drawing.Point(130, 62);
@@ -742,7 +743,7 @@
             // 
             // activoCheckBox
             // 
-            this.activoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.clienteBindingSource, "Activo", true));
+            this.activoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.clienteBindingSource, "Activo", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.activoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.expedientesBindingSource, "ModoEdicion", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.activoCheckBox.Enabled = false;
             this.activoCheckBox.Location = new System.Drawing.Point(130, 93);
@@ -756,7 +757,7 @@
             this.observacionesTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.observacionesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "Observaciones", true));
+            this.observacionesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "Observaciones", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.observacionesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("ReadOnly", this.expedientesBindingSource, "ModoNormal", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.observacionesTextBox.Location = new System.Drawing.Point(264, 19);
             this.observacionesTextBox.Multiline = true;
@@ -767,7 +768,7 @@
             // 
             // bloqueadoCheckBox
             // 
-            this.bloqueadoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.clienteBindingSource, "Bloqueado", true));
+            this.bloqueadoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.clienteBindingSource, "Bloqueado", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.bloqueadoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.expedientesBindingSource, "ModoEdicion", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.bloqueadoCheckBox.Enabled = false;
             this.bloqueadoCheckBox.Location = new System.Drawing.Point(130, 124);
@@ -798,7 +799,7 @@
             // 
             // personaMoralCheckBox
             // 
-            this.personaMoralCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.clienteBindingSource, "PersonaMoral", true));
+            this.personaMoralCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.clienteBindingSource, "PersonaMoral", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.personaMoralCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.expedientesBindingSource, "ModoEdicion", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.personaMoralCheckBox.Enabled = false;
             this.personaMoralCheckBox.Location = new System.Drawing.Point(111, 101);
@@ -809,7 +810,7 @@
             // 
             // nombreFiscalTextBox
             // 
-            this.nombreFiscalTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "NombreFiscal", true));
+            this.nombreFiscalTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "NombreFiscal", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.nombreFiscalTextBox.DataBindings.Add(new System.Windows.Forms.Binding("ReadOnly", this.expedientesBindingSource, "ModoNormal", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.nombreFiscalTextBox.Location = new System.Drawing.Point(111, 19);
             this.nombreFiscalTextBox.Name = "nombreFiscalTextBox";
@@ -819,7 +820,7 @@
             // 
             // direccionFiscalTextBox
             // 
-            this.direccionFiscalTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "DireccionFiscal", true));
+            this.direccionFiscalTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "DireccionFiscal", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.direccionFiscalTextBox.DataBindings.Add(new System.Windows.Forms.Binding("ReadOnly", this.expedientesBindingSource, "ModoNormal", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.direccionFiscalTextBox.Location = new System.Drawing.Point(111, 45);
             this.direccionFiscalTextBox.Name = "direccionFiscalTextBox";
@@ -873,6 +874,7 @@
             this.programacionServiciosClientes1.ProgramacionServiciosClienteRepositorio = null;
             this.programacionServiciosClientes1.Size = new System.Drawing.Size(917, 495);
             this.programacionServiciosClientes1.TabIndex = 0;
+            this.programacionServiciosClientes1.vistaProgramacionServiciosCliente = null;
             this.programacionServiciosClientes1.Load += new System.EventHandler(this.programacionServiciosClientes1_Load);
             // 
             // tabContratos
@@ -956,7 +958,7 @@
             this.groupBoxDatosComerciales.ResumeLayout(false);
             this.groupBoxDatosComerciales.PerformLayout();
             this.tabDatosCliente.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
+            this.tabInformacion.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -1008,7 +1010,7 @@
         private System.Windows.Forms.TextBox sucursalFUMITTextBox;
         private System.Windows.Forms.Label lblSucursal;
         private System.Windows.Forms.TabControl tabDatosCliente;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabInformacion;
         private System.Windows.Forms.TabPage tabProgramacionServiciosCliente;
         private ProgramacionServiciosClientes programacionServiciosClientes1;
         private System.Windows.Forms.TabPage tabContratos;

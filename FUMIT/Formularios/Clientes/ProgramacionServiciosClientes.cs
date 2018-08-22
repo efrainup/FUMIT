@@ -60,6 +60,8 @@ namespace FUMIT.Formularios.Clientes
             }
         }
 
+        IServiciosProgramados serviciosProgramados { get; set; }
+        public IVSProgramacionServiciosCliente vistaProgramacionServiciosCliente { get; set; }
         public IProgramacionServiciosCliente ProgramacionServiciosClienteRepositorio { get; set; }
         public Entidades.Programacionservicioscliente ProgramacionServicioClienteActual { get
             {
@@ -87,15 +89,11 @@ namespace FUMIT.Formularios.Clientes
         protected void CargarDatos(int clienteId)
         {
             IEnumerable<Programacionservicioscliente> programacion = ProgramacionServiciosClienteRepositorio.RecuperarProgramacionServiciosClientePorIdCliente(clienteId);
-            IVSProgramacionServiciosCliente vsp = new VSProgramacionServiciosClienteRepositorio();
-            //foreach (Programacionservicioscliente programacionObjeto in programacion)
-            //{
-            //    programacionserviciosclienteBindingSource.Add(programacionObjeto);
-            //}
+            
             programacionserviciosclienteBindingSource.DataSource = new BindingList<Programacionservicioscliente>(programacion.ToList());
 
 
-            vsprogramacionserviciosclienteBindingSource.DataSource = vsp.Recuperar();
+            vsprogramacionserviciosclienteBindingSource.DataSource = vistaProgramacionServiciosCliente.RecuperarPorClienteId(clienteId);
         }
 
         private void ProgramacionServiciosClientes_Load(object sender, EventArgs e)
@@ -103,6 +101,14 @@ namespace FUMIT.Formularios.Clientes
             if (!DesignMode)
             {
                 ProgramacionServiciosClienteRepositorio = CommonServiceLocator.ServiceLocator.Current.GetInstance<IProgramacionServiciosCliente>();
+                vistaProgramacionServiciosCliente = CommonServiceLocator.ServiceLocator.Current.GetInstance<IVSProgramacionServiciosCliente>();
+                serviciosProgramados = CommonServiceLocator.ServiceLocator.Current.GetInstance<IServiciosProgramados>();
+
+                //Se inicializa binding para que el boton de programar servicios se deshabilite cuando los servicios ya hayan sido programados
+                var binding = new System.Windows.Forms.Binding("Enabled", this.programacionserviciosclienteBindingSource, "ServiciosProgramados", true);
+                binding.Parse += (s, eargs) => eargs.Value = !((bool)eargs.Value);
+                binding.Format += (s, eargs) => eargs.Value = !((bool)eargs.Value);
+                this.btnProgramarServicios.DataBindings.Add(binding);
 
             }
         }
@@ -173,97 +179,13 @@ namespace FUMIT.Formularios.Clientes
         {
             IServiciosProgramados serviciosProgramados = CommonServiceLocator.ServiceLocator.Current.GetInstance<IServiciosProgramados>();
 
-            DateTime fechaActual = ProgramacionServicioClienteActual.FechaInicio;
-            int[] ds = ProgramacionServicioClienteActual.Programacionservicio.Dias.Split(',').Select(s => Convert.ToInt32(s.Replace("7", "0"))).ToArray();
+            Programacionservicioscliente programacionServicio = ProgramacionServicioClienteActual;
 
-            //El conteo siempre comeinza a partir del proximo lunes.
+            await serviciosProgramados.ProgramarServicios(programacionServicio);
 
-            //Si hay dias especificados, sin semanas ni meses, entonces el ciclo se repite cada x dias
-            //Ej. D=15,S=0,M=0 el ciclo se repite cada 15 dias.
-
-            //Si hay varios dias especificados, sin semanas ni meses, entonces el ciclo se repite cada x dias
-            //Ej. D=7,15 ,S=0,M=0 el ciclo se repite cada 15 dias (Se toma el último).
-
-            //Si hay semanas especificadas, entonces el ciclo se repite cada x semanas * 7
-
-            //Si hay meses especificados, entonces el ciclo se repite cada cambio de mes
-
-            int dia = 1;
-            int mes = 1;
-            int diasCiclo = 0;
-            int mesCiclo = 0;
-            bool cambioDeMes = false;
-
-            int i = 0;
-            if (fechaActual.DayOfWeek != DayOfWeek.Monday)
-            {
-                while (fechaActual.AddDays(i).DayOfWeek != DayOfWeek.Monday)
-                {
-                    i++;
-                };
-
-                dia = dia - i;
-            }
-
-            if (!ProgramacionServicioClienteActual.Programacionservicio.Semana.HasValue || ProgramacionServicioClienteActual.Programacionservicio.Semana.Value == 0)
-            {
-                diasCiclo = ds.Max();
-            }
-            else
-            {
-                diasCiclo = ProgramacionServicioClienteActual.Programacionservicio.Semana.Value * 7;
-            }
-
-            cambioDeMes = ProgramacionServicioClienteActual.Programacionservicio.Mes.HasValue && ProgramacionServicioClienteActual.Programacionservicio.Mes.Value > 0;
-
-
-            while (fechaActual <= ProgramacionServicioClienteActual.FechaTermino)
-            {
-                
-                if (ds.Any(a => a==dia))
-                {
-                    
-
-                    Entidades.Serviciosprogramado servicio = new Serviciosprogramado()
-                    {
-                        ServicioProgramadoId = 0,
-                        ClienteId = ProgramacionServicioClienteActual.ClienteId,
-                        Cancelado = false,
-                        Tipo = "Programado",
-                        ServicioId = ProgramacionServicioClienteActual.ServicioId,
-                        FechaServicio = fechaActual,
-                        Servicio = ProgramacionServicioClienteActual.Servicio,
-                        Clientes = ProgramacionServicioClienteActual.Clientes
-                    };
-
-
-                    await serviciosProgramados.CrearAsync(servicio);
-                }
-
-                //Se agrega un dia a la fecha actual.
-                //El contador de días se reinicia si se alcanza el ciclo de días o de mes
-                dia++;
-                if (cambioDeMes)
-                {
-                    if (fechaActual.AddDays(1).Month != fechaActual.Month)
-                    {
-                        mes++;
-                    }
-                    if(mes > mesCiclo)
-                    {
-                        mes = 1;
-                        dia = 1;
-                    }
-
-                }else if(dia > diasCiclo)
-                {
-                    dia = 1;
-                }
-                fechaActual = fechaActual.AddDays(1);
-            }
-
-
+            programacionserviciosclienteBindingSource.ResetBindings(false);
         }
+
 
         private void vsprogramacionserviciosclienteBindingSource_CurrentChanged(object sender, EventArgs e)
         {

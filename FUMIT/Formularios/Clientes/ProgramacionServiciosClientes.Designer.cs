@@ -38,7 +38,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProgramacionServiciosClientes));
             this.programacionserviciosclienteBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.programacionserviciosclienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -63,8 +62,9 @@
             this.btnBusquedaHorario = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.vsprogramacionserviciosclienteDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreHorarioProgramado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,7 +73,7 @@
             this.dataGridViewCheckBoxColumn3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewCheckBoxColumn4 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.vsprogramacionserviciosclienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.programacionserviciosclienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             activoLabel = new System.Windows.Forms.Label();
             fechaInicioLabel = new System.Windows.Forms.Label();
             fechaTerminoLabel = new System.Windows.Forms.Label();
@@ -82,12 +82,12 @@
             nombreLabel1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.programacionserviciosclienteBindingNavigator)).BeginInit();
             this.programacionserviciosclienteBindingNavigator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.programacionserviciosclienteBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vsprogramacionserviciosclienteDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vsprogramacionserviciosclienteBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vsprogramacionserviciosclienteBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.programacionserviciosclienteBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // activoLabel
@@ -184,11 +184,6 @@
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(69, 22);
             this.bindingNavigatorAddNewItem.Text = "Agregar";
             this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
-            // 
-            // programacionserviciosclienteBindingSource
-            // 
-            this.programacionserviciosclienteBindingSource.DataSource = typeof(FUMIT.Entidades.Programacionservicioscliente);
-            this.programacionserviciosclienteBindingSource.CurrentItemChanged += new System.EventHandler(this.programacionserviciosclienteBindingSource_CurrentItemChanged);
             // 
             // bindingNavigatorCountItem
             // 
@@ -353,7 +348,6 @@
             this.groupBox1.TabIndex = 42;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Programacion de servicio";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // btnBusquedaServicio
             // 
@@ -441,19 +435,26 @@
             this.vsprogramacionserviciosclienteDataGridView.Size = new System.Drawing.Size(848, 188);
             this.vsprogramacionserviciosclienteDataGridView.TabIndex = 46;
             // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.DataPropertyName = "Nombre";
-            this.dataGridViewTextBoxColumn12.HeaderText = "Nombre";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            this.dataGridViewTextBoxColumn12.ReadOnly = true;
-            // 
             // NombreHorarioProgramado
             // 
+            this.NombreHorarioProgramado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.NombreHorarioProgramado.DataPropertyName = "NombreHorarioProgramado";
             this.NombreHorarioProgramado.HeaderText = "Horario";
             this.NombreHorarioProgramado.Name = "NombreHorarioProgramado";
             this.NombreHorarioProgramado.ReadOnly = true;
+            this.NombreHorarioProgramado.Width = 66;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "Nombre";
+            this.dataGridViewTextBoxColumn12.HeaderText = "Nombre";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.dataGridViewTextBoxColumn12.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn7
             // 
@@ -481,24 +482,30 @@
             // 
             // dataGridViewTextBoxColumn10
             // 
+            this.dataGridViewTextBoxColumn10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.dataGridViewTextBoxColumn10.DataPropertyName = "FechaInicio";
-            this.dataGridViewTextBoxColumn10.HeaderText = "FechaInicio";
+            this.dataGridViewTextBoxColumn10.HeaderText = "Fecha Inicio";
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            this.dataGridViewTextBoxColumn10.Width = 90;
             // 
             // dataGridViewTextBoxColumn11
             // 
+            this.dataGridViewTextBoxColumn11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.dataGridViewTextBoxColumn11.DataPropertyName = "FechaTermino";
-            this.dataGridViewTextBoxColumn11.HeaderText = "FechaTermino";
+            this.dataGridViewTextBoxColumn11.HeaderText = "Fecha Termino";
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            this.dataGridViewTextBoxColumn11.Width = 95;
             // 
             // dataGridViewCheckBoxColumn3
             // 
+            this.dataGridViewCheckBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.dataGridViewCheckBoxColumn3.DataPropertyName = "Activo";
             this.dataGridViewCheckBoxColumn3.HeaderText = "Activo";
             this.dataGridViewCheckBoxColumn3.Name = "dataGridViewCheckBoxColumn3";
             this.dataGridViewCheckBoxColumn3.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn3.Width = 43;
             // 
             // dataGridViewCheckBoxColumn4
             // 
@@ -513,9 +520,10 @@
             this.vsprogramacionserviciosclienteBindingSource.DataSource = typeof(FUMIT.Entidades.Vsprogramacionservicioscliente);
             this.vsprogramacionserviciosclienteBindingSource.CurrentChanged += new System.EventHandler(this.vsprogramacionserviciosclienteBindingSource_CurrentChanged);
             // 
-            // errorProvider1
+            // programacionserviciosclienteBindingSource
             // 
-            this.errorProvider1.ContainerControl = this;
+            this.programacionserviciosclienteBindingSource.DataSource = typeof(FUMIT.Entidades.Programacionservicioscliente);
+            this.programacionserviciosclienteBindingSource.CurrentItemChanged += new System.EventHandler(this.programacionserviciosclienteBindingSource_CurrentItemChanged);
             // 
             // ProgramacionServiciosClientes
             // 
@@ -529,13 +537,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.programacionserviciosclienteBindingNavigator)).EndInit();
             this.programacionserviciosclienteBindingNavigator.ResumeLayout(false);
             this.programacionserviciosclienteBindingNavigator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.programacionserviciosclienteBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.vsprogramacionserviciosclienteDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vsprogramacionserviciosclienteBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vsprogramacionserviciosclienteBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.programacionserviciosclienteBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

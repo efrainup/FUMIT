@@ -34,7 +34,7 @@ namespace FUMIT.Formularios.Operacion
             int i = 0;
             while (fechaActual < dtpFechaFinal.Value.Date)
             {
-                dataGridView1.Columns.Add($"Fecha{i}", fechaActual.ToShortDateString());
+                dataGridView1.Columns.Add($"Fecha{i}", $"{fechaActual.ToLongDateString()}");
                 
                 
 

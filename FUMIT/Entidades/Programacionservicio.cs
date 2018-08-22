@@ -60,6 +60,16 @@ namespace FUMIT.Entidades
         [Display(Name = "Mes")]
         public int? Mes { get; set; } // Mes
 
+        [Column(@"Activo", Order = 7, TypeName = "bit")]
+        [Required]
+        [Display(Name = "Activo")]
+        public bool Activo { get; set; } // Activo
+
+        [Column(@"Borrado", Order = 8, TypeName = "bit")]
+        [Required]
+        [Display(Name = "Borrado")]
+        public bool Borrado { get; set; } // Borrado
+
         // Reverse navigation
 
         /// <summary>
@@ -76,6 +86,8 @@ namespace FUMIT.Entidades
 
         public Programacionservicio()
         {
+            Activo = true;
+            Borrado = false;
             Programacionserviciosclientes = new System.Collections.Generic.List<Programacionservicioscliente>();
             InitializePartial();
         }

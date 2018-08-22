@@ -71,6 +71,11 @@ namespace FUMIT.Entidades
         [Display(Name = "Servicio ID")]
         public int ServicioId { get; set; } // ServicioId
 
+        [Column(@"ServiciosProgramados", Order = 9, TypeName = "bit")]
+        [Required]
+        [Display(Name = "Servicios programados")]
+        public bool ServiciosProgramados { get; set; } // ServiciosProgramados
+
         // Foreign keys
 
         /// <summary>
@@ -92,6 +97,7 @@ namespace FUMIT.Entidades
         {
             Activo = true;
             Borrado = false;
+            ServiciosProgramados = false;
             InitializePartial();
         }
 

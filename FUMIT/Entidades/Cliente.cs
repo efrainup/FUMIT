@@ -79,10 +79,10 @@ namespace FUMIT.Entidades
 
         [Column(@"Direccion", Order = 9, TypeName = "varchar")]
         [Required(AllowEmptyStrings = true)]
-        [MaxLength(150)]
-        [StringLength(150)]
+        [MaxLength(250)]
+        [StringLength(250)]
         [Display(Name = "Direccion")]
-        public string Direccion { get; set; } // Direccion (length: 150)
+        public string Direccion { get; set; } // Direccion (length: 250)
 
         [Column(@"DireccionFiscal", Order = 10, TypeName = "varchar")]
         [MaxLength(250)]
@@ -97,34 +97,33 @@ namespace FUMIT.Entidades
         public string Ubicacion { get; set; } // Ubicacion (length: 30)
 
         [Column(@"Contacto", Order = 12, TypeName = "varchar")]
-        [MaxLength(80)]
-        [StringLength(80)]
+        [MaxLength(300)]
+        [StringLength(300)]
         [Display(Name = "Contacto")]
-        public string Contacto { get; set; } // Contacto (length: 80)
+        public string Contacto { get; set; } // Contacto (length: 300)
 
         [Column(@"Telefono", Order = 13, TypeName = "varchar")]
-        [MaxLength(80)]
-        [StringLength(80)]
+        [MaxLength(300)]
+        [StringLength(300)]
         [Display(Name = "Telefono")]
-        public string Telefono { get; set; } // Telefono (length: 80)
+        public string Telefono { get; set; } // Telefono (length: 300)
 
         [Column(@"Correo", Order = 14, TypeName = "varchar")]
-        [MaxLength(80)]
-        [StringLength(80)]
+        [MaxLength(300)]
+        [StringLength(300)]
         [Display(Name = "Correo")]
-        public string Correo { get; set; } // Correo (length: 80)
+        public string Correo { get; set; } // Correo (length: 300)
 
         [Column(@"FechaCreacion", Order = 15, TypeName = "datetime")]
-        [Required]
         [DataType(DataType.DateTime)]
         [Display(Name = "Fecha creacion")]
-        public System.DateTime FechaCreacion { get; set; } // FechaCreacion
+        public System.DateTime? FechaCreacion { get; set; } // FechaCreacion
 
         [Column(@"Observaciones", Order = 16, TypeName = "varchar")]
-        [MaxLength(250)]
-        [StringLength(250)]
+        [MaxLength(500)]
+        [StringLength(500)]
         [Display(Name = "Observaciones")]
-        public string Observaciones { get; set; } // Observaciones (length: 250)
+        public string Observaciones { get; set; } // Observaciones (length: 500)
 
         [Column(@"RequiereManifiesto", Order = 17, TypeName = "bit")]
         [Required]

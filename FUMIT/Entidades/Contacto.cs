@@ -48,22 +48,27 @@ namespace FUMIT.Entidades
         public string Nombre { get; set; } // Nombre (length: 120)
 
         [Column(@"Telefono", Order = 4, TypeName = "varchar")]
-        [MaxLength(30)]
-        [StringLength(30)]
+        [MaxLength(100)]
+        [StringLength(100)]
         [Display(Name = "Telefono")]
-        public string Telefono { get; set; } // Telefono (length: 30)
+        public string Telefono { get; set; } // Telefono (length: 100)
 
         [Column(@"Correo", Order = 5, TypeName = "varchar")]
-        [MaxLength(50)]
-        [StringLength(50)]
+        [MaxLength(100)]
+        [StringLength(100)]
         [Display(Name = "Correo")]
-        public string Correo { get; set; } // Correo (length: 50)
+        public string Correo { get; set; } // Correo (length: 100)
 
         [Column(@"Tipo", Order = 6, TypeName = "varchar")]
         [MaxLength(20)]
         [StringLength(20)]
         [Display(Name = "Tipo")]
         public string Tipo { get; set; } // Tipo (length: 20)
+
+        [Column(@"Borrado", Order = 7, TypeName = "bit")]
+        [Required]
+        [Display(Name = "Borrado")]
+        public bool Borrado { get; set; } // Borrado
 
         // Foreign keys
 
@@ -74,6 +79,7 @@ namespace FUMIT.Entidades
 
         public Contacto()
         {
+            Borrado = false;
             InitializePartial();
         }
 
