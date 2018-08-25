@@ -67,6 +67,22 @@ namespace FUMIT.Entidades
         [Display(Name = "Borrado")]
         public bool Borrado { get; set; } // Borrado
 
+        [Column(@"Activo", Order = 8, TypeName = "bit")]
+        [Required]
+        [Display(Name = "Activo")]
+        public bool Activo { get; set; } // Activo
+
+        [Column(@"Prioridad", Order = 9, TypeName = "int")]
+        [Required]
+        [Display(Name = "Prioridad")]
+        public int Prioridad { get; set; } // Prioridad
+
+        [Column(@"Observaciones", Order = 10, TypeName = "varchar")]
+        [MaxLength(250)]
+        [StringLength(250)]
+        [Display(Name = "Observaciones")]
+        public string Observaciones { get; set; } // Observaciones (length: 250)
+
         // Foreign keys
 
         /// <summary>
@@ -83,6 +99,8 @@ namespace FUMIT.Entidades
         {
             Cancelado = false;
             Borrado = false;
+            Activo = true;
+            Prioridad = 1000;
             InitializePartial();
         }
 

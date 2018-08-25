@@ -94,6 +94,8 @@ namespace FUMIT.Formularios.Clientes
                 RepositorioClientes = ServiceLocator.Current.GetInstance<IClientes>();
 
                 ListadoClientes = RepositorioClientes.Recuperar();
+
+                
                 //foreach(Entidades.Cliente cliente in ListadoClientes)
                 //{
                 //    clienteBindingSource.Add(cliente);

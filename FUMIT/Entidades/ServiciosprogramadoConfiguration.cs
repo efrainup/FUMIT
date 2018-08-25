@@ -31,6 +31,7 @@ namespace FUMIT.Entidades
         public ServiciosprogramadoConfiguration(string schema)
         {
             Property(x => x.Tipo).IsOptional().IsUnicode(false);
+            Property(x => x.Observaciones).IsOptional().IsUnicode(false);
 
         }
     }
