@@ -30,8 +30,12 @@ namespace FUMIT.Formularios.Operacion
                 DateTimeFormatInfo dfi = DateTimeFormatInfo.CurrentInfo;
                 Calendar calendar = dfi.Calendar;
 
-                DateTime primerDiaAño  = new DateTime(Convert.ToInt32(tsbAñoTextBox.Text), 12, 1);
-                DateTime primerDiaSemana = calendar.AddWeeks(primerDiaAño, semanaActual);
+                DateTime primerDiaAño  = new DateTime(Año, 1, 1);
+                //Se resta una semana porque el primer día del año está en la semana 1 y si se agrega una semana entonces nos daría la semana 2.
+                DateTime primerDiaSemana = calendar.AddWeeks(primerDiaAño, semanaActual -1);
+
+                dtpFechaInicio.Value = primerDiaSemana;
+                dtpFechaFinal.Value = primerDiaSemana.AddDays(6); //Lunes +6 días es igual a domingo
 
                 //TotalSemanas = calendar.GetWeekOfYear(new DateTime(año, 12, 31), CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
 
@@ -54,6 +58,7 @@ namespace FUMIT.Formularios.Operacion
                 tsbNumeroSemanas.Text = totalSemanas.ToString();
             }
         }
+        public int Año { get; set; }
 
 
         public CalendarioServicios()
@@ -76,13 +81,17 @@ namespace FUMIT.Formularios.Operacion
             DateTime fechaActual = dtpFechaInicio.Value.Date;
             //dataGridView1.Columns.Clear();
             int i = 0;
-            while (fechaActual < dtpFechaFinal.Value.Date && i < 7)
+            while (fechaActual <= dtpFechaFinal.Value.Date && i < 7)
             {
                 //dataGridView1.Columns.Add($"Fecha{i}", $"{fechaActual.ToLongDateString()}");
 
 
 
-                Entidades.Serviciosprogramado[] serviciosprogramados = serviciosProgramadosLista.Where(w => w.FechaServicio.Date == fechaActual).ToArray();
+                Entidades.Serviciosprogramado[] serviciosprogramados = serviciosProgramadosLista
+                    .Where(w => w.FechaServicio.Date == fechaActual)
+                    .OrderBy(o => o.Prioridad)
+                    .ThenBy(t => t.ClienteId)
+                    .ToArray();
 
 
                 for (int j = 0; j < serviciosprogramados.Length; j++)
@@ -95,75 +104,41 @@ namespace FUMIT.Formularios.Operacion
                         miLista.Add(semana);
                     }
 
+                    var nuevoServicio = new FUMIT.UserControls.Wpf.Servicio()
+                    {
+                        Id = serviciosprogramados[j].ServicioProgramadoId,
+                        Cliente = serviciosprogramados[j].Clientes.Nombre,
+                        Status = serviciosprogramados[j].Cancelado ? "Cancelado" : "Pendiente",
+                        Cancelado = serviciosprogramados[j].Cancelado,
+                        DescripcionServicio = serviciosprogramados[j].Servicio.Nombre,
+                        Unidad = "Sin unidad asignada",
+                        Entidad = serviciosprogramados[j]
+                    };
+
                     switch (fechaActual.DayOfWeek)
                     {
                         case DayOfWeek.Monday:
-                            semana.Lunes = new FUMIT.UserControls.Wpf.Servicio()
-                            {
-                                ServicioId = 1,
-                                Cliente = serviciosprogramados[j].Clientes.Nombre,
-                                Status = "Pendiente",
-                                Unidad = "T000"
-                            };
+                            semana.Lunes = nuevoServicio;
                             break;
                         case DayOfWeek.Tuesday:
-                            semana.Martes = new FUMIT.UserControls.Wpf.Servicio()
-                            {
-                                ServicioId = 1,
-                                Cliente = serviciosprogramados[j].Clientes.Nombre,
-                                Status = "Pendiente",
-                                Unidad = "T000"
-                            };
+                            semana.Martes = nuevoServicio;
                             break;
                         case DayOfWeek.Wednesday:
-                            semana.Miercoles = new FUMIT.UserControls.Wpf.Servicio()
-                            {
-                                ServicioId = 1,
-                                Cliente = serviciosprogramados[j].Clientes.Nombre,
-                                Status = "Pendiente",
-                                Unidad = "T000"
-                            };
+                            semana.Miercoles = nuevoServicio;
                             break;
                         case DayOfWeek.Thursday:
-                            semana.Jueves = new FUMIT.UserControls.Wpf.Servicio()
-                            {
-                                ServicioId = 1,
-                                Cliente = serviciosprogramados[j].Clientes.Nombre,
-                                Status = "Pendiente",
-                                Unidad = "T000"
-                            };
+                            semana.Jueves = nuevoServicio;
                             break;
                         case DayOfWeek.Friday:
-                            semana.Viernes = new FUMIT.UserControls.Wpf.Servicio()
-                            {
-                                ServicioId = 1,
-                                Cliente = serviciosprogramados[j].Clientes.Nombre,
-                                Status = "Pendiente",
-                                Unidad = "T000"
-                            };
+                            semana.Viernes = nuevoServicio;
                             break;
                         case DayOfWeek.Saturday:
-                            semana.Sabado = new FUMIT.UserControls.Wpf.Servicio()
-                            {
-                                ServicioId = 1,
-                                Cliente = serviciosprogramados[j].Clientes.Nombre,
-                                Status = "Pendiente",
-                                Unidad = "T000"
-                            };
+                            semana.Sabado = nuevoServicio;
                             break;
                         case DayOfWeek.Sunday:
-                            semana.Domingo = new FUMIT.UserControls.Wpf.Servicio()
-                            {
-                                ServicioId = 1,
-                                Cliente = serviciosprogramados[j].Clientes.Nombre,
-                                Status = "Pendiente",
-                                Unidad = "T000"
-                            };
+                            semana.Domingo = nuevoServicio;
                             break;
-
-
                     }
-                    //elemento[i] = serviciosprogramados[j].Clientes.Nombre;
 
                 }
                 fechaActual = fechaActual.AddDays(1);
@@ -171,8 +146,14 @@ namespace FUMIT.Formularios.Operacion
 
             }
 
-           
-            CalendarioUC.HorarioServiciosSemanales = new System.Collections.ObjectModel.ObservableCollection<UserControls.Wpf.Semana>(miLista);
+            CalendarioUC.HorarioServiciosSemanales.Clear();
+            foreach(UserControls.Wpf.Semana semana in miLista)
+            {
+                CalendarioUC.HorarioServiciosSemanales.Add(semana);
+            }
+
+            //CalendarioUC.HorarioServiciosSemanales.Add()
+            
         }
 
         private void NewMethod()
@@ -229,20 +210,51 @@ namespace FUMIT.Formularios.Operacion
             //Se agrega calendario
             CalendarioUC = new FUMIT.UserControls.Wpf.CalendarioSemanalUserControl();
             CalendarioUC.InitializeComponent();
-            CalendarioUC.MoverServicio += MoverServicio;
+            CalendarioUC.MoverServicio += CalendarioUC_MoverServicio;
+            CalendarioUC.CancelarServicio += CalendarioUC_CancelarServicio;
+            CalendarioUC.VerExpedienteCliente += CalendarioUC_VerExpedienteCliente;
             elementHost2.Child = CalendarioUC;
 
 
             //Se calculan las semanas del año actual
-            int año = DateTime.Now.Year;
-            CalcularSemanasAño(año);
+            Año = DateTime.Now.Year;
+            CalcularSemanasAño(Año);
+            btnActualizar_Click(sender, e);
 
+        }
+
+        private void CalendarioUC_VerExpedienteCliente(object sender, object e)
+        {
+            Entidades.Serviciosprogramado servicioProgramado = e as Entidades.Serviciosprogramado;
+
+            Formularios.Clientes.Expedientes expedientes = new Clientes.Expedientes();
+            expedientes.Load += (sender_load, e_load) =>
+            {
+                int indice = expedientes.clienteBindingSource.IndexOf(servicioProgramado.Clientes);
+                expedientes.clienteBindingSource.Position = indice;
+            };
+            expedientes.Show();
+        }
+
+        private async void CalendarioUC_CancelarServicio(object sender, object e)
+        {
+            DialogResult respuesta = MessageBox.Show("¿Esta seguro que desa cancelar este servicio?", "Cancelación de servicio", MessageBoxButtons.YesNo, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
+            if(respuesta == DialogResult.Yes)
+            {
+                Entidades.Serviciosprogramado servicioProramado = (e as Entidades.Serviciosprogramado);
+                servicioProramado.Cancelado = true;
+                await ServiciosProgramadosRepo.ActualizarAsync(servicioProramado);
+
+                btnActualizar_Click(sender, null);
+            }
+
+            return;
         }
 
         private void CalcularSemanasAño(int año)
         {
-            DateTimeFormatInfo dfi = DateTimeFormatInfo.CurrentInfo;
-            Calendar calendar = dfi.Calendar;
+            DateTimeFormatInfo informacionFormatoDeFecha = DateTimeFormatInfo.CurrentInfo;
+            Calendar calendar = informacionFormatoDeFecha.Calendar;
             TotalSemanas = calendar.GetWeekOfYear(new DateTime(año, 12, 31), CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
 
             //Solo en el año actual pone la semana actual
@@ -253,35 +265,51 @@ namespace FUMIT.Formularios.Operacion
             tsbAñoTextBox.Text = año.ToString();
         }
 
-        protected void MoverServicio(object sender, FUMIT.UserControls.Wpf.Servicio servicio)
+        protected void CalendarioUC_MoverServicio(object sender, object servicio)
         {
+
+            var servicioProgramad = servicio as Entidades.Serviciosprogramado;
+
             var editarServicioFormulario = new Operacion.EditarServicio();
+            editarServicioFormulario.ObjetoEditable = servicioProgramad;
+            editarServicioFormulario.ModoEditar = true;
+
+            editarServicioFormulario.serviciosProgramadosUC.ServicioProgramadoGuardado += (sender_servicioguardado, servicioGuardado) =>
+            {
+                btnActualizar_Click(sender_servicioguardado, null);
+            };
+
             editarServicioFormulario.ShowDialog();
         }
 
         private void bindingNavigatorMoveNextItem_Click(object sender, EventArgs e)
         {
             SemanaActual++;
+            btnActualizar_Click(sender, e);
         }
 
         private void bindingNavigatorMovePreviousItem_Click(object sender, EventArgs e)
         {
             SemanaActual--;
+            btnActualizar_Click(sender, e);
         }
 
         private void bindingNavigatorMoveLastItem_Click(object sender, EventArgs e)
         {
             SemanaActual = TotalSemanas;
+            btnActualizar_Click(sender, e);
         }
 
         private void bindingNavigatorMoveFirstItem_Click(object sender, EventArgs e)
         {
             SemanaActual = 1;
+            btnActualizar_Click(sender, e);
         }
 
         private void TsbAñoTextBox_Leave(object sender, EventArgs e)
         {
             CalcularSemanasAño(Convert.ToInt32(tsbAñoTextBox.Text));
+            btnActualizar_Click(sender, e);
         }
     }
 }

@@ -52,7 +52,6 @@
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
@@ -63,6 +62,7 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbEdit = new System.Windows.Forms.ToolStripButton();
             this.tsbCancelarEdicion = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.clienteBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.toolBtnBusqueda = new System.Windows.Forms.ToolStripButton();
             this.claveTextBox = new System.Windows.Forms.TextBox();
@@ -108,6 +108,7 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.historialCliente1 = new FUMIT.Formularios.Clientes.HistorialCliente();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.serviciosProgramados1 = new FUMIT.Formularios.Operacion.ServiciosProgramados();
             claveLabel = new System.Windows.Forms.Label();
             clienteIdLabel = new System.Windows.Forms.Label();
             contactoLabel = new System.Windows.Forms.Label();
@@ -139,6 +140,7 @@
             this.groupBoxAsignacion.SuspendLayout();
             this.tabContactos.SuspendLayout();
             this.tabProgramacionServiciosCliente.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -362,15 +364,6 @@
             this.bindingNavigatorCountItem.Text = "de {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Número total de elementos";
             // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(70, 22);
-            this.bindingNavigatorDeleteItem.Text = "Eliminar";
-            this.bindingNavigatorDeleteItem.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click_2);
-            // 
             // bindingNavigatorMoveFirstItem
             // 
             this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -450,6 +443,15 @@
             this.tsbCancelarEdicion.Text = "Cancelar";
             this.tsbCancelarEdicion.Visible = false;
             this.tsbCancelarEdicion.Click += new System.EventHandler(this.tsbCancelarEdicion_Click);
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(70, 22);
+            this.bindingNavigatorDeleteItem.Text = "Eliminar";
+            this.bindingNavigatorDeleteItem.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click_2);
             // 
             // clienteBindingNavigatorSaveItem
             // 
@@ -889,6 +891,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.serviciosProgramados1);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -940,6 +943,18 @@
             this.errorProvider1.ContainerControl = this;
             this.errorProvider1.DataSource = this.clienteBindingSource;
             // 
+            // serviciosProgramados1
+            // 
+            this.serviciosProgramados1.ClienteId = 0;
+            this.serviciosProgramados1.DataBindings.Add(new System.Windows.Forms.Binding("ClienteId", this.clienteBindingSource, "ClienteId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.serviciosProgramados1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.serviciosProgramados1.Location = new System.Drawing.Point(3, 3);
+            this.serviciosProgramados1.ModoEditar = false;
+            this.serviciosProgramados1.Name = "serviciosProgramados1";
+            this.serviciosProgramados1.Repositorio = null;
+            this.serviciosProgramados1.Size = new System.Drawing.Size(917, 495);
+            this.serviciosProgramados1.TabIndex = 0;
+            // 
             // Expedientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -968,6 +983,7 @@
             this.groupBoxAsignacion.PerformLayout();
             this.tabContactos.ResumeLayout(false);
             this.tabProgramacionServiciosCliente.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
@@ -977,8 +993,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.BindingSource clienteBindingSource;
         private System.Windows.Forms.BindingNavigator clienteBindingNavigator;
         private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
@@ -1038,5 +1052,7 @@
         private System.Windows.Forms.CheckBox requiereManifiestoCheckBox;
         private System.Windows.Forms.TabPage tabContactos;
         private Contactos contactos1;
+        internal System.Windows.Forms.BindingSource clienteBindingSource;
+        private Operacion.ServiciosProgramados serviciosProgramados1;
     }
 }

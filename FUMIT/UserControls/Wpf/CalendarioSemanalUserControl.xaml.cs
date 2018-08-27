@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -24,25 +25,26 @@ namespace FUMIT.UserControls.Wpf
     /// </summary>
     public partial class CalendarioSemanalUserControl : UserControl
     {
-        private ObservableCollection<Semana> horarioServiciosSemanales;
+        public ObservableCollection<Semana> horarioServiciosSemanales = new ObservableCollection<Semana>();
         internal ObservableCollection<Semana> HorarioServiciosSemanales {
-            get {
+            get
+            {
                 return horarioServiciosSemanales;
             }
             set
             {
                 horarioServiciosSemanales = value;
-                dgS.Items.Clear();
-                dgS.ItemsSource = null;
-                dgS.ItemsSource = horarioServiciosSemanales;
+                //dgS.Items.Clear();
+                //dgS.ItemsSource = null;
+                //dgS.ItemsSource = horarioServiciosSemanales;
 
             }
         }
 
-        public event EventHandler<Servicio> MoverServicio;
-        public event EventHandler<Servicio> CancelarServicio;
-        public event EventHandler<Servicio> VerExpedienteCliente;
-        public event EventHandler<Servicio> CapturarTicketServicio;
+        public event EventHandler<object> MoverServicio;
+        public event EventHandler<object> CancelarServicio;
+        public event EventHandler<object> VerExpedienteCliente;
+        public event EventHandler<object> CapturarTicketServicio;
 
         public CalendarioSemanalUserControl()
         {
@@ -70,33 +72,48 @@ namespace FUMIT.UserControls.Wpf
                 //dgS.Items.Clear();
                 //dgS.ItemsSource = null;
                 //dgS.ItemsSource = variasSemanas;
+
+                //HorarioServiciosSemanales.CollectionChanged += HorarioServiciosSemanales_CollectionChanged;
+
+            }
+            else
+            {
+                dgS.ItemsSource = HorarioServiciosSemanales;
             }
             
 
         }
 
+        private void HorarioServiciosSemanales_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            Trace.WriteLine("La coleccion ha cambiado");
+        }
+
         private void MenuItemMover_Click(object sender, RoutedEventArgs e)
         {
             Servicio servicio = ((sender as MenuItem).CommandParameter as Servicio);
-            MoverServicio.Invoke(this, servicio);
+            MoverServicio.Invoke(this, servicio.Entidad);
         }
 
         private void MenuItemCancelar_Click(object sender, RoutedEventArgs e)
         {
             Servicio servicio = ((sender as MenuItem).CommandParameter as Servicio);
-            MoverServicio.Invoke(this, servicio);
+            CancelarServicio.Invoke(this, servicio.Entidad);
         }
 
         private void MenuItemVerExpediente_Click(object sender, RoutedEventArgs e)
         {
             Servicio servicio = ((sender as MenuItem).CommandParameter as Servicio);
-            MoverServicio.Invoke(this, servicio);
+            VerExpedienteCliente.Invoke(this, servicio.Entidad);
         }
 
         private void MenuItemCapturarTicket_Click(object sender, RoutedEventArgs e)
         {
             Servicio servicio = ((sender as MenuItem).CommandParameter as Servicio);
-            MoverServicio.Invoke(this, servicio);
+            if (CapturarTicketServicio != null)
+            {
+                CapturarTicketServicio.Invoke(this, servicio.Entidad);
+            }
         }
     }
     
@@ -112,13 +129,28 @@ namespace FUMIT.UserControls.Wpf
         public Servicio Domingo { get; set; }
     }
 
-    public class Servicio
+    public class Servicio : INotifyPropertyChanged
     {
-        public int ServicioId { get; set; }
+        private object entidadServicio;
+
+        public int Id { get; set; }
+        public string DescripcionServicio { get; set; }
         public string Cliente { get; set; }
         public string Unidad { get; set; }
         public string Status { get; set; }
         public bool Cancelado { get; set; }
+        public object Entidad {
+            get {
+                return entidadServicio;
+            }
+            set
+            {
+                entidadServicio = value;
+            }
+        }
+        public string Observaciones { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 
     

@@ -115,6 +115,9 @@ namespace FUMIT.AccesoDatos
             await programacionServiciosClienteOperaciones.ActualizarAsync(programacionServicio);
         }
 
-
+        public IEnumerable<Serviciosprogramado> RecuperarPorClienteId(int ClienteId)
+        {
+            return dbSet.Where(w => w.ClienteId == ClienteId).ToArray();
+        }
     }
 }

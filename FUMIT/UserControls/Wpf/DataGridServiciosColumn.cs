@@ -24,8 +24,11 @@ namespace FUMIT.UserControls.Wpf
             if (template != null || templateSelector != null)
             {
                 ContentPresenter contentPresenter = new ContentPresenter();
+                
                 BindingOperations.SetBinding(contentPresenter, ContentPresenter.ContentProperty, this.Binding);
+                BindingOperations.SetBinding(contentPresenter, ContentPresenter.ContentTemplateProperty, this.Binding);
                 contentPresenter.ContentTemplate = template;
+
                 contentPresenter.ContentTemplateSelector = templateSelector;
                 return contentPresenter;
             }

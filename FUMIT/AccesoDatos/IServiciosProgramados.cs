@@ -9,5 +9,6 @@ namespace FUMIT.AccesoDatos
     public interface IServiciosProgramados : IOperacionesAccesoDatos<Entidades.Serviciosprogramado>
     {
         Task ProgramarServicios(Entidades.Programacionservicioscliente programacionservicio);
+        IEnumerable<Entidades.Serviciosprogramado> RecuperarPorClienteId(int ClienteId);
     }
 }

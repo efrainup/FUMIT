@@ -7,31 +7,15 @@
              
              mc:Ignorable="d" Height="740.323" Width="1525.806">
 
+    
     <UserControl.Resources>
         <ResourceDictionary>
+            
             <local:ClienteVacioConverter x:Key="ClienteConverter"></local:ClienteVacioConverter>
 
-            <Style x:Key="MyCellStyle" TargetType="DataGridCell">
-                <Setter Property="ContentTemplate">
-                    <Setter.Value>
-                        <DataTemplate >
-
-                            <StackPanel>
-                                <TextBlock>Cliente:</TextBlock>
-                                <TextBlock Text="{Binding Path=Cliente, RelativeSource={RelativeSource TemplatedParent}}"></TextBlock>
-                                <TextBlock>Unidad:</TextBlock>
-                                <TextBlock Text="{Binding Unidad}"></TextBlock>
-                                <TextBlock>Status:</TextBlock>
-                                <TextBlock Text="{Binding Path=Status}"></TextBlock>
-                            </StackPanel>
-                        </DataTemplate>
-
-
-                    </Setter.Value>
-                </Setter>
-            </Style>
 
             <Style x:Key="MyDataGridCellStyle" TargetType="DataGridCell">
+                
                 <Setter Property="MinWidth" Value="180"></Setter>
                 <Setter Property="MinWidth" Value="180"></Setter>
                 <Setter Property="Foreground" Value="Black"></Setter>
@@ -48,14 +32,13 @@
                 </Setter>
                 
                 <Style.Triggers>
-                    <Trigger Property="DataGridCell.IsSelected" Value="True">
+                    <Trigger Property="DataGridCell.IsSelected" Value="True" >
                         <!--<Setter Property="Background" Value="Azure"></Setter>-->
                         <Setter Property="BorderThickness" Value="2"></Setter>
                         <!--<Setter Property="BorderBrush" Value="#FF75CDFF"></Setter>-->
 
                     </Trigger>
-                    
-                    <DataTrigger Binding="{Binding Cancelado}">
+                    <DataTrigger Value="True" Binding="{Binding Path=Miercoles.Cancelado, RelativeSource={RelativeSource TemplatedParent}}">
                         <Setter Property="Background">
                             <Setter.Value>
                                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -66,11 +49,14 @@
                         </Setter>
                         <Setter Property="BorderBrush" Value="#FFFF7575"></Setter>
                     </DataTrigger>
+                    
+                    
+                    
                 </Style.Triggers>
             </Style>
 
-            <DataTemplate x:Key="MyDataTemplate" >
-                <Grid Margin="3px" Visibility="{Binding ServicioId,Converter={StaticResource ClienteConverter}, FallbackValue=Hidden }" >
+            <DataTemplate x:Key="MyDataTemplate">
+                <Grid Margin="3px" Visibility="{Binding Id, Converter={StaticResource ClienteConverter}, FallbackValue=Hidden }" >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
@@ -80,7 +66,8 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-
+                    
+                    
 
                     <TextBlock Grid.Row="0"  Grid.Column="0">Cliente:</TextBlock>
                     <TextBlock Grid.Row="0"  Grid.Column="1" Text="{Binding Path=Cliente}"></TextBlock>
@@ -91,10 +78,10 @@
 
                     <Grid.ContextMenu>
                         <ContextMenu>
-                            <MenuItem Header="Mover" Click="MenuItemMover_Click" CommandParameter="{Binding}"></MenuItem>
-                            <MenuItem Header="Cancelar" Click="MenuItemCancelar_Click" CommandParameter="{Binding}"></MenuItem>
-                            <MenuItem Header="Ver expediente cliente" Click="MenuItemCapturarTicket_Click" CommandParameter="{Binding}"></MenuItem>
-                            <MenuItem Header="Capturar ticket" Click="MenuItemVerExpediente_Click" CommandParameter="{Binding}"></MenuItem>
+                            <MenuItem Header="Editar" Click="MenuItemMover_Click" CommandParameter="{Binding}"></MenuItem>
+                            <MenuItem Header="Cancelar servicio" Click="MenuItemCancelar_Click" CommandParameter="{Binding}"></MenuItem>
+                            <MenuItem Header="Ver expediente de cliente" Click="MenuItemVerExpediente_Click" CommandParameter="{Binding}"></MenuItem>
+                            <MenuItem Header="Capturar ticket" Click="MenuItemCapturarTicket_Click" CommandParameter="{Binding}"></MenuItem>
                         </ContextMenu>
                     </Grid.ContextMenu>
 
@@ -103,49 +90,149 @@
 
             </DataTemplate>
 
-            <Style x:Key="CeeelStyle" x:Name="MyCeeeelStyle" TargetType="DataGridCell">
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate>
-                            <StackPanel Visibility="{Binding ServicioId,Converter={StaticResource ClienteConverter} }">
-                                <TextBlock>Cliente:</TextBlock>
-                                <TextBlock Text="{Binding Path=Cliente}"></TextBlock>
-                                <ContentPresenter Content="{Binding Content.Cliente, RelativeSource={RelativeSource TemplatedParent}}" />
-                                <ContentPresenter Content="{Binding Cliente, RelativeSource={RelativeSource TemplatedParent}}" />
-                                <TextBlock>Unidad:</TextBlock>
-                                <TextBlock Text="{Binding Path=Unidad}"></TextBlock>
-                                <TextBlock>Status:</TextBlock>
-                                <TextBlock Text="{Binding Path=Status}"></TextBlock>
-                            </StackPanel>
-
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-                <Setter Property="Background" Value="Azure"/>
-                <Setter Property="BorderThickness" Value="2" />
-                <Setter Property="BorderBrush" Value="#FF4CFFFF"></Setter>
-
-
-            </Style>
 
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
 
 
-        <DataGrid HorizontalAlignment="Stretch" x:Name="dgS" AutoGenerateColumns="False" SelectionUnit="Cell" SelectionMode="Single" >
-            <StyleSelector>
-
-            </StyleSelector>
-
+        <DataGrid HorizontalAlignment="Stretch" x:Name="dgS" AutoGenerateColumns="False" SelectionUnit="Cell" SelectionMode="Single">
+            
             <DataGrid.Columns>
-                <local:DataGridServiciosColumn Header="Lunes" Binding="{Binding Path=Lunes}" CellStyle="{StaticResource MyDataGridCellStyle}"  CellTemplate="{StaticResource MyDataTemplate}"></local:DataGridServiciosColumn>
-                <local:DataGridServiciosColumn Header="Martes" Binding="{Binding Path=Martes}" CellStyle="{StaticResource MyDataGridCellStyle}"  CellTemplate="{StaticResource MyDataTemplate}"></local:DataGridServiciosColumn>
-                <local:DataGridServiciosColumn Header="Miercoles" Binding="{Binding Path=Miercoles}" CellStyle="{StaticResource MyDataGridCellStyle}"  CellTemplate="{StaticResource MyDataTemplate}"></local:DataGridServiciosColumn>
-                <local:DataGridServiciosColumn Header="Jueves" Binding="{Binding Path=Jueves}" CellStyle="{StaticResource MyDataGridCellStyle}"  CellTemplate="{StaticResource MyDataTemplate}"></local:DataGridServiciosColumn>
-                <local:DataGridServiciosColumn Header="Viernes" Binding="{Binding Path=Viernes}" CellStyle="{StaticResource MyDataGridCellStyle}"  CellTemplate="{StaticResource MyDataTemplate}"></local:DataGridServiciosColumn>
-                <local:DataGridServiciosColumn Header="Sabado" Binding="{Binding Path=Sabado}" CellStyle="{StaticResource MyDataGridCellStyle}"  CellTemplate="{StaticResource MyDataTemplate}"></local:DataGridServiciosColumn>
-                <local:DataGridServiciosColumn Header="Domingo" Binding="{Binding Path=Domingo}" CellStyle="{StaticResource MyDataGridCellStyle}"  CellTemplate="{StaticResource MyDataTemplate}"></local:DataGridServiciosColumn>
+                <local:DataGridServiciosColumn Header="Lunes" Binding="{Binding Path=Lunes}" CellTemplate="{StaticResource MyDataTemplate}">
+                    <local:DataGridServiciosColumn.CellStyle>
+                        <Style TargetType="DataGridCell" BasedOn="{StaticResource MyDataGridCellStyle}">
+                            <Style.Triggers>
+                                <DataTrigger Value="True" Binding="{Binding Path=Lunes.Cancelado}">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFFFC7C7" Offset="0"/>
+                                                <GradientStop Color="White" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="BorderBrush" Value="#FFFF7575"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </local:DataGridServiciosColumn.CellStyle>
+                </local:DataGridServiciosColumn>
+                <local:DataGridServiciosColumn Header="Martes" Binding="{Binding Path=Martes}" CellTemplate="{StaticResource MyDataTemplate}">
+                    <local:DataGridServiciosColumn.CellStyle>
+                        <Style TargetType="DataGridCell" BasedOn="{StaticResource MyDataGridCellStyle}">
+                            <Style.Triggers>
+                                <DataTrigger Value="True" Binding="{Binding Path=Martes.Cancelado}">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFFFC7C7" Offset="0"/>
+                                                <GradientStop Color="White" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="BorderBrush" Value="#FFFF7575"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </local:DataGridServiciosColumn.CellStyle>
+                </local:DataGridServiciosColumn>
+                <local:DataGridServiciosColumn Header="Miercoles" Binding="{Binding Path=Miercoles}"   CellTemplate="{StaticResource MyDataTemplate}">
+                    <local:DataGridServiciosColumn.CellStyle>
+                        <Style TargetType="DataGridCell" BasedOn="{StaticResource MyDataGridCellStyle}">
+                            <Style.Triggers>
+                                <DataTrigger Value="True" Binding="{Binding Path=Miercoles.Cancelado}">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFFFC7C7" Offset="0"/>
+                                                <GradientStop Color="White" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="BorderBrush" Value="#FFFF7575"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </local:DataGridServiciosColumn.CellStyle>
+                    
+                </local:DataGridServiciosColumn>
+                <local:DataGridServiciosColumn Header="Jueves" Binding="{Binding Path=Jueves}" CellTemplate="{StaticResource MyDataTemplate}">
+                    <local:DataGridServiciosColumn.CellStyle>
+                        <Style TargetType="DataGridCell" BasedOn="{StaticResource MyDataGridCellStyle}">
+                            <Style.Triggers>
+                                <DataTrigger Value="True" Binding="{Binding Path=Jueves.Cancelado}">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFFFC7C7" Offset="0"/>
+                                                <GradientStop Color="White" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="BorderBrush" Value="#FFFF7575"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </local:DataGridServiciosColumn.CellStyle>
+                </local:DataGridServiciosColumn>
+                <local:DataGridServiciosColumn Header="Viernes" Binding="{Binding Path=Viernes}"  CellTemplate="{StaticResource MyDataTemplate}">
+                    <local:DataGridServiciosColumn.CellStyle>
+                        <Style TargetType="DataGridCell" BasedOn="{StaticResource MyDataGridCellStyle}">
+                            <Style.Triggers>
+                                <DataTrigger Value="True" Binding="{Binding Path=Viernes.Cancelado}">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFFFC7C7" Offset="0"/>
+                                                <GradientStop Color="White" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="BorderBrush" Value="#FFFF7575"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </local:DataGridServiciosColumn.CellStyle>
+                </local:DataGridServiciosColumn>
+                <local:DataGridServiciosColumn Header="Sabado" Binding="{Binding Path=Sabado}"   CellTemplate="{StaticResource MyDataTemplate}">
+                    <local:DataGridServiciosColumn.CellStyle>
+                        <Style TargetType="DataGridCell" BasedOn="{StaticResource MyDataGridCellStyle}">
+                            <Style.Triggers>
+                                <DataTrigger Value="True" Binding="{Binding Path=Sabado.Cancelado}">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFFFC7C7" Offset="0"/>
+                                                <GradientStop Color="White" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="BorderBrush" Value="#FFFF7575"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </local:DataGridServiciosColumn.CellStyle>
+                </local:DataGridServiciosColumn>
+                <local:DataGridServiciosColumn Header="Domingo" Binding="{Binding Path=Domingo}"  CellTemplate="{StaticResource MyDataTemplate}">
+                    <local:DataGridServiciosColumn.CellStyle>
+                        <Style TargetType="DataGridCell" BasedOn="{StaticResource MyDataGridCellStyle}">
+                            <Style.Triggers>
+                                <DataTrigger Value="True" Binding="{Binding Path=Domingo.Cancelado}">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFFFC7C7" Offset="0"/>
+                                                <GradientStop Color="White" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="BorderBrush" Value="#FFFF7575"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </local:DataGridServiciosColumn.CellStyle>
+                </local:DataGridServiciosColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

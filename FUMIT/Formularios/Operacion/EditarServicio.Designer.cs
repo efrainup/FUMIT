@@ -28,23 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.serviciosProgramados1 = new FUMIT.Formularios.Operacion.ServiciosProgramados();
+            this.serviciosProgramadosUC = new FUMIT.Formularios.Operacion.ServiciosProgramados();
             this.SuspendLayout();
             // 
-            // serviciosProgramados1
+            // serviciosProgramadosUC
             // 
-            this.serviciosProgramados1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.serviciosProgramados1.Location = new System.Drawing.Point(0, 0);
-            this.serviciosProgramados1.Name = "serviciosProgramados1";
-            this.serviciosProgramados1.Size = new System.Drawing.Size(550, 418);
-            this.serviciosProgramados1.TabIndex = 0;
+            this.serviciosProgramadosUC.ClienteId = 0;
+            this.serviciosProgramadosUC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.serviciosProgramadosUC.Location = new System.Drawing.Point(0, 0);
+            this.serviciosProgramadosUC.ModoEditar = false;
+            this.serviciosProgramadosUC.Name = "serviciosProgramadosUC";
+            this.serviciosProgramadosUC.Repositorio = null;
+            this.serviciosProgramadosUC.Size = new System.Drawing.Size(550, 418);
+            this.serviciosProgramadosUC.TabIndex = 0;
             // 
             // EditarServicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(550, 418);
-            this.Controls.Add(this.serviciosProgramados1);
+            this.Controls.Add(this.serviciosProgramadosUC);
             this.Name = "EditarServicio";
             this.Text = "Servicio";
             this.ResumeLayout(false);
@@ -53,6 +56,6 @@
 
         #endregion
 
-        private ServiciosProgramados serviciosProgramados1;
+        internal ServiciosProgramados serviciosProgramadosUC;
     }
 }
