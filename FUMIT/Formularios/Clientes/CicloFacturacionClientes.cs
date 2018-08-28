@@ -16,5 +16,11 @@ namespace FUMIT.Formularios.Clientes
         {
             InitializeComponent();
         }
+
+        private void btnBusquedaCiclos_Click(object sender, EventArgs e)
+        {
+            var formulario = new Formularios.Facturacion.CiclosFacturacion();
+            formulario.ShowDialog();
+        }
     }
 }

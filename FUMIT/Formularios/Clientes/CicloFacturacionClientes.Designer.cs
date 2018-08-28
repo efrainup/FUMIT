@@ -30,13 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label activoLabel;
-            System.Windows.Forms.Label fechaFinVigenciaLabel;
-            System.Windows.Forms.Label fechaInicioVigenciaLabel;
-            System.Windows.Forms.Label diaLabel;
-            System.Windows.Forms.Label mesLabel;
-            System.Windows.Forms.Label semanaLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CicloFacturacionClientes));
-            this.cicloFacturacionClienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            System.Windows.Forms.Label nombreLabel;
+            System.Windows.Forms.Label diaLabel;
+            System.Windows.Forms.Label semanaLabel;
+            System.Windows.Forms.Label mesLabel;
             this.cicloFacturacionClienteBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -51,6 +49,9 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.cicloFacturacionClienteBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.cicloFacturacionClienteDataGridView = new System.Windows.Forms.DataGridView();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.activoCheckBox = new System.Windows.Forms.CheckBox();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,26 +60,27 @@
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.diaTextBox = new System.Windows.Forms.TextBox();
-            this.mesTextBox = new System.Windows.Forms.TextBox();
+            this.cicloFacturacionClienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nombreTextBox = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.diaTextBox1 = new System.Windows.Forms.TextBox();
             this.semanaTextBox = new System.Windows.Forms.TextBox();
-            this.activoCheckBox = new System.Windows.Forms.CheckBox();
-            this.fechaFinVigenciaDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.fechaInicioVigenciaDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.mesTextBox = new System.Windows.Forms.TextBox();
+            this.btnBusquedaCiclos = new System.Windows.Forms.Button();
             activoLabel = new System.Windows.Forms.Label();
-            fechaFinVigenciaLabel = new System.Windows.Forms.Label();
-            fechaInicioVigenciaLabel = new System.Windows.Forms.Label();
+            nombreLabel = new System.Windows.Forms.Label();
             diaLabel = new System.Windows.Forms.Label();
-            mesLabel = new System.Windows.Forms.Label();
             semanaLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.cicloFacturacionClienteBindingSource)).BeginInit();
+            mesLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.cicloFacturacionClienteBindingNavigator)).BeginInit();
             this.cicloFacturacionClienteBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cicloFacturacionClienteDataGridView)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cicloFacturacionClienteBindingSource)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // activoLabel
@@ -89,55 +91,6 @@
             activoLabel.Size = new System.Drawing.Size(40, 13);
             activoLabel.TabIndex = 0;
             activoLabel.Text = "Activo:";
-            // 
-            // fechaFinVigenciaLabel
-            // 
-            fechaFinVigenciaLabel.AutoSize = true;
-            fechaFinVigenciaLabel.Location = new System.Drawing.Point(22, 30);
-            fechaFinVigenciaLabel.Name = "fechaFinVigenciaLabel";
-            fechaFinVigenciaLabel.Size = new System.Drawing.Size(101, 13);
-            fechaFinVigenciaLabel.TabIndex = 6;
-            fechaFinVigenciaLabel.Text = "Fecha Fin Vigencia:";
-            // 
-            // fechaInicioVigenciaLabel
-            // 
-            fechaInicioVigenciaLabel.AutoSize = true;
-            fechaInicioVigenciaLabel.Location = new System.Drawing.Point(22, 56);
-            fechaInicioVigenciaLabel.Name = "fechaInicioVigenciaLabel";
-            fechaInicioVigenciaLabel.Size = new System.Drawing.Size(112, 13);
-            fechaInicioVigenciaLabel.TabIndex = 8;
-            fechaInicioVigenciaLabel.Text = "Fecha Inicio Vigencia:";
-            // 
-            // diaLabel
-            // 
-            diaLabel.AutoSize = true;
-            diaLabel.Location = new System.Drawing.Point(410, 26);
-            diaLabel.Name = "diaLabel";
-            diaLabel.Size = new System.Drawing.Size(26, 13);
-            diaLabel.TabIndex = 12;
-            diaLabel.Text = "Dia:";
-            // 
-            // mesLabel
-            // 
-            mesLabel.AutoSize = true;
-            mesLabel.Location = new System.Drawing.Point(410, 52);
-            mesLabel.Name = "mesLabel";
-            mesLabel.Size = new System.Drawing.Size(30, 13);
-            mesLabel.TabIndex = 14;
-            mesLabel.Text = "Mes:";
-            // 
-            // semanaLabel
-            // 
-            semanaLabel.AutoSize = true;
-            semanaLabel.Location = new System.Drawing.Point(410, 78);
-            semanaLabel.Name = "semanaLabel";
-            semanaLabel.Size = new System.Drawing.Size(49, 13);
-            semanaLabel.TabIndex = 16;
-            semanaLabel.Text = "Semana:";
-            // 
-            // cicloFacturacionClienteBindingSource
-            // 
-            this.cicloFacturacionClienteBindingSource.DataSource = typeof(FUMIT.Entidades.CicloFacturacionCliente);
             // 
             // cicloFacturacionClienteBindingNavigator
             // 
@@ -282,6 +235,64 @@
             this.cicloFacturacionClienteDataGridView.Name = "cicloFacturacionClienteDataGridView";
             this.cicloFacturacionClienteDataGridView.Size = new System.Drawing.Size(771, 204);
             this.cicloFacturacionClienteDataGridView.TabIndex = 1;
+            this.cicloFacturacionClienteDataGridView.Visible = false;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.cicloFacturacionClienteDataGridView, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 25);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(777, 420);
+            this.tableLayoutPanel1.TabIndex = 2;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnBusquedaCiclos);
+            this.groupBox1.Controls.Add(this.flowLayoutPanel1);
+            this.groupBox1.Controls.Add(nombreLabel);
+            this.groupBox1.Controls.Add(this.nombreTextBox);
+            this.groupBox1.Controls.Add(activoLabel);
+            this.groupBox1.Controls.Add(this.activoCheckBox);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(771, 204);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Datos de ciclo de facturación";
+            // 
+            // activoCheckBox
+            // 
+            this.activoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.cicloFacturacionClienteBindingSource, "Activo", true));
+            this.activoCheckBox.Location = new System.Drawing.Point(465, 109);
+            this.activoCheckBox.Name = "activoCheckBox";
+            this.activoCheckBox.Size = new System.Drawing.Size(200, 24);
+            this.activoCheckBox.TabIndex = 1;
+            this.activoCheckBox.UseVisualStyleBackColor = true;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -331,108 +342,128 @@
             this.dataGridViewTextBoxColumn6.HeaderText = "CiclosFacturacion";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             // 
-            // tableLayoutPanel1
+            // cicloFacturacionClienteBindingSource
             // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.cicloFacturacionClienteDataGridView, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 25);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(777, 420);
-            this.tableLayoutPanel1.TabIndex = 2;
+            this.cicloFacturacionClienteBindingSource.DataSource = typeof(FUMIT.Entidades.CicloFacturacionCliente);
             // 
-            // groupBox1
+            // nombreLabel
             // 
-            this.groupBox1.Controls.Add(diaLabel);
-            this.groupBox1.Controls.Add(this.diaTextBox);
-            this.groupBox1.Controls.Add(mesLabel);
-            this.groupBox1.Controls.Add(this.mesTextBox);
-            this.groupBox1.Controls.Add(semanaLabel);
-            this.groupBox1.Controls.Add(this.semanaTextBox);
-            this.groupBox1.Controls.Add(activoLabel);
-            this.groupBox1.Controls.Add(this.activoCheckBox);
-            this.groupBox1.Controls.Add(fechaFinVigenciaLabel);
-            this.groupBox1.Controls.Add(this.fechaFinVigenciaDateTimePicker);
-            this.groupBox1.Controls.Add(fechaInicioVigenciaLabel);
-            this.groupBox1.Controls.Add(this.fechaInicioVigenciaDateTimePicker);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(771, 204);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Datos de ciclo de facturación";
+            nombreLabel.AutoSize = true;
+            nombreLabel.Location = new System.Drawing.Point(14, 26);
+            nombreLabel.Name = "nombreLabel";
+            nombreLabel.Size = new System.Drawing.Size(47, 13);
+            nombreLabel.TabIndex = 17;
+            nombreLabel.Text = "Nombre:";
             // 
-            // diaTextBox
+            // nombreTextBox
             // 
-            this.diaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cicloFacturacionClienteBindingSource, "CiclosFacturacion.Dia", true));
-            this.diaTextBox.Location = new System.Drawing.Point(465, 23);
-            this.diaTextBox.Name = "diaTextBox";
-            this.diaTextBox.Size = new System.Drawing.Size(100, 20);
-            this.diaTextBox.TabIndex = 13;
+            this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cicloFacturacionClienteBindingSource, "CiclosFacturacion.Nombre", true));
+            this.nombreTextBox.Location = new System.Drawing.Point(67, 23);
+            this.nombreTextBox.Name = "nombreTextBox";
+            this.nombreTextBox.Size = new System.Drawing.Size(239, 20);
+            this.nombreTextBox.TabIndex = 18;
             // 
-            // mesTextBox
+            // flowLayoutPanel1
             // 
-            this.mesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cicloFacturacionClienteBindingSource, "CiclosFacturacion.Mes", true));
-            this.mesTextBox.Location = new System.Drawing.Point(465, 49);
-            this.mesTextBox.Name = "mesTextBox";
-            this.mesTextBox.Size = new System.Drawing.Size(100, 20);
-            this.mesTextBox.TabIndex = 15;
+            this.flowLayoutPanel1.Controls.Add(diaLabel);
+            this.flowLayoutPanel1.Controls.Add(this.diaTextBox1);
+            this.flowLayoutPanel1.Controls.Add(this.label1);
+            this.flowLayoutPanel1.Controls.Add(this.semanaTextBox);
+            this.flowLayoutPanel1.Controls.Add(semanaLabel);
+            this.flowLayoutPanel1.Controls.Add(this.label2);
+            this.flowLayoutPanel1.Controls.Add(this.mesTextBox);
+            this.flowLayoutPanel1.Controls.Add(mesLabel);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(17, 62);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(748, 71);
+            this.flowLayoutPanel1.TabIndex = 21;
+            // 
+            // diaLabel
+            // 
+            diaLabel.AutoSize = true;
+            diaLabel.Location = new System.Drawing.Point(3, 6);
+            diaLabel.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
+            diaLabel.Name = "diaLabel";
+            diaLabel.Size = new System.Drawing.Size(208, 13);
+            diaLabel.TabIndex = 5;
+            diaLabel.Text = "El ciclo de facturación se realizará los días";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cicloFacturacionClienteBindingSource, "CiclosFacturacion.Dia", true));
+            this.label1.Location = new System.Drawing.Point(323, 6);
+            this.label1.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(31, 13);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "cada";
+            // 
+            // semanaLabel
+            // 
+            semanaLabel.AutoSize = true;
+            semanaLabel.Location = new System.Drawing.Point(466, 6);
+            semanaLabel.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
+            semanaLabel.Name = "semanaLabel";
+            semanaLabel.Size = new System.Drawing.Size(55, 13);
+            semanaLabel.TabIndex = 11;
+            semanaLabel.Text = "semana(s)";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(527, 6);
+            this.label2.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(46, 13);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "de cada";
+            // 
+            // mesLabel
+            // 
+            mesLabel.AutoSize = true;
+            mesLabel.Location = new System.Drawing.Point(685, 6);
+            mesLabel.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
+            mesLabel.Name = "mesLabel";
+            mesLabel.Size = new System.Drawing.Size(26, 13);
+            mesLabel.TabIndex = 7;
+            mesLabel.Text = "mes";
+            // 
+            // diaTextBox1
+            // 
+            this.diaTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cicloFacturacionClienteBindingSource, "CiclosFacturacion.Dia", true));
+            this.diaTextBox1.Location = new System.Drawing.Point(217, 3);
+            this.diaTextBox1.Name = "diaTextBox1";
+            this.diaTextBox1.Size = new System.Drawing.Size(100, 20);
+            this.diaTextBox1.TabIndex = 22;
             // 
             // semanaTextBox
             // 
             this.semanaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cicloFacturacionClienteBindingSource, "CiclosFacturacion.Semana", true));
-            this.semanaTextBox.Location = new System.Drawing.Point(465, 75);
+            this.semanaTextBox.Location = new System.Drawing.Point(360, 3);
             this.semanaTextBox.Name = "semanaTextBox";
             this.semanaTextBox.Size = new System.Drawing.Size(100, 20);
-            this.semanaTextBox.TabIndex = 17;
+            this.semanaTextBox.TabIndex = 22;
             // 
-            // activoCheckBox
+            // mesTextBox
             // 
-            this.activoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.cicloFacturacionClienteBindingSource, "Activo", true));
-            this.activoCheckBox.Location = new System.Drawing.Point(465, 109);
-            this.activoCheckBox.Name = "activoCheckBox";
-            this.activoCheckBox.Size = new System.Drawing.Size(200, 24);
-            this.activoCheckBox.TabIndex = 1;
-            this.activoCheckBox.UseVisualStyleBackColor = true;
+            this.mesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cicloFacturacionClienteBindingSource, "CiclosFacturacion.Mes", true));
+            this.mesTextBox.Location = new System.Drawing.Point(579, 3);
+            this.mesTextBox.Name = "mesTextBox";
+            this.mesTextBox.Size = new System.Drawing.Size(100, 20);
+            this.mesTextBox.TabIndex = 22;
             // 
-            // fechaFinVigenciaDateTimePicker
+            // btnBusquedaCiclos
             // 
-            this.fechaFinVigenciaDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.cicloFacturacionClienteBindingSource, "FechaFinVigencia", true));
-            this.fechaFinVigenciaDateTimePicker.Location = new System.Drawing.Point(167, 26);
-            this.fechaFinVigenciaDateTimePicker.Name = "fechaFinVigenciaDateTimePicker";
-            this.fechaFinVigenciaDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.fechaFinVigenciaDateTimePicker.TabIndex = 7;
-            // 
-            // fechaInicioVigenciaDateTimePicker
-            // 
-            this.fechaInicioVigenciaDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.cicloFacturacionClienteBindingSource, "FechaInicioVigencia", true));
-            this.fechaInicioVigenciaDateTimePicker.Location = new System.Drawing.Point(167, 52);
-            this.fechaInicioVigenciaDateTimePicker.Name = "fechaInicioVigenciaDateTimePicker";
-            this.fechaInicioVigenciaDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.fechaInicioVigenciaDateTimePicker.TabIndex = 9;
+            this.btnBusquedaCiclos.Enabled = false;
+            this.btnBusquedaCiclos.Image = global::FUMIT.Recursos.search;
+            this.btnBusquedaCiclos.Location = new System.Drawing.Point(312, 23);
+            this.btnBusquedaCiclos.Name = "btnBusquedaCiclos";
+            this.btnBusquedaCiclos.Size = new System.Drawing.Size(31, 23);
+            this.btnBusquedaCiclos.TabIndex = 22;
+            this.btnBusquedaCiclos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBusquedaCiclos.UseVisualStyleBackColor = true;
+            this.btnBusquedaCiclos.Click += new System.EventHandler(this.btnBusquedaCiclos_Click);
             // 
             // CicloFacturacionClientes
             // 
@@ -442,7 +473,6 @@
             this.Controls.Add(this.cicloFacturacionClienteBindingNavigator);
             this.Name = "CicloFacturacionClientes";
             this.Size = new System.Drawing.Size(777, 445);
-            ((System.ComponentModel.ISupportInitialize)(this.cicloFacturacionClienteBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cicloFacturacionClienteBindingNavigator)).EndInit();
             this.cicloFacturacionClienteBindingNavigator.ResumeLayout(false);
             this.cicloFacturacionClienteBindingNavigator.PerformLayout();
@@ -450,6 +480,9 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cicloFacturacionClienteBindingSource)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -482,11 +515,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox diaTextBox;
-        private System.Windows.Forms.TextBox mesTextBox;
-        private System.Windows.Forms.TextBox semanaTextBox;
         private System.Windows.Forms.CheckBox activoCheckBox;
-        private System.Windows.Forms.DateTimePicker fechaFinVigenciaDateTimePicker;
-        private System.Windows.Forms.DateTimePicker fechaInicioVigenciaDateTimePicker;
+        private System.Windows.Forms.TextBox nombreTextBox;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.TextBox diaTextBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox semanaTextBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox mesTextBox;
+        private System.Windows.Forms.Button btnBusquedaCiclos;
     }
 }

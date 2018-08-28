@@ -72,6 +72,12 @@ namespace FUMIT.Entidades
         [Display(Name = "Borrado")]
         public bool Borrado { get; set; } // Borrado
 
+        [Column(@"Nombre", Order = 9, TypeName = "varchar")]
+        [MaxLength(50)]
+        [StringLength(50)]
+        [Display(Name = "Nombre")]
+        public string Nombre { get; set; } // Nombre (length: 50)
+
         // Reverse navigation
 
         /// <summary>

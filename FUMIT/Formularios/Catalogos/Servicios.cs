@@ -112,6 +112,9 @@ namespace FUMIT.Formularios.Catalogos
         }
 
         private void btnGuardarServicio_Click(object sender, EventArgs e) {
+
+
+
             Entrar_ModoNormal();
         }
 
@@ -149,6 +152,12 @@ namespace FUMIT.Formularios.Catalogos
                             GrdServicios.Columns[2].Name = "Activo";
                             GrdServicios.Columns[2].HeaderText = "Activo";
                             GrdServicios.Columns[2].DataPropertyName = "Activo";
+
+                            GrdServicios.Columns[2].Name = "ServicioId";
+                            GrdServicios.Columns[2].HeaderText = "ServicioId";
+                            GrdServicios.Columns[2].DataPropertyName = "ServicioId";
+                            GrdServicios.Columns[2].Visible = false;
+
                             GrdServicios.DataSource = Tabla;
                         }
                     }
@@ -196,7 +205,7 @@ namespace FUMIT.Formularios.Catalogos
 
         private void Servicios_Load(object sender, EventArgs e)
         {
-            Buscar("SELECT Nombre, Descripcion, Activo FROM Servicios");
+            Buscar("SELECT Nombre, Descripcion, Activo, ServicioId FROM Servicios");
             Sucursales("SELECT Nombre FROM Sucursales WHERE Borrado=0");
         }        
     }

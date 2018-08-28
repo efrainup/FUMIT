@@ -114,6 +114,22 @@ namespace FUMIT.UserControls.Wpf
             {
                 CapturarTicketServicio.Invoke(this, servicio.Entidad);
             }
+            //Print();
+        }
+
+        public void Print()
+        {
+            System.Windows.Controls.PrintDialog Printdlg = new System.Windows.Controls.PrintDialog();
+            if ((bool)Printdlg.ShowDialog().GetValueOrDefault())
+            {
+                Size pageSize = new Size(Printdlg.PrintableAreaWidth, Printdlg.PrintableAreaHeight);
+                // sizing of the element.
+                dgS.Measure(pageSize);
+                dgS.Arrange(new Rect(5, 5, pageSize.Width, pageSize.Height));
+
+                Printdlg.PrintVisual(dgS, "Calendario de servicio");
+
+            }
         }
     }
     

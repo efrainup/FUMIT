@@ -30,12 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CalendarioServicios));
-            this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
-            this.dtpFechaFinal = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.elementHost2 = new System.Windows.Forms.Integration.ElementHost();
-            this.calendarioSemanalUserControl1 = new FUMIT.UserControls.Wpf.CalendarioSemanalUserControl();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
@@ -50,57 +44,21 @@
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.dtpFechaFinal = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.AgregarServicioButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.serviciosCheckList = new System.Windows.Forms.CheckedListBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.elementHost2 = new System.Windows.Forms.Integration.ElementHost();
+            this.calendarioSemanalUserControl1 = new FUMIT.UserControls.Wpf.CalendarioSemanalUserControl();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // dtpFechaInicio
-            // 
-            this.dtpFechaInicio.Enabled = false;
-            this.dtpFechaInicio.Location = new System.Drawing.Point(95, 12);
-            this.dtpFechaInicio.Name = "dtpFechaInicio";
-            this.dtpFechaInicio.Size = new System.Drawing.Size(221, 20);
-            this.dtpFechaInicio.TabIndex = 0;
-            // 
-            // dtpFechaFinal
-            // 
-            this.dtpFechaFinal.Enabled = false;
-            this.dtpFechaFinal.Location = new System.Drawing.Point(399, 12);
-            this.dtpFechaFinal.Name = "dtpFechaFinal";
-            this.dtpFechaFinal.Size = new System.Drawing.Size(216, 20);
-            this.dtpFechaFinal.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Fecha de inicial:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(331, 18);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Fecha final:";
-            // 
-            // elementHost2
-            // 
-            this.elementHost2.BackColor = System.Drawing.SystemColors.Control;
-            this.elementHost2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.elementHost2.Location = new System.Drawing.Point(0, 100);
-            this.elementHost2.Margin = new System.Windows.Forms.Padding(5);
-            this.elementHost2.Name = "elementHost2";
-            this.elementHost2.Size = new System.Drawing.Size(1266, 391);
-            this.elementHost2.TabIndex = 7;
-            this.elementHost2.Text = "elementHost2";
-            this.elementHost2.Child = this.calendarioSemanalUserControl1;
             // 
             // bindingNavigator1
             // 
@@ -227,8 +185,59 @@
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
+            // dtpFechaFinal
+            // 
+            this.dtpFechaFinal.Enabled = false;
+            this.dtpFechaFinal.Location = new System.Drawing.Point(416, 11);
+            this.dtpFechaFinal.Name = "dtpFechaFinal";
+            this.dtpFechaFinal.Size = new System.Drawing.Size(216, 20);
+            this.dtpFechaFinal.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(348, 18);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(62, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Fecha final:";
+            // 
+            // dtpFechaInicio
+            // 
+            this.dtpFechaInicio.Enabled = false;
+            this.dtpFechaInicio.Location = new System.Drawing.Point(115, 12);
+            this.dtpFechaInicio.Name = "dtpFechaInicio";
+            this.dtpFechaInicio.Size = new System.Drawing.Size(218, 20);
+            this.dtpFechaInicio.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(5, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(84, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Fecha de inicial:";
+            // 
+            // AgregarServicioButton
+            // 
+            this.AgregarServicioButton.Image = global::FUMIT.Recursos.add;
+            this.AgregarServicioButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AgregarServicioButton.Location = new System.Drawing.Point(1143, 8);
+            this.AgregarServicioButton.Name = "AgregarServicioButton";
+            this.AgregarServicioButton.Size = new System.Drawing.Size(111, 32);
+            this.AgregarServicioButton.TabIndex = 4;
+            this.AgregarServicioButton.Text = "Agregar servicio";
+            this.AgregarServicioButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.AgregarServicioButton.UseVisualStyleBackColor = true;
+            this.AgregarServicioButton.Click += new System.EventHandler(this.AgregarServicioButton_Click);
+            // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.serviciosCheckList);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.AgregarServicioButton);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.dtpFechaInicio);
             this.panel1.Controls.Add(this.label2);
@@ -236,8 +245,51 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 25);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1266, 75);
+            this.panel1.Size = new System.Drawing.Size(1266, 171);
             this.panel1.TabIndex = 12;
+            // 
+            // serviciosCheckList
+            // 
+            this.serviciosCheckList.CheckOnClick = true;
+            this.serviciosCheckList.FormattingEnabled = true;
+            this.serviciosCheckList.Location = new System.Drawing.Point(115, 51);
+            this.serviciosCheckList.Name = "serviciosCheckList";
+            this.serviciosCheckList.Size = new System.Drawing.Size(218, 94);
+            this.serviciosCheckList.TabIndex = 5;
+            this.serviciosCheckList.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.serviciosCheckList_ItemCheck);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(5, 51);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(97, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Filtrar por servicios:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1143, 46);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(111, 31);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Imprimir";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // elementHost2
+            // 
+            this.elementHost2.BackColor = System.Drawing.SystemColors.Control;
+            this.elementHost2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.elementHost2.Location = new System.Drawing.Point(0, 196);
+            this.elementHost2.Margin = new System.Windows.Forms.Padding(5);
+            this.elementHost2.Name = "elementHost2";
+            this.elementHost2.Size = new System.Drawing.Size(1266, 295);
+            this.elementHost2.TabIndex = 7;
+            this.elementHost2.Text = "elementHost2";
+            this.elementHost2.Child = this.calendarioSemanalUserControl1;
             // 
             // CalendarioServicios
             // 
@@ -261,11 +313,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DateTimePicker dtpFechaInicio;
-        private System.Windows.Forms.DateTimePicker dtpFechaFinal;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Integration.ElementHost elementHost2;
         private System.Windows.Forms.BindingNavigator bindingNavigator1;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
@@ -282,6 +329,14 @@
         private UserControls.Wpf.CalendarioSemanalUserControl calendarioSemanalUserControl1;
         private System.Windows.Forms.ToolStripLabel tsbNumeroSemanas;
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
+        private System.Windows.Forms.DateTimePicker dtpFechaFinal;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker dtpFechaInicio;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button AgregarServicioButton;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckedListBox serviciosCheckList;
+        private System.Windows.Forms.Button button1;
     }
 }

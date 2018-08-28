@@ -35,9 +35,8 @@
             System.Windows.Forms.Label mesLabel;
             System.Windows.Forms.Label porDefectoLabel;
             System.Windows.Forms.Label semanaLabel;
-            System.Windows.Forms.Label sucursalIdLabel;
             System.Windows.Forms.Label nombreLabel;
-            System.Windows.Forms.Label numeroLabel;
+            System.Windows.Forms.Label nombreLabel1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CiclosFacturacion));
             this.ciclosFacturacionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ciclosFacturacionBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
@@ -59,24 +58,22 @@
             this.mesTextBox = new System.Windows.Forms.TextBox();
             this.porDefectoCheckBox = new System.Windows.Forms.CheckBox();
             this.semanaTextBox = new System.Windows.Forms.TextBox();
-            this.sucursalIdTextBox = new System.Windows.Forms.TextBox();
             this.nombreTextBox = new System.Windows.Forms.TextBox();
-            this.numeroTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.nombreTextBox1 = new System.Windows.Forms.TextBox();
             this.btnBusquedaSucursal = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             activoLabel = new System.Windows.Forms.Label();
             cicloFacturacionIdLabel = new System.Windows.Forms.Label();
             diaLabel = new System.Windows.Forms.Label();
             mesLabel = new System.Windows.Forms.Label();
             porDefectoLabel = new System.Windows.Forms.Label();
             semanaLabel = new System.Windows.Forms.Label();
-            sucursalIdLabel = new System.Windows.Forms.Label();
             nombreLabel = new System.Windows.Forms.Label();
-            numeroLabel = new System.Windows.Forms.Label();
+            nombreLabel1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ciclosFacturacionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ciclosFacturacionBindingNavigator)).BeginInit();
             this.ciclosFacturacionBindingNavigator.SuspendLayout();
@@ -88,7 +85,7 @@
             // activoLabel
             // 
             activoLabel.AutoSize = true;
-            activoLabel.Location = new System.Drawing.Point(9, 84);
+            activoLabel.Location = new System.Drawing.Point(341, 58);
             activoLabel.Name = "activoLabel";
             activoLabel.Size = new System.Drawing.Size(40, 13);
             activoLabel.TabIndex = 1;
@@ -126,7 +123,7 @@
             // porDefectoLabel
             // 
             porDefectoLabel.AutoSize = true;
-            porDefectoLabel.Location = new System.Drawing.Point(9, 54);
+            porDefectoLabel.Location = new System.Drawing.Point(9, 85);
             porDefectoLabel.Name = "porDefectoLabel";
             porDefectoLabel.Size = new System.Drawing.Size(67, 13);
             porDefectoLabel.TabIndex = 9;
@@ -142,33 +139,23 @@
             semanaLabel.TabIndex = 11;
             semanaLabel.Text = "semana(s)";
             // 
-            // sucursalIdLabel
-            // 
-            sucursalIdLabel.AutoSize = true;
-            sucursalIdLabel.Location = new System.Drawing.Point(337, 31);
-            sucursalIdLabel.Name = "sucursalIdLabel";
-            sucursalIdLabel.Size = new System.Drawing.Size(63, 13);
-            sucursalIdLabel.TabIndex = 13;
-            sucursalIdLabel.Text = "Sucursal Id:";
-            // 
             // nombreLabel
             // 
             nombreLabel.AutoSize = true;
-            nombreLabel.Location = new System.Drawing.Point(337, 57);
+            nombreLabel.Location = new System.Drawing.Point(341, 27);
             nombreLabel.Name = "nombreLabel";
-            nombreLabel.Size = new System.Drawing.Size(47, 13);
+            nombreLabel.Size = new System.Drawing.Size(51, 13);
             nombreLabel.TabIndex = 15;
-            nombreLabel.Text = "Nombre:";
+            nombreLabel.Text = "Sucursal:";
             // 
-            // numeroLabel
+            // nombreLabel1
             // 
-            numeroLabel.AutoSize = true;
-            numeroLabel.Location = new System.Drawing.Point(337, 81);
-            numeroLabel.Name = "numeroLabel";
-            numeroLabel.Size = new System.Drawing.Size(47, 13);
-            numeroLabel.TabIndex = 17;
-            numeroLabel.Text = "Numero:";
-            numeroLabel.Click += new System.EventHandler(this.numeroLabel_Click);
+            nombreLabel1.AutoSize = true;
+            nombreLabel1.Location = new System.Drawing.Point(9, 53);
+            nombreLabel1.Name = "nombreLabel1";
+            nombreLabel1.Size = new System.Drawing.Size(47, 13);
+            nombreLabel1.TabIndex = 40;
+            nombreLabel1.Text = "Nombre:";
             // 
             // ciclosFacturacionBindingSource
             // 
@@ -206,12 +193,11 @@
             // 
             // bindingNavigatorAddNewItem
             // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.bindingNavigatorAddNewItem.Image = global::FUMIT.Recursos.add;
             this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Agregar nuevo";
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(69, 22);
+            this.bindingNavigatorAddNewItem.Text = "Agregar";
             this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
             // 
             // bindingNavigatorCountItem
@@ -223,11 +209,10 @@
             // 
             // bindingNavigatorDeleteItem
             // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
             this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(70, 22);
             this.bindingNavigatorDeleteItem.Text = "Eliminar";
             // 
             // bindingNavigatorMoveFirstItem
@@ -292,22 +277,22 @@
             // 
             // ciclosFacturacionBindingNavigatorSaveItem
             // 
-            this.ciclosFacturacionBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.ciclosFacturacionBindingNavigatorSaveItem.Enabled = false;
             this.ciclosFacturacionBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("ciclosFacturacionBindingNavigatorSaveItem.Image")));
             this.ciclosFacturacionBindingNavigatorSaveItem.Name = "ciclosFacturacionBindingNavigatorSaveItem";
-            this.ciclosFacturacionBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
-            this.ciclosFacturacionBindingNavigatorSaveItem.Text = "Guardar datos";
+            this.ciclosFacturacionBindingNavigatorSaveItem.Size = new System.Drawing.Size(69, 22);
+            this.ciclosFacturacionBindingNavigatorSaveItem.Text = "Guardar";
             this.ciclosFacturacionBindingNavigatorSaveItem.Click += new System.EventHandler(this.ciclosFacturacionBindingNavigatorSaveItem_Click);
             // 
             // activoCheckBox
             // 
             this.activoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.ciclosFacturacionBindingSource, "Activo", true));
-            this.activoCheckBox.Location = new System.Drawing.Point(119, 79);
+            this.activoCheckBox.Location = new System.Drawing.Point(407, 53);
             this.activoCheckBox.Name = "activoCheckBox";
             this.activoCheckBox.Size = new System.Drawing.Size(104, 24);
             this.activoCheckBox.TabIndex = 2;
             this.activoCheckBox.UseVisualStyleBackColor = true;
+            this.activoCheckBox.CheckedChanged += new System.EventHandler(this.activoCheckBox_CheckedChanged);
             // 
             // cicloFacturacionIdTextBox
             // 
@@ -315,7 +300,7 @@
             this.cicloFacturacionIdTextBox.Location = new System.Drawing.Point(116, 24);
             this.cicloFacturacionIdTextBox.Name = "cicloFacturacionIdTextBox";
             this.cicloFacturacionIdTextBox.ReadOnly = true;
-            this.cicloFacturacionIdTextBox.Size = new System.Drawing.Size(104, 20);
+            this.cicloFacturacionIdTextBox.Size = new System.Drawing.Size(184, 20);
             this.cicloFacturacionIdTextBox.TabIndex = 4;
             // 
             // diaTextBox
@@ -337,7 +322,7 @@
             // porDefectoCheckBox
             // 
             this.porDefectoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.ciclosFacturacionBindingSource, "PorDefecto", true));
-            this.porDefectoCheckBox.Location = new System.Drawing.Point(119, 49);
+            this.porDefectoCheckBox.Location = new System.Drawing.Point(116, 79);
             this.porDefectoCheckBox.Name = "porDefectoCheckBox";
             this.porDefectoCheckBox.Size = new System.Drawing.Size(104, 24);
             this.porDefectoCheckBox.TabIndex = 10;
@@ -351,30 +336,14 @@
             this.semanaTextBox.Size = new System.Drawing.Size(104, 20);
             this.semanaTextBox.TabIndex = 12;
             // 
-            // sucursalIdTextBox
-            // 
-            this.sucursalIdTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ciclosFacturacionBindingSource, "SucursalId", true));
-            this.sucursalIdTextBox.Location = new System.Drawing.Point(406, 27);
-            this.sucursalIdTextBox.Name = "sucursalIdTextBox";
-            this.sucursalIdTextBox.Size = new System.Drawing.Size(104, 20);
-            this.sucursalIdTextBox.TabIndex = 14;
-            // 
             // nombreTextBox
             // 
             this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ciclosFacturacionBindingSource, "Sucursal.Nombre", true));
-            this.nombreTextBox.Location = new System.Drawing.Point(406, 50);
+            this.nombreTextBox.Location = new System.Drawing.Point(407, 24);
             this.nombreTextBox.Name = "nombreTextBox";
             this.nombreTextBox.Size = new System.Drawing.Size(100, 20);
             this.nombreTextBox.TabIndex = 16;
             this.nombreTextBox.TextChanged += new System.EventHandler(this.nombreTextBox_TextChanged);
-            // 
-            // numeroTextBox
-            // 
-            this.numeroTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ciclosFacturacionBindingSource, "Sucursal.Numero", true));
-            this.numeroTextBox.Location = new System.Drawing.Point(406, 78);
-            this.numeroTextBox.Name = "numeroTextBox";
-            this.numeroTextBox.Size = new System.Drawing.Size(100, 20);
-            this.numeroTextBox.TabIndex = 18;
             // 
             // label1
             // 
@@ -414,16 +383,14 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(nombreLabel1);
+            this.groupBox1.Controls.Add(this.nombreTextBox1);
             this.groupBox1.Controls.Add(this.btnBusquedaSucursal);
             this.groupBox1.Controls.Add(cicloFacturacionIdLabel);
-            this.groupBox1.Controls.Add(this.sucursalIdTextBox);
             this.groupBox1.Controls.Add(nombreLabel);
-            this.groupBox1.Controls.Add(sucursalIdLabel);
             this.groupBox1.Controls.Add(this.nombreTextBox);
             this.groupBox1.Controls.Add(this.porDefectoCheckBox);
-            this.groupBox1.Controls.Add(numeroLabel);
             this.groupBox1.Controls.Add(porDefectoLabel);
-            this.groupBox1.Controls.Add(this.numeroTextBox);
             this.groupBox1.Controls.Add(this.cicloFacturacionIdTextBox);
             this.groupBox1.Controls.Add(activoLabel);
             this.groupBox1.Controls.Add(this.activoCheckBox);
@@ -434,6 +401,25 @@
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos del ciclo de facturacion";
+            // 
+            // nombreTextBox1
+            // 
+            this.nombreTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ciclosFacturacionBindingSource, "Nombre", true));
+            this.nombreTextBox1.Location = new System.Drawing.Point(116, 50);
+            this.nombreTextBox1.Name = "nombreTextBox1";
+            this.nombreTextBox1.Size = new System.Drawing.Size(184, 20);
+            this.nombreTextBox1.TabIndex = 41;
+            // 
+            // btnBusquedaSucursal
+            // 
+            this.btnBusquedaSucursal.Image = global::FUMIT.Recursos.search;
+            this.btnBusquedaSucursal.Location = new System.Drawing.Point(513, 22);
+            this.btnBusquedaSucursal.Name = "btnBusquedaSucursal";
+            this.btnBusquedaSucursal.Size = new System.Drawing.Size(31, 23);
+            this.btnBusquedaSucursal.TabIndex = 40;
+            this.btnBusquedaSucursal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBusquedaSucursal.UseVisualStyleBackColor = true;
+            this.btnBusquedaSucursal.Click += new System.EventHandler(this.btnBusquedaSucursal_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -450,17 +436,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(568, 271);
             this.tableLayoutPanel1.TabIndex = 22;
-            // 
-            // btnBusquedaSucursal
-            // 
-            this.btnBusquedaSucursal.Image = global::FUMIT.Recursos.search;
-            this.btnBusquedaSucursal.Location = new System.Drawing.Point(512, 48);
-            this.btnBusquedaSucursal.Name = "btnBusquedaSucursal";
-            this.btnBusquedaSucursal.Size = new System.Drawing.Size(31, 23);
-            this.btnBusquedaSucursal.TabIndex = 40;
-            this.btnBusquedaSucursal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBusquedaSucursal.UseVisualStyleBackColor = true;
-            this.btnBusquedaSucursal.Click += new System.EventHandler(this.btnBusquedaSucursal_Click);
             // 
             // CiclosFacturacion
             // 
@@ -508,14 +483,13 @@
         private System.Windows.Forms.TextBox mesTextBox;
         private System.Windows.Forms.CheckBox porDefectoCheckBox;
         private System.Windows.Forms.TextBox semanaTextBox;
-        private System.Windows.Forms.TextBox sucursalIdTextBox;
         private System.Windows.Forms.TextBox nombreTextBox;
-        private System.Windows.Forms.TextBox numeroTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button btnBusquedaSucursal;
+        private System.Windows.Forms.TextBox nombreTextBox1;
     }
 }

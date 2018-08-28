@@ -16,7 +16,7 @@ namespace FUMIT.Formularios.Facturacion
     {
         protected bool modoEditar = false;
         protected Formularios.Compartidos.BusquedaSucursal formulariobusquedaSucursal;
-
+        public event EventHandler<Entidades.CiclosFacturacion> CicloFacturaciónSeleccionado;
 
         public bool ModoEditar {
             get
@@ -110,6 +110,11 @@ namespace FUMIT.Formularios.Facturacion
                     //ciclosFacturacionBindingSource.DataSource = CiclosFacturacionEnumerable;
                 }
             }
+        }
+
+        private void activoCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

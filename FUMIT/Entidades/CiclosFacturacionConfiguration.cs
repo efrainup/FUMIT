@@ -31,6 +31,7 @@ namespace FUMIT.Entidades
         public CiclosFacturacionConfiguration(string schema)
         {
             Property(x => x.Dia).IsUnicode(false);
+            Property(x => x.Nombre).IsOptional().IsUnicode(false);
 
         }
     }

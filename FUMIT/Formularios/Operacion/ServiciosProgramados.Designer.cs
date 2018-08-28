@@ -38,6 +38,7 @@
             System.Windows.Forms.Label nombreClienteLabel;
             System.Windows.Forms.Label sucursalClienteLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ServiciosProgramados));
+            System.Windows.Forms.Label nombreLabel;
             this.serviciosprogramadoBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.serviciosprogramadoBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -62,7 +63,9 @@
             this.nombreClienteTextBox = new System.Windows.Forms.TextBox();
             this.sucursalClienteTextBox = new System.Windows.Forms.TextBox();
             this.TipoServicioComboBox = new System.Windows.Forms.ComboBox();
-            this.btnBusquedaSucursal = new System.Windows.Forms.Button();
+            this.btnBusquedaCliente = new System.Windows.Forms.Button();
+            this.nombreTextBox = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             activoLabel = new System.Windows.Forms.Label();
             canceladoLabel = new System.Windows.Forms.Label();
             fechaServicioLabel = new System.Windows.Forms.Label();
@@ -71,6 +74,7 @@
             tipoLabel = new System.Windows.Forms.Label();
             nombreClienteLabel = new System.Windows.Forms.Label();
             sucursalClienteLabel = new System.Windows.Forms.Label();
+            nombreLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.serviciosprogramadoBindingNavigator)).BeginInit();
             this.serviciosprogramadoBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.serviciosprogramadoBindingSource)).BeginInit();
@@ -79,7 +83,7 @@
             // activoLabel
             // 
             activoLabel.AutoSize = true;
-            activoLabel.Location = new System.Drawing.Point(21, 186);
+            activoLabel.Location = new System.Drawing.Point(21, 217);
             activoLabel.Name = "activoLabel";
             activoLabel.Size = new System.Drawing.Size(40, 13);
             activoLabel.TabIndex = 1;
@@ -88,7 +92,7 @@
             // canceladoLabel
             // 
             canceladoLabel.AutoSize = true;
-            canceladoLabel.Location = new System.Drawing.Point(21, 216);
+            canceladoLabel.Location = new System.Drawing.Point(21, 247);
             canceladoLabel.Name = "canceladoLabel";
             canceladoLabel.Size = new System.Drawing.Size(61, 13);
             canceladoLabel.TabIndex = 3;
@@ -97,7 +101,7 @@
             // fechaServicioLabel
             // 
             fechaServicioLabel.AutoSize = true;
-            fechaServicioLabel.Location = new System.Drawing.Point(21, 101);
+            fechaServicioLabel.Location = new System.Drawing.Point(21, 132);
             fechaServicioLabel.Name = "fechaServicioLabel";
             fechaServicioLabel.Size = new System.Drawing.Size(81, 13);
             fechaServicioLabel.TabIndex = 5;
@@ -106,7 +110,7 @@
             // observacionesLabel
             // 
             observacionesLabel.AutoSize = true;
-            observacionesLabel.Location = new System.Drawing.Point(21, 244);
+            observacionesLabel.Location = new System.Drawing.Point(21, 275);
             observacionesLabel.Name = "observacionesLabel";
             observacionesLabel.Size = new System.Drawing.Size(81, 13);
             observacionesLabel.TabIndex = 7;
@@ -115,7 +119,7 @@
             // prioridadLabel
             // 
             prioridadLabel.AutoSize = true;
-            prioridadLabel.Location = new System.Drawing.Point(21, 126);
+            prioridadLabel.Location = new System.Drawing.Point(21, 157);
             prioridadLabel.Name = "prioridadLabel";
             prioridadLabel.Size = new System.Drawing.Size(51, 13);
             prioridadLabel.TabIndex = 9;
@@ -124,7 +128,7 @@
             // tipoLabel
             // 
             tipoLabel.AutoSize = true;
-            tipoLabel.Location = new System.Drawing.Point(21, 152);
+            tipoLabel.Location = new System.Drawing.Point(21, 183);
             tipoLabel.Name = "tipoLabel";
             tipoLabel.Size = new System.Drawing.Size(31, 13);
             tipoLabel.TabIndex = 11;
@@ -176,7 +180,7 @@
             this.serviciosprogramadoBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.serviciosprogramadoBindingNavigator.Name = "serviciosprogramadoBindingNavigator";
             this.serviciosprogramadoBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.serviciosprogramadoBindingNavigator.Size = new System.Drawing.Size(604, 25);
+            this.serviciosprogramadoBindingNavigator.Size = new System.Drawing.Size(625, 25);
             this.serviciosprogramadoBindingNavigator.TabIndex = 0;
             this.serviciosprogramadoBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -301,7 +305,7 @@
             // 
             this.activoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.serviciosprogramadoBindingSource, "Activo", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.activoCheckBox.Enabled = false;
-            this.activoCheckBox.Location = new System.Drawing.Point(113, 181);
+            this.activoCheckBox.Location = new System.Drawing.Point(113, 212);
             this.activoCheckBox.Name = "activoCheckBox";
             this.activoCheckBox.Size = new System.Drawing.Size(200, 24);
             this.activoCheckBox.TabIndex = 6;
@@ -311,7 +315,7 @@
             // 
             this.canceladoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.serviciosprogramadoBindingSource, "Cancelado", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.canceladoCheckBox.Enabled = false;
-            this.canceladoCheckBox.Location = new System.Drawing.Point(113, 211);
+            this.canceladoCheckBox.Location = new System.Drawing.Point(113, 242);
             this.canceladoCheckBox.Name = "canceladoCheckBox";
             this.canceladoCheckBox.Size = new System.Drawing.Size(200, 24);
             this.canceladoCheckBox.TabIndex = 7;
@@ -321,7 +325,7 @@
             // 
             this.fechaServicioDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.serviciosprogramadoBindingSource, "FechaServicio", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.fechaServicioDateTimePicker.Enabled = false;
-            this.fechaServicioDateTimePicker.Location = new System.Drawing.Point(113, 97);
+            this.fechaServicioDateTimePicker.Location = new System.Drawing.Point(113, 128);
             this.fechaServicioDateTimePicker.Name = "fechaServicioDateTimePicker";
             this.fechaServicioDateTimePicker.Size = new System.Drawing.Size(215, 20);
             this.fechaServicioDateTimePicker.TabIndex = 3;
@@ -329,7 +333,7 @@
             // observacionesTextBox
             // 
             this.observacionesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.serviciosprogramadoBindingSource, "Observaciones", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.observacionesTextBox.Location = new System.Drawing.Point(113, 241);
+            this.observacionesTextBox.Location = new System.Drawing.Point(113, 272);
             this.observacionesTextBox.Multiline = true;
             this.observacionesTextBox.Name = "observacionesTextBox";
             this.observacionesTextBox.ReadOnly = true;
@@ -339,7 +343,7 @@
             // prioridadTextBox
             // 
             this.prioridadTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.serviciosprogramadoBindingSource, "Prioridad", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.prioridadTextBox.Location = new System.Drawing.Point(113, 123);
+            this.prioridadTextBox.Location = new System.Drawing.Point(113, 154);
             this.prioridadTextBox.Name = "prioridadTextBox";
             this.prioridadTextBox.ReadOnly = true;
             this.prioridadTextBox.Size = new System.Drawing.Size(200, 20);
@@ -371,27 +375,61 @@
             this.TipoServicioComboBox.Items.AddRange(new object[] {
             "Programado",
             "Express"});
-            this.TipoServicioComboBox.Location = new System.Drawing.Point(113, 154);
+            this.TipoServicioComboBox.Location = new System.Drawing.Point(113, 185);
             this.TipoServicioComboBox.Name = "TipoServicioComboBox";
             this.TipoServicioComboBox.Size = new System.Drawing.Size(200, 21);
             this.TipoServicioComboBox.TabIndex = 5;
             // 
-            // btnBusquedaSucursal
+            // btnBusquedaCliente
             // 
-            this.btnBusquedaSucursal.Enabled = false;
-            this.btnBusquedaSucursal.Image = global::FUMIT.Recursos.search;
-            this.btnBusquedaSucursal.Location = new System.Drawing.Point(482, 43);
-            this.btnBusquedaSucursal.Name = "btnBusquedaSucursal";
-            this.btnBusquedaSucursal.Size = new System.Drawing.Size(31, 23);
-            this.btnBusquedaSucursal.TabIndex = 16;
-            this.btnBusquedaSucursal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBusquedaSucursal.UseVisualStyleBackColor = true;
+            this.btnBusquedaCliente.Enabled = false;
+            this.btnBusquedaCliente.Image = global::FUMIT.Recursos.search;
+            this.btnBusquedaCliente.Location = new System.Drawing.Point(482, 43);
+            this.btnBusquedaCliente.Name = "btnBusquedaCliente";
+            this.btnBusquedaCliente.Size = new System.Drawing.Size(31, 23);
+            this.btnBusquedaCliente.TabIndex = 16;
+            this.btnBusquedaCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBusquedaCliente.UseVisualStyleBackColor = true;
+            this.btnBusquedaCliente.Click += new System.EventHandler(this.btnBusquedaCliente_Click);
+            // 
+            // nombreLabel
+            // 
+            nombreLabel.AutoSize = true;
+            nombreLabel.Location = new System.Drawing.Point(19, 100);
+            nombreLabel.Name = "nombreLabel";
+            nombreLabel.Size = new System.Drawing.Size(48, 13);
+            nombreLabel.TabIndex = 18;
+            nombreLabel.Text = "Servicio:";
+            // 
+            // nombreTextBox
+            // 
+            this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.serviciosprogramadoBindingSource, "Servicio.Nombre", true));
+            this.nombreTextBox.Location = new System.Drawing.Point(113, 100);
+            this.nombreTextBox.Name = "nombreTextBox";
+            this.nombreTextBox.ReadOnly = true;
+            this.nombreTextBox.Size = new System.Drawing.Size(363, 20);
+            this.nombreTextBox.TabIndex = 19;
+            // 
+            // button1
+            // 
+            this.button1.Enabled = false;
+            this.button1.Image = global::FUMIT.Recursos.search;
+            this.button1.Location = new System.Drawing.Point(482, 98);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(31, 23);
+            this.button1.TabIndex = 20;
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // ServiciosProgramados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnBusquedaSucursal);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(nombreLabel);
+            this.Controls.Add(this.nombreTextBox);
+            this.Controls.Add(this.btnBusquedaCliente);
             this.Controls.Add(this.TipoServicioComboBox);
             this.Controls.Add(nombreClienteLabel);
             this.Controls.Add(this.nombreClienteTextBox);
@@ -410,7 +448,7 @@
             this.Controls.Add(tipoLabel);
             this.Controls.Add(this.serviciosprogramadoBindingNavigator);
             this.Name = "ServiciosProgramados";
-            this.Size = new System.Drawing.Size(604, 406);
+            this.Size = new System.Drawing.Size(625, 406);
             this.Load += new System.EventHandler(this.ServiciosProgramados_Load);
             ((System.ComponentModel.ISupportInitialize)(this.serviciosprogramadoBindingNavigator)).EndInit();
             this.serviciosprogramadoBindingNavigator.ResumeLayout(false);
@@ -446,6 +484,8 @@
         private System.Windows.Forms.ToolStripButton tsbEditar;
         private System.Windows.Forms.ToolStripButton tsbCancelar;
         internal System.Windows.Forms.BindingSource serviciosprogramadoBindingSource;
-        private System.Windows.Forms.Button btnBusquedaSucursal;
+        private System.Windows.Forms.Button btnBusquedaCliente;
+        private System.Windows.Forms.TextBox nombreTextBox;
+        private System.Windows.Forms.Button button1;
     }
 }

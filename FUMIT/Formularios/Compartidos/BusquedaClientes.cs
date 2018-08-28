@@ -36,10 +36,7 @@ namespace FUMIT.Formularios.Compartidos
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             IEnumerable<Cliente> filtro = ListadoClientes;
-            if (!string.IsNullOrEmpty(clienteIdTextBox.Text))
-            {
-                filtro = filtro.Where(w => w.ClienteId == Convert.ToInt32(clienteIdTextBox.Text));
-            }
+            
             if (!string.IsNullOrEmpty(nombreTextBox.Text))
             {
                 filtro = filtro.Where(w => w.Nombre.Contains(nombreTextBox.Text));

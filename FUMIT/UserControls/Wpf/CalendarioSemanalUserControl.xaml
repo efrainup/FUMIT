@@ -22,14 +22,14 @@
                 <Setter Property="BorderThickness" Value="0"></Setter>
                 
                 <Setter Property="BorderBrush" Value="#ff75CDFF"></Setter>
-                <Setter Property="Background">
+                <!--<Setter Property="Background">
                     <Setter.Value>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="#FFC7F5FF" Offset="0"/>
                             <GradientStop Color="White" Offset="1"/>
                         </LinearGradientBrush>
                     </Setter.Value>
-                </Setter>
+                </Setter>-->
                 
                 <Style.Triggers>
                     <Trigger Property="DataGridCell.IsSelected" Value="True" >
@@ -69,12 +69,14 @@
                     
                     
 
-                    <TextBlock Grid.Row="0"  Grid.Column="0">Cliente:</TextBlock>
-                    <TextBlock Grid.Row="0"  Grid.Column="1" Text="{Binding Path=Cliente}"></TextBlock>
-                    <TextBlock Grid.Row="1"  Grid.Column="0">Unidad:</TextBlock>
+                    <!--<TextBlock Grid.Row="0"  Grid.Column="0">Cliente:</TextBlock>-->
+                    <TextBlock Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Path=Cliente}"></TextBlock>
+                    <TextBlock Grid.Row="1"  Grid.Column="0">Servicio:</TextBlock>
+                    <TextBlock Grid.Row="1"  Grid.Column="1"  Text="{Binding Path=DescripcionServicio}"></TextBlock>
+                    <!--<TextBlock Grid.Row="1"  Grid.Column="0">Unidad:</TextBlock>
                     <TextBlock Grid.Row="1"  Grid.Column="1" Text="{Binding Path=Unidad}"></TextBlock>
                     <TextBlock Grid.Row="2"  Grid.Column="0">Status:</TextBlock>
-                    <TextBlock Grid.Row="2"  Grid.Column="1" Text="{Binding Path=Status}"></TextBlock>
+                    <TextBlock Grid.Row="2"  Grid.Column="1" Text="{Binding Path=Status}"></TextBlock>-->
 
                     <Grid.ContextMenu>
                         <ContextMenu>

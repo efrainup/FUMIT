@@ -39,6 +39,8 @@ namespace FUMIT.Formularios.Operacion
                 bindingNavigatorDeleteItem.Enabled = !modoEditar;
                 serviciosprogramadoBindingNavigatorSaveItem.Enabled = modoEditar;
                 tsbCancelar.Visible = modoEditar;
+                btnBusquedaCliente.Enabled = modoEditar;
+                button1.Enabled = modoEditar;
 
                 //Formulario
                 fechaServicioDateTimePicker.Enabled = modoEditar;
@@ -126,6 +128,36 @@ namespace FUMIT.Formularios.Operacion
         private void tsbCancelar_Click(object sender, EventArgs e)
         {
             ModoEditar = false;
+        }
+
+        private void btnBusquedaCliente_Click(object sender, EventArgs e)
+        {
+            var busquedaCliente = new Formularios.Compartidos.BusquedaClientes();
+            busquedaCliente.ClienteSeleccionado += (sender2, cliente) => {
+                ServicioProgramadoActual.ClienteId = cliente.ClienteId;
+                ServicioProgramadoActual.Clientes = cliente;
+                serviciosprogramadoBindingSource.ResetBindings(false);
+            };
+            busquedaCliente.Show();
+        }
+
+        private void BusquedaSucursalButton_Click(object sender, EventArgs e)
+        {
+            var busquedaSucursalForm = new Formularios.Compartidos.BusquedaSucursal();
+            busquedaSucursalForm.SucursalSeleccionada += (sender2, sucursal) => {
+                //ServicioProgramadoActual.sucur
+            };
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var busquedaServicio = new Formularios.Compartidos.BusquedaServicio();
+            busquedaServicio.ServicioSeleccionado += (sender2, servicio) =>{
+                ServicioProgramadoActual.ServicioId = servicio.ServicioId;
+                ServicioProgramadoActual.Servicio = servicio;
+                serviciosprogramadoBindingSource.ResetBindings(false);
+            };
+            busquedaServicio.ShowDialog();
         }
     }
 }

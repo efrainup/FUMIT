@@ -17,6 +17,8 @@ namespace FUMIT.Formularios.Operacion
         private int semanaActual;
         private int totalSemanas;
 
+        List<string> serviciosFiltrados = new List<string>();
+        public IServicio ServiciosRepositorio { get; set; }
         public IServiciosProgramados ServiciosProgramadosRepo { get; set; }
         FUMIT.UserControls.Wpf.CalendarioSemanalUserControl CalendarioUC ;
         public int SemanaActual { get {
@@ -77,7 +79,6 @@ namespace FUMIT.Formularios.Operacion
             List<FUMIT.UserControls.Wpf.Semana> miLista = new List<FUMIT.UserControls.Wpf.Semana>();
 
 
-
             DateTime fechaActual = dtpFechaInicio.Value.Date;
             //dataGridView1.Columns.Clear();
             int i = 0;
@@ -88,7 +89,7 @@ namespace FUMIT.Formularios.Operacion
 
 
                 Entidades.Serviciosprogramado[] serviciosprogramados = serviciosProgramadosLista
-                    .Where(w => w.FechaServicio.Date == fechaActual)
+                    .Where(w => w.FechaServicio.Date == fechaActual && serviciosFiltrados.Contains(w.Servicio.Nombre))
                     .OrderBy(o => o.Prioridad)
                     .ThenBy(t => t.ClienteId)
                     .ToArray();
@@ -112,7 +113,8 @@ namespace FUMIT.Formularios.Operacion
                         Cancelado = serviciosprogramados[j].Cancelado,
                         DescripcionServicio = serviciosprogramados[j].Servicio.Nombre,
                         Unidad = "Sin unidad asignada",
-                        Entidad = serviciosprogramados[j]
+                        Entidad = serviciosprogramados[j],
+                        
                     };
 
                     switch (fechaActual.DayOfWeek)
@@ -205,21 +207,38 @@ namespace FUMIT.Formularios.Operacion
 
         private void CalendarioServicios_Load(object sender, EventArgs e)
         {
-            ServiciosProgramadosRepo = new ServiciosProgramadosRepositorio();
+            if (!DesignMode)
+            {
+                ServiciosProgramadosRepo = new ServiciosProgramadosRepositorio();
+                ServiciosRepositorio = CommonServiceLocator.ServiceLocator.Current.GetInstance<IServicio>();
 
-            //Se agrega calendario
-            CalendarioUC = new FUMIT.UserControls.Wpf.CalendarioSemanalUserControl();
-            CalendarioUC.InitializeComponent();
-            CalendarioUC.MoverServicio += CalendarioUC_MoverServicio;
-            CalendarioUC.CancelarServicio += CalendarioUC_CancelarServicio;
-            CalendarioUC.VerExpedienteCliente += CalendarioUC_VerExpedienteCliente;
-            elementHost2.Child = CalendarioUC;
+                //Se cargan datos en el filtro
+                IEnumerable<Entidades.Servicio> servicios = ServiciosRepositorio.Recuperar();
+                serviciosCheckList.ItemCheck -= serviciosCheckList_ItemCheck;
+                foreach (Entidades.Servicio servicio in servicios)
+                {
+                    serviciosCheckList.Items.Add(servicio.Nombre, true);
+                    serviciosFiltrados.Add(servicio.Nombre);
+                }
+                serviciosCheckList.ItemCheck += serviciosCheckList_ItemCheck;
+                
+                //serviciosCheckList.Items.AddRange(ServiciosRepositorio.Recuperar().Select(s => s.Nombre).ToArray());
 
 
-            //Se calculan las semanas del año actual
-            Año = DateTime.Now.Year;
-            CalcularSemanasAño(Año);
-            btnActualizar_Click(sender, e);
+                //Se agrega calendario
+                CalendarioUC = new FUMIT.UserControls.Wpf.CalendarioSemanalUserControl();
+                CalendarioUC.InitializeComponent();
+                CalendarioUC.MoverServicio += CalendarioUC_MoverServicio;
+                CalendarioUC.CancelarServicio += CalendarioUC_CancelarServicio;
+                CalendarioUC.VerExpedienteCliente += CalendarioUC_VerExpedienteCliente;
+                elementHost2.Child = CalendarioUC;
+
+
+                //Se calculan las semanas del año actual
+                Año = DateTime.Now.Year;
+                CalcularSemanasAño(Año);
+                btnActualizar_Click(sender, e);
+            }
 
         }
 
@@ -310,6 +329,49 @@ namespace FUMIT.Formularios.Operacion
         {
             CalcularSemanasAño(Convert.ToInt32(tsbAñoTextBox.Text));
             btnActualizar_Click(sender, e);
+        }
+
+        private void AgregarServicioButton_Click(object sender, EventArgs e)
+        {
+
+            var editarServicioFormulario = new Operacion.EditarServicio();
+            editarServicioFormulario.serviciosProgramadosUC.serviciosprogramadoBindingSource.AddNew();
+            editarServicioFormulario.ModoEditar = true;
+            editarServicioFormulario.serviciosProgramadosUC.CancelarCargaDefault = true;
+
+            editarServicioFormulario.serviciosProgramadosUC.ServicioProgramadoGuardado += (sender_servicioguardado, servicioGuardado) =>
+            {
+                btnActualizar_Click(sender_servicioguardado, null);
+            };
+
+            editarServicioFormulario.ShowDialog();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void serviciosCheckList_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            //Se obtienen los filtros
+            serviciosFiltrados = serviciosCheckList.CheckedItems.OfType<string>().ToList();
+
+            if (e.NewValue == CheckState.Checked)
+            {
+                serviciosFiltrados.Add(serviciosCheckList.Items[e.Index].ToString());
+            }
+            else
+            {
+                serviciosFiltrados.Remove(serviciosCheckList.Items[e.Index].ToString());
+            }
+
+            btnActualizar_Click(sender, null);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CalendarioUC.Print();
         }
     }
 }
