@@ -12,9 +12,12 @@ namespace FUMIT.AccesoDatos
     {
         public IEnumerable<Programacionservicio> RecuperarPorIdSucursal(int sucursalId)
         {
-            return dbSet.Where(w => w.SucursalId == sucursalId).AsEnumerable();
+            return dbSet.Where(w => w.SucursalId == sucursalId).ToArray();
         }
 
-        
+        public Programacionservicio RecuperarPorNombreProgramacionServicio(string NombreProgramacionServicio)
+        {
+            return dbSet.FirstOrDefault(w => w.Nombre == NombreProgramacionServicio && w.Borrado==false);
+        }
     }
 }

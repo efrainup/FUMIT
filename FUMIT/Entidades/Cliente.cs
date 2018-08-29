@@ -41,14 +41,12 @@ namespace FUMIT.Entidades
         public int SucursalId { get; set; } // SucursalId
 
         [Column(@"Clave", Order = 3, TypeName = "varchar")]
-        [Required(AllowEmptyStrings = true)]
         [MaxLength(10)]
         [StringLength(10)]
         [Display(Name = "Clave")]
         public string Clave { get; set; } // Clave (length: 10)
 
         [Column(@"Nombre", Order = 4, TypeName = "varchar")]
-        [Required(AllowEmptyStrings = true)]
         [MaxLength(150)]
         [StringLength(150)]
         [Display(Name = "Nombre")]
@@ -78,7 +76,6 @@ namespace FUMIT.Entidades
         public string Rfc { get; set; } // RFC (length: 13)
 
         [Column(@"Direccion", Order = 9, TypeName = "varchar")]
-        [Required(AllowEmptyStrings = true)]
         [MaxLength(250)]
         [StringLength(250)]
         [Display(Name = "Direccion")]
@@ -153,6 +150,10 @@ namespace FUMIT.Entidades
         // Reverse navigation
 
         /// <summary>
+        /// Child Asignacionesequipos where [AsignacionesEquipos].[ClienteId] point to this entity (FK_AsignacionesEquipos_Clientes)
+        /// </summary>
+        public virtual System.Collections.Generic.ICollection<Asignacionesequipo> Asignacionesequipos { get; set; } // AsignacionesEquipos.FK_AsignacionesEquipos_Clientes
+        /// <summary>
         /// Child Contactos where [Contactos].[ClienteId] point to this entity (FK_Contactos_Clientes)
         /// </summary>
         public virtual System.Collections.Generic.ICollection<Contacto> Contactos { get; set; } // Contactos.FK_Contactos_Clientes
@@ -181,6 +182,7 @@ namespace FUMIT.Entidades
             PersonaMoral = false;
             FechaCreacion = System.DateTime.Now;
             RequiereManifiesto = false;
+            Asignacionesequipos = new System.Collections.Generic.List<Asignacionesequipo>();
             Contactos = new System.Collections.Generic.List<Contacto>();
             Historialclientes = new System.Collections.Generic.List<HistorialCliente>();
             Programacionserviciosclientes = new System.Collections.Generic.List<Programacionservicioscliente>();

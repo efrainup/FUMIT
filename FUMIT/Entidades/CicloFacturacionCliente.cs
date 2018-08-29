@@ -46,16 +46,14 @@ namespace FUMIT.Entidades
         public int ServicioId { get; set; } // ServicioId
 
         [Column(@"FechaInicioVigencia", Order = 4, TypeName = "datetime")]
-        [Required]
         [DataType(DataType.DateTime)]
         [Display(Name = "Fecha inicio vigencia")]
-        public System.DateTime FechaInicioVigencia { get; set; } // FechaInicioVigencia
+        public System.DateTime? FechaInicioVigencia { get; set; } // FechaInicioVigencia
 
         [Column(@"FechaFinVigencia", Order = 5, TypeName = "datetime")]
-        [Required]
         [DataType(DataType.DateTime)]
         [Display(Name = "Fecha fin vigencia")]
-        public System.DateTime FechaFinVigencia { get; set; } // FechaFinVigencia
+        public System.DateTime? FechaFinVigencia { get; set; } // FechaFinVigencia
 
         [Column(@"Activo", Order = 6, TypeName = "bit")]
         [Required]

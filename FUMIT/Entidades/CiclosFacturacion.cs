@@ -27,7 +27,7 @@ namespace FUMIT.Entidades
         public event PropertyChangedEventHandler PropertyChanged;
 
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column(@"CicloFacturacionId", Order = 1, TypeName = "int")]
         [Index(@"PK_CiclosFacturacion", 1, IsUnique = true, IsClustered = true)]
         [Required]

@@ -30,12 +30,12 @@ namespace FUMIT.Entidades
 
         public ClienteConfiguration(string schema)
         {
-            Property(x => x.Clave).IsUnicode(false);
-            Property(x => x.Nombre).IsUnicode(false);
+            Property(x => x.Clave).IsOptional().IsUnicode(false);
+            Property(x => x.Nombre).IsOptional().IsUnicode(false);
             Property(x => x.NombreFiscal).IsOptional().IsUnicode(false);
             Property(x => x.SucursalCliente).IsOptional().IsUnicode(false);
             Property(x => x.Rfc).IsOptional().IsUnicode(false);
-            Property(x => x.Direccion).IsUnicode(false);
+            Property(x => x.Direccion).IsOptional().IsUnicode(false);
             Property(x => x.DireccionFiscal).IsOptional().IsUnicode(false);
             Property(x => x.Ubicacion).IsOptional().IsUnicode(false);
             Property(x => x.Contacto).IsOptional().IsUnicode(false);

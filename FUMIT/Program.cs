@@ -33,6 +33,7 @@ namespace FUMIT
             container.RegisterType<IServicio, ServiciosRepositorio>();
             container.RegisterType<IContactos, ContactosRepositorio>();
             container.RegisterType<IVSProgramacionServiciosCliente, VSProgramacionServiciosClienteRepositorio>();
+            container.RegisterType<ICicloFacturacionClientes, CiclosFactuacionClienteRepositorio>();
             CommonServiceLocator.ServiceLocator.SetLocatorProvider(() => unityServiceLocator);
 
             

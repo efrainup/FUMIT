@@ -94,14 +94,14 @@ namespace FUMIT.Formularios.Operacion
             set
             {
                 sucursalId = value;
-                if(ProgramacionServicioRepositorio != null)
-                {
-                    programacionServicios = ProgramacionServicioRepositorio.RecuperarPorIdSucursal(sucursalId);
-                    foreach (Entidades.Programacionservicio programacionServicio in programacionServicios)
-                    {
-                        programacionservicioBindingSource.Add(programacionServicio);
-                    }
-                }
+                //if(ProgramacionServicioRepositorio != null)
+                //{
+                //    programacionServicios = ProgramacionServicioRepositorio.RecuperarPorIdSucursal(sucursalId);
+                //    foreach (Entidades.Programacionservicio programacionServicio in programacionServicios)
+                //    {
+                //        programacionservicioBindingSource.Add(programacionServicio);
+                //    }
+                //}
 
             }
         }
@@ -166,9 +166,9 @@ namespace FUMIT.Formularios.Operacion
             CheckedListBox checkedListBox = (sender as CheckedListBox);
             CheckedListBox.CheckedItemCollection DiasProgramacion = checkedListBox.CheckedItems;
 
-            
 
             IEnumerable<string> diasProgramados = DiasProgramacion.Cast<String>().AsEnumerable();
+            NombreProgramacion();
 
             string resultadoDias = "";
             if (ProgramacionServicioActual.Semana.HasValue)
@@ -186,10 +186,11 @@ namespace FUMIT.Formularios.Operacion
                         resultadoDias = resultadoDias.Substring(0, resultadoDias.Length - 1);
                     }
 
-                    (programacionservicioBindingSource.Current as Entidades.Programacionservicio).Dias = resultadoDias;
+                    ProgramacionServicioActual.Dias = resultadoDias;
                 }
             }
 
+            programacionservicioBindingSource.ResetBindings(false);
         }
 
         private static string ObtenerDiasTexto(IEnumerable<string> diasProgramados, int numeroSemanas)
@@ -264,9 +265,9 @@ namespace FUMIT.Formularios.Operacion
 
                 //Se deschequean los demas
                 int conteo = chkListTipoProgramacion.Items.Count;
-                for(int i=0; i < conteo; i++)
+                for (int i = 0; i < conteo; i++)
                 {
-                    if(e.Index != i)
+                    if (e.Index != i)
                     {
                         chkListTipoProgramacion.SetItemChecked(i, false);
                     }
@@ -279,7 +280,7 @@ namespace FUMIT.Formularios.Operacion
                 {
                     case "Diaria":
                         chkListDiasSemana.Enabled = true;
-                        diasTextBox.Text = "1,2,3,4,5,6,7";
+                        ProgramacionServicioActual.Dias = "1,2,3,4,5,6,7";
                         for (int i = 0; i < chkListDiasSemana.Items.Count; i++)
                         {
                             chkListDiasSemana.SetItemChecked(i, true);
@@ -288,7 +289,11 @@ namespace FUMIT.Formularios.Operacion
                         break;
                     case "Semanal":
                         chkListDiasSemana.Enabled = true;
-                        semanaTextBox.Text = "1";
+                        ProgramacionServicioActual.Dias = "1";
+                        break;
+                    case "Quincenal":
+                        chkListDiasSemana.Enabled = true;
+                        ProgramacionServicioActual.Dias = "15";
                         break;
                     case "Mensual":
                         mesTextBox.Text = "1";
@@ -298,8 +303,24 @@ namespace FUMIT.Formularios.Operacion
                         chkListDiasSemana.Enabled = true;
                         break;
                 }
+
+                NombreProgramacion();
+
+                programacionservicioBindingSource.ResetBindings(false);
             }
-            
+
+        }
+
+        private void NombreProgramacion()
+        {
+            CheckedListBox.CheckedItemCollection DiasProgramacion = chkListDiasSemana.CheckedItems;
+            IEnumerable<string> diasProgramados = DiasProgramacion.Cast<String>().AsEnumerable();
+            ProgramacionServicioActual.Nombre = chkListTipoProgramacion.SelectedItem.ToString() + " ";
+            foreach (string dia in diasProgramados)
+            {
+                ProgramacionServicioActual.Nombre += dia.Substring(0, 3) + "-";
+            }
+            ProgramacionServicioActual.Nombre = ProgramacionServicioActual.Nombre.Substring(0, ProgramacionServicioActual.Nombre.Length - 1);
         }
 
         private void semanaTextBox_TextChanged(object sender, EventArgs e)
@@ -330,39 +351,53 @@ namespace FUMIT.Formularios.Operacion
             {
                 programacionServiciosSucursalesbindingSource.DataSource = this;
                 programacionservicioBindingSource.Clear();
-                programacionServicios = ProgramacionServicioRepositorio.Recuperar();
-                foreach(Entidades.Programacionservicio programacionServicio in programacionServicios)
-                {
-                    programacionservicioBindingSource.Add(programacionServicio);
-                }
+                programacionservicioBindingSource.AddNew();
+               // programacionServicios = ProgramacionServicioRepositorio.Recuperar();
+                //foreach(Entidades.Programacionservicio programacionServicio in programacionServicios)
+                //{
+                //    programacionservicioBindingSource.Add(programacionServicio);
+                //}
             }
         }
 
-        private void btnSeleccionar_Click(object sender, EventArgs e)
+        private async void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            ProgramacionServicioSeleccionado.Invoke(this, ProgramacionServicioActual);
+            //Se realiza la búsqueda de un horario con los datos brindados, si no existe se agrega, si existe se selecciona el existente.
+
+            Entidades.Programacionservicio programacionservicio = ProgramacionServicioRepositorio.RecuperarPorNombreProgramacionServicio(ProgramacionServicioActual.Nombre);
+            if(programacionservicio == null)
+            {
+                ProgramacionServicioActual.SucursalId = SucursalId;
+                await ProgramacionServicioRepositorio.CrearAsync(ProgramacionServicioActual);
+                programacionservicio = ProgramacionServicioRepositorio.RecuperarPorNombreProgramacionServicio(ProgramacionServicioActual.Nombre);
+            }
+            
+            //ProgramacionServicioActual.Nombre
+
+
+            ProgramacionServicioSeleccionado.Invoke(this, programacionservicio);
             Close();
         }
 
         private void programacionservicioBindingSource_CurrentChanged(object sender, EventArgs e)
         {
 
-            //Se limpia
-            for (int i = 0; i < 7; i++)
-            {
-                chkListDiasSemana.SetItemChecked(i,false);
-            }
+            ////Se limpia
+            //for (int i = 0; i < 7; i++)
+            //{
+            //    chkListDiasSemana.SetItemChecked(i,false);
+            //}
 
 
-            if (ProgramacionServicioActual.Dias != null && ProgramacionServicioActual.Semana.HasValue && ProgramacionServicioActual.Semana.Value > 0)
-            {
-                int[] dias = ProgramacionServicioActual.Dias.Split(',').Select(s => Convert.ToInt32(s)).ToArray();
+            //if (ProgramacionServicioActual.Dias != null && ProgramacionServicioActual.Semana.HasValue && ProgramacionServicioActual.Semana.Value > 0)
+            //{
+            //    int[] dias = ProgramacionServicioActual.Dias.Split(',').Select(s => Convert.ToInt32(s)).ToArray();
 
-                for (int i = 0; (i < dias.Length) && (i < 8); i++)
-                {
-                    chkListDiasSemana.SetItemChecked(i, i + 1 == dias[i]);
-                }
-            }
+            //    for (int i = 0; (i < dias.Length) && (i < 8); i++)
+            //    {
+            //        chkListDiasSemana.SetItemChecked(i, i + 1 == dias[i]);
+            //    }
+            //}
 
         }
 

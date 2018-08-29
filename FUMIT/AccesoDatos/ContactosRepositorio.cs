@@ -13,14 +13,14 @@ namespace FUMIT.AccesoDatos
 
         public IEnumerable<Contacto> RecuperarPorCliente(int ClienteId)
         {
-            return dbSet.Where(w => w.ClienteId == ClienteId).ToList();
+            return dbSet.Where(w => w.ClienteId == ClienteId && w.Borrado==false).ToList();
         }
 
         public IEnumerable<Contacto> RecuperarPorCliente(Cliente Cliente)
         {
             if (Cliente != null)
             {
-                return Cliente.Contactos;
+                return Cliente.Contactos.Where(w => w.Borrado== false).ToArray();
             }
             else {
                 return new List<Entidades.Contacto>();

@@ -63,6 +63,8 @@ namespace FUMIT.Formularios.Clientes
         IServiciosProgramados serviciosProgramados { get; set; }
         public IVSProgramacionServiciosCliente vistaProgramacionServiciosCliente { get; set; }
         public IProgramacionServiciosCliente ProgramacionServiciosClienteRepositorio { get; set; }
+        public IClientes ClientesRepositorio { get; set; }
+
         public Entidades.Programacionservicioscliente ProgramacionServicioClienteActual { get
             {
                 return (programacionserviciosclienteBindingSource.Current as Entidades.Programacionservicioscliente);
@@ -103,6 +105,7 @@ namespace FUMIT.Formularios.Clientes
                 ProgramacionServiciosClienteRepositorio = CommonServiceLocator.ServiceLocator.Current.GetInstance<IProgramacionServiciosCliente>();
                 vistaProgramacionServiciosCliente = CommonServiceLocator.ServiceLocator.Current.GetInstance<IVSProgramacionServiciosCliente>();
                 serviciosProgramados = CommonServiceLocator.ServiceLocator.Current.GetInstance<IServiciosProgramados>();
+                ClientesRepositorio = CommonServiceLocator.ServiceLocator.Current.GetInstance<IClientes>();
 
                 //Se inicializa binding para que el boton de programar servicios se deshabilite cuando los servicios ya hayan sido programados
                 var binding = new System.Windows.Forms.Binding("Enabled", this.programacionserviciosclienteBindingSource, "ServiciosProgramados", true);
@@ -226,8 +229,9 @@ namespace FUMIT.Formularios.Clientes
 
         private void btnBusquedaHorario_Click(object sender, EventArgs e)
         {
+            Entidades.Cliente cliente = ClientesRepositorio.RecuperarPorId(ClienteId);
             var formulario = new Formularios.Operacion.ProgramacionServiciosSucursales();
-            formulario.SucursalId = ClienteId;
+            formulario.SucursalId = cliente.SucursalId;
             formulario.ModoBusqueda = true;
             formulario.Show();
             formulario.ProgramacionServicioSeleccionado += (object sender2, Entidades.Programacionservicio resultado) =>

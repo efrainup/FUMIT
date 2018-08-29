@@ -19,19 +19,20 @@ namespace FUMIT.Entidades
     using System.ComponentModel;
     using System.Runtime.Serialization;
 
-    // CicloFacturacionCliente
+    // Equipo
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.37.1.0")]
-    public class CicloFacturacionClienteConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<CicloFacturacionCliente>
+    public class EquipoConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<Equipo>
     {
-        public CicloFacturacionClienteConfiguration()
+        public EquipoConfiguration()
             : this("dbo")
         {
         }
 
-        public CicloFacturacionClienteConfiguration(string schema)
+        public EquipoConfiguration(string schema)
         {
-            Property(x => x.FechaInicioVigencia).IsOptional();
-            Property(x => x.FechaFinVigencia).IsOptional();
+            Property(x => x.NumeroEconomico).IsOptional().IsUnicode(false);
+            Property(x => x.Estado).IsUnicode(false);
+            Property(x => x.Observaciones).IsOptional().IsUnicode(false);
 
         }
     }

@@ -105,9 +105,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccesoDatos\AOperacionesBase.cs" />
+    <Compile Include="AccesoDatos\CiclosFactuacionClienteRepositorio.cs" />
     <Compile Include="AccesoDatos\CiclosFacturacionRepositorio.cs" />
     <Compile Include="AccesoDatos\ClientesRepositorio.cs" />
     <Compile Include="AccesoDatos\ContactosRepositorio.cs" />
+    <Compile Include="AccesoDatos\ICicloFacturacionClientes.cs" />
     <Compile Include="AccesoDatos\ICiclosFacturacion.cs" />
     <Compile Include="AccesoDatos\IClientes.cs" />
     <Compile Include="AccesoDatos\IContactos.cs" />
@@ -125,6 +127,12 @@
     <Compile Include="AccesoDatos\SucursalesRepositorio.cs" />
     <Compile Include="AccesoDatos\VSProgramacionServiciosClienteRepositorio.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Entidades\Asignacionesequipo.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\AsignacionesequipoConfiguration.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entidades\BasedeDatosFUMIT.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -152,6 +160,12 @@
       <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
     </Compile>
     <Compile Include="Entidades\ContactoConfiguration.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\Equipo.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\EquipoConfiguration.cs">
       <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
     </Compile>
     <Compile Include="Entidades\Evento.cs">
@@ -209,6 +223,12 @@
       <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
     </Compile>
     <Compile Include="Entidades\SucursalConfiguration.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\Tipoequipo.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\TipoequipoConfiguration.cs">
       <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
     </Compile>
     <Compile Include="Entidades\Vsprogramacionservicioscliente.cs">

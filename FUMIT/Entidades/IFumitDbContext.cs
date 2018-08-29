@@ -21,10 +21,12 @@ namespace FUMIT.Entidades
 
     public interface IFumitDbContext : System.IDisposable
     {
+        System.Data.Entity.DbSet<Asignacionesequipo> Asignacionesequipos { get; set; } // AsignacionesEquipos
         System.Data.Entity.DbSet<CicloFacturacionCliente> Ciclofacturacionclientes { get; set; } // CicloFacturacionCliente
         System.Data.Entity.DbSet<CiclosFacturacion> Ciclosfacturaciones { get; set; } // CiclosFacturacion
         System.Data.Entity.DbSet<Cliente> Clientes { get; set; } // Clientes
         System.Data.Entity.DbSet<Contacto> Contactos { get; set; } // Contactos
+        System.Data.Entity.DbSet<Equipo> Equipos { get; set; } // Equipo
         System.Data.Entity.DbSet<Evento> Eventos { get; set; } // Eventos
         System.Data.Entity.DbSet<HistorialCliente> Historialclientes { get; set; } // HistorialCliente
         System.Data.Entity.DbSet<Programacionservicio> Programacionservicios { get; set; } // ProgramacionServicios
@@ -33,6 +35,7 @@ namespace FUMIT.Entidades
         System.Data.Entity.DbSet<Serviciosprogramado> Serviciosprogramados { get; set; } // ServiciosProgramados
         System.Data.Entity.DbSet<Serviciossucursal> Serviciossucursales { get; set; } // ServiciosSucursales
         System.Data.Entity.DbSet<Sucursal> Sucursales { get; set; } // Sucursales
+        System.Data.Entity.DbSet<Tipoequipo> Tipoequipos { get; set; } // TipoEquipos
         System.Data.Entity.DbSet<Vsprogramacionservicioscliente> Vsprogramacionserviciosclientes { get; set; } // vsProgramacionServiciosClientes
 
         int SaveChanges();
