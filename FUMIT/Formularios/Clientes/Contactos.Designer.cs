@@ -36,7 +36,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Contactos));
             this.contactoBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.contactoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -51,10 +50,6 @@
             this.contactoBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.tsbCancelar = new System.Windows.Forms.ToolStripButton();
             this.contactoDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tipoComboBox = new System.Windows.Forms.ComboBox();
@@ -62,16 +57,21 @@
             this.nombreTextBox = new System.Windows.Forms.TextBox();
             this.telefonoTextBox = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contactoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             correoLabel = new System.Windows.Forms.Label();
             nombreLabel = new System.Windows.Forms.Label();
             telefonoLabel = new System.Windows.Forms.Label();
             tipoLabel1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.contactoBindingNavigator)).BeginInit();
             this.contactoBindingNavigator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.contactoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.contactoDataGridView)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.contactoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // correoLabel
@@ -150,10 +150,6 @@
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(69, 22);
             this.bindingNavigatorAddNewItem.Text = "Agregar";
             this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
-            // 
-            // contactoBindingSource
-            // 
-            this.contactoBindingSource.DataSource = typeof(FUMIT.Entidades.Contacto);
             // 
             // bindingNavigatorCountItem
             // 
@@ -278,40 +274,6 @@
             this.contactoDataGridView.Size = new System.Drawing.Size(668, 162);
             this.contactoDataGridView.TabIndex = 1;
             // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Nombre";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Nombre";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Telefono";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Telefono";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 74;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Correo";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Correo";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "Tipo";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Tipo";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 53;
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
@@ -347,7 +309,7 @@
             // 
             // tipoComboBox
             // 
-            this.tipoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactoBindingSource, "Tipo", true));
+            this.tipoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactoBindingSource, "Tipo", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.tipoComboBox.Enabled = false;
             this.tipoComboBox.FormattingEnabled = true;
             this.tipoComboBox.Items.AddRange(new object[] {
@@ -361,7 +323,7 @@
             // 
             // correoTextBox
             // 
-            this.correoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactoBindingSource, "Correo", true));
+            this.correoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactoBindingSource, "Correo", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.correoTextBox.Location = new System.Drawing.Point(87, 49);
             this.correoTextBox.Name = "correoTextBox";
             this.correoTextBox.ReadOnly = true;
@@ -370,7 +332,7 @@
             // 
             // nombreTextBox
             // 
-            this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactoBindingSource, "Nombre", true));
+            this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactoBindingSource, "Nombre", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.nombreTextBox.Location = new System.Drawing.Point(87, 23);
             this.nombreTextBox.Name = "nombreTextBox";
             this.nombreTextBox.ReadOnly = true;
@@ -379,12 +341,50 @@
             // 
             // telefonoTextBox
             // 
-            this.telefonoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactoBindingSource, "Telefono", true));
+            this.telefonoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactoBindingSource, "Telefono", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.telefonoTextBox.Location = new System.Drawing.Point(87, 75);
             this.telefonoTextBox.Name = "telefonoTextBox";
             this.telefonoTextBox.ReadOnly = true;
             this.telefonoTextBox.Size = new System.Drawing.Size(203, 20);
             this.telefonoTextBox.TabIndex = 9;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Nombre";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Nombre";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Telefono";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Telefono";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 74;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Correo";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Correo";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Tipo";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Tipo";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 53;
+            // 
+            // contactoBindingSource
+            // 
+            this.contactoBindingSource.DataSource = typeof(FUMIT.Entidades.Contacto);
             // 
             // Contactos
             // 
@@ -398,11 +398,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.contactoBindingNavigator)).EndInit();
             this.contactoBindingNavigator.ResumeLayout(false);
             this.contactoBindingNavigator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.contactoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.contactoDataGridView)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.contactoBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

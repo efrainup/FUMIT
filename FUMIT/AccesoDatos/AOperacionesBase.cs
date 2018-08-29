@@ -90,7 +90,7 @@ namespace FUMIT.AccesoDatos
         public T RecuperarPorId(int Id)
         {
             PropertyInfo propiedadId = typeof(T).GetProperties().FirstOrDefault(f => f.GetCustomAttribute(typeof(KeyAttribute)) != null);
-            return dbContext.Set<T>().Where("Borrado=@0 && @1=@2", false, propiedadId.Name, Id).FirstOrDefault();
+            return dbContext.Set<T>().Where($"Borrado=@0 && {propiedadId.Name}=@1", false,Id).FirstOrDefault();
         }
 
         public async Task<T> RecuperarPorIdAsync(int Id)
