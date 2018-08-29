@@ -29,57 +29,93 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Contactos));
             System.Windows.Forms.Label correoLabel;
             System.Windows.Forms.Label nombreLabel;
             System.Windows.Forms.Label telefonoLabel;
             System.Windows.Forms.Label tipoLabel1;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Contactos));
             this.contactoBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.contactoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
-            this.contactoBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
-            this.contactoDataGridView = new System.Windows.Forms.DataGridView();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.correoTextBox = new System.Windows.Forms.TextBox();
-            this.nombreTextBox = new System.Windows.Forms.TextBox();
-            this.telefonoTextBox = new System.Windows.Forms.TextBox();
-            this.tipoComboBox = new System.Windows.Forms.ComboBox();
-            this.contactoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tsbEditar = new System.Windows.Forms.ToolStripButton();
+            this.contactoBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.tsbCancelar = new System.Windows.Forms.ToolStripButton();
+            this.contactoDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tipoComboBox = new System.Windows.Forms.ComboBox();
+            this.correoTextBox = new System.Windows.Forms.TextBox();
+            this.nombreTextBox = new System.Windows.Forms.TextBox();
+            this.telefonoTextBox = new System.Windows.Forms.TextBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             correoLabel = new System.Windows.Forms.Label();
             nombreLabel = new System.Windows.Forms.Label();
             telefonoLabel = new System.Windows.Forms.Label();
             tipoLabel1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.contactoBindingNavigator)).BeginInit();
             this.contactoBindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.contactoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.contactoDataGridView)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.contactoBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // correoLabel
+            // 
+            correoLabel.AutoSize = true;
+            correoLabel.Location = new System.Drawing.Point(16, 52);
+            correoLabel.Name = "correoLabel";
+            correoLabel.Size = new System.Drawing.Size(41, 13);
+            correoLabel.TabIndex = 4;
+            correoLabel.Text = "Correo:";
+            // 
+            // nombreLabel
+            // 
+            nombreLabel.AutoSize = true;
+            nombreLabel.Location = new System.Drawing.Point(16, 26);
+            nombreLabel.Name = "nombreLabel";
+            nombreLabel.Size = new System.Drawing.Size(47, 13);
+            nombreLabel.TabIndex = 6;
+            nombreLabel.Text = "Nombre:";
+            // 
+            // telefonoLabel
+            // 
+            telefonoLabel.AutoSize = true;
+            telefonoLabel.Location = new System.Drawing.Point(16, 78);
+            telefonoLabel.Name = "telefonoLabel";
+            telefonoLabel.Size = new System.Drawing.Size(52, 13);
+            telefonoLabel.TabIndex = 8;
+            telefonoLabel.Text = "Telefono:";
+            // 
+            // tipoLabel1
+            // 
+            tipoLabel1.AutoSize = true;
+            tipoLabel1.Location = new System.Drawing.Point(17, 104);
+            tipoLabel1.Name = "tipoLabel1";
+            tipoLabel1.Size = new System.Drawing.Size(31, 13);
+            tipoLabel1.TabIndex = 12;
+            tipoLabel1.Text = "Tipo:";
             // 
             // contactoBindingNavigator
             // 
             this.contactoBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
             this.contactoBindingNavigator.BindingSource = this.contactoBindingSource;
             this.contactoBindingNavigator.CountItem = this.bindingNavigatorCountItem;
-            this.contactoBindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
+            this.contactoBindingNavigator.DeleteItem = null;
             this.contactoBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bindingNavigatorMoveFirstItem,
             this.bindingNavigatorMovePreviousItem,
@@ -105,6 +141,35 @@
             this.contactoBindingNavigator.Size = new System.Drawing.Size(674, 25);
             this.contactoBindingNavigator.TabIndex = 0;
             this.contactoBindingNavigator.Text = "bindingNavigator1";
+            // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.Image = global::FUMIT.Recursos.add;
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(69, 22);
+            this.bindingNavigatorAddNewItem.Text = "Agregar";
+            this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
+            // 
+            // contactoBindingSource
+            // 
+            this.contactoBindingSource.DataSource = typeof(FUMIT.Entidades.Contacto);
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(37, 22);
+            this.bindingNavigatorCountItem.Text = "de {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Número total de elementos";
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(70, 22);
+            this.bindingNavigatorDeleteItem.Text = "Eliminar";
+            this.bindingNavigatorDeleteItem.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click);
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -138,16 +203,9 @@
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Posición actual";
             // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(37, 22);
-            this.bindingNavigatorCountItem.Text = "de {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Número total de elementos";
-            // 
             // bindingNavigatorSeparator1
             // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
             this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // bindingNavigatorMoveNextItem
@@ -170,25 +228,17 @@
             // 
             // bindingNavigatorSeparator2
             // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // bindingNavigatorAddNewItem
+            // tsbEditar
             // 
-            this.bindingNavigatorAddNewItem.Image = global::FUMIT.Recursos.add;
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(69, 22);
-            this.bindingNavigatorAddNewItem.Text = "Agregar";
-            this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(70, 22);
-            this.bindingNavigatorDeleteItem.Text = "Eliminar";
+            this.tsbEditar.Image = global::FUMIT.Recursos.edit_add;
+            this.tsbEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbEditar.Name = "tsbEditar";
+            this.tsbEditar.Size = new System.Drawing.Size(57, 22);
+            this.tsbEditar.Text = "Editar";
+            this.tsbEditar.Click += new System.EventHandler(this.tsbEditar_Click);
             // 
             // contactoBindingNavigatorSaveItem
             // 
@@ -198,6 +248,16 @@
             this.contactoBindingNavigatorSaveItem.Size = new System.Drawing.Size(69, 22);
             this.contactoBindingNavigatorSaveItem.Text = "Guardar";
             this.contactoBindingNavigatorSaveItem.Click += new System.EventHandler(this.contactoBindingNavigatorSaveItem_Click);
+            // 
+            // tsbCancelar
+            // 
+            this.tsbCancelar.Enabled = false;
+            this.tsbCancelar.Image = global::FUMIT.Recursos.cancel;
+            this.tsbCancelar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbCancelar.Name = "tsbCancelar";
+            this.tsbCancelar.Size = new System.Drawing.Size(73, 22);
+            this.tsbCancelar.Text = "Cancelar";
+            this.tsbCancelar.Click += new System.EventHandler(this.tsbCancelar_Click);
             // 
             // contactoDataGridView
             // 
@@ -217,139 +277,6 @@
             this.contactoDataGridView.ReadOnly = true;
             this.contactoDataGridView.Size = new System.Drawing.Size(668, 162);
             this.contactoDataGridView.TabIndex = 1;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.contactoDataGridView, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 25);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(674, 335);
-            this.tableLayoutPanel1.TabIndex = 2;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(tipoLabel1);
-            this.groupBox1.Controls.Add(this.tipoComboBox);
-            this.groupBox1.Controls.Add(correoLabel);
-            this.groupBox1.Controls.Add(this.correoTextBox);
-            this.groupBox1.Controls.Add(nombreLabel);
-            this.groupBox1.Controls.Add(this.nombreTextBox);
-            this.groupBox1.Controls.Add(telefonoLabel);
-            this.groupBox1.Controls.Add(this.telefonoTextBox);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(668, 161);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Datos de contacto";
-            // 
-            // correoLabel
-            // 
-            correoLabel.AutoSize = true;
-            correoLabel.Location = new System.Drawing.Point(16, 52);
-            correoLabel.Name = "correoLabel";
-            correoLabel.Size = new System.Drawing.Size(41, 13);
-            correoLabel.TabIndex = 4;
-            correoLabel.Text = "Correo:";
-            // 
-            // correoTextBox
-            // 
-            this.correoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactoBindingSource, "Correo", true));
-            this.correoTextBox.Location = new System.Drawing.Point(87, 49);
-            this.correoTextBox.Name = "correoTextBox";
-            this.correoTextBox.ReadOnly = true;
-            this.correoTextBox.Size = new System.Drawing.Size(203, 20);
-            this.correoTextBox.TabIndex = 5;
-            // 
-            // nombreLabel
-            // 
-            nombreLabel.AutoSize = true;
-            nombreLabel.Location = new System.Drawing.Point(16, 26);
-            nombreLabel.Name = "nombreLabel";
-            nombreLabel.Size = new System.Drawing.Size(47, 13);
-            nombreLabel.TabIndex = 6;
-            nombreLabel.Text = "Nombre:";
-            // 
-            // nombreTextBox
-            // 
-            this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactoBindingSource, "Nombre", true));
-            this.nombreTextBox.Location = new System.Drawing.Point(87, 23);
-            this.nombreTextBox.Name = "nombreTextBox";
-            this.nombreTextBox.ReadOnly = true;
-            this.nombreTextBox.Size = new System.Drawing.Size(203, 20);
-            this.nombreTextBox.TabIndex = 7;
-            // 
-            // telefonoLabel
-            // 
-            telefonoLabel.AutoSize = true;
-            telefonoLabel.Location = new System.Drawing.Point(16, 78);
-            telefonoLabel.Name = "telefonoLabel";
-            telefonoLabel.Size = new System.Drawing.Size(52, 13);
-            telefonoLabel.TabIndex = 8;
-            telefonoLabel.Text = "Telefono:";
-            // 
-            // telefonoTextBox
-            // 
-            this.telefonoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactoBindingSource, "Telefono", true));
-            this.telefonoTextBox.Location = new System.Drawing.Point(87, 75);
-            this.telefonoTextBox.Name = "telefonoTextBox";
-            this.telefonoTextBox.ReadOnly = true;
-            this.telefonoTextBox.Size = new System.Drawing.Size(203, 20);
-            this.telefonoTextBox.TabIndex = 9;
-            // 
-            // tipoLabel1
-            // 
-            tipoLabel1.AutoSize = true;
-            tipoLabel1.Location = new System.Drawing.Point(17, 104);
-            tipoLabel1.Name = "tipoLabel1";
-            tipoLabel1.Size = new System.Drawing.Size(31, 13);
-            tipoLabel1.TabIndex = 12;
-            tipoLabel1.Text = "Tipo:";
-            // 
-            // tipoComboBox
-            // 
-            this.tipoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactoBindingSource, "Tipo", true));
-            this.tipoComboBox.Enabled = false;
-            this.tipoComboBox.FormattingEnabled = true;
-            this.tipoComboBox.Items.AddRange(new object[] {
-            "Comercial",
-            "Operativo",
-            "De pago"});
-            this.tipoComboBox.Location = new System.Drawing.Point(87, 104);
-            this.tipoComboBox.Name = "tipoComboBox";
-            this.tipoComboBox.Size = new System.Drawing.Size(203, 21);
-            this.tipoComboBox.TabIndex = 13;
-            // 
-            // contactoBindingSource
-            // 
-            this.contactoBindingSource.DataSource = typeof(FUMIT.Entidades.Contacto);
-            // 
-            // tsbEditar
-            // 
-            this.tsbEditar.Image = global::FUMIT.Recursos.edit_add;
-            this.tsbEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEditar.Name = "tsbEditar";
-            this.tsbEditar.Size = new System.Drawing.Size(57, 22);
-            this.tsbEditar.Text = "Editar";
-            this.tsbEditar.Click += new System.EventHandler(this.tsbEditar_Click);
-            // 
-            // tsbCancelar
-            // 
-            this.tsbCancelar.Enabled = false;
-            this.tsbCancelar.Image = global::FUMIT.Recursos.cancel;
-            this.tsbCancelar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbCancelar.Name = "tsbCancelar";
-            this.tsbCancelar.Size = new System.Drawing.Size(73, 22);
-            this.tsbCancelar.Text = "Cancelar";
-            this.tsbCancelar.Click += new System.EventHandler(this.tsbCancelar_Click);
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -385,6 +312,80 @@
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
             this.dataGridViewTextBoxColumn6.Width = 53;
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.contactoDataGridView, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 25);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(674, 335);
+            this.tableLayoutPanel1.TabIndex = 2;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(tipoLabel1);
+            this.groupBox1.Controls.Add(this.tipoComboBox);
+            this.groupBox1.Controls.Add(correoLabel);
+            this.groupBox1.Controls.Add(this.correoTextBox);
+            this.groupBox1.Controls.Add(nombreLabel);
+            this.groupBox1.Controls.Add(this.nombreTextBox);
+            this.groupBox1.Controls.Add(telefonoLabel);
+            this.groupBox1.Controls.Add(this.telefonoTextBox);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(668, 161);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Datos de contacto";
+            // 
+            // tipoComboBox
+            // 
+            this.tipoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactoBindingSource, "Tipo", true));
+            this.tipoComboBox.Enabled = false;
+            this.tipoComboBox.FormattingEnabled = true;
+            this.tipoComboBox.Items.AddRange(new object[] {
+            "Comercial",
+            "Operativo",
+            "De pago"});
+            this.tipoComboBox.Location = new System.Drawing.Point(87, 104);
+            this.tipoComboBox.Name = "tipoComboBox";
+            this.tipoComboBox.Size = new System.Drawing.Size(203, 21);
+            this.tipoComboBox.TabIndex = 13;
+            // 
+            // correoTextBox
+            // 
+            this.correoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactoBindingSource, "Correo", true));
+            this.correoTextBox.Location = new System.Drawing.Point(87, 49);
+            this.correoTextBox.Name = "correoTextBox";
+            this.correoTextBox.ReadOnly = true;
+            this.correoTextBox.Size = new System.Drawing.Size(203, 20);
+            this.correoTextBox.TabIndex = 5;
+            // 
+            // nombreTextBox
+            // 
+            this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactoBindingSource, "Nombre", true));
+            this.nombreTextBox.Location = new System.Drawing.Point(87, 23);
+            this.nombreTextBox.Name = "nombreTextBox";
+            this.nombreTextBox.ReadOnly = true;
+            this.nombreTextBox.Size = new System.Drawing.Size(203, 20);
+            this.nombreTextBox.TabIndex = 7;
+            // 
+            // telefonoTextBox
+            // 
+            this.telefonoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactoBindingSource, "Telefono", true));
+            this.telefonoTextBox.Location = new System.Drawing.Point(87, 75);
+            this.telefonoTextBox.Name = "telefonoTextBox";
+            this.telefonoTextBox.ReadOnly = true;
+            this.telefonoTextBox.Size = new System.Drawing.Size(203, 20);
+            this.telefonoTextBox.TabIndex = 9;
+            // 
             // Contactos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -397,11 +398,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.contactoBindingNavigator)).EndInit();
             this.contactoBindingNavigator.ResumeLayout(false);
             this.contactoBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.contactoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.contactoDataGridView)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.contactoBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

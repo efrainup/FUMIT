@@ -137,5 +137,11 @@ namespace FUMIT.Formularios.Clientes
         {
             ModoEditar = false;
         }
+
+        private async void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
+        {
+            await ContactosRepositorio.EliminarAsync(ContactoActual);
+            contactoBindingSource.RemoveCurrent();
+        }
     }
 }
