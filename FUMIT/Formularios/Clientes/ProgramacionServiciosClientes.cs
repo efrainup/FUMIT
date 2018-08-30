@@ -180,13 +180,20 @@ namespace FUMIT.Formularios.Clientes
 
         private async void btnProgramarServicios_Click(object sender, EventArgs e)
         {
-            IServiciosProgramados serviciosProgramados = CommonServiceLocator.ServiceLocator.Current.GetInstance<IServiciosProgramados>();
+            if (ProgramacionServicioClienteActual.ProgramacionServiciosClienteId > 0)
+            {
+                IServiciosProgramados serviciosProgramados = CommonServiceLocator.ServiceLocator.Current.GetInstance<IServiciosProgramados>();
 
-            Programacionservicioscliente programacionServicio = ProgramacionServicioClienteActual;
+                Programacionservicioscliente programacionServicio = ProgramacionServicioClienteActual;
 
-            await serviciosProgramados.ProgramarServicios(programacionServicio);
+                await serviciosProgramados.ProgramarServicios(programacionServicio);
 
-            programacionserviciosclienteBindingSource.ResetBindings(false);
+                programacionserviciosclienteBindingSource.ResetBindings(false);
+            }
+            else
+            {
+                MessageBox.Show("Se debe guardar primeramente la programación de los servicios", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
         }
 
 

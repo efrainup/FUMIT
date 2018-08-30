@@ -54,6 +54,12 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\EnterpriseLibrary.ExceptionHandling.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -109,22 +115,26 @@
     <Compile Include="AccesoDatos\CiclosFacturacionRepositorio.cs" />
     <Compile Include="AccesoDatos\ClientesRepositorio.cs" />
     <Compile Include="AccesoDatos\ContactosRepositorio.cs" />
+    <Compile Include="AccesoDatos\EquiposRepositorio.cs" />
     <Compile Include="AccesoDatos\ICicloFacturacionClientes.cs" />
     <Compile Include="AccesoDatos\ICiclosFacturacion.cs" />
     <Compile Include="AccesoDatos\IClientes.cs" />
     <Compile Include="AccesoDatos\IContactos.cs" />
+    <Compile Include="AccesoDatos\IEquipos.cs" />
     <Compile Include="AccesoDatos\IOperacionesAccesoDatos.cs" />
     <Compile Include="AccesoDatos\IProgramacionServicios.cs" />
     <Compile Include="AccesoDatos\IProgramacionServiciosCliente.cs" />
     <Compile Include="AccesoDatos\IServicio.cs" />
     <Compile Include="AccesoDatos\IServiciosProgramados.cs" />
     <Compile Include="AccesoDatos\ISucursales.cs" />
+    <Compile Include="AccesoDatos\ITipoEquipos.cs" />
     <Compile Include="AccesoDatos\IVSProgramacionServiciosCliente.cs" />
     <Compile Include="AccesoDatos\ProgramacionServiciosClienteRepositorio.cs" />
     <Compile Include="AccesoDatos\ProgramacionServiciosRepositorio.cs" />
     <Compile Include="AccesoDatos\ServiciosProgramadosRepositorio.cs" />
     <Compile Include="AccesoDatos\ServiciosRepositorio.cs" />
     <Compile Include="AccesoDatos\SucursalesRepositorio.cs" />
+    <Compile Include="AccesoDatos\TipoEquiposRepositorio.cs" />
     <Compile Include="AccesoDatos\VSProgramacionServiciosClienteRepositorio.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Entidades\Asignacionesequipo.cs">
@@ -243,6 +253,12 @@
     <Compile Include="Formularios\Ayuda\AcercaDe.Designer.cs">
       <DependentUpon>AcercaDe.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Catalogos\Equipos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\Equipos.Designer.cs">
+      <DependentUpon>Equipos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Catalogos\Eventos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -261,6 +277,12 @@
     </Compile>
     <Compile Include="Formularios\Catalogos\Sucursales.Designer.cs">
       <DependentUpon>Sucursales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\TiposEquipo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\TiposEquipo.Designer.cs">
+      <DependentUpon>TiposEquipo.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Clientes\CicloFacturacionClientes.cs">
       <SubType>UserControl</SubType>
@@ -316,6 +338,7 @@
     <Compile Include="Formularios\Facturacion\CiclosFacturacion.Designer.cs">
       <DependentUpon>CiclosFacturacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\IFormularioSeleccionable.cs" />
     <Compile Include="Formularios\Operacion\CalendarioServicios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -364,6 +387,9 @@
     <EmbeddedResource Include="Formularios\Ayuda\AcercaDe.resx">
       <DependentUpon>AcercaDe.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Catalogos\Equipos.resx">
+      <DependentUpon>Equipos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Catalogos\Eventos.resx">
       <DependentUpon>Eventos.cs</DependentUpon>
     </EmbeddedResource>
@@ -372,6 +398,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Catalogos\Sucursales.resx">
       <DependentUpon>Sucursales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Catalogos\TiposEquipo.resx">
+      <DependentUpon>TiposEquipo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Clientes\CicloFacturacionClientes.resx">
       <DependentUpon>CicloFacturacionClientes.cs</DependentUpon>
@@ -435,6 +464,7 @@
     <None Include="Properties\DataSources\FUMIT.Entidades.CiclosFacturacion.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Cliente.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Contacto.datasource" />
+    <None Include="Properties\DataSources\FUMIT.Entidades.Equipo.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Evento.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.HistorialCliente.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Programacionservicio.datasource" />
@@ -442,6 +472,7 @@
     <None Include="Properties\DataSources\FUMIT.Entidades.Servicio.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Serviciosprogramado.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Sucursal.datasource" />
+    <None Include="Properties\DataSources\FUMIT.Entidades.Tipoequipo.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Vsprogramacionservicioscliente.datasource" />
     <None Include="Properties\DataSources\FUMIT.Formularios.Clientes.Expedientes.datasource" />
     <None Include="Properties\DataSources\FUMIT.Formularios.Clientes.ProgramacionServiciosClientes.datasource" />

@@ -108,6 +108,12 @@ namespace FUMIT.Formularios.Clientes
 
         private async void clienteBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
+            await GuardarEdicion();
+
+        }
+
+        private async Task GuardarEdicion()
+        {
             try
             {
                 var cliente = clienteBindingSource.Current as Entidades.Cliente;
@@ -134,18 +140,16 @@ namespace FUMIT.Formularios.Clientes
                     }
 
                 }
-                MessageBox.Show(Mensaje,"Errores de validacion");
+                MessageBox.Show(Mensaje, "Errores de validacion");
 
             }
-            catch(Exception excepcion)
+            catch (Exception excepcion)
             {
                 MessageBox.Show("Se produjo un error. Favor de intentar nuevamente", "Error");
             }
 
             ModoEdicion = false;
-
         }
-
 
         private void btnBuscarPorClave_Click(object sender, EventArgs e)
         {
@@ -180,6 +184,11 @@ namespace FUMIT.Formularios.Clientes
         }
 
         private void toolBtnBusqueda_Click(object sender, EventArgs e)
+        {
+            MostrarFormularioDeBusqueda();
+        }
+
+        private void MostrarFormularioDeBusqueda()
         {
             var busquedaClientes = new Formularios.Compartidos.BusquedaClientes();
             busquedaClientes.ClienteSeleccionado += (object senderC, Entidades.Cliente clienteSeleccionado) =>
@@ -270,8 +279,13 @@ namespace FUMIT.Formularios.Clientes
 
         private void tsbCancelarEdicion_Click(object sender, EventArgs e)
         {
+            CancelarEdicion();
+        }
+
+        private void CancelarEdicion()
+        {
             ModoEdicion = false;
-            if(ClienteActual.ClienteId == 0)
+            if (ClienteActual.ClienteId == 0)
             {
                 clienteBindingSource.RemoveCurrent();
             }
@@ -314,6 +328,57 @@ namespace FUMIT.Formularios.Clientes
         {
             await RepositorioClientes.EliminarAsync(ClienteActual);
             clienteBindingSource.RemoveCurrent();
+        }
+
+        private void Expedientes_KeyPress(object sender, KeyPressEventArgs e)
+        {
+           // if(e.KeyChar == Keys.Control
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Control | Keys.B))
+            {
+                MostrarFormularioDeBusqueda();
+                return true;
+            }
+            if(keyData == (Keys.Control | Keys.N))
+            {
+                clienteBindingSource.AddNew();
+                return true;
+            }
+            if(keyData == (Keys.Escape) && ModoEdicion)
+            {
+                CancelarEdicion();
+                return true;
+            }
+            if (keyData == (Keys.Escape) && !ModoEdicion)
+            {
+                Close();
+                return true;
+            }
+            if (keyData == (Keys.F2)) {
+                ModoEdicion = true;
+                return true;
+            }
+            if (keyData == (Keys.Control | Keys.G) && ModoEdicion)
+            {
+                GuardarEdicion().RunSynchronously();
+                return true;
+            }
+            if (keyData == (Keys.Down | Keys.Control))
+            {
+                clienteBindingSource.Position++;
+                return true;
+            }
+            if (keyData == (Keys.Up | Keys.Control))
+            {
+                clienteBindingSource.Position--;
+                return true;
+            }
+
+
+            return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 }

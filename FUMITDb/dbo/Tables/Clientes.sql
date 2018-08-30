@@ -1,13 +1,13 @@
 ﻿CREATE TABLE [dbo].[Clientes] (
     [ClienteId]          INT           IDENTITY (1, 1) NOT NULL,
     [SucursalId]         INT           NOT NULL,
-    [Clave]              VARCHAR (10)  NOT NULL,
-    [Nombre]             VARCHAR (150) NOT NULL,
+    [Clave]              VARCHAR (10)  NULL,
+    [Nombre]             VARCHAR (150) NULL,
     [NombreFiscal]       VARCHAR (180) NULL,
     [SucursalCliente]    VARCHAR (80)  NULL,
     [PersonaMoral]       BIT           CONSTRAINT [DF_Clientes_PersonaMoral] DEFAULT ((0)) NOT NULL,
     [RFC]                VARCHAR (13)  NULL,
-    [Direccion]          VARCHAR (250) NOT NULL,
+    [Direccion]          VARCHAR (250) NULL,
     [DireccionFiscal]    VARCHAR (250) NULL,
     [Ubicacion]          VARCHAR (30)  NULL,
     [Contacto]           VARCHAR (300) NULL,
@@ -23,6 +23,8 @@
     CONSTRAINT [PK_Clientes] PRIMARY KEY CLUSTERED ([ClienteId] ASC),
     CONSTRAINT [FK_Clientes_Sucursales] FOREIGN KEY ([SucursalId]) REFERENCES [dbo].[Sucursales] ([SucursalId])
 );
+
+
 
 
 

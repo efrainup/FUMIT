@@ -286,30 +286,30 @@
             // 
             // activoCheckBox
             // 
-            this.activoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.programacionserviciosclienteBindingSource, "Activo", true));
+            this.activoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.programacionserviciosclienteBindingSource, "Activo", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.activoCheckBox.Location = new System.Drawing.Point(401, 93);
             this.activoCheckBox.Name = "activoCheckBox";
             this.activoCheckBox.Size = new System.Drawing.Size(137, 24);
-            this.activoCheckBox.TabIndex = 3;
+            this.activoCheckBox.TabIndex = 5;
             this.activoCheckBox.UseVisualStyleBackColor = true;
             // 
             // fechaInicioDateTimePicker
             // 
-            this.fechaInicioDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.programacionserviciosclienteBindingSource, "FechaInicio", true));
+            this.fechaInicioDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.programacionserviciosclienteBindingSource, "FechaInicio", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.fechaInicioDateTimePicker.Enabled = false;
             this.fechaInicioDateTimePicker.Location = new System.Drawing.Point(110, 65);
             this.fechaInicioDateTimePicker.Name = "fechaInicioDateTimePicker";
             this.fechaInicioDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.fechaInicioDateTimePicker.TabIndex = 7;
+            this.fechaInicioDateTimePicker.TabIndex = 1;
             // 
             // fechaTerminoDateTimePicker
             // 
-            this.fechaTerminoDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.programacionserviciosclienteBindingSource, "FechaTermino", true));
+            this.fechaTerminoDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.programacionserviciosclienteBindingSource, "FechaTermino", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.fechaTerminoDateTimePicker.Enabled = false;
             this.fechaTerminoDateTimePicker.Location = new System.Drawing.Point(110, 91);
             this.fechaTerminoDateTimePicker.Name = "fechaTerminoDateTimePicker";
             this.fechaTerminoDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.fechaTerminoDateTimePicker.TabIndex = 9;
+            this.fechaTerminoDateTimePicker.TabIndex = 2;
             // 
             // programacionServiciosClienteIdTextBox
             // 
@@ -328,6 +328,7 @@
             this.nombreTextBox.ReadOnly = true;
             this.nombreTextBox.Size = new System.Drawing.Size(291, 20);
             this.nombreTextBox.TabIndex = 19;
+            this.nombreTextBox.TabStop = false;
             // 
             // groupBox1
             // 
@@ -361,7 +362,7 @@
             this.btnBusquedaServicio.Location = new System.Drawing.Point(698, 62);
             this.btnBusquedaServicio.Name = "btnBusquedaServicio";
             this.btnBusquedaServicio.Size = new System.Drawing.Size(31, 23);
-            this.btnBusquedaServicio.TabIndex = 45;
+            this.btnBusquedaServicio.TabIndex = 4;
             this.btnBusquedaServicio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBusquedaServicio.UseVisualStyleBackColor = true;
             this.btnBusquedaServicio.Click += new System.EventHandler(this.btnBusquedaServicio_Click);
@@ -374,6 +375,7 @@
             this.servicioTextBox.ReadOnly = true;
             this.servicioTextBox.Size = new System.Drawing.Size(291, 20);
             this.servicioTextBox.TabIndex = 44;
+            this.servicioTextBox.TabStop = false;
             this.servicioTextBox.TextChanged += new System.EventHandler(this.nombreTextBox1_TextChanged);
             // 
             // btnProgramarServicios
@@ -394,7 +396,7 @@
             this.btnBusquedaHorario.Location = new System.Drawing.Point(698, 34);
             this.btnBusquedaHorario.Name = "btnBusquedaHorario";
             this.btnBusquedaHorario.Size = new System.Drawing.Size(31, 23);
-            this.btnBusquedaHorario.TabIndex = 41;
+            this.btnBusquedaHorario.TabIndex = 3;
             this.btnBusquedaHorario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBusquedaHorario.UseVisualStyleBackColor = true;
             this.btnBusquedaHorario.Click += new System.EventHandler(this.btnBusquedaHorario_Click);

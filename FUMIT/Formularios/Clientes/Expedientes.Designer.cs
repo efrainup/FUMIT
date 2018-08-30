@@ -103,12 +103,12 @@
             this.programacionServiciosClientes1 = new FUMIT.Formularios.Clientes.ProgramacionServiciosClientes();
             this.tabContratos = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.serviciosProgramados1 = new FUMIT.Formularios.Operacion.ServiciosProgramados();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.cicloFacturacionClientes1 = new FUMIT.Formularios.Clientes.CicloFacturacionClientes();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.historialCliente1 = new FUMIT.Formularios.Clientes.HistorialCliente();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.serviciosProgramados1 = new FUMIT.Formularios.Operacion.ServiciosProgramados();
             claveLabel = new System.Windows.Forms.Label();
             clienteIdLabel = new System.Windows.Forms.Label();
             contactoLabel = new System.Windows.Forms.Label();
@@ -349,6 +349,7 @@
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(69, 22);
             this.bindingNavigatorAddNewItem.Text = "Agregar";
+            this.bindingNavigatorAddNewItem.ToolTipText = "Agregar (Ctrl+N)";
             this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
             // 
             // clienteBindingSource
@@ -431,6 +432,7 @@
             this.tsbEdit.Name = "tsbEdit";
             this.tsbEdit.Size = new System.Drawing.Size(57, 22);
             this.tsbEdit.Text = "Editar";
+            this.tsbEdit.ToolTipText = "Editar (F2)";
             this.tsbEdit.Click += new System.EventHandler(this.tsbEdit_Click);
             // 
             // tsbCancelarEdicion
@@ -441,6 +443,7 @@
             this.tsbCancelarEdicion.Name = "tsbCancelarEdicion";
             this.tsbCancelarEdicion.Size = new System.Drawing.Size(73, 22);
             this.tsbCancelarEdicion.Text = "Cancelar";
+            this.tsbCancelarEdicion.ToolTipText = "Cancelar (Esc)";
             this.tsbCancelarEdicion.Visible = false;
             this.tsbCancelarEdicion.Click += new System.EventHandler(this.tsbCancelarEdicion_Click);
             // 
@@ -451,6 +454,7 @@
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(70, 22);
             this.bindingNavigatorDeleteItem.Text = "Eliminar";
+            this.bindingNavigatorDeleteItem.ToolTipText = "Eliminar (Del)";
             this.bindingNavigatorDeleteItem.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click_2);
             // 
             // clienteBindingNavigatorSaveItem
@@ -460,16 +464,17 @@
             this.clienteBindingNavigatorSaveItem.Name = "clienteBindingNavigatorSaveItem";
             this.clienteBindingNavigatorSaveItem.Size = new System.Drawing.Size(69, 22);
             this.clienteBindingNavigatorSaveItem.Text = "Guardar";
+            this.clienteBindingNavigatorSaveItem.ToolTipText = "Guardar (Ctrl+G)";
             this.clienteBindingNavigatorSaveItem.Click += new System.EventHandler(this.clienteBindingNavigatorSaveItem_Click);
             // 
             // toolBtnBusqueda
             // 
-            this.toolBtnBusqueda.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolBtnBusqueda.Image = global::FUMIT.Recursos.search;
             this.toolBtnBusqueda.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolBtnBusqueda.Name = "toolBtnBusqueda";
-            this.toolBtnBusqueda.Size = new System.Drawing.Size(23, 22);
-            this.toolBtnBusqueda.Text = "toolStripButton1";
+            this.toolBtnBusqueda.Size = new System.Drawing.Size(62, 22);
+            this.toolBtnBusqueda.Text = "Buscar";
+            this.toolBtnBusqueda.ToolTipText = "Buscar (Ctrl+B)";
             this.toolBtnBusqueda.Click += new System.EventHandler(this.toolBtnBusqueda_Click);
             // 
             // claveTextBox
@@ -868,6 +873,7 @@
             // programacionServiciosClientes1
             // 
             this.programacionServiciosClientes1.ClienteId = 0;
+            this.programacionServiciosClientes1.ClientesRepositorio = null;
             this.programacionServiciosClientes1.DataBindings.Add(new System.Windows.Forms.Binding("ClienteId", this.clienteBindingSource, "ClienteId", true));
             this.programacionServiciosClientes1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.programacionServiciosClientes1.Location = new System.Drawing.Point(3, 3);
@@ -900,6 +906,18 @@
             this.tabPage2.Text = "Servicios Programados";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // serviciosProgramados1
+            // 
+            this.serviciosProgramados1.ClienteId = 0;
+            this.serviciosProgramados1.DataBindings.Add(new System.Windows.Forms.Binding("ClienteId", this.clienteBindingSource, "ClienteId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.serviciosProgramados1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.serviciosProgramados1.Location = new System.Drawing.Point(3, 3);
+            this.serviciosProgramados1.ModoEditar = false;
+            this.serviciosProgramados1.Name = "serviciosProgramados1";
+            this.serviciosProgramados1.Repositorio = null;
+            this.serviciosProgramados1.Size = new System.Drawing.Size(917, 495);
+            this.serviciosProgramados1.TabIndex = 0;
+            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.cicloFacturacionClientes1);
@@ -915,6 +933,7 @@
             // 
             this.cicloFacturacionClientes1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cicloFacturacionClientes1.Location = new System.Drawing.Point(3, 3);
+            this.cicloFacturacionClientes1.ModoEditar = false;
             this.cicloFacturacionClientes1.Name = "cicloFacturacionClientes1";
             this.cicloFacturacionClientes1.Size = new System.Drawing.Size(917, 495);
             this.cicloFacturacionClientes1.TabIndex = 0;
@@ -943,18 +962,6 @@
             this.errorProvider1.ContainerControl = this;
             this.errorProvider1.DataSource = this.clienteBindingSource;
             // 
-            // serviciosProgramados1
-            // 
-            this.serviciosProgramados1.ClienteId = 0;
-            this.serviciosProgramados1.DataBindings.Add(new System.Windows.Forms.Binding("ClienteId", this.clienteBindingSource, "ClienteId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.serviciosProgramados1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.serviciosProgramados1.Location = new System.Drawing.Point(3, 3);
-            this.serviciosProgramados1.ModoEditar = false;
-            this.serviciosProgramados1.Name = "serviciosProgramados1";
-            this.serviciosProgramados1.Repositorio = null;
-            this.serviciosProgramados1.Size = new System.Drawing.Size(917, 495);
-            this.serviciosProgramados1.TabIndex = 0;
-            // 
             // Expedientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -965,6 +972,7 @@
             this.Name = "Expedientes";
             this.Text = "Clientes";
             this.Load += new System.EventHandler(this.Clientes_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Expedientes_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingNavigator)).EndInit();
             this.clienteBindingNavigator.ResumeLayout(false);
             this.clienteBindingNavigator.PerformLayout();

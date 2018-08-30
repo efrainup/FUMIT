@@ -40,6 +40,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.ExceptionHandling.6.0.1304.0\lib\NET45
 		SolutionGuid = {CC405D49-5C5C-459D-93DA-79693A9F87B9}
 	EndGlobalSection
 EndGlobal

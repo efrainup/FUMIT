@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FUMIT.Entidades;
+using FUMIT.Formularios;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +18,7 @@ namespace FUMIT
         protected Formularios.Catalogos.Servicios formularioServicios;
         protected Formularios.Operacion.ProgramacionServiciosSucursales formularioProgramacionServiciosSucursales;
         protected Formularios.Facturacion.CiclosFacturacion formularioCicloFacturacion;
+
 
         public Formularios.Catalogos.Sucursales FormularioSucursales {
             get
@@ -57,6 +60,7 @@ namespace FUMIT
                 return formularioCicloFacturacion;
             }
         }
+
 
         public PantallaPrincipal()
         {
@@ -114,6 +118,13 @@ namespace FUMIT
             var serviciosProgramados = new Formularios.Operacion.CalendarioServicios();
             serviciosProgramados.MdiParent = this;
             serviciosProgramados.Show();
+        }
+
+        private void equipoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var equiposFormulario = new Formularios.Catalogos.Equipos();
+            equiposFormulario.MdiParent = this;
+            equiposFormulario.Show();
         }
     }
 }
