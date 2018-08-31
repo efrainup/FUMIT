@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FUMIT.AccesoDatos
+namespace FUMIT.Formularios
 {
-    public interface IEquipos : IOperacionesAccesoDatos<Entidades.Equipo>
+    public interface IFormularioEditable
     {
-        
+        bool ModoEdicion { get; set; }
     }
 }

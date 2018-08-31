@@ -27,6 +27,7 @@ namespace Exportador_FUMIT
         public bool Activo { get; set; } // Activo
         public bool Borrado { get; set; } // Borrado
         public int ServicioId { get; set; } // ServicioId
+        public bool ServiciosProgramados { get; set; } // ServiciosProgramados
 
         // Foreign keys
 
@@ -47,8 +48,10 @@ namespace Exportador_FUMIT
 
         public ProgramacionServiciosCliente()
         {
+            FechaInicio = System.DateTime.Now;
             Activo = true;
             Borrado = false;
+            ServiciosProgramados = false;
         }
     }
 

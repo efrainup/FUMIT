@@ -35,6 +35,10 @@ namespace Exportador_FUMIT
             Property(x => x.FechaServicio).HasColumnName(@"FechaServicio").HasColumnType("datetime").IsRequired();
             Property(x => x.Tipo).HasColumnName(@"Tipo").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(50);
             Property(x => x.Cancelado).HasColumnName(@"Cancelado").HasColumnType("bit").IsRequired();
+            Property(x => x.Borrado).HasColumnName(@"Borrado").HasColumnType("bit").IsRequired();
+            Property(x => x.Activo).HasColumnName(@"Activo").HasColumnType("bit").IsRequired();
+            Property(x => x.Prioridad).HasColumnName(@"Prioridad").HasColumnType("int").IsRequired();
+            Property(x => x.Observaciones).HasColumnName(@"Observaciones").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(250);
 
             // Foreign keys
             HasRequired(a => a.Cliente).WithMany(b => b.ServiciosProgramadoes).HasForeignKey(c => c.ClienteId).WillCascadeOnDelete(false); // FK_ServiciosProgramados_Clientes

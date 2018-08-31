@@ -93,7 +93,7 @@ namespace FUMIT.Formularios.Clientes
                 
                 RepositorioClientes = ServiceLocator.Current.GetInstance<IClientes>();
 
-                ListadoClientes = RepositorioClientes.Recuperar();
+                ListadoClientes = RepositorioClientes.Recuperar().OrderBy(o => o.Nombre).ThenBy(t => t.Sucursal);
 
                 
                 //foreach(Entidades.Cliente cliente in ListadoClientes)

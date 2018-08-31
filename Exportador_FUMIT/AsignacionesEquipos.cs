@@ -15,26 +15,31 @@
 namespace Exportador_FUMIT
 {
 
-    // Contactos
+    // AsignacionesEquipos
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.37.1.0")]
-    public class Contacto
+    public class AsignacionesEquipos
     {
-        public int ContactoId { get; set; } // ContactoId (Primary key)
+        public int AsignacionEquipoId { get; set; } // AsignacionEquipoId (Primary key)
+        public int EquipoId { get; set; } // EquipoId
         public int ClienteId { get; set; } // ClienteId
-        public string Nombre { get; set; } // Nombre (length: 120)
-        public string Telefono { get; set; } // Telefono (length: 100)
-        public string Correo { get; set; } // Correo (length: 100)
-        public string Tipo { get; set; } // Tipo (length: 20)
+        public System.DateTime? FechaAsignación { get; set; } // FechaAsignación
+        public System.DateTime? FechaEntrega { get; set; } // FechaEntrega
+        public System.DateTime? FechaRegreso { get; set; } // FechaRegreso
         public bool Borrado { get; set; } // Borrado
 
         // Foreign keys
 
         /// <summary>
-        /// Parent Cliente pointed by [Contactos].([ClienteId]) (FK_Contactos_Clientes)
+        /// Parent Cliente pointed by [AsignacionesEquipos].([ClienteId]) (FK_AsignacionesEquipos_Clientes)
         /// </summary>
-        public virtual Cliente Cliente { get; set; } // FK_Contactos_Clientes
+        public virtual Cliente Cliente { get; set; } // FK_AsignacionesEquipos_Clientes
 
-        public Contacto()
+        /// <summary>
+        /// Parent Equipo pointed by [AsignacionesEquipos].([EquipoId]) (FK_AsignacionesEquipos_Equipo)
+        /// </summary>
+        public virtual Equipo Equipo { get; set; } // FK_AsignacionesEquipos_Equipo
+
+        public AsignacionesEquipos()
         {
             Borrado = false;
         }

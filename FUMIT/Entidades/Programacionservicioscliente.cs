@@ -95,6 +95,7 @@ namespace FUMIT.Entidades
 
         public Programacionservicioscliente()
         {
+            FechaInicio = System.DateTime.Now;
             Activo = true;
             Borrado = false;
             ServiciosProgramados = false;

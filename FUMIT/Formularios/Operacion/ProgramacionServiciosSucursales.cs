@@ -315,7 +315,10 @@ namespace FUMIT.Formularios.Operacion
         {
             CheckedListBox.CheckedItemCollection DiasProgramacion = chkListDiasSemana.CheckedItems;
             IEnumerable<string> diasProgramados = DiasProgramacion.Cast<String>().AsEnumerable();
-            ProgramacionServicioActual.Nombre = chkListTipoProgramacion.SelectedItem.ToString() + " ";
+
+            //Bug fixed: Checar si hay algo seleccionado en el checklist de programacion, sino marca excepción
+            ProgramacionServicioActual.Nombre = chkListTipoProgramacion.SelectedItem != null ? chkListTipoProgramacion.SelectedItem.ToString() + " " : "";
+
             foreach (string dia in diasProgramados)
             {
                 ProgramacionServicioActual.Nombre += dia.Substring(0, 3) + "-";

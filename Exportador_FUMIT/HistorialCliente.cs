@@ -24,6 +24,7 @@ namespace Exportador_FUMIT
         public int EventoClienteId { get; set; } // EventoClienteId
         public System.DateTime Fecha { get; set; } // Fecha
         public string Observaciones { get; set; } // Observaciones (length: 250)
+        public bool Borrado { get; set; } // Borrado
 
         // Foreign keys
 
@@ -36,6 +37,11 @@ namespace Exportador_FUMIT
         /// Parent Evento pointed by [HistorialCliente].([EventoClienteId]) (FK_HistorialCliente_Eventos)
         /// </summary>
         public virtual Evento Evento { get; set; } // FK_HistorialCliente_Eventos
+
+        public HistorialCliente()
+        {
+            Borrado = false;
+        }
     }
 
 }

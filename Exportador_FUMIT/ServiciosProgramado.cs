@@ -25,6 +25,10 @@ namespace Exportador_FUMIT
         public System.DateTime FechaServicio { get; set; } // FechaServicio
         public string Tipo { get; set; } // Tipo (length: 50)
         public bool Cancelado { get; set; } // Cancelado
+        public bool Borrado { get; set; } // Borrado
+        public bool Activo { get; set; } // Activo
+        public int Prioridad { get; set; } // Prioridad
+        public string Observaciones { get; set; } // Observaciones (length: 250)
 
         // Foreign keys
 
@@ -41,6 +45,9 @@ namespace Exportador_FUMIT
         public ServiciosProgramado()
         {
             Cancelado = false;
+            Borrado = false;
+            Activo = true;
+            Prioridad = 1000;
         }
     }
 

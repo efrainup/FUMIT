@@ -81,5 +81,8 @@
     <Build Include="dbo\Tables\ServiciosSucursales.sql" />
     <Build Include="dbo\Tables\Contactos.sql" />
     <Build Include="dbo\Views\vsProgramacionServiciosClientes.sql" />
+    <Build Include="dbo\Tables\TipoEquipos.sql" />
+    <Build Include="dbo\Tables\Equipo.sql" />
+    <Build Include="dbo\Tables\AsignacionesEquipos.sql" />
   </ItemGroup>
 </Project>

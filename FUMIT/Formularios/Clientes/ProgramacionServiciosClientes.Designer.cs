@@ -30,9 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label activoLabel;
-            System.Windows.Forms.Label fechaInicioLabel;
-            System.Windows.Forms.Label fechaTerminoLabel;
-            System.Windows.Forms.Label programacionServiciosClienteIdLabel;
             System.Windows.Forms.Label nombreLabel;
             System.Windows.Forms.Label nombreLabel1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProgramacionServiciosClientes));
@@ -52,9 +49,6 @@
             this.programacionserviciosclienteBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.tsbCancelar = new System.Windows.Forms.ToolStripButton();
             this.activoCheckBox = new System.Windows.Forms.CheckBox();
-            this.fechaInicioDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.fechaTerminoDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.programacionServiciosClienteIdTextBox = new System.Windows.Forms.TextBox();
             this.nombreTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnBusquedaServicio = new System.Windows.Forms.Button();
@@ -75,9 +69,6 @@
             this.vsprogramacionserviciosclienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             activoLabel = new System.Windows.Forms.Label();
-            fechaInicioLabel = new System.Windows.Forms.Label();
-            fechaTerminoLabel = new System.Windows.Forms.Label();
-            programacionServiciosClienteIdLabel = new System.Windows.Forms.Label();
             nombreLabel = new System.Windows.Forms.Label();
             nombreLabel1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.programacionserviciosclienteBindingNavigator)).BeginInit();
@@ -93,43 +84,16 @@
             // activoLabel
             // 
             activoLabel.AutoSize = true;
-            activoLabel.Location = new System.Drawing.Point(348, 97);
+            activoLabel.Location = new System.Drawing.Point(9, 89);
             activoLabel.Name = "activoLabel";
             activoLabel.Size = new System.Drawing.Size(40, 13);
             activoLabel.TabIndex = 2;
             activoLabel.Text = "Activo:";
             // 
-            // fechaInicioLabel
-            // 
-            fechaInicioLabel.AutoSize = true;
-            fechaInicioLabel.Location = new System.Drawing.Point(6, 65);
-            fechaInicioLabel.Name = "fechaInicioLabel";
-            fechaInicioLabel.Size = new System.Drawing.Size(68, 13);
-            fechaInicioLabel.TabIndex = 6;
-            fechaInicioLabel.Text = "Fecha Inicio:";
-            // 
-            // fechaTerminoLabel
-            // 
-            fechaTerminoLabel.AutoSize = true;
-            fechaTerminoLabel.Location = new System.Drawing.Point(6, 91);
-            fechaTerminoLabel.Name = "fechaTerminoLabel";
-            fechaTerminoLabel.Size = new System.Drawing.Size(81, 13);
-            fechaTerminoLabel.TabIndex = 8;
-            fechaTerminoLabel.Text = "Fecha Termino:";
-            // 
-            // programacionServiciosClienteIdLabel
-            // 
-            programacionServiciosClienteIdLabel.AutoSize = true;
-            programacionServiciosClienteIdLabel.Location = new System.Drawing.Point(6, 39);
-            programacionServiciosClienteIdLabel.Name = "programacionServiciosClienteIdLabel";
-            programacionServiciosClienteIdLabel.Size = new System.Drawing.Size(85, 13);
-            programacionServiciosClienteIdLabel.TabIndex = 12;
-            programacionServiciosClienteIdLabel.Text = "Programacion #:";
-            // 
             // nombreLabel
             // 
             nombreLabel.AutoSize = true;
-            nombreLabel.Location = new System.Drawing.Point(348, 39);
+            nombreLabel.Location = new System.Drawing.Point(9, 31);
             nombreLabel.Name = "nombreLabel";
             nombreLabel.Size = new System.Drawing.Size(44, 13);
             nombreLabel.TabIndex = 18;
@@ -138,12 +102,11 @@
             // nombreLabel1
             // 
             nombreLabel1.AutoSize = true;
-            nombreLabel1.Location = new System.Drawing.Point(348, 68);
+            nombreLabel1.Location = new System.Drawing.Point(9, 60);
             nombreLabel1.Name = "nombreLabel1";
             nombreLabel1.Size = new System.Drawing.Size(48, 13);
             nombreLabel1.TabIndex = 43;
             nombreLabel1.Text = "Servicio:";
-            nombreLabel1.Click += new System.EventHandler(this.nombreLabel1_Click);
             // 
             // programacionserviciosclienteBindingNavigator
             // 
@@ -287,43 +250,16 @@
             // activoCheckBox
             // 
             this.activoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.programacionserviciosclienteBindingSource, "Activo", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.activoCheckBox.Location = new System.Drawing.Point(401, 93);
+            this.activoCheckBox.Location = new System.Drawing.Point(62, 85);
             this.activoCheckBox.Name = "activoCheckBox";
             this.activoCheckBox.Size = new System.Drawing.Size(137, 24);
             this.activoCheckBox.TabIndex = 5;
             this.activoCheckBox.UseVisualStyleBackColor = true;
             // 
-            // fechaInicioDateTimePicker
-            // 
-            this.fechaInicioDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.programacionserviciosclienteBindingSource, "FechaInicio", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.fechaInicioDateTimePicker.Enabled = false;
-            this.fechaInicioDateTimePicker.Location = new System.Drawing.Point(110, 65);
-            this.fechaInicioDateTimePicker.Name = "fechaInicioDateTimePicker";
-            this.fechaInicioDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.fechaInicioDateTimePicker.TabIndex = 1;
-            // 
-            // fechaTerminoDateTimePicker
-            // 
-            this.fechaTerminoDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.programacionserviciosclienteBindingSource, "FechaTermino", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.fechaTerminoDateTimePicker.Enabled = false;
-            this.fechaTerminoDateTimePicker.Location = new System.Drawing.Point(110, 91);
-            this.fechaTerminoDateTimePicker.Name = "fechaTerminoDateTimePicker";
-            this.fechaTerminoDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.fechaTerminoDateTimePicker.TabIndex = 2;
-            // 
-            // programacionServiciosClienteIdTextBox
-            // 
-            this.programacionServiciosClienteIdTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programacionserviciosclienteBindingSource, "ProgramacionServiciosClienteId", true));
-            this.programacionServiciosClienteIdTextBox.Location = new System.Drawing.Point(110, 36);
-            this.programacionServiciosClienteIdTextBox.Name = "programacionServiciosClienteIdTextBox";
-            this.programacionServiciosClienteIdTextBox.ReadOnly = true;
-            this.programacionServiciosClienteIdTextBox.Size = new System.Drawing.Size(40, 20);
-            this.programacionServiciosClienteIdTextBox.TabIndex = 13;
-            // 
             // nombreTextBox
             // 
             this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programacionserviciosclienteBindingSource, "Programacionservicio.Nombre", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.nombreTextBox.Location = new System.Drawing.Point(401, 36);
+            this.nombreTextBox.Location = new System.Drawing.Point(62, 28);
             this.nombreTextBox.Name = "nombreTextBox";
             this.nombreTextBox.ReadOnly = true;
             this.nombreTextBox.Size = new System.Drawing.Size(291, 20);
@@ -336,15 +272,9 @@
             this.groupBox1.Controls.Add(nombreLabel1);
             this.groupBox1.Controls.Add(this.servicioTextBox);
             this.groupBox1.Controls.Add(this.btnProgramarServicios);
-            this.groupBox1.Controls.Add(programacionServiciosClienteIdLabel);
             this.groupBox1.Controls.Add(this.btnBusquedaHorario);
-            this.groupBox1.Controls.Add(this.programacionServiciosClienteIdTextBox);
-            this.groupBox1.Controls.Add(this.fechaTerminoDateTimePicker);
             this.groupBox1.Controls.Add(nombreLabel);
-            this.groupBox1.Controls.Add(fechaTerminoLabel);
             this.groupBox1.Controls.Add(this.nombreTextBox);
-            this.groupBox1.Controls.Add(this.fechaInicioDateTimePicker);
-            this.groupBox1.Controls.Add(fechaInicioLabel);
             this.groupBox1.Controls.Add(activoLabel);
             this.groupBox1.Controls.Add(this.activoCheckBox);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -359,7 +289,7 @@
             // 
             this.btnBusquedaServicio.Enabled = false;
             this.btnBusquedaServicio.Image = global::FUMIT.Recursos.search;
-            this.btnBusquedaServicio.Location = new System.Drawing.Point(698, 62);
+            this.btnBusquedaServicio.Location = new System.Drawing.Point(359, 54);
             this.btnBusquedaServicio.Name = "btnBusquedaServicio";
             this.btnBusquedaServicio.Size = new System.Drawing.Size(31, 23);
             this.btnBusquedaServicio.TabIndex = 4;
@@ -370,7 +300,7 @@
             // servicioTextBox
             // 
             this.servicioTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programacionserviciosclienteBindingSource, "Servicio.Nombre", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.servicioTextBox.Location = new System.Drawing.Point(401, 65);
+            this.servicioTextBox.Location = new System.Drawing.Point(62, 57);
             this.servicioTextBox.Name = "servicioTextBox";
             this.servicioTextBox.ReadOnly = true;
             this.servicioTextBox.Size = new System.Drawing.Size(291, 20);
@@ -381,19 +311,20 @@
             // btnProgramarServicios
             // 
             this.btnProgramarServicios.Enabled = false;
-            this.btnProgramarServicios.Location = new System.Drawing.Point(700, 159);
+            this.btnProgramarServicios.Location = new System.Drawing.Point(12, 126);
             this.btnProgramarServicios.Name = "btnProgramarServicios";
             this.btnProgramarServicios.Size = new System.Drawing.Size(142, 23);
             this.btnProgramarServicios.TabIndex = 42;
             this.btnProgramarServicios.Text = "Programar Servicios";
             this.btnProgramarServicios.UseVisualStyleBackColor = true;
+            this.btnProgramarServicios.Visible = false;
             this.btnProgramarServicios.Click += new System.EventHandler(this.btnProgramarServicios_Click);
             // 
             // btnBusquedaHorario
             // 
             this.btnBusquedaHorario.Enabled = false;
             this.btnBusquedaHorario.Image = global::FUMIT.Recursos.search;
-            this.btnBusquedaHorario.Location = new System.Drawing.Point(698, 34);
+            this.btnBusquedaHorario.Location = new System.Drawing.Point(359, 26);
             this.btnBusquedaHorario.Name = "btnBusquedaHorario";
             this.btnBusquedaHorario.Size = new System.Drawing.Size(31, 23);
             this.btnBusquedaHorario.TabIndex = 3;
@@ -569,9 +500,6 @@
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton programacionserviciosclienteBindingNavigatorSaveItem;
         private System.Windows.Forms.CheckBox activoCheckBox;
-        private System.Windows.Forms.DateTimePicker fechaInicioDateTimePicker;
-        private System.Windows.Forms.DateTimePicker fechaTerminoDateTimePicker;
-        private System.Windows.Forms.TextBox programacionServiciosClienteIdTextBox;
         private System.Windows.Forms.TextBox nombreTextBox;
         private System.Windows.Forms.Button btnBusquedaHorario;
         private System.Windows.Forms.GroupBox groupBox1;

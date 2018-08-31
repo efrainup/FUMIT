@@ -111,11 +111,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccesoDatos\AOperacionesBase.cs" />
+    <Compile Include="AccesoDatos\AsignacionesEquipoRepositorio.cs" />
     <Compile Include="AccesoDatos\CiclosFactuacionClienteRepositorio.cs" />
     <Compile Include="AccesoDatos\CiclosFacturacionRepositorio.cs" />
     <Compile Include="AccesoDatos\ClientesRepositorio.cs" />
     <Compile Include="AccesoDatos\ContactosRepositorio.cs" />
     <Compile Include="AccesoDatos\EquiposRepositorio.cs" />
+    <Compile Include="AccesoDatos\IAsignacionesEquipo.cs" />
     <Compile Include="AccesoDatos\ICicloFacturacionClientes.cs" />
     <Compile Include="AccesoDatos\ICiclosFacturacion.cs" />
     <Compile Include="AccesoDatos\IClientes.cs" />
@@ -284,6 +286,12 @@
     <Compile Include="Formularios\Catalogos\TiposEquipo.Designer.cs">
       <DependentUpon>TiposEquipo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Clientes\AsignacionEquipos.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Formularios\Clientes\AsignacionEquipos.Designer.cs">
+      <DependentUpon>AsignacionEquipos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Clientes\CicloFacturacionClientes.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -338,6 +346,7 @@
     <Compile Include="Formularios\Facturacion\CiclosFacturacion.Designer.cs">
       <DependentUpon>CiclosFacturacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\IFormularioEditable.cs" />
     <Compile Include="Formularios\IFormularioSeleccionable.cs" />
     <Compile Include="Formularios\Operacion\CalendarioServicios.cs">
       <SubType>Form</SubType>
@@ -402,6 +411,9 @@
     <EmbeddedResource Include="Formularios\Catalogos\TiposEquipo.resx">
       <DependentUpon>TiposEquipo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Clientes\AsignacionEquipos.resx">
+      <DependentUpon>AsignacionEquipos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Clientes\CicloFacturacionClientes.resx">
       <DependentUpon>CicloFacturacionClientes.cs</DependentUpon>
     </EmbeddedResource>
@@ -460,6 +472,7 @@
     <None Include="Entidades\EF.Reverse.POCO.Core.ttinclude" />
     <None Include="Entidades\EF.Reverse.POCO.ttinclude" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\FUMIT.Entidades.Asignacionesequipo.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.CicloFacturacionCliente.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.CiclosFacturacion.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Cliente.datasource" />

@@ -101,7 +101,8 @@
             this.contactos1 = new FUMIT.Formularios.Clientes.Contactos();
             this.tabProgramacionServiciosCliente = new System.Windows.Forms.TabPage();
             this.programacionServiciosClientes1 = new FUMIT.Formularios.Clientes.ProgramacionServiciosClientes();
-            this.tabContratos = new System.Windows.Forms.TabPage();
+            this.tabEquipos = new System.Windows.Forms.TabPage();
+            this.asignacionEquipos1 = new FUMIT.Formularios.Clientes.AsignacionEquipos();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.serviciosProgramados1 = new FUMIT.Formularios.Operacion.ServiciosProgramados();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -140,6 +141,7 @@
             this.groupBoxAsignacion.SuspendLayout();
             this.tabContactos.SuspendLayout();
             this.tabProgramacionServiciosCliente.SuspendLayout();
+            this.tabEquipos.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -644,7 +646,7 @@
             this.tabDatosCliente.Controls.Add(this.tabInformacion);
             this.tabDatosCliente.Controls.Add(this.tabContactos);
             this.tabDatosCliente.Controls.Add(this.tabProgramacionServiciosCliente);
-            this.tabDatosCliente.Controls.Add(this.tabContratos);
+            this.tabDatosCliente.Controls.Add(this.tabEquipos);
             this.tabDatosCliente.Controls.Add(this.tabPage2);
             this.tabDatosCliente.Controls.Add(this.tabPage3);
             this.tabDatosCliente.Controls.Add(this.tabPage4);
@@ -885,15 +887,29 @@
             this.programacionServiciosClientes1.vistaProgramacionServiciosCliente = null;
             this.programacionServiciosClientes1.Load += new System.EventHandler(this.programacionServiciosClientes1_Load);
             // 
-            // tabContratos
+            // tabEquipos
             // 
-            this.tabContratos.Location = new System.Drawing.Point(4, 22);
-            this.tabContratos.Name = "tabContratos";
-            this.tabContratos.Padding = new System.Windows.Forms.Padding(3);
-            this.tabContratos.Size = new System.Drawing.Size(923, 501);
-            this.tabContratos.TabIndex = 2;
-            this.tabContratos.Text = "Contratos";
-            this.tabContratos.UseVisualStyleBackColor = true;
+            this.tabEquipos.Controls.Add(this.asignacionEquipos1);
+            this.tabEquipos.Location = new System.Drawing.Point(4, 22);
+            this.tabEquipos.Name = "tabEquipos";
+            this.tabEquipos.Padding = new System.Windows.Forms.Padding(3);
+            this.tabEquipos.Size = new System.Drawing.Size(923, 501);
+            this.tabEquipos.TabIndex = 2;
+            this.tabEquipos.Text = "Equipos";
+            this.tabEquipos.UseVisualStyleBackColor = true;
+            // 
+            // asignacionEquipos1
+            // 
+            this.asignacionEquipos1.AsignacionesEquipoRepositorio = null;
+            this.asignacionEquipos1.ClienteId = 0;
+            this.asignacionEquipos1.DataBindings.Add(new System.Windows.Forms.Binding("ClienteId", this.clienteBindingSource, "ClienteId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.asignacionEquipos1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.asignacionEquipos1.EquiposRepositorio = null;
+            this.asignacionEquipos1.Location = new System.Drawing.Point(3, 3);
+            this.asignacionEquipos1.ModoEdicion = false;
+            this.asignacionEquipos1.Name = "asignacionEquipos1";
+            this.asignacionEquipos1.Size = new System.Drawing.Size(917, 495);
+            this.asignacionEquipos1.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -991,6 +1007,7 @@
             this.groupBoxAsignacion.PerformLayout();
             this.tabContactos.ResumeLayout(false);
             this.tabProgramacionServiciosCliente.ResumeLayout(false);
+            this.tabEquipos.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
@@ -1035,7 +1052,7 @@
         private System.Windows.Forms.TabPage tabInformacion;
         private System.Windows.Forms.TabPage tabProgramacionServiciosCliente;
         private ProgramacionServiciosClientes programacionServiciosClientes1;
-        private System.Windows.Forms.TabPage tabContratos;
+        private System.Windows.Forms.TabPage tabEquipos;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -1062,5 +1079,6 @@
         private Contactos contactos1;
         internal System.Windows.Forms.BindingSource clienteBindingSource;
         private Operacion.ServiciosProgramados serviciosProgramados1;
+        private AsignacionEquipos asignacionEquipos1;
     }
 }

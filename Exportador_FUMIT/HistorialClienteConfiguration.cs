@@ -34,6 +34,7 @@ namespace Exportador_FUMIT
             Property(x => x.EventoClienteId).HasColumnName(@"EventoClienteId").HasColumnType("int").IsRequired();
             Property(x => x.Fecha).HasColumnName(@"Fecha").HasColumnType("datetime").IsRequired();
             Property(x => x.Observaciones).HasColumnName(@"Observaciones").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(250);
+            Property(x => x.Borrado).HasColumnName(@"Borrado").HasColumnType("bit").IsRequired();
 
             // Foreign keys
             HasRequired(a => a.Cliente).WithMany(b => b.HistorialClientes).HasForeignKey(c => c.ClienteId).WillCascadeOnDelete(false); // FK_HistorialCliente_Clientes

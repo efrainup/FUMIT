@@ -22,8 +22,8 @@ namespace Exportador_FUMIT
         public int CicloFacturacionClienteId { get; set; } // CicloFacturacionClienteId (Primary key)
         public int CicloFacturacionId { get; set; } // CicloFacturacionId
         public int ServicioId { get; set; } // ServicioId
-        public System.DateTime FechaInicioVigencia { get; set; } // FechaInicioVigencia
-        public System.DateTime FechaFinVigencia { get; set; } // FechaFinVigencia
+        public System.DateTime? FechaInicioVigencia { get; set; } // FechaInicioVigencia
+        public System.DateTime? FechaFinVigencia { get; set; } // FechaFinVigencia
         public bool Activo { get; set; } // Activo
         public bool Borrado { get; set; } // Borrado
 

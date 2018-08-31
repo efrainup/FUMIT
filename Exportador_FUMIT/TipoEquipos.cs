@@ -15,28 +15,26 @@
 namespace Exportador_FUMIT
 {
 
-    // Contactos
+    // TipoEquipos
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.37.1.0")]
-    public class Contacto
+    public class TipoEquipos
     {
-        public int ContactoId { get; set; } // ContactoId (Primary key)
-        public int ClienteId { get; set; } // ClienteId
-        public string Nombre { get; set; } // Nombre (length: 120)
-        public string Telefono { get; set; } // Telefono (length: 100)
-        public string Correo { get; set; } // Correo (length: 100)
-        public string Tipo { get; set; } // Tipo (length: 20)
+        public int TipoEquipoId { get; set; } // TipoEquipoId (Primary key)
+        public string Nombre { get; set; } // Nombre (length: 30)
+        public string Descripcion { get; set; } // Descripcion (length: 100)
         public bool Borrado { get; set; } // Borrado
 
-        // Foreign keys
+        // Reverse navigation
 
         /// <summary>
-        /// Parent Cliente pointed by [Contactos].([ClienteId]) (FK_Contactos_Clientes)
+        /// Child Equipoes where [Equipo].[TipoEquipoId] point to this entity (FK_Equipo_TipoEquipos)
         /// </summary>
-        public virtual Cliente Cliente { get; set; } // FK_Contactos_Clientes
+        public virtual System.Collections.Generic.ICollection<Equipo> Equipoes { get; set; } // Equipo.FK_Equipo_TipoEquipos
 
-        public Contacto()
+        public TipoEquipos()
         {
             Borrado = false;
+            Equipoes = new System.Collections.Generic.List<Equipo>();
         }
     }
 

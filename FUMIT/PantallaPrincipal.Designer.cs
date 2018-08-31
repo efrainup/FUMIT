@@ -90,21 +90,21 @@
             // sucursalesToolStripMenuItem
             // 
             this.sucursalesToolStripMenuItem.Name = "sucursalesToolStripMenuItem";
-            this.sucursalesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sucursalesToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.sucursalesToolStripMenuItem.Text = "S&ucursales";
             this.sucursalesToolStripMenuItem.Click += new System.EventHandler(this.sucursalesToolStripMenuItem_Click);
             // 
             // serviciosToolStripMenuItem
             // 
             this.serviciosToolStripMenuItem.Name = "serviciosToolStripMenuItem";
-            this.serviciosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.serviciosToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.serviciosToolStripMenuItem.Text = "&Servicios";
             this.serviciosToolStripMenuItem.Click += new System.EventHandler(this.serviciosToolStripMenuItem_Click);
             // 
             // equipoToolStripMenuItem
             // 
             this.equipoToolStripMenuItem.Name = "equipoToolStripMenuItem";
-            this.equipoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.equipoToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.equipoToolStripMenuItem.Text = "&Equipo";
             this.equipoToolStripMenuItem.Click += new System.EventHandler(this.equipoToolStripMenuItem_Click);
             // 
@@ -120,7 +120,7 @@
             // expedientesToolStripMenuItem
             // 
             this.expedientesToolStripMenuItem.Name = "expedientesToolStripMenuItem";
-            this.expedientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.expedientesToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.expedientesToolStripMenuItem.Text = "&Expedientes";
             this.expedientesToolStripMenuItem.ToolTipText = "Expendientes";
             this.expedientesToolStripMenuItem.Click += new System.EventHandler(this.expedientesToolStripMenuItem_Click);
@@ -128,7 +128,7 @@
             // contratosToolStripMenuItem
             // 
             this.contratosToolStripMenuItem.Name = "contratosToolStripMenuItem";
-            this.contratosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.contratosToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.contratosToolStripMenuItem.Text = "&Contratos";
             this.contratosToolStripMenuItem.Visible = false;
             // 
@@ -304,6 +304,7 @@
             this.Name = "PantallaPrincipal";
             this.Text = "Control de operaciones FUMIT";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PantallaPrincipal_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.MenuPrincipal.ResumeLayout(false);
             this.MenuPrincipal.PerformLayout();

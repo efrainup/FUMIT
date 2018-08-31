@@ -32,8 +32,8 @@ namespace Exportador_FUMIT
             Property(x => x.CicloFacturacionClienteId).HasColumnName(@"CicloFacturacionClienteId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
             Property(x => x.CicloFacturacionId).HasColumnName(@"CicloFacturacionId").HasColumnType("int").IsRequired();
             Property(x => x.ServicioId).HasColumnName(@"ServicioId").HasColumnType("int").IsRequired();
-            Property(x => x.FechaInicioVigencia).HasColumnName(@"FechaInicioVigencia").HasColumnType("datetime").IsRequired();
-            Property(x => x.FechaFinVigencia).HasColumnName(@"FechaFinVigencia").HasColumnType("datetime").IsRequired();
+            Property(x => x.FechaInicioVigencia).HasColumnName(@"FechaInicioVigencia").HasColumnType("datetime").IsOptional();
+            Property(x => x.FechaFinVigencia).HasColumnName(@"FechaFinVigencia").HasColumnType("datetime").IsOptional();
             Property(x => x.Activo).HasColumnName(@"Activo").HasColumnType("bit").IsRequired();
             Property(x => x.Borrado).HasColumnName(@"Borrado").HasColumnType("bit").IsRequired();
 

@@ -20,10 +20,12 @@ namespace Exportador_FUMIT
     public class FumitContext : System.Data.Entity.DbContext, IFumitContext
     {
         public System.Data.Entity.DbSet<Activos36> Activos36 { get; set; } // Activos$
+        public System.Data.Entity.DbSet<AsignacionesEquipos> AsignacionesEquipos { get; set; } // AsignacionesEquipos
         public System.Data.Entity.DbSet<CicloFacturacionCliente> CicloFacturacionClientes { get; set; } // CicloFacturacionCliente
         public System.Data.Entity.DbSet<CiclosFacturacion> CiclosFacturacions { get; set; } // CiclosFacturacion
         public System.Data.Entity.DbSet<Cliente> Clientes { get; set; } // Clientes
         public System.Data.Entity.DbSet<Contacto> Contactoes { get; set; } // Contactos
+        public System.Data.Entity.DbSet<Equipo> Equipoes { get; set; } // Equipo
         public System.Data.Entity.DbSet<Evento> Eventoes { get; set; } // Eventos
         public System.Data.Entity.DbSet<HistorialCliente> HistorialClientes { get; set; } // HistorialCliente
         public System.Data.Entity.DbSet<ProgramacionServicio> ProgramacionServicios { get; set; } // ProgramacionServicios
@@ -32,6 +34,7 @@ namespace Exportador_FUMIT
         public System.Data.Entity.DbSet<ServiciosProgramado> ServiciosProgramadoes { get; set; } // ServiciosProgramados
         public System.Data.Entity.DbSet<ServiciosSucursale> ServiciosSucursales { get; set; } // ServiciosSucursales
         public System.Data.Entity.DbSet<Sucursale> Sucursales { get; set; } // Sucursales
+        public System.Data.Entity.DbSet<TipoEquipos> TipoEquipos { get; set; } // TipoEquipos
 
         static FumitContext()
         {
@@ -82,10 +85,12 @@ namespace Exportador_FUMIT
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Configurations.Add(new Activos36Configuration());
+            modelBuilder.Configurations.Add(new AsignacionesEquiposConfiguration());
             modelBuilder.Configurations.Add(new CicloFacturacionClienteConfiguration());
             modelBuilder.Configurations.Add(new CiclosFacturacionConfiguration());
             modelBuilder.Configurations.Add(new ClienteConfiguration());
             modelBuilder.Configurations.Add(new ContactoConfiguration());
+            modelBuilder.Configurations.Add(new EquipoConfiguration());
             modelBuilder.Configurations.Add(new EventoConfiguration());
             modelBuilder.Configurations.Add(new HistorialClienteConfiguration());
             modelBuilder.Configurations.Add(new ProgramacionServicioConfiguration());
@@ -94,15 +99,18 @@ namespace Exportador_FUMIT
             modelBuilder.Configurations.Add(new ServiciosProgramadoConfiguration());
             modelBuilder.Configurations.Add(new ServiciosSucursaleConfiguration());
             modelBuilder.Configurations.Add(new SucursaleConfiguration());
+            modelBuilder.Configurations.Add(new TipoEquiposConfiguration());
         }
 
         public static System.Data.Entity.DbModelBuilder CreateModel(System.Data.Entity.DbModelBuilder modelBuilder, string schema)
         {
             modelBuilder.Configurations.Add(new Activos36Configuration(schema));
+            modelBuilder.Configurations.Add(new AsignacionesEquiposConfiguration(schema));
             modelBuilder.Configurations.Add(new CicloFacturacionClienteConfiguration(schema));
             modelBuilder.Configurations.Add(new CiclosFacturacionConfiguration(schema));
             modelBuilder.Configurations.Add(new ClienteConfiguration(schema));
             modelBuilder.Configurations.Add(new ContactoConfiguration(schema));
+            modelBuilder.Configurations.Add(new EquipoConfiguration(schema));
             modelBuilder.Configurations.Add(new EventoConfiguration(schema));
             modelBuilder.Configurations.Add(new HistorialClienteConfiguration(schema));
             modelBuilder.Configurations.Add(new ProgramacionServicioConfiguration(schema));
@@ -111,6 +119,7 @@ namespace Exportador_FUMIT
             modelBuilder.Configurations.Add(new ServiciosProgramadoConfiguration(schema));
             modelBuilder.Configurations.Add(new ServiciosSucursaleConfiguration(schema));
             modelBuilder.Configurations.Add(new SucursaleConfiguration(schema));
+            modelBuilder.Configurations.Add(new TipoEquiposConfiguration(schema));
             return modelBuilder;
         }
     }

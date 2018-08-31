@@ -25,6 +25,8 @@ namespace Exportador_FUMIT
         public string Dias { get; set; } // Dias (length: 50)
         public int? Semana { get; set; } // Semana
         public int? Mes { get; set; } // Mes
+        public bool Activo { get; set; } // Activo
+        public bool Borrado { get; set; } // Borrado
 
         // Reverse navigation
 
@@ -42,6 +44,8 @@ namespace Exportador_FUMIT
 
         public ProgramacionServicio()
         {
+            Activo = true;
+            Borrado = false;
             ProgramacionServiciosClientes = new System.Collections.Generic.List<ProgramacionServiciosCliente>();
         }
     }

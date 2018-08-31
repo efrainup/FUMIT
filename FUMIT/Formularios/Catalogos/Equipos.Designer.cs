@@ -48,7 +48,9 @@
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbEditar = new System.Windows.Forms.ToolStripButton();
             this.equipoBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
+            this.tsbCancelar = new System.Windows.Forms.ToolStripButton();
             this.activoCheckBox = new System.Windows.Forms.CheckBox();
             this.enMantenimientoCheckBox = new System.Windows.Forms.CheckBox();
             this.numeroEconomicoTextBox = new System.Windows.Forms.TextBox();
@@ -56,10 +58,9 @@
             this.requiereMantenimientoCheckBox = new System.Windows.Forms.CheckBox();
             this.tiposEquiposComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.tsbEditar = new System.Windows.Forms.ToolStripButton();
+            this.estadoComboBox = new System.Windows.Forms.ComboBox();
+            this.AgregarTipoEquipoBoton = new System.Windows.Forms.Button();
             this.equipoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             activoLabel = new System.Windows.Forms.Label();
             enMantenimientoLabel = new System.Windows.Forms.Label();
             estadoLabel = new System.Windows.Forms.Label();
@@ -144,7 +145,8 @@
             this.bindingNavigatorAddNewItem,
             this.tsbEditar,
             this.bindingNavigatorDeleteItem,
-            this.equipoBindingNavigatorSaveItem});
+            this.equipoBindingNavigatorSaveItem,
+            this.tsbCancelar});
             this.equipoBindingNavigator.Location = new System.Drawing.Point(0, 0);
             this.equipoBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.equipoBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -164,6 +166,7 @@
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(69, 22);
             this.bindingNavigatorAddNewItem.Text = "Agregar";
             this.bindingNavigatorAddNewItem.ToolTipText = "Agregar";
+            this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
             // 
             // bindingNavigatorCountItem
             // 
@@ -179,6 +182,7 @@
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(70, 22);
             this.bindingNavigatorDeleteItem.Text = "Eliminar";
+            this.bindingNavigatorDeleteItem.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click);
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -240,6 +244,15 @@
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
+            // tsbEditar
+            // 
+            this.tsbEditar.Image = global::FUMIT.Recursos.edit_add;
+            this.tsbEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbEditar.Name = "tsbEditar";
+            this.tsbEditar.Size = new System.Drawing.Size(57, 22);
+            this.tsbEditar.Text = "Editar";
+            this.tsbEditar.Click += new System.EventHandler(this.tsbEditar_Click);
+            // 
             // equipoBindingNavigatorSaveItem
             // 
             this.equipoBindingNavigatorSaveItem.Enabled = false;
@@ -247,10 +260,23 @@
             this.equipoBindingNavigatorSaveItem.Name = "equipoBindingNavigatorSaveItem";
             this.equipoBindingNavigatorSaveItem.Size = new System.Drawing.Size(69, 22);
             this.equipoBindingNavigatorSaveItem.Text = "Guardar";
+            this.equipoBindingNavigatorSaveItem.Click += new System.EventHandler(this.equipoBindingNavigatorSaveItem_Click);
+            // 
+            // tsbCancelar
+            // 
+            this.tsbCancelar.Enabled = false;
+            this.tsbCancelar.Image = global::FUMIT.Recursos.cancel;
+            this.tsbCancelar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbCancelar.Name = "tsbCancelar";
+            this.tsbCancelar.Size = new System.Drawing.Size(73, 22);
+            this.tsbCancelar.Text = "Cancelar";
+            this.tsbCancelar.Visible = false;
+            this.tsbCancelar.Click += new System.EventHandler(this.tsbCancelar_Click);
             // 
             // activoCheckBox
             // 
-            this.activoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.equipoBindingSource, "Activo", true));
+            this.activoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.equipoBindingSource, "Activo", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.activoCheckBox.Enabled = false;
             this.activoCheckBox.Location = new System.Drawing.Point(150, 207);
             this.activoCheckBox.Name = "activoCheckBox";
             this.activoCheckBox.Size = new System.Drawing.Size(104, 24);
@@ -259,7 +285,8 @@
             // 
             // enMantenimientoCheckBox
             // 
-            this.enMantenimientoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.equipoBindingSource, "EnMantenimiento", true));
+            this.enMantenimientoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.equipoBindingSource, "EnMantenimiento", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.enMantenimientoCheckBox.Enabled = false;
             this.enMantenimientoCheckBox.Location = new System.Drawing.Point(149, 177);
             this.enMantenimientoCheckBox.Name = "enMantenimientoCheckBox";
             this.enMantenimientoCheckBox.Size = new System.Drawing.Size(104, 24);
@@ -268,24 +295,27 @@
             // 
             // numeroEconomicoTextBox
             // 
-            this.numeroEconomicoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipoBindingSource, "NumeroEconomico", true));
+            this.numeroEconomicoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipoBindingSource, "NumeroEconomico", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.numeroEconomicoTextBox.Location = new System.Drawing.Point(150, 91);
             this.numeroEconomicoTextBox.Name = "numeroEconomicoTextBox";
+            this.numeroEconomicoTextBox.ReadOnly = true;
             this.numeroEconomicoTextBox.Size = new System.Drawing.Size(274, 20);
             this.numeroEconomicoTextBox.TabIndex = 8;
             // 
             // observacionesTextBox
             // 
-            this.observacionesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipoBindingSource, "Observaciones", true));
+            this.observacionesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipoBindingSource, "Observaciones", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.observacionesTextBox.Location = new System.Drawing.Point(149, 237);
             this.observacionesTextBox.Multiline = true;
             this.observacionesTextBox.Name = "observacionesTextBox";
+            this.observacionesTextBox.ReadOnly = true;
             this.observacionesTextBox.Size = new System.Drawing.Size(423, 172);
             this.observacionesTextBox.TabIndex = 10;
             // 
             // requiereMantenimientoCheckBox
             // 
-            this.requiereMantenimientoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.equipoBindingSource, "RequiereMantenimiento", true));
+            this.requiereMantenimientoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.equipoBindingSource, "RequiereMantenimiento", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.requiereMantenimientoCheckBox.Enabled = false;
             this.requiereMantenimientoCheckBox.Location = new System.Drawing.Point(149, 147);
             this.requiereMantenimientoCheckBox.Name = "requiereMantenimientoCheckBox";
             this.requiereMantenimientoCheckBox.Size = new System.Drawing.Size(104, 24);
@@ -294,6 +324,8 @@
             // 
             // tiposEquiposComboBox
             // 
+            this.tiposEquiposComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipoBindingSource, "Tipoequipo.Nombre", true));
+            this.tiposEquiposComboBox.Enabled = false;
             this.tiposEquiposComboBox.FormattingEnabled = true;
             this.tiposEquiposComboBox.Items.AddRange(new object[] {
             "<Nuevo tipo>"});
@@ -312,48 +344,43 @@
             this.label1.TabIndex = 16;
             this.label1.Text = "Tipo:";
             // 
-            // comboBox2
+            // estadoComboBox
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.estadoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipoBindingSource, "Estado", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.estadoComboBox.Enabled = false;
+            this.estadoComboBox.FormattingEnabled = true;
+            this.estadoComboBox.Items.AddRange(new object[] {
             "Bueno",
             "Dañado"});
-            this.comboBox2.Location = new System.Drawing.Point(150, 120);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(274, 21);
-            this.comboBox2.TabIndex = 17;
+            this.estadoComboBox.Location = new System.Drawing.Point(150, 120);
+            this.estadoComboBox.Name = "estadoComboBox";
+            this.estadoComboBox.Size = new System.Drawing.Size(274, 21);
+            this.estadoComboBox.TabIndex = 17;
             // 
-            // tsbEditar
+            // AgregarTipoEquipoBoton
             // 
-            this.tsbEditar.Image = global::FUMIT.Recursos.edit_add;
-            this.tsbEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEditar.Name = "tsbEditar";
-            this.tsbEditar.Size = new System.Drawing.Size(57, 22);
-            this.tsbEditar.Text = "Editar";
+            this.AgregarTipoEquipoBoton.Enabled = false;
+            this.AgregarTipoEquipoBoton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.AgregarTipoEquipoBoton.Image = global::FUMIT.Recursos.add;
+            this.AgregarTipoEquipoBoton.Location = new System.Drawing.Point(429, 62);
+            this.AgregarTipoEquipoBoton.Name = "AgregarTipoEquipoBoton";
+            this.AgregarTipoEquipoBoton.Size = new System.Drawing.Size(29, 23);
+            this.AgregarTipoEquipoBoton.TabIndex = 18;
+            this.AgregarTipoEquipoBoton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.AgregarTipoEquipoBoton.UseVisualStyleBackColor = true;
+            this.AgregarTipoEquipoBoton.Click += new System.EventHandler(this.button1_Click);
             // 
             // equipoBindingSource
             // 
             this.equipoBindingSource.DataSource = typeof(FUMIT.Entidades.Equipo);
-            // 
-            // button1
-            // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Image = global::FUMIT.Recursos.add;
-            this.button1.Location = new System.Drawing.Point(429, 62);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(29, 23);
-            this.button1.TabIndex = 18;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Equipos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(615, 450);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.AgregarTipoEquipoBoton);
+            this.Controls.Add(this.estadoComboBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tiposEquiposComboBox);
             this.Controls.Add(activoLabel);
@@ -404,7 +431,8 @@
         private System.Windows.Forms.ToolStripButton tsbEditar;
         private System.Windows.Forms.ComboBox tiposEquiposComboBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox estadoComboBox;
+        private System.Windows.Forms.Button AgregarTipoEquipoBoton;
+        private System.Windows.Forms.ToolStripButton tsbCancelar;
     }
 }

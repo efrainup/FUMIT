@@ -44,6 +44,10 @@ namespace Exportador_FUMIT
         // Reverse navigation
 
         /// <summary>
+        /// Child AsignacionesEquipos where [AsignacionesEquipos].[ClienteId] point to this entity (FK_AsignacionesEquipos_Clientes)
+        /// </summary>
+        public virtual System.Collections.Generic.ICollection<AsignacionesEquipos> AsignacionesEquipos { get; set; } // AsignacionesEquipos.FK_AsignacionesEquipos_Clientes
+        /// <summary>
         /// Child Contactoes where [Contactos].[ClienteId] point to this entity (FK_Contactos_Clientes)
         /// </summary>
         public virtual System.Collections.Generic.ICollection<Contacto> Contactoes { get; set; } // Contactos.FK_Contactos_Clientes
@@ -72,6 +76,7 @@ namespace Exportador_FUMIT
             PersonaMoral = false;
             FechaCreacion = System.DateTime.Now;
             RequiereManifiesto = false;
+            AsignacionesEquipos = new System.Collections.Generic.List<AsignacionesEquipos>();
             Contactoes = new System.Collections.Generic.List<Contacto>();
             HistorialClientes = new System.Collections.Generic.List<HistorialCliente>();
             ProgramacionServiciosClientes = new System.Collections.Generic.List<ProgramacionServiciosCliente>();

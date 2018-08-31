@@ -35,6 +35,7 @@ namespace Exportador_FUMIT
             Property(x => x.Telefono).HasColumnName(@"Telefono").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(100);
             Property(x => x.Correo).HasColumnName(@"Correo").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(100);
             Property(x => x.Tipo).HasColumnName(@"Tipo").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(20);
+            Property(x => x.Borrado).HasColumnName(@"Borrado").HasColumnType("bit").IsRequired();
 
             // Foreign keys
             HasRequired(a => a.Cliente).WithMany(b => b.Contactoes).HasForeignKey(c => c.ClienteId).WillCascadeOnDelete(false); // FK_Contactos_Clientes

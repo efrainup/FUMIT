@@ -27,6 +27,7 @@ namespace Exportador_FUMIT
         public bool PorDefecto { get; set; } // PorDefecto
         public bool Activo { get; set; } // Activo
         public bool Borrado { get; set; } // Borrado
+        public string Nombre { get; set; } // Nombre (length: 50)
 
         // Reverse navigation
 

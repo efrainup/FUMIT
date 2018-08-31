@@ -47,8 +47,6 @@ namespace FUMIT.Formularios.Clientes
                 bindingNavigatorDeleteItem.Enabled = !modoEditar;
                 tsbCancelar.Enabled = modoEditar;
                 programacionserviciosclienteBindingNavigatorSaveItem.Enabled = modoEditar;
-                fechaInicioDateTimePicker.Enabled = modoEditar;
-                fechaTerminoDateTimePicker.Enabled = modoEditar;
                 btnBusquedaHorario.Enabled = modoEditar;
                 btnBusquedaServicio.Enabled = modoEditar;
                 activoCheckBox.Enabled = modoEditar;
@@ -121,6 +119,7 @@ namespace FUMIT.Formularios.Clientes
             ModoEditar = true;
 
             ProgramacionServicioClienteActual.ClienteId = ClienteId;
+            ProgramacionServicioClienteActual.Activo = true;
         }
 
         private void btnBusquedaProgramacionServicioPorId_Click(object sender, EventArgs e)
@@ -140,7 +139,6 @@ namespace FUMIT.Formularios.Clientes
 
         private void programacionserviciosclienteBindingSource_CurrentItemChanged(object sender, EventArgs e)
         {
-            Trace.WriteLine("Algo cambio");
         }
 
         private async void programacionserviciosclienteBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -207,10 +205,6 @@ namespace FUMIT.Formularios.Clientes
 
         }
 
-        private void nombreLabel1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void nombreTextBox1_TextChanged(object sender, EventArgs e)
         {

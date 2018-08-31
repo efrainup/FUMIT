@@ -126,5 +126,10 @@ namespace FUMIT
             equiposFormulario.MdiParent = this;
             equiposFormulario.Show();
         }
+
+        private void PantallaPrincipal_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Dispose();
+        }
     }
 }

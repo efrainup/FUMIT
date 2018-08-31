@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Validation;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,8 +14,11 @@ using FUMIT.Entidades;
 
 namespace FUMIT.Formularios.Catalogos
 {
-    public partial class Equipos : Form, IFormularioSeleccionable<Entidades.Equipo>
+    public partial class Equipos : Form, IFormularioSeleccionable<Entidades.Equipo>, IFormularioEditable
     {
+
+        private bool modoEdicion = false;
+
         public IEquipos EquiposRepositorio { get; set; }
         public ITipoEquipos TiposEquipoRepositorio { get; set; }
         public bool ModoSeleccion { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
@@ -22,6 +26,33 @@ namespace FUMIT.Formularios.Catalogos
         public Equipo SeleccionActual {
             get {
                 return equipoBindingSource.Current as Equipo;
+            }
+
+        }
+
+        public bool ModoEdicion {
+            get
+            {
+                return modoEdicion;
+            }
+            set
+            {
+                modoEdicion = value;
+                tiposEquiposComboBox.Enabled = modoEdicion;
+                numeroEconomicoTextBox.ReadOnly = !modoEdicion;
+                estadoComboBox.Enabled = modoEdicion;
+                requiereMantenimientoCheckBox.Enabled = modoEdicion;
+                enMantenimientoCheckBox.Enabled = modoEdicion;
+                activoCheckBox.Enabled = modoEdicion;
+                observacionesTextBox.ReadOnly = !modoEdicion;
+
+                bindingNavigatorAddNewItem.Enabled = !modoEdicion;
+                tsbEditar.Enabled = !modoEdicion;
+                bindingNavigatorDeleteItem.Enabled = !modoEdicion;
+                equipoBindingNavigatorSaveItem.Enabled = modoEdicion;
+                tsbCancelar.Enabled = modoEdicion;
+                tsbCancelar.Visible = modoEdicion;
+                AgregarTipoEquipoBoton.Enabled = modoEdicion;
             }
 
         }
@@ -44,7 +75,6 @@ namespace FUMIT.Formularios.Catalogos
                 List<Entidades.Tipoequipo> tiposEquipos = TiposEquipoRepositorio.Recuperar().ToList();
                 tiposEquiposComboBox.DataSource = tiposEquipos;
                 tiposEquiposComboBox.DisplayMember = "Nombre";
-                tiposEquiposComboBox.Items.Insert(0,new { Nombre = "<Agregar nuevo tipo de equipo>" });
 
                 //Cargar equipos
                 equipoBindingSource.DataSource = EquiposRepositorio.Recuperar();
@@ -54,10 +84,10 @@ namespace FUMIT.Formularios.Catalogos
 
         private void tiposEquiposComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Si es el último, se abre formulario para agregar otro tipo
-            if(tiposEquiposComboBox.Items.Count == tiposEquiposComboBox.SelectedIndex)
+            if (SeleccionActual != null && ModoEdicion)
             {
-                
+                SeleccionActual.Tipoequipo = tiposEquiposComboBox.SelectedValue as Entidades.Tipoequipo;
+                SeleccionActual.TipoEquipoId = (tiposEquiposComboBox.SelectedValue as Entidades.Tipoequipo).TipoEquipoId;
             }
         }
 
@@ -79,6 +109,70 @@ namespace FUMIT.Formularios.Catalogos
             };
 
             formularioAgregarTipoEquipo.ShowDialog();
+        }
+
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        {
+            ModoEdicion = true;
+        }
+
+        private void tsbEditar_Click(object sender, EventArgs e)
+        {
+            ModoEdicion = true;
+        }
+
+        private async void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                await EquiposRepositorio.EliminarAsync(SeleccionActual);
+                equipoBindingSource.RemoveCurrent();
+            }catch(Exception exc)
+            {
+                MessageBox.Show("Hubo un error al eliminar");
+            }
+        }
+
+        private void tsbCancelar_Click(object sender, EventArgs e)
+        {
+            ModoEdicion = false;
+        }
+
+        private async void equipoBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (SeleccionActual.EquipoId > 0)
+                {
+                    await EquiposRepositorio.ActualizarAsync(SeleccionActual);
+                }
+                else
+                {
+                    await EquiposRepositorio.CrearAsync(SeleccionActual);
+                }
+                ModoEdicion = false;
+            }
+            catch (DbEntityValidationException excepcionValidacion)
+            {
+                string Mensaje = "";
+                foreach (DbEntityValidationResult validacion in excepcionValidacion.EntityValidationErrors)
+                {
+
+                    foreach (DbValidationError errorvalidacion in validacion.ValidationErrors)
+                    {
+                        Mensaje += $"•{errorvalidacion.ErrorMessage}";
+                        //this.Controls[0].DataBindings.Add()
+                    }
+
+                }
+                MessageBox.Show(Mensaje, "Errores de validacion");
+
+            }
+            catch (Exception excepcion)
+            {
+                MessageBox.Show("Se produjo un error. Favor de intentar nuevamente", "Error");
+            }
+
         }
     }
 }

@@ -44,14 +44,14 @@ namespace FUMIT.AccesoDatos
             dbSet.Add(entidad);
             await dbContext.SaveChangesAsync();
         }
-        public void Actualizar(T entidad)
+        public virtual void Actualizar(T entidad)
         {
             dbSet.Attach(entidad);
             dbContext.Entry<T>(entidad).State = EntityState.Modified;
             dbContext.SaveChanges();
         }
 
-        public async Task ActualizarAsync(T entidad)
+        public virtual async Task ActualizarAsync(T entidad)
         {
             dbSet.Attach(entidad);
             dbContext.Entry<T>(entidad).State = EntityState.Modified;

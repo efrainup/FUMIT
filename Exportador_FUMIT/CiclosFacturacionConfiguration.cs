@@ -29,7 +29,7 @@ namespace Exportador_FUMIT
             ToTable("CiclosFacturacion", schema);
             HasKey(x => x.CicloFacturacionId);
 
-            Property(x => x.CicloFacturacionId).HasColumnName(@"CicloFacturacionId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.CicloFacturacionId).HasColumnName(@"CicloFacturacionId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
             Property(x => x.SucursalId).HasColumnName(@"SucursalId").HasColumnType("int").IsRequired();
             Property(x => x.Dia).HasColumnName(@"Dia").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(100);
             Property(x => x.Semana).HasColumnName(@"Semana").HasColumnType("int").IsRequired();
@@ -37,6 +37,7 @@ namespace Exportador_FUMIT
             Property(x => x.PorDefecto).HasColumnName(@"PorDefecto").HasColumnType("bit").IsRequired();
             Property(x => x.Activo).HasColumnName(@"Activo").HasColumnType("bit").IsRequired();
             Property(x => x.Borrado).HasColumnName(@"Borrado").HasColumnType("bit").IsRequired();
+            Property(x => x.Nombre).HasColumnName(@"Nombre").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(50);
 
             // Foreign keys
             HasRequired(a => a.Sucursale).WithMany(b => b.CiclosFacturacions).HasForeignKey(c => c.SucursalId).WillCascadeOnDelete(false); // FK_CiclosFacturacion_Sucursales

@@ -18,10 +18,12 @@ namespace Exportador_FUMIT
     public interface IFumitContext : System.IDisposable
     {
         System.Data.Entity.DbSet<Activos36> Activos36 { get; set; } // Activos$
+        System.Data.Entity.DbSet<AsignacionesEquipos> AsignacionesEquipos { get; set; } // AsignacionesEquipos
         System.Data.Entity.DbSet<CicloFacturacionCliente> CicloFacturacionClientes { get; set; } // CicloFacturacionCliente
         System.Data.Entity.DbSet<CiclosFacturacion> CiclosFacturacions { get; set; } // CiclosFacturacion
         System.Data.Entity.DbSet<Cliente> Clientes { get; set; } // Clientes
         System.Data.Entity.DbSet<Contacto> Contactoes { get; set; } // Contactos
+        System.Data.Entity.DbSet<Equipo> Equipoes { get; set; } // Equipo
         System.Data.Entity.DbSet<Evento> Eventoes { get; set; } // Eventos
         System.Data.Entity.DbSet<HistorialCliente> HistorialClientes { get; set; } // HistorialCliente
         System.Data.Entity.DbSet<ProgramacionServicio> ProgramacionServicios { get; set; } // ProgramacionServicios
@@ -30,6 +32,7 @@ namespace Exportador_FUMIT
         System.Data.Entity.DbSet<ServiciosProgramado> ServiciosProgramadoes { get; set; } // ServiciosProgramados
         System.Data.Entity.DbSet<ServiciosSucursale> ServiciosSucursales { get; set; } // ServiciosSucursales
         System.Data.Entity.DbSet<Sucursale> Sucursales { get; set; } // Sucursales
+        System.Data.Entity.DbSet<TipoEquipos> TipoEquipos { get; set; } // TipoEquipos
 
         int SaveChanges();
         System.Threading.Tasks.Task<int> SaveChangesAsync();
