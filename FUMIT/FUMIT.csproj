@@ -469,6 +469,9 @@
     <EmbeddedResource Include="Formularios\Operacion\EditarServicio.resx">
       <DependentUpon>EditarServicio.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Operacion\MantenimientoEquipoUC.resx">
+      <DependentUpon>MantenimientoEquipoUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Operacion\ProgramacionServiciosSucursales.resx">
       <DependentUpon>ProgramacionServiciosSucursales.cs</DependentUpon>
     </EmbeddedResource>
@@ -502,6 +505,8 @@
     <None Include="Properties\DataSources\FUMIT.Entidades.Equipo.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Evento.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.HistorialCliente.datasource" />
+    <None Include="Properties\DataSources\FUMIT.Entidades.Mantenimiento.datasource" />
+    <None Include="Properties\DataSources\FUMIT.Entidades.MantenimientosEquipo.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.ProgramacionServicio.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Programacionservicioscliente.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Servicio.datasource" />

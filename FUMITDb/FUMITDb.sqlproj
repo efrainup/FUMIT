@@ -84,5 +84,7 @@
     <Build Include="dbo\Tables\TipoEquipos.sql" />
     <Build Include="dbo\Tables\Equipo.sql" />
     <Build Include="dbo\Tables\AsignacionesEquipos.sql" />
+    <Build Include="dbo\Tables\MantenimientosEquipo.sql" />
+    <Build Include="dbo\Tables\Mantenimientos.sql" />
   </ItemGroup>
 </Project>
