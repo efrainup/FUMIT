@@ -79,12 +79,21 @@ namespace FUMIT.Entidades
         [Display(Name = "Borrado")]
         public bool Borrado { get; set; } // Borrado
 
+        [Column(@"Asignado", Order = 10, TypeName = "bit")]
+        [Required]
+        [Display(Name = "Asignado")]
+        public bool Asignado { get; set; } // Asignado
+
         // Reverse navigation
 
         /// <summary>
         /// Child Asignacionesequipos where [AsignacionesEquipos].[EquipoId] point to this entity (FK_AsignacionesEquipos_Equipo)
         /// </summary>
         public virtual System.Collections.Generic.ICollection<Asignacionesequipo> Asignacionesequipos { get; set; } // AsignacionesEquipos.FK_AsignacionesEquipos_Equipo
+        /// <summary>
+        /// Child Mantenimientosequipos where [MantenimientosEquipo].[EquipoId] point to this entity (FK_MantenimientosEquipo_Equipo)
+        /// </summary>
+        public virtual System.Collections.Generic.ICollection<MantenimientosEquipo> Mantenimientosequipos { get; set; } // MantenimientosEquipo.FK_MantenimientosEquipo_Equipo
 
         // Foreign keys
 
@@ -97,7 +106,9 @@ namespace FUMIT.Entidades
         {
             Activo = true;
             Borrado = false;
+            Asignado = false;
             Asignacionesequipos = new System.Collections.Generic.List<Asignacionesequipo>();
+            Mantenimientosequipos = new System.Collections.Generic.List<MantenimientosEquipo>();
             InitializePartial();
         }
 

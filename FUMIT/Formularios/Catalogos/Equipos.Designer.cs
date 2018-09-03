@@ -36,8 +36,10 @@
             System.Windows.Forms.Label observacionesLabel;
             System.Windows.Forms.Label requiereMantenimientoLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Equipos));
+            System.Windows.Forms.Label asignadoLabel;
             this.equipoBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.equipoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -60,13 +62,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.estadoComboBox = new System.Windows.Forms.ComboBox();
             this.AgregarTipoEquipoBoton = new System.Windows.Forms.Button();
-            this.equipoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.asignadoCheckBox = new System.Windows.Forms.CheckBox();
             activoLabel = new System.Windows.Forms.Label();
             enMantenimientoLabel = new System.Windows.Forms.Label();
             estadoLabel = new System.Windows.Forms.Label();
             numeroEconomicoLabel = new System.Windows.Forms.Label();
             observacionesLabel = new System.Windows.Forms.Label();
             requiereMantenimientoLabel = new System.Windows.Forms.Label();
+            asignadoLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.equipoBindingNavigator)).BeginInit();
             this.equipoBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.equipoBindingSource)).BeginInit();
@@ -111,7 +114,7 @@
             // observacionesLabel
             // 
             observacionesLabel.AutoSize = true;
-            observacionesLabel.Location = new System.Drawing.Point(18, 240);
+            observacionesLabel.Location = new System.Drawing.Point(18, 262);
             observacionesLabel.Name = "observacionesLabel";
             observacionesLabel.Size = new System.Drawing.Size(81, 13);
             observacionesLabel.TabIndex = 9;
@@ -167,6 +170,10 @@
             this.bindingNavigatorAddNewItem.Text = "Agregar";
             this.bindingNavigatorAddNewItem.ToolTipText = "Agregar";
             this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
+            // 
+            // equipoBindingSource
+            // 
+            this.equipoBindingSource.DataSource = typeof(FUMIT.Entidades.Equipo);
             // 
             // bindingNavigatorCountItem
             // 
@@ -305,11 +312,11 @@
             // observacionesTextBox
             // 
             this.observacionesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipoBindingSource, "Observaciones", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.observacionesTextBox.Location = new System.Drawing.Point(149, 237);
+            this.observacionesTextBox.Location = new System.Drawing.Point(149, 262);
             this.observacionesTextBox.Multiline = true;
             this.observacionesTextBox.Name = "observacionesTextBox";
             this.observacionesTextBox.ReadOnly = true;
-            this.observacionesTextBox.Size = new System.Drawing.Size(423, 172);
+            this.observacionesTextBox.Size = new System.Drawing.Size(423, 147);
             this.observacionesTextBox.TabIndex = 10;
             // 
             // requiereMantenimientoCheckBox
@@ -370,15 +377,32 @@
             this.AgregarTipoEquipoBoton.UseVisualStyleBackColor = true;
             this.AgregarTipoEquipoBoton.Click += new System.EventHandler(this.button1_Click);
             // 
-            // equipoBindingSource
+            // asignadoLabel
             // 
-            this.equipoBindingSource.DataSource = typeof(FUMIT.Entidades.Equipo);
+            asignadoLabel.AutoSize = true;
+            asignadoLabel.Location = new System.Drawing.Point(19, 237);
+            asignadoLabel.Name = "asignadoLabel";
+            asignadoLabel.Size = new System.Drawing.Size(54, 13);
+            asignadoLabel.TabIndex = 18;
+            asignadoLabel.Text = "Asignado:";
+            // 
+            // asignadoCheckBox
+            // 
+            this.asignadoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.equipoBindingSource, "Asignado", true));
+            this.asignadoCheckBox.Enabled = false;
+            this.asignadoCheckBox.Location = new System.Drawing.Point(149, 232);
+            this.asignadoCheckBox.Name = "asignadoCheckBox";
+            this.asignadoCheckBox.Size = new System.Drawing.Size(104, 24);
+            this.asignadoCheckBox.TabIndex = 19;
+            this.asignadoCheckBox.UseVisualStyleBackColor = true;
             // 
             // Equipos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(615, 450);
+            this.Controls.Add(asignadoLabel);
+            this.Controls.Add(this.asignadoCheckBox);
             this.Controls.Add(this.AgregarTipoEquipoBoton);
             this.Controls.Add(this.estadoComboBox);
             this.Controls.Add(this.label1);
@@ -434,5 +458,6 @@
         private System.Windows.Forms.ComboBox estadoComboBox;
         private System.Windows.Forms.Button AgregarTipoEquipoBoton;
         private System.Windows.Forms.ToolStripButton tsbCancelar;
+        private System.Windows.Forms.CheckBox asignadoCheckBox;
     }
 }

@@ -123,6 +123,8 @@
     <Compile Include="AccesoDatos\IClientes.cs" />
     <Compile Include="AccesoDatos\IContactos.cs" />
     <Compile Include="AccesoDatos\IEquipos.cs" />
+    <Compile Include="AccesoDatos\IMantenimientos.cs" />
+    <Compile Include="AccesoDatos\IMantenimientosEquipo.cs" />
     <Compile Include="AccesoDatos\IOperacionesAccesoDatos.cs" />
     <Compile Include="AccesoDatos\IProgramacionServicios.cs" />
     <Compile Include="AccesoDatos\IProgramacionServiciosCliente.cs" />
@@ -131,6 +133,8 @@
     <Compile Include="AccesoDatos\ISucursales.cs" />
     <Compile Include="AccesoDatos\ITipoEquipos.cs" />
     <Compile Include="AccesoDatos\IVSProgramacionServiciosCliente.cs" />
+    <Compile Include="AccesoDatos\MantenimientosEquipo.cs" />
+    <Compile Include="AccesoDatos\MantenimientosRepositorio.cs" />
     <Compile Include="AccesoDatos\ProgramacionServiciosClienteRepositorio.cs" />
     <Compile Include="AccesoDatos\ProgramacionServiciosRepositorio.cs" />
     <Compile Include="AccesoDatos\ServiciosProgramadosRepositorio.cs" />
@@ -199,6 +203,18 @@
       <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
     </Compile>
     <Compile Include="Entidades\IFumitDbContext.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\Mantenimiento.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\MantenimientoConfiguration.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\MantenimientosEquipo.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\MantenimientosEquipoConfiguration.cs">
       <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
     </Compile>
     <Compile Include="Entidades\Programacionservicio.cs">
@@ -360,6 +376,12 @@
     <Compile Include="Formularios\Operacion\EditarServicio.Designer.cs">
       <DependentUpon>EditarServicio.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Operacion\MantenimientoEquipoUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Formularios\Operacion\MantenimientoEquipoUC.Designer.cs">
+      <DependentUpon>MantenimientoEquipoUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Operacion\ProgramacionServiciosSucursales.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -480,7 +502,7 @@
     <None Include="Properties\DataSources\FUMIT.Entidades.Equipo.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Evento.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.HistorialCliente.datasource" />
-    <None Include="Properties\DataSources\FUMIT.Entidades.Programacionservicio.datasource" />
+    <None Include="Properties\DataSources\FUMIT.Entidades.ProgramacionServicio.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Programacionservicioscliente.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Servicio.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Serviciosprogramado.datasource" />

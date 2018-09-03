@@ -39,7 +39,7 @@ namespace FUMIT.Formularios.Compartidos
             
             if (!string.IsNullOrEmpty(nombreTextBox.Text))
             {
-                filtro = filtro.Where(w => w.Nombre.Contains(nombreTextBox.Text));
+                filtro = filtro.Where(w => w.Nombre.Contains(nombreTextBox.Text)).ToList();
             }
 
 
