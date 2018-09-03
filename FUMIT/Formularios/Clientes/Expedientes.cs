@@ -120,12 +120,15 @@ namespace FUMIT.Formularios.Clientes
 
                 if (cliente.ClienteId == 0)
                 {
-                    await RepositorioClientes.CrearAsync(cliente);
+                    cliente = await RepositorioClientes.CrearAsync(cliente);
                 }
                 else
                 {
-                    await RepositorioClientes.ActualizarAsync(cliente);
+                    cliente = await RepositorioClientes.ActualizarAsync(cliente);
                 }
+
+                clienteBindingSource.ResetBindings(false);
+                ModoEdicion = false;
             }
             catch (DbEntityValidationException excepcionValidacion)
             {
@@ -148,7 +151,7 @@ namespace FUMIT.Formularios.Clientes
                 MessageBox.Show("Se produjo un error. Favor de intentar nuevamente", "Error");
             }
 
-            ModoEdicion = false;
+            
         }
 
         private void btnBuscarPorClave_Click(object sender, EventArgs e)

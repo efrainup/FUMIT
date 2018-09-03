@@ -33,29 +33,35 @@ namespace FUMIT.AccesoDatos
             
         }
 
-        public void Crear(T entidad)
+        public T Crear(T entidad)
         {
-            dbSet.Add(entidad);
+            entidad = dbSet.Add(entidad);
             dbContext.SaveChanges();
+
+            return entidad;
         }
 
-        public async Task CrearAsync(T entidad)
+        public async Task<T> CrearAsync(T entidad)
         {
-            dbSet.Add(entidad);
+            entidad = dbSet.Add(entidad);
             await dbContext.SaveChangesAsync();
+            return entidad;
         }
-        public virtual void Actualizar(T entidad)
+        public virtual T Actualizar(T entidad)
         {
-            dbSet.Attach(entidad);
+            entidad = dbSet.Attach(entidad);
             dbContext.Entry<T>(entidad).State = EntityState.Modified;
             dbContext.SaveChanges();
+
+            return entidad;
         }
 
-        public virtual async Task ActualizarAsync(T entidad)
+        public virtual async Task<T> ActualizarAsync(T entidad)
         {
-            dbSet.Attach(entidad);
+            entidad = dbSet.Attach(entidad);
             dbContext.Entry<T>(entidad).State = EntityState.Modified;
             await dbContext.SaveChangesAsync();
+            return entidad;
         }
 
         public void Eliminar(T entidad)
