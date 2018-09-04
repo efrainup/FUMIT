@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FUMIT.AccesoDatos
 {
-    public class MantenimientosEquipo : AOperacionesBase<Entidades.MantenimientosEquipo>, IMantenimientosEquipo
+    public class MantenimientosEquipoRepositorio : AOperacionesBase<Entidades.MantenimientosEquipo>, IMantenimientosEquipo
     {
     }
 }

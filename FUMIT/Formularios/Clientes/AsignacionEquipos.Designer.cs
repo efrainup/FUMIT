@@ -29,43 +29,79 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AsignacionEquipos));
             System.Windows.Forms.Label fechaAsignaciónLabel;
             System.Windows.Forms.Label fechaEntregaLabel;
             System.Windows.Forms.Label fechaRegresoLabel;
             System.Windows.Forms.Label numeroEconomicoLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AsignacionEquipos));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.fechaRegresoDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.asignacionesequipoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.fechaEntregaDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.numeroEconomicoTextBox = new System.Windows.Forms.TextBox();
+            this.fechaAsignaciónDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.asignacionesequipoBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
-            this.asignacionesequipoBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
-            this.fechaAsignaciónDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.fechaEntregaDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.fechaRegresoDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.numeroEconomicoTextBox = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.asignacionesequipoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tsbCancelar = new System.Windows.Forms.ToolStripButton();
             this.tsbEditar = new System.Windows.Forms.ToolStripButton();
+            this.asignacionesequipoBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
+            this.tsbCancelar = new System.Windows.Forms.ToolStripButton();
             fechaAsignaciónLabel = new System.Windows.Forms.Label();
             fechaEntregaLabel = new System.Windows.Forms.Label();
             fechaRegresoLabel = new System.Windows.Forms.Label();
             numeroEconomicoLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.asignacionesequipoBindingNavigator)).BeginInit();
-            this.asignacionesequipoBindingNavigator.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.asignacionesequipoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.asignacionesequipoBindingNavigator)).BeginInit();
+            this.asignacionesequipoBindingNavigator.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // fechaAsignaciónLabel
+            // 
+            fechaAsignaciónLabel.AutoSize = true;
+            fechaAsignaciónLabel.Location = new System.Drawing.Point(13, 49);
+            fechaAsignaciónLabel.Name = "fechaAsignaciónLabel";
+            fechaAsignaciónLabel.Size = new System.Drawing.Size(95, 13);
+            fechaAsignaciónLabel.TabIndex = 6;
+            fechaAsignaciónLabel.Text = "Fecha Asignación:";
+            // 
+            // fechaEntregaLabel
+            // 
+            fechaEntregaLabel.AutoSize = true;
+            fechaEntregaLabel.Location = new System.Drawing.Point(13, 75);
+            fechaEntregaLabel.Name = "fechaEntregaLabel";
+            fechaEntregaLabel.Size = new System.Drawing.Size(80, 13);
+            fechaEntregaLabel.TabIndex = 8;
+            fechaEntregaLabel.Text = "Fecha Entrega:";
+            // 
+            // fechaRegresoLabel
+            // 
+            fechaRegresoLabel.AutoSize = true;
+            fechaRegresoLabel.Location = new System.Drawing.Point(13, 101);
+            fechaRegresoLabel.Name = "fechaRegresoLabel";
+            fechaRegresoLabel.Size = new System.Drawing.Size(83, 13);
+            fechaRegresoLabel.TabIndex = 10;
+            fechaRegresoLabel.Text = "Fecha Regreso:";
+            // 
+            // numeroEconomicoLabel
+            // 
+            numeroEconomicoLabel.AutoSize = true;
+            numeroEconomicoLabel.Location = new System.Drawing.Point(13, 22);
+            numeroEconomicoLabel.Name = "numeroEconomicoLabel";
+            numeroEconomicoLabel.Size = new System.Drawing.Size(103, 13);
+            numeroEconomicoLabel.TabIndex = 14;
+            numeroEconomicoLabel.Text = "Numero Economico:";
             // 
             // tableLayoutPanel1
             // 
@@ -80,6 +116,67 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(824, 610);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(numeroEconomicoLabel);
+            this.groupBox1.Controls.Add(this.fechaRegresoDateTimePicker);
+            this.groupBox1.Controls.Add(fechaRegresoLabel);
+            this.groupBox1.Controls.Add(this.fechaEntregaDateTimePicker);
+            this.groupBox1.Controls.Add(this.numeroEconomicoTextBox);
+            this.groupBox1.Controls.Add(fechaEntregaLabel);
+            this.groupBox1.Controls.Add(this.fechaAsignaciónDateTimePicker);
+            this.groupBox1.Controls.Add(fechaAsignaciónLabel);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(3, 25);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 25, 3, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(818, 277);
+            this.groupBox1.TabIndex = 18;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Datos de asignación";
+            // 
+            // fechaRegresoDateTimePicker
+            // 
+            this.fechaRegresoDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.asignacionesequipoBindingSource, "FechaRegreso", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.fechaRegresoDateTimePicker.Enabled = false;
+            this.fechaRegresoDateTimePicker.Location = new System.Drawing.Point(144, 97);
+            this.fechaRegresoDateTimePicker.Name = "fechaRegresoDateTimePicker";
+            this.fechaRegresoDateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.fechaRegresoDateTimePicker.TabIndex = 11;
+            // 
+            // asignacionesequipoBindingSource
+            // 
+            this.asignacionesequipoBindingSource.DataSource = typeof(FUMIT.Entidades.Asignacionesequipo);
+            // 
+            // fechaEntregaDateTimePicker
+            // 
+            this.fechaEntregaDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.asignacionesequipoBindingSource, "FechaEntrega", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.fechaEntregaDateTimePicker.Enabled = false;
+            this.fechaEntregaDateTimePicker.Location = new System.Drawing.Point(144, 71);
+            this.fechaEntregaDateTimePicker.Name = "fechaEntregaDateTimePicker";
+            this.fechaEntregaDateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.fechaEntregaDateTimePicker.TabIndex = 9;
+            // 
+            // numeroEconomicoTextBox
+            // 
+            this.numeroEconomicoTextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.numeroEconomicoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.asignacionesequipoBindingSource, "Equipo.NumeroEconomico", true));
+            this.numeroEconomicoTextBox.Location = new System.Drawing.Point(144, 19);
+            this.numeroEconomicoTextBox.Name = "numeroEconomicoTextBox";
+            this.numeroEconomicoTextBox.ReadOnly = true;
+            this.numeroEconomicoTextBox.Size = new System.Drawing.Size(200, 20);
+            this.numeroEconomicoTextBox.TabIndex = 15;
+            this.numeroEconomicoTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.numeroEconomicoTextBox_Validating);
+            // 
+            // fechaAsignaciónDateTimePicker
+            // 
+            this.fechaAsignaciónDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.asignacionesequipoBindingSource, "FechaAsignación", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.fechaAsignaciónDateTimePicker.Enabled = false;
+            this.fechaAsignaciónDateTimePicker.Location = new System.Drawing.Point(144, 45);
+            this.fechaAsignaciónDateTimePicker.Name = "fechaAsignaciónDateTimePicker";
+            this.fechaAsignaciónDateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.fechaAsignaciónDateTimePicker.TabIndex = 7;
             // 
             // asignacionesequipoBindingNavigator
             // 
@@ -113,6 +210,22 @@
             this.asignacionesequipoBindingNavigator.TabIndex = 1;
             this.asignacionesequipoBindingNavigator.Text = "bindingNavigator1";
             // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.Image = global::FUMIT.Recursos.add;
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(69, 22);
+            this.bindingNavigatorAddNewItem.Text = "Agregar";
+            this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(37, 22);
+            this.bindingNavigatorCountItem.Text = "de {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Número total de elementos";
+            // 
             // bindingNavigatorMoveFirstItem
             // 
             this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -145,16 +258,9 @@
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Posición actual";
             // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(37, 22);
-            this.bindingNavigatorCountItem.Text = "de {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Número total de elementos";
-            // 
             // bindingNavigatorSeparator1
             // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
             this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // bindingNavigatorMoveNextItem
@@ -177,17 +283,8 @@
             // 
             // bindingNavigatorSeparator2
             // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.Image = global::FUMIT.Recursos.add;
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(69, 22);
-            this.bindingNavigatorAddNewItem.Text = "Agregar";
-            this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
             // 
             // bindingNavigatorDeleteItem
             // 
@@ -197,6 +294,15 @@
             this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(70, 22);
             this.bindingNavigatorDeleteItem.Text = "Eliminar";
             // 
+            // tsbEditar
+            // 
+            this.tsbEditar.Image = global::FUMIT.Recursos.edit_add;
+            this.tsbEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbEditar.Name = "tsbEditar";
+            this.tsbEditar.Size = new System.Drawing.Size(57, 22);
+            this.tsbEditar.Text = "Editar";
+            this.tsbEditar.Click += new System.EventHandler(this.tsbEditar_Click);
+            // 
             // asignacionesequipoBindingNavigatorSaveItem
             // 
             this.asignacionesequipoBindingNavigatorSaveItem.Enabled = false;
@@ -205,103 +311,6 @@
             this.asignacionesequipoBindingNavigatorSaveItem.Size = new System.Drawing.Size(69, 22);
             this.asignacionesequipoBindingNavigatorSaveItem.Text = "Guardar";
             this.asignacionesequipoBindingNavigatorSaveItem.Click += new System.EventHandler(this.asignacionesequipoBindingNavigatorSaveItem_Click);
-            // 
-            // fechaAsignaciónLabel
-            // 
-            fechaAsignaciónLabel.AutoSize = true;
-            fechaAsignaciónLabel.Location = new System.Drawing.Point(67, 75);
-            fechaAsignaciónLabel.Name = "fechaAsignaciónLabel";
-            fechaAsignaciónLabel.Size = new System.Drawing.Size(95, 13);
-            fechaAsignaciónLabel.TabIndex = 6;
-            fechaAsignaciónLabel.Text = "Fecha Asignación:";
-            // 
-            // fechaAsignaciónDateTimePicker
-            // 
-            this.fechaAsignaciónDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.asignacionesequipoBindingSource, "FechaAsignación", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.fechaAsignaciónDateTimePicker.Enabled = false;
-            this.fechaAsignaciónDateTimePicker.Location = new System.Drawing.Point(183, 71);
-            this.fechaAsignaciónDateTimePicker.Name = "fechaAsignaciónDateTimePicker";
-            this.fechaAsignaciónDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.fechaAsignaciónDateTimePicker.TabIndex = 7;
-            // 
-            // fechaEntregaLabel
-            // 
-            fechaEntregaLabel.AutoSize = true;
-            fechaEntregaLabel.Location = new System.Drawing.Point(67, 101);
-            fechaEntregaLabel.Name = "fechaEntregaLabel";
-            fechaEntregaLabel.Size = new System.Drawing.Size(80, 13);
-            fechaEntregaLabel.TabIndex = 8;
-            fechaEntregaLabel.Text = "Fecha Entrega:";
-            // 
-            // fechaEntregaDateTimePicker
-            // 
-            this.fechaEntregaDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.asignacionesequipoBindingSource, "FechaEntrega", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.fechaEntregaDateTimePicker.Enabled = false;
-            this.fechaEntregaDateTimePicker.Location = new System.Drawing.Point(183, 97);
-            this.fechaEntregaDateTimePicker.Name = "fechaEntregaDateTimePicker";
-            this.fechaEntregaDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.fechaEntregaDateTimePicker.TabIndex = 9;
-            // 
-            // fechaRegresoLabel
-            // 
-            fechaRegresoLabel.AutoSize = true;
-            fechaRegresoLabel.Location = new System.Drawing.Point(67, 127);
-            fechaRegresoLabel.Name = "fechaRegresoLabel";
-            fechaRegresoLabel.Size = new System.Drawing.Size(83, 13);
-            fechaRegresoLabel.TabIndex = 10;
-            fechaRegresoLabel.Text = "Fecha Regreso:";
-            // 
-            // fechaRegresoDateTimePicker
-            // 
-            this.fechaRegresoDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.asignacionesequipoBindingSource, "FechaRegreso", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.fechaRegresoDateTimePicker.Enabled = false;
-            this.fechaRegresoDateTimePicker.Location = new System.Drawing.Point(183, 123);
-            this.fechaRegresoDateTimePicker.Name = "fechaRegresoDateTimePicker";
-            this.fechaRegresoDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.fechaRegresoDateTimePicker.TabIndex = 11;
-            // 
-            // numeroEconomicoLabel
-            // 
-            numeroEconomicoLabel.AutoSize = true;
-            numeroEconomicoLabel.Location = new System.Drawing.Point(52, 48);
-            numeroEconomicoLabel.Name = "numeroEconomicoLabel";
-            numeroEconomicoLabel.Size = new System.Drawing.Size(103, 13);
-            numeroEconomicoLabel.TabIndex = 14;
-            numeroEconomicoLabel.Text = "Numero Economico:";
-            // 
-            // numeroEconomicoTextBox
-            // 
-            this.numeroEconomicoTextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.numeroEconomicoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.asignacionesequipoBindingSource, "Equipo.NumeroEconomico", true));
-            this.numeroEconomicoTextBox.Location = new System.Drawing.Point(183, 45);
-            this.numeroEconomicoTextBox.Name = "numeroEconomicoTextBox";
-            this.numeroEconomicoTextBox.ReadOnly = true;
-            this.numeroEconomicoTextBox.Size = new System.Drawing.Size(200, 20);
-            this.numeroEconomicoTextBox.TabIndex = 15;
-            this.numeroEconomicoTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.numeroEconomicoTextBox_Validating);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(numeroEconomicoLabel);
-            this.groupBox1.Controls.Add(this.fechaRegresoDateTimePicker);
-            this.groupBox1.Controls.Add(fechaRegresoLabel);
-            this.groupBox1.Controls.Add(this.fechaEntregaDateTimePicker);
-            this.groupBox1.Controls.Add(this.numeroEconomicoTextBox);
-            this.groupBox1.Controls.Add(fechaEntregaLabel);
-            this.groupBox1.Controls.Add(this.fechaAsignaciónDateTimePicker);
-            this.groupBox1.Controls.Add(fechaAsignaciónLabel);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(3, 25);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 25, 3, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(818, 277);
-            this.groupBox1.TabIndex = 18;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Datos de asignación";
-            // 
-            // asignacionesequipoBindingSource
-            // 
-            this.asignacionesequipoBindingSource.DataSource = typeof(FUMIT.Entidades.Asignacionesequipo);
             // 
             // tsbCancelar
             // 
@@ -314,15 +323,6 @@
             this.tsbCancelar.Visible = false;
             this.tsbCancelar.Click += new System.EventHandler(this.tsbCancelar_Click);
             // 
-            // tsbEditar
-            // 
-            this.tsbEditar.Image = global::FUMIT.Recursos.edit_add;
-            this.tsbEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEditar.Name = "tsbEditar";
-            this.tsbEditar.Size = new System.Drawing.Size(57, 22);
-            this.tsbEditar.Text = "Editar";
-            this.tsbEditar.Click += new System.EventHandler(this.tsbEditar_Click);
-            // 
             // AsignacionEquipos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -333,12 +333,12 @@
             this.Size = new System.Drawing.Size(824, 610);
             this.Load += new System.EventHandler(this.AsignacionEquipos_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.asignacionesequipoBindingNavigator)).EndInit();
-            this.asignacionesequipoBindingNavigator.ResumeLayout(false);
-            this.asignacionesequipoBindingNavigator.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.asignacionesequipoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.asignacionesequipoBindingNavigator)).EndInit();
+            this.asignacionesequipoBindingNavigator.ResumeLayout(false);
+            this.asignacionesequipoBindingNavigator.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

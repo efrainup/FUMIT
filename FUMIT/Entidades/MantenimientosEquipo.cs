@@ -45,6 +45,11 @@ namespace FUMIT.Entidades
         [Display(Name = "Mantenimiento ID")]
         public int MantenimientoId { get; set; } // MantenimientoId
 
+        [Column(@"Borrado", Order = 4, TypeName = "bit")]
+        [Required]
+        [Display(Name = "Borrado")]
+        public bool Borrado { get; set; } // Borrado
+
         // Foreign keys
 
         /// <summary>
@@ -59,6 +64,7 @@ namespace FUMIT.Entidades
 
         public MantenimientosEquipo()
         {
+            Borrado = false;
             InitializePartial();
         }
 

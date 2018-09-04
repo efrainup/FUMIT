@@ -8,6 +8,6 @@ namespace FUMIT.AccesoDatos
 {
     public interface IEquipos : IOperacionesAccesoDatos<Entidades.Equipo>
     {
-        
+        Entidades.Equipo RecuperarPorNumeroEconomico(string numeroEconomico);
     }
 }

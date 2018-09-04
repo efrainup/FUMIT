@@ -265,11 +265,18 @@
     <Compile Include="Entidades\VsprogramacionserviciosclienteConfiguration.cs">
       <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
     </Compile>
+    <Compile Include="Exceptions\ExceptionHandlingPolicies.cs" />
     <Compile Include="Formularios\Ayuda\AcercaDe.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Ayuda\AcercaDe.Designer.cs">
       <DependentUpon>AcercaDe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\BaseFormulario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\BaseUserControl.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Formularios\Catalogos\Equipos.cs">
       <SubType>Form</SubType>

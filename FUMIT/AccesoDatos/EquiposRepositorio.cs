@@ -9,6 +9,9 @@ namespace FUMIT.AccesoDatos
 {
     public class EquiposRepositorio : AOperacionesBase<Entidades.Equipo>, IEquipos
     {
-        
+        public Equipo RecuperarPorNumeroEconomico(string numeroEconomico)
+        {
+            return dbSet.FirstOrDefault(w => !w.Borrado && w.NumeroEconomico == numeroEconomico);
+        }
     }
 }

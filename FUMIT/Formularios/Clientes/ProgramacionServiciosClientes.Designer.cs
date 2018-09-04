@@ -113,7 +113,7 @@
             this.programacionserviciosclienteBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
             this.programacionserviciosclienteBindingNavigator.BindingSource = this.programacionserviciosclienteBindingSource;
             this.programacionserviciosclienteBindingNavigator.CountItem = this.bindingNavigatorCountItem;
-            this.programacionserviciosclienteBindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
+            this.programacionserviciosclienteBindingNavigator.DeleteItem = null;
             this.programacionserviciosclienteBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bindingNavigatorMoveFirstItem,
             this.bindingNavigatorMovePreviousItem,
@@ -167,6 +167,7 @@
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(70, 22);
             this.bindingNavigatorDeleteItem.Text = "Eliminar";
+            this.bindingNavigatorDeleteItem.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click);
             // 
             // bindingNavigatorMoveFirstItem
             // 

@@ -14,7 +14,7 @@ using System.Data.Entity.Validation;
 
 namespace FUMIT.Formularios.Clientes
 {
-    public partial class ProgramacionServiciosClientes : UserControl
+    public partial class ProgramacionServiciosClientes : BaseUserControl
     {
         private int clienteId;
         public int ClienteId
@@ -50,6 +50,7 @@ namespace FUMIT.Formularios.Clientes
                 btnBusquedaHorario.Enabled = modoEditar;
                 btnBusquedaServicio.Enabled = modoEditar;
                 activoCheckBox.Enabled = modoEditar;
+                bindingNavigatorDeleteItem.Enabled = !modoEditar;
             }
         }
         public bool ModoNormal {
@@ -154,25 +155,17 @@ namespace FUMIT.Formularios.Clientes
                     await ProgramacionServiciosClienteRepositorio.CrearAsync(ProgramacionServicioClienteActual);
                 }
 
+                vsprogramacionserviciosclienteBindingSource.DataSource = vistaProgramacionServiciosCliente.RecuperarPorClienteId(ProgramacionServicioClienteActual.ClienteId);
+                vsprogramacionserviciosclienteBindingSource.ResetBindings(false);
+
                 ModoEditar = false;
             }catch(DbEntityValidationException excepcionValidacion)
             {
-                foreach(DbEntityValidationResult validacion in excepcionValidacion.EntityValidationErrors)
-                {
-                    foreach(DbValidationError errorvalidacion in validacion.ValidationErrors)
-                    {
-                        //this.Controls[0].DataBindings.Add()
-                        //errorProvider1.BindToDataAndErrors()
-                    }
-                }
-
-                //eexception.InnerException
-
-                //MessageBox.Show("Hubo un error al guardar. Favor de intentarlo nuevamente o contacte a sistemas.");
+                FormExceptionManager.HandleException(excepcionValidacion, Exceptions.ExceptionHandlingPolicies.CrearActualizarEntidadesDesdeUI);
             }
             catch(Exception excepcion)
             {
-                MessageBox.Show("Hubo un error al guardar. Favor de intentarlo nuevamente o contacte a sistemas.");
+                FormExceptionManager.HandleException(excepcion, Exceptions.ExceptionHandlingPolicies.CrearActualizarEntidadesDesdeUI);
             }
         }
 
@@ -242,6 +235,19 @@ namespace FUMIT.Formularios.Clientes
 
                 programacionserviciosclienteBindingSource.ResetBindings(false);
             };
+        }
+
+        private async void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
+        {
+            await FormExceptionManager.Process(async () =>
+            {
+                await ProgramacionServiciosClienteRepositorio.EliminarAsync(ProgramacionServicioClienteActual);
+                programacionserviciosclienteBindingSource.RemoveCurrent();
+                ModoEditar = false;
+
+                vsprogramacionserviciosclienteBindingSource.DataSource = vistaProgramacionServiciosCliente.RecuperarPorClienteId(ClienteId);
+                vsprogramacionserviciosclienteBindingSource.ResetBindings(false);
+            }, Exceptions.ExceptionHandlingPolicies.CrearActualizarEntidadesDesdeUI);
         }
     }
 }

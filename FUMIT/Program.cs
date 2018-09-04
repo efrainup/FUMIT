@@ -23,6 +23,7 @@ namespace FUMIT
             Unity.UnityContainer container = new Unity.UnityContainer();
             Unity.ServiceLocation.UnityServiceLocator unityServiceLocator = new Unity.ServiceLocation.UnityServiceLocator(container);
 
+            //Registrar tipos de operaciones con entidades
             container.RegisterInstance<FUMIT.Entidades.FumitDbContext>(new Entidades.FumitDbContext());
             container.RegisterType<AccesoDatos.IClientes, ClientesRepositorio>();
             container.RegisterType<AccesoDatos.ISucursales, SucursalesRepositorio>();
@@ -37,10 +38,15 @@ namespace FUMIT
             container.RegisterType<IEquipos, EquiposRepositorio>();
             container.RegisterType<ITipoEquipos, TipoEquiposRepositorio>();
             container.RegisterType<IAsignacionesEquipo, AsignacionesEquipoRepositorio>();
+            container.RegisterType<IMantenimientos, MantenimientosRepositorio>();
+            container.RegisterType<IMantenimientosEquipo, MantenimientosEquipoRepositorio>();
+
+            //Se registra ExceptionManager
+            Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.ExceptionManager manager = Exceptions.ExceptionHandlingPolicies.InicializarPoliticas();
+            container.RegisterInstance<Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.ExceptionManager>(manager, new SingletonLifetimeManager()); 
+
+            //Se registra service locator
             CommonServiceLocator.ServiceLocator.SetLocatorProvider(() => unityServiceLocator);
-
-            
-
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

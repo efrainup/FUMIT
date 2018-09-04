@@ -35,8 +35,8 @@
             System.Windows.Forms.Label numeroEconomicoLabel;
             System.Windows.Forms.Label observacionesLabel;
             System.Windows.Forms.Label requiereMantenimientoLabel;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Equipos));
             System.Windows.Forms.Label asignadoLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Equipos));
             this.equipoBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.equipoBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -63,6 +63,10 @@
             this.estadoComboBox = new System.Windows.Forms.ComboBox();
             this.AgregarTipoEquipoBoton = new System.Windows.Forms.Button();
             this.asignadoCheckBox = new System.Windows.Forms.CheckBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabDatosEquipo = new System.Windows.Forms.TabPage();
+            this.tabMantenimientos = new System.Windows.Forms.TabPage();
+            this.mantenimientoEquipoUC1 = new FUMIT.Formularios.Operacion.MantenimientoEquipoUC();
             activoLabel = new System.Windows.Forms.Label();
             enMantenimientoLabel = new System.Windows.Forms.Label();
             estadoLabel = new System.Windows.Forms.Label();
@@ -73,12 +77,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.equipoBindingNavigator)).BeginInit();
             this.equipoBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.equipoBindingSource)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.tabDatosEquipo.SuspendLayout();
+            this.tabMantenimientos.SuspendLayout();
             this.SuspendLayout();
             // 
             // activoLabel
             // 
             activoLabel.AutoSize = true;
-            activoLabel.Location = new System.Drawing.Point(19, 212);
+            activoLabel.Location = new System.Drawing.Point(10, 176);
             activoLabel.Name = "activoLabel";
             activoLabel.Size = new System.Drawing.Size(40, 13);
             activoLabel.TabIndex = 1;
@@ -87,7 +94,7 @@
             // enMantenimientoLabel
             // 
             enMantenimientoLabel.AutoSize = true;
-            enMantenimientoLabel.Location = new System.Drawing.Point(18, 182);
+            enMantenimientoLabel.Location = new System.Drawing.Point(9, 146);
             enMantenimientoLabel.Name = "enMantenimientoLabel";
             enMantenimientoLabel.Size = new System.Drawing.Size(95, 13);
             enMantenimientoLabel.TabIndex = 3;
@@ -96,7 +103,7 @@
             // estadoLabel
             // 
             estadoLabel.AutoSize = true;
-            estadoLabel.Location = new System.Drawing.Point(18, 120);
+            estadoLabel.Location = new System.Drawing.Point(9, 84);
             estadoLabel.Name = "estadoLabel";
             estadoLabel.Size = new System.Drawing.Size(43, 13);
             estadoLabel.TabIndex = 5;
@@ -105,7 +112,7 @@
             // numeroEconomicoLabel
             // 
             numeroEconomicoLabel.AutoSize = true;
-            numeroEconomicoLabel.Location = new System.Drawing.Point(19, 94);
+            numeroEconomicoLabel.Location = new System.Drawing.Point(10, 58);
             numeroEconomicoLabel.Name = "numeroEconomicoLabel";
             numeroEconomicoLabel.Size = new System.Drawing.Size(103, 13);
             numeroEconomicoLabel.TabIndex = 7;
@@ -114,7 +121,7 @@
             // observacionesLabel
             // 
             observacionesLabel.AutoSize = true;
-            observacionesLabel.Location = new System.Drawing.Point(18, 262);
+            observacionesLabel.Location = new System.Drawing.Point(9, 226);
             observacionesLabel.Name = "observacionesLabel";
             observacionesLabel.Size = new System.Drawing.Size(81, 13);
             observacionesLabel.TabIndex = 9;
@@ -123,11 +130,20 @@
             // requiereMantenimientoLabel
             // 
             requiereMantenimientoLabel.AutoSize = true;
-            requiereMantenimientoLabel.Location = new System.Drawing.Point(18, 152);
+            requiereMantenimientoLabel.Location = new System.Drawing.Point(9, 116);
             requiereMantenimientoLabel.Name = "requiereMantenimientoLabel";
             requiereMantenimientoLabel.Size = new System.Drawing.Size(125, 13);
             requiereMantenimientoLabel.TabIndex = 11;
             requiereMantenimientoLabel.Text = "Requiere Mantenimiento:";
+            // 
+            // asignadoLabel
+            // 
+            asignadoLabel.AutoSize = true;
+            asignadoLabel.Location = new System.Drawing.Point(10, 201);
+            asignadoLabel.Name = "asignadoLabel";
+            asignadoLabel.Size = new System.Drawing.Size(54, 13);
+            asignadoLabel.TabIndex = 18;
+            asignadoLabel.Text = "Asignado:";
             // 
             // equipoBindingNavigator
             // 
@@ -284,7 +300,7 @@
             // 
             this.activoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.equipoBindingSource, "Activo", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.activoCheckBox.Enabled = false;
-            this.activoCheckBox.Location = new System.Drawing.Point(150, 207);
+            this.activoCheckBox.Location = new System.Drawing.Point(141, 171);
             this.activoCheckBox.Name = "activoCheckBox";
             this.activoCheckBox.Size = new System.Drawing.Size(104, 24);
             this.activoCheckBox.TabIndex = 2;
@@ -294,7 +310,7 @@
             // 
             this.enMantenimientoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.equipoBindingSource, "EnMantenimiento", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.enMantenimientoCheckBox.Enabled = false;
-            this.enMantenimientoCheckBox.Location = new System.Drawing.Point(149, 177);
+            this.enMantenimientoCheckBox.Location = new System.Drawing.Point(140, 141);
             this.enMantenimientoCheckBox.Name = "enMantenimientoCheckBox";
             this.enMantenimientoCheckBox.Size = new System.Drawing.Size(104, 24);
             this.enMantenimientoCheckBox.TabIndex = 4;
@@ -303,7 +319,7 @@
             // numeroEconomicoTextBox
             // 
             this.numeroEconomicoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipoBindingSource, "NumeroEconomico", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.numeroEconomicoTextBox.Location = new System.Drawing.Point(150, 91);
+            this.numeroEconomicoTextBox.Location = new System.Drawing.Point(141, 55);
             this.numeroEconomicoTextBox.Name = "numeroEconomicoTextBox";
             this.numeroEconomicoTextBox.ReadOnly = true;
             this.numeroEconomicoTextBox.Size = new System.Drawing.Size(274, 20);
@@ -312,7 +328,7 @@
             // observacionesTextBox
             // 
             this.observacionesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipoBindingSource, "Observaciones", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.observacionesTextBox.Location = new System.Drawing.Point(149, 262);
+            this.observacionesTextBox.Location = new System.Drawing.Point(140, 226);
             this.observacionesTextBox.Multiline = true;
             this.observacionesTextBox.Name = "observacionesTextBox";
             this.observacionesTextBox.ReadOnly = true;
@@ -323,7 +339,7 @@
             // 
             this.requiereMantenimientoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.equipoBindingSource, "RequiereMantenimiento", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.requiereMantenimientoCheckBox.Enabled = false;
-            this.requiereMantenimientoCheckBox.Location = new System.Drawing.Point(149, 147);
+            this.requiereMantenimientoCheckBox.Location = new System.Drawing.Point(140, 111);
             this.requiereMantenimientoCheckBox.Name = "requiereMantenimientoCheckBox";
             this.requiereMantenimientoCheckBox.Size = new System.Drawing.Size(104, 24);
             this.requiereMantenimientoCheckBox.TabIndex = 12;
@@ -336,7 +352,7 @@
             this.tiposEquiposComboBox.FormattingEnabled = true;
             this.tiposEquiposComboBox.Items.AddRange(new object[] {
             "<Nuevo tipo>"});
-            this.tiposEquiposComboBox.Location = new System.Drawing.Point(149, 64);
+            this.tiposEquiposComboBox.Location = new System.Drawing.Point(140, 28);
             this.tiposEquiposComboBox.Name = "tiposEquiposComboBox";
             this.tiposEquiposComboBox.Size = new System.Drawing.Size(274, 21);
             this.tiposEquiposComboBox.TabIndex = 15;
@@ -345,7 +361,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 67);
+            this.label1.Location = new System.Drawing.Point(10, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 13);
             this.label1.TabIndex = 16;
@@ -359,7 +375,7 @@
             this.estadoComboBox.Items.AddRange(new object[] {
             "Bueno",
             "Dañado"});
-            this.estadoComboBox.Location = new System.Drawing.Point(150, 120);
+            this.estadoComboBox.Location = new System.Drawing.Point(141, 84);
             this.estadoComboBox.Name = "estadoComboBox";
             this.estadoComboBox.Size = new System.Drawing.Size(274, 21);
             this.estadoComboBox.TabIndex = 17;
@@ -369,7 +385,7 @@
             this.AgregarTipoEquipoBoton.Enabled = false;
             this.AgregarTipoEquipoBoton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.AgregarTipoEquipoBoton.Image = global::FUMIT.Recursos.add;
-            this.AgregarTipoEquipoBoton.Location = new System.Drawing.Point(429, 62);
+            this.AgregarTipoEquipoBoton.Location = new System.Drawing.Point(420, 26);
             this.AgregarTipoEquipoBoton.Name = "AgregarTipoEquipoBoton";
             this.AgregarTipoEquipoBoton.Size = new System.Drawing.Size(29, 23);
             this.AgregarTipoEquipoBoton.TabIndex = 18;
@@ -377,47 +393,88 @@
             this.AgregarTipoEquipoBoton.UseVisualStyleBackColor = true;
             this.AgregarTipoEquipoBoton.Click += new System.EventHandler(this.button1_Click);
             // 
-            // asignadoLabel
-            // 
-            asignadoLabel.AutoSize = true;
-            asignadoLabel.Location = new System.Drawing.Point(19, 237);
-            asignadoLabel.Name = "asignadoLabel";
-            asignadoLabel.Size = new System.Drawing.Size(54, 13);
-            asignadoLabel.TabIndex = 18;
-            asignadoLabel.Text = "Asignado:";
-            // 
             // asignadoCheckBox
             // 
             this.asignadoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.equipoBindingSource, "Asignado", true));
             this.asignadoCheckBox.Enabled = false;
-            this.asignadoCheckBox.Location = new System.Drawing.Point(149, 232);
+            this.asignadoCheckBox.Location = new System.Drawing.Point(140, 196);
             this.asignadoCheckBox.Name = "asignadoCheckBox";
             this.asignadoCheckBox.Size = new System.Drawing.Size(104, 24);
             this.asignadoCheckBox.TabIndex = 19;
             this.asignadoCheckBox.UseVisualStyleBackColor = true;
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabDatosEquipo);
+            this.tabControl1.Controls.Add(this.tabMantenimientos);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 25);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(615, 535);
+            this.tabControl1.TabIndex = 20;
+            // 
+            // tabDatosEquipo
+            // 
+            this.tabDatosEquipo.Controls.Add(this.label1);
+            this.tabDatosEquipo.Controls.Add(asignadoLabel);
+            this.tabDatosEquipo.Controls.Add(this.requiereMantenimientoCheckBox);
+            this.tabDatosEquipo.Controls.Add(this.asignadoCheckBox);
+            this.tabDatosEquipo.Controls.Add(requiereMantenimientoLabel);
+            this.tabDatosEquipo.Controls.Add(this.AgregarTipoEquipoBoton);
+            this.tabDatosEquipo.Controls.Add(this.observacionesTextBox);
+            this.tabDatosEquipo.Controls.Add(this.estadoComboBox);
+            this.tabDatosEquipo.Controls.Add(observacionesLabel);
+            this.tabDatosEquipo.Controls.Add(this.numeroEconomicoTextBox);
+            this.tabDatosEquipo.Controls.Add(this.tiposEquiposComboBox);
+            this.tabDatosEquipo.Controls.Add(numeroEconomicoLabel);
+            this.tabDatosEquipo.Controls.Add(activoLabel);
+            this.tabDatosEquipo.Controls.Add(estadoLabel);
+            this.tabDatosEquipo.Controls.Add(this.activoCheckBox);
+            this.tabDatosEquipo.Controls.Add(this.enMantenimientoCheckBox);
+            this.tabDatosEquipo.Controls.Add(enMantenimientoLabel);
+            this.tabDatosEquipo.Location = new System.Drawing.Point(4, 22);
+            this.tabDatosEquipo.Name = "tabDatosEquipo";
+            this.tabDatosEquipo.Padding = new System.Windows.Forms.Padding(3);
+            this.tabDatosEquipo.Size = new System.Drawing.Size(607, 509);
+            this.tabDatosEquipo.TabIndex = 0;
+            this.tabDatosEquipo.Text = "Datos del equipo";
+            this.tabDatosEquipo.UseVisualStyleBackColor = true;
+            // 
+            // tabMantenimientos
+            // 
+            this.tabMantenimientos.Controls.Add(this.mantenimientoEquipoUC1);
+            this.tabMantenimientos.Location = new System.Drawing.Point(4, 22);
+            this.tabMantenimientos.Name = "tabMantenimientos";
+            this.tabMantenimientos.Padding = new System.Windows.Forms.Padding(3);
+            this.tabMantenimientos.Size = new System.Drawing.Size(607, 509);
+            this.tabMantenimientos.TabIndex = 1;
+            this.tabMantenimientos.Text = "Mantenimientos";
+            this.tabMantenimientos.UseVisualStyleBackColor = true;
+            // 
+            // mantenimientoEquipoUC1
+            // 
+            this.mantenimientoEquipoUC1.DataBindings.Add(new System.Windows.Forms.Binding("EquipoId", this.equipoBindingSource, "EquipoId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.mantenimientoEquipoUC1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mantenimientoEquipoUC1.EquipoId = 0;
+            this.mantenimientoEquipoUC1.EquipoSeleccionable = false;
+            this.mantenimientoEquipoUC1.EquipoSeleccionado = null;
+            this.mantenimientoEquipoUC1.EquiposRepositorioLocal = null;
+            this.mantenimientoEquipoUC1.FormExceptionManager = null;
+            this.mantenimientoEquipoUC1.ListaEquipos = null;
+            this.mantenimientoEquipoUC1.Location = new System.Drawing.Point(3, 3);
+            this.mantenimientoEquipoUC1.MantenimientosRepositorioLocal = null;
+            this.mantenimientoEquipoUC1.ModoEdicion = false;
+            this.mantenimientoEquipoUC1.Name = "mantenimientoEquipoUC1";
+            this.mantenimientoEquipoUC1.Size = new System.Drawing.Size(601, 503);
+            this.mantenimientoEquipoUC1.TabIndex = 0;
+            // 
             // Equipos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(615, 450);
-            this.Controls.Add(asignadoLabel);
-            this.Controls.Add(this.asignadoCheckBox);
-            this.Controls.Add(this.AgregarTipoEquipoBoton);
-            this.Controls.Add(this.estadoComboBox);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.tiposEquiposComboBox);
-            this.Controls.Add(activoLabel);
-            this.Controls.Add(this.activoCheckBox);
-            this.Controls.Add(enMantenimientoLabel);
-            this.Controls.Add(this.enMantenimientoCheckBox);
-            this.Controls.Add(estadoLabel);
-            this.Controls.Add(numeroEconomicoLabel);
-            this.Controls.Add(this.numeroEconomicoTextBox);
-            this.Controls.Add(observacionesLabel);
-            this.Controls.Add(this.observacionesTextBox);
-            this.Controls.Add(requiereMantenimientoLabel);
-            this.Controls.Add(this.requiereMantenimientoCheckBox);
+            this.ClientSize = new System.Drawing.Size(615, 560);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.equipoBindingNavigator);
             this.Name = "Equipos";
             this.Text = "Equipos";
@@ -426,6 +483,10 @@
             this.equipoBindingNavigator.ResumeLayout(false);
             this.equipoBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.equipoBindingSource)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.tabDatosEquipo.ResumeLayout(false);
+            this.tabDatosEquipo.PerformLayout();
+            this.tabMantenimientos.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -459,5 +520,9 @@
         private System.Windows.Forms.Button AgregarTipoEquipoBoton;
         private System.Windows.Forms.ToolStripButton tsbCancelar;
         private System.Windows.Forms.CheckBox asignadoCheckBox;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabDatosEquipo;
+        private System.Windows.Forms.TabPage tabMantenimientos;
+        private Operacion.MantenimientoEquipoUC mantenimientoEquipoUC1;
     }
 }
