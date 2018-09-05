@@ -239,7 +239,9 @@ namespace FUMIT.Formularios.Clientes
 
         private async void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
-            await FormExceptionManager.Process(async () =>
+            //await FormExceptionManager.Process(async () =>
+            //{
+            try
             {
                 await ProgramacionServiciosClienteRepositorio.EliminarAsync(ProgramacionServicioClienteActual);
                 programacionserviciosclienteBindingSource.RemoveCurrent();
@@ -247,7 +249,11 @@ namespace FUMIT.Formularios.Clientes
 
                 vsprogramacionserviciosclienteBindingSource.DataSource = vistaProgramacionServiciosCliente.RecuperarPorClienteId(ClienteId);
                 vsprogramacionserviciosclienteBindingSource.ResetBindings(false);
-            }, Exceptions.ExceptionHandlingPolicies.CrearActualizarEntidadesDesdeUI);
+            }catch(Exception exc)
+            {
+                FormExceptionManager.HandleException(exc, Exceptions.ExceptionHandlingPolicies.CrearActualizarEntidadesDesdeUI);
+            }
+            //}, Exceptions.ExceptionHandlingPolicies.CrearActualizarEntidadesDesdeUI);
         }
     }
 }

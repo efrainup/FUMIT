@@ -33,7 +33,7 @@ namespace FUMIT.AccesoDatos
             
         }
 
-        public T Crear(T entidad)
+        public virtual T Crear(T entidad)
         {
             entidad = dbSet.Add(entidad);
             dbContext.SaveChanges();
@@ -41,7 +41,7 @@ namespace FUMIT.AccesoDatos
             return entidad;
         }
 
-        public async Task<T> CrearAsync(T entidad)
+        public virtual async Task<T> CrearAsync(T entidad)
         {
             entidad = dbSet.Add(entidad);
             await dbContext.SaveChangesAsync();
@@ -64,7 +64,7 @@ namespace FUMIT.AccesoDatos
             return entidad;
         }
 
-        public void Eliminar(T entidad)
+        public virtual void Eliminar(T entidad)
         {
 
             dbSet.Attach(entidad);
@@ -74,7 +74,7 @@ namespace FUMIT.AccesoDatos
              dbContext.SaveChanges();
         }
 
-        public async Task EliminarAsync(T entidad)
+        public virtual async Task EliminarAsync(T entidad)
         {
             dbSet.Attach(entidad);
             dbContext.Entry<T>(entidad).Property("Borrado").CurrentValue = true;//.CurrentValues.SetValues(
@@ -83,23 +83,23 @@ namespace FUMIT.AccesoDatos
             await dbContext.SaveChangesAsync();
         }
 
-        public IEnumerable<T> Recuperar()
+        public virtual IEnumerable<T> Recuperar()
         {
             return dbContext.Set<T>().Where("Borrado=@0", false).ToList();
         }
 
-        public async Task<IEnumerable<T>> RecuperarAsync()
+        public virtual async Task<IEnumerable<T>> RecuperarAsync()
         {
             return await dbContext.Set<T>().Where("Borrado=@0", false).ToListAsync();
         }
 
-        public T RecuperarPorId(int Id)
+        public virtual T RecuperarPorId(int Id)
         {
             PropertyInfo propiedadId = typeof(T).GetProperties().FirstOrDefault(f => f.GetCustomAttribute(typeof(KeyAttribute)) != null);
             return dbContext.Set<T>().Where($"Borrado=@0 && {propiedadId.Name}=@1", false,Id).FirstOrDefault();
         }
 
-        public async Task<T> RecuperarPorIdAsync(int Id)
+        public virtual async Task<T> RecuperarPorIdAsync(int Id)
         {
             PropertyInfo propiedadId = typeof(T).GetProperties().FirstOrDefault(f => f.GetCustomAttribute(typeof(KeyAttribute)) != null);
             return await dbContext.Set<T>().Where("Borrado=@0 && @1=@2", false, propiedadId.Name, Id).FirstOrDefaultAsync();

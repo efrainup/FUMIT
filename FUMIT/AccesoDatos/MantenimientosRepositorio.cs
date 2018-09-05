@@ -27,23 +27,33 @@ namespace FUMIT.AccesoDatos
         {
             using (DbContextTransaction transaction = dbContext.Database.BeginTransaction())
             {
-
-                mantenimiento = Crear(mantenimiento);
-                Equipo eqiupo = EquiposRepositorio.RecuperarPorId(equipoId);
-
-                var mantenimientoEquipo = new Entidades.MantenimientosEquipo()
+                try
                 {
-                    MantenimientoId = mantenimiento.MantenimientoId,
-                    Mantenimiento = mantenimiento,
-                    EquipoId = equipoId,
-                    Equipo = eqiupo
-                };
+                    mantenimiento = Crear(mantenimiento);
+                    Equipo eqiupo = EquiposRepositorio.RecuperarPorId(equipoId);
 
-                mantenimientoEquipo = ManteniminetosEquipoRepositorio.Crear(mantenimientoEquipo);
+                    var mantenimientoEquipo = new Entidades.MantenimientosEquipo()
+                    {
+                        MantenimientoId = mantenimiento.MantenimientoId,
+                        Mantenimiento = mantenimiento,
+                        EquipoId = equipoId,
+                        Equipo = eqiupo
+                    };
 
-                transaction.Commit();
+                    eqiupo.EnMantenimiento = true;
 
-                return mantenimiento;
+                    EquiposRepositorio.Actualizar(eqiupo);
+
+                    mantenimientoEquipo = ManteniminetosEquipoRepositorio.Crear(mantenimientoEquipo);
+
+                    transaction.Commit();
+
+                    return mantenimiento;
+                }catch(Exception exc)
+                {
+                    transaction.Rollback();
+                    throw exc;
+                }
             }
         }
 
@@ -63,6 +73,10 @@ namespace FUMIT.AccesoDatos
                         EquipoId = eqiupo.EquipoId,
                         Equipo = eqiupo
                     };
+
+                    eqiupo.EnMantenimiento = true;
+
+                    EquiposRepositorio.Actualizar(eqiupo);
 
                     mantenimientoEquipo = ManteniminetosEquipoRepositorio.Crear(mantenimientoEquipo);
 
@@ -97,6 +111,10 @@ namespace FUMIT.AccesoDatos
                         Equipo = equipo
                     };
 
+                    equipo.EnMantenimiento = true;
+
+                    EquiposRepositorio.Actualizar(equipo);
+
                     mantenimientoEquipo = ManteniminetosEquipoRepositorio.Crear(mantenimientoEquipo);
 
                     transaction.Commit();
@@ -105,12 +123,10 @@ namespace FUMIT.AccesoDatos
                 }
                 catch (Exception e)
                 {
+                    transaction.Rollback();
                     throw e;
                 }
-                finally
-                {
-                    transaction.Rollback();
-                }
+               
             }
         }
 
@@ -131,6 +147,10 @@ namespace FUMIT.AccesoDatos
                         Equipo = eqiupo
                     };
 
+                    eqiupo.EnMantenimiento = true;
+
+                    await EquiposRepositorio.ActualizarAsync(eqiupo);
+
                     mantenimientoEquipo = await ManteniminetosEquipoRepositorio.CrearAsync(mantenimientoEquipo);
 
                     transaction.Commit();
@@ -138,12 +158,10 @@ namespace FUMIT.AccesoDatos
                     return mantenimiento;
                 }catch(Exception e)
                 {
+                    transaction.Rollback();
                     throw e;
                 }
-                finally
-                {
-                    transaction.Rollback();
-                }
+                
             }
         }
 
@@ -163,6 +181,10 @@ namespace FUMIT.AccesoDatos
                         EquipoId = eqiupo.EquipoId,
                         Equipo = eqiupo
                     };
+
+                    eqiupo.EnMantenimiento = true;
+
+                    await EquiposRepositorio.ActualizarAsync(eqiupo);
 
                     mantenimientoEquipo = await ManteniminetosEquipoRepositorio.CrearAsync(mantenimientoEquipo);
 
@@ -195,6 +217,11 @@ namespace FUMIT.AccesoDatos
                         Equipo = equipo
                     };
 
+                    //Se pone el equipo en mantenimiento
+                    equipo.EnMantenimiento = true;
+
+                    await EquiposRepositorio.ActualizarAsync(equipo);
+
                     mantenimientoEquipo = await ManteniminetosEquipoRepositorio.CrearAsync(mantenimientoEquipo);
 
                     transaction.Commit();
@@ -203,12 +230,10 @@ namespace FUMIT.AccesoDatos
                 }
                 catch (Exception e)
                 {
+                    transaction.Rollback();
                     throw e;
                 }
-                finally
-                {
-                    transaction.Rollback();
-                }
+                
             }
         }
 

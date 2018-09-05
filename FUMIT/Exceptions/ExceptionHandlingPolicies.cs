@@ -23,7 +23,11 @@ namespace FUMIT.Exceptions
                 }),
                 new ExceptionPolicyEntry(typeof(Exception),PostHandlingAction.None,new IExceptionHandler[]{
                     new NotificarUsuarioMessageBoxExceptionHandler()
+                }),
+                new ExceptionPolicyEntry(typeof(ArgumentNullException),PostHandlingAction.None,new IExceptionHandler[]{
+                    new NotificarUsuarioMessageBoxExceptionHandler()
                 })
+
             }));
 
             return new ExceptionManager(policies);

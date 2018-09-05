@@ -78,22 +78,22 @@ namespace FUMIT.Formularios.Clientes
                 AsignacionesEquipoRepositorio = CommonServiceLocator.ServiceLocator.Current.GetInstance<AccesoDatos.IAsignacionesEquipo>();
                 EquiposRepositorio = CommonServiceLocator.ServiceLocator.Current.GetInstance<AccesoDatos.IEquipos>();
 
-                equipos = EquiposRepositorio.Recuperar();
-
-                
-
-
-
                 //Autocomplete 
 
-                AutoCompleteStringCollection coll = new AutoCompleteStringCollection();
-                coll.AddRange(equipos.Select(s => s.NumeroEconomico).ToArray());
-
-                numeroEconomicoTextBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
-                numeroEconomicoTextBox.AutoCompleteCustomSource = coll;
-
+                CargarAutocompletadoEquipos();
 
             }
+        }
+
+        private void CargarAutocompletadoEquipos()
+        {
+            equipos = EquiposRepositorio.RecuperarEquiposDisponiblesParaAsignacion();
+
+            AutoCompleteStringCollection coll = new AutoCompleteStringCollection();
+            coll.AddRange(equipos.Select(s => s.NumeroEconomico).ToArray());
+
+            numeroEconomicoTextBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            numeroEconomicoTextBox.AutoCompleteCustomSource = coll;
         }
 
         private void CargarAsignacionesPorCliente()
@@ -127,6 +127,9 @@ namespace FUMIT.Formularios.Clientes
                 else
                 {
                     await AsignacionesEquipoRepositorio.CrearAsync(SeleccionActual);
+
+                    //Se refrescan los equipos disponibles para asignar
+                    CargarAutocompletadoEquipos();
                 }
 
                 ModoEdicion = false;
@@ -167,6 +170,21 @@ namespace FUMIT.Formularios.Clientes
             SeleccionActual.EquipoId = equipoSeleccionado.EquipoId;
             SeleccionActual.Equipo = equipoSeleccionado;
 
+        }
+
+        private async void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                await AsignacionesEquipoRepositorio.EliminarAsync(SeleccionActual);
+                asignacionesequipoBindingSource.RemoveCurrent();
+
+                CargarAutocompletadoEquipos();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Hubo un error al eliminar la asignacion");
+            }
         }
     }
 }
