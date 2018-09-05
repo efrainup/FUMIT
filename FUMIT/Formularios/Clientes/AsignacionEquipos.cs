@@ -38,6 +38,7 @@ namespace FUMIT.Formularios.Clientes
                  bindingNavigatorDeleteItem.Enabled = !modoEdicion;
                 asignacionesequipoBindingNavigatorSaveItem.Enabled = modoEdicion;
 
+                ubicacionTextBox.ReadOnly = !modoEdicion;
                 numeroEconomicoTextBox.ReadOnly = !modoEdicion;
                 fechaAsignaciónDateTimePicker.Enabled = modoEdicion;
                 fechaEntregaDateTimePicker.Enabled = modoEdicion;

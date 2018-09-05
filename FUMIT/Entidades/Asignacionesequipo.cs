@@ -65,12 +65,18 @@ namespace FUMIT.Entidades
         [Display(Name = "Borrado")]
         public bool Borrado { get; set; } // Borrado
 
+        [Column(@"Ubicacion", Order = 8, TypeName = "varchar")]
+        [MaxLength(120)]
+        [StringLength(120)]
+        [Display(Name = "Ubicacion")]
+        public string Ubicacion { get; set; } // Ubicacion (length: 120)
+
         // Foreign keys
 
         /// <summary>
         /// Parent Clientes pointed by [AsignacionesEquipos].([ClienteId]) (FK_AsignacionesEquipos_Clientes)
         /// </summary>
-        [ForeignKey("ClienteId"), Required] public virtual Cliente Clientes { get; set; } // FK_AsignacionesEquipos_Clientes
+        [ForeignKey("ClienteId"), Required] public virtual Clientes Clientes { get; set; } // FK_AsignacionesEquipos_Clientes
 
         /// <summary>
         /// Parent Equipo pointed by [AsignacionesEquipos].([EquipoId]) (FK_AsignacionesEquipos_Equipo)

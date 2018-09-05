@@ -80,7 +80,7 @@ namespace FUMIT.Entidades
 
         public Mantenimiento()
         {
-            Activo = false;
+            Activo = true;
             Borrado = false;
             Realizado = false;
             Mantenimientosequipos = new System.Collections.Generic.List<MantenimientosEquipo>();

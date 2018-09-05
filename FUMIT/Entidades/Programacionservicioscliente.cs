@@ -76,12 +76,19 @@ namespace FUMIT.Entidades
         [Display(Name = "Servicios programados")]
         public bool ServiciosProgramados { get; set; } // ServiciosProgramados
 
+        // Reverse navigation
+
+        /// <summary>
+        /// Child Serviciosprogramados where [ServiciosProgramados].[ProgramacionServiciosClientesId] point to this entity (FK_ServiciosProgramados_ProgramacionServiciosClientes)
+        /// </summary>
+        public virtual System.Collections.Generic.ICollection<Serviciosprogramado> Serviciosprogramados { get; set; } // ServiciosProgramados.FK_ServiciosProgramados_ProgramacionServiciosClientes
+
         // Foreign keys
 
         /// <summary>
         /// Parent Clientes pointed by [ProgramacionServiciosClientes].([ClienteId]) (FK_ProgramacionServiciosClientes_Clientes)
         /// </summary>
-        [ForeignKey("ClienteId"), Required] public virtual Cliente Clientes { get; set; } // FK_ProgramacionServiciosClientes_Clientes
+        [ForeignKey("ClienteId"), Required] public virtual Clientes Clientes { get; set; } // FK_ProgramacionServiciosClientes_Clientes
 
         /// <summary>
         /// Parent Programacionservicio pointed by [ProgramacionServiciosClientes].([ProgramacionServicioId]) (FK_ProgramacionServiciosClientes_ProgramacionServicios)
@@ -99,6 +106,7 @@ namespace FUMIT.Entidades
             Activo = true;
             Borrado = false;
             ServiciosProgramados = false;
+            Serviciosprogramados = new System.Collections.Generic.List<Serviciosprogramado>();
             InitializePartial();
         }
 

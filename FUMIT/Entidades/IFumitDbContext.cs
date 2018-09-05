@@ -52,6 +52,12 @@ namespace FUMIT.Entidades
         System.Data.Entity.DbSet Set(System.Type entityType);
         System.Data.Entity.DbSet<TEntity> Set<TEntity>() where TEntity : class;
         string ToString();
+
+        // Stored Procedures
+        System.Collections.Generic.List<UspCalendarioSemanalServiciosReturnModel> UspCalendarioSemanalServicios(System.DateTime? fechaInicio, System.DateTime? fechaFin);
+        System.Collections.Generic.List<UspCalendarioSemanalServiciosReturnModel> UspCalendarioSemanalServicios(System.DateTime? fechaInicio, System.DateTime? fechaFin, out int procResult);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<UspCalendarioSemanalServiciosReturnModel>> UspCalendarioSemanalServiciosAsync(System.DateTime? fechaInicio, System.DateTime? fechaFin);
+
     }
 
 }

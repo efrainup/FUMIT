@@ -19,6 +19,7 @@ namespace FUMIT.Entidades
     using System.ComponentModel;
     using System.Runtime.Serialization;
 
+    using System.Linq;
 
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.37.1.0")]
     public class FumitDbContext : System.Data.Entity.DbContext, IFumitDbContext
@@ -132,6 +133,46 @@ namespace FUMIT.Entidades
             modelBuilder.Configurations.Add(new VsprogramacionserviciosclienteConfiguration(schema));
             return modelBuilder;
         }
+
+        // Stored Procedures
+        public System.Collections.Generic.List<UspCalendarioSemanalServiciosReturnModel> UspCalendarioSemanalServicios(System.DateTime? fechaInicio, System.DateTime? fechaFin)
+        {
+            int procResult;
+            return UspCalendarioSemanalServicios(fechaInicio, fechaFin, out procResult);
+        }
+
+        public System.Collections.Generic.List<UspCalendarioSemanalServiciosReturnModel> UspCalendarioSemanalServicios(System.DateTime? fechaInicio, System.DateTime? fechaFin, out int procResult)
+        {
+            var fechaInicioParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@fechaInicio", SqlDbType = System.Data.SqlDbType.DateTime, Direction = System.Data.ParameterDirection.Input, Value = fechaInicio.GetValueOrDefault() };
+            if (!fechaInicio.HasValue)
+                fechaInicioParam.Value = System.DBNull.Value;
+
+            var fechaFinParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@fechaFin", SqlDbType = System.Data.SqlDbType.DateTime, Direction = System.Data.ParameterDirection.Input, Value = fechaFin.GetValueOrDefault() };
+            if (!fechaFin.HasValue)
+                fechaFinParam.Value = System.DBNull.Value;
+
+            var procResultParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@procResult", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Output };
+            var procResultData = Database.SqlQuery<UspCalendarioSemanalServiciosReturnModel>("EXEC @procResult = [dbo].[USP_CalendarioSemanalServicios] @fechaInicio, @fechaFin", fechaInicioParam, fechaFinParam, procResultParam).ToList();
+
+            procResult = (int) procResultParam.Value;
+            return procResultData;
+        }
+
+        public async System.Threading.Tasks.Task<System.Collections.Generic.List<UspCalendarioSemanalServiciosReturnModel>> UspCalendarioSemanalServiciosAsync(System.DateTime? fechaInicio, System.DateTime? fechaFin)
+        {
+            var fechaInicioParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@fechaInicio", SqlDbType = System.Data.SqlDbType.DateTime, Direction = System.Data.ParameterDirection.Input, Value = fechaInicio.GetValueOrDefault() };
+            if (!fechaInicio.HasValue)
+                fechaInicioParam.Value = System.DBNull.Value;
+
+            var fechaFinParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@fechaFin", SqlDbType = System.Data.SqlDbType.DateTime, Direction = System.Data.ParameterDirection.Input, Value = fechaFin.GetValueOrDefault() };
+            if (!fechaFin.HasValue)
+                fechaFinParam.Value = System.DBNull.Value;
+
+            var procResultData = await Database.SqlQuery<UspCalendarioSemanalServiciosReturnModel>("EXEC [dbo].[USP_CalendarioSemanalServicios] @fechaInicio, @fechaFin", fechaInicioParam, fechaFinParam).ToListAsync();
+
+            return procResultData;
+        }
+
     }
 }
 // </auto-generated>

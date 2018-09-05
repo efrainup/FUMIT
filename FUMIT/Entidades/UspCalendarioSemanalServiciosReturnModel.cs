@@ -19,23 +19,17 @@ namespace FUMIT.Entidades
     using System.ComponentModel;
     using System.Runtime.Serialization;
 
-    // AsignacionesEquipos
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.37.1.0")]
-    public class AsignacionesequipoConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<Asignacionesequipo>
+    public class UspCalendarioSemanalServiciosReturnModel
     {
-        public AsignacionesequipoConfiguration()
-            : this("dbo")
-        {
-        }
-
-        public AsignacionesequipoConfiguration(string schema)
-        {
-            Property(x => x.FechaAsignación).IsOptional();
-            Property(x => x.FechaEntrega).IsOptional();
-            Property(x => x.FechaRegreso).IsOptional();
-            Property(x => x.Ubicacion).IsOptional().IsUnicode(false);
-
-        }
+        public System.DateTime? Fecha { get; set; }
+        public System.String DiaSemana { get; set; }
+        public System.String NombreProgramacion { get; set; }
+        public System.Int32 ProgramacionServicioId { get; set; }
+        public System.String NombreCliente { get; set; }
+        public System.String NombreServicio { get; set; }
+        public System.Int32? ServicioProgramadoId { get; set; }
+        public System.Boolean? Cancelado { get; set; }
     }
 
 }

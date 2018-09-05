@@ -1,4 +1,6 @@
 ﻿using Microsoft.Practices.EnterpriseLibrary.ExceptionHandling;
+using Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging;
+using Microsoft.Practices.EnterpriseLibrary.Logging;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
@@ -17,16 +19,23 @@ namespace FUMIT.Exceptions
 
         public static ExceptionManager InicializarPoliticas()
         {
+            //LoggingConfiguration conf = ;
+            //conf.AddLogSource("General", System.Diagnostics.SourceLevels.Error,true, new System.Diagnostics.EventLogTraceListener());
+            //LogWriter logWriter = new LogWriterFactory().Create();
+
+
             policies.Add(new ExceptionPolicyDefinition(CrearActualizarEntidadesDesdeUI, new ExceptionPolicyEntry[] {
                 new ExceptionPolicyEntry(typeof(System.Data.Entity.Validation.DbEntityValidationException),PostHandlingAction.None,new IExceptionHandler[]{
                     new NotificarUsuarioEFValidationExceptionHandler()
                 }),
                 new ExceptionPolicyEntry(typeof(Exception),PostHandlingAction.None,new IExceptionHandler[]{
-                    new NotificarUsuarioMessageBoxExceptionHandler()
-                }),
-                new ExceptionPolicyEntry(typeof(ArgumentNullException),PostHandlingAction.None,new IExceptionHandler[]{
+                    //new LoggingExceptionHandler("General",10,System.Diagnostics.TraceEventType.Error,"Ocurrió una excepción no controlada",10,typeof(Exception),logWriter),
                     new NotificarUsuarioMessageBoxExceptionHandler()
                 })
+                //,
+                //new ExceptionPolicyEntry(typeof(ArgumentNullException),PostHandlingAction.None,new IExceptionHandler[]{
+                //    new NotificarUsuarioMessageBoxExceptionHandler()
+                //})
 
             }));
 
