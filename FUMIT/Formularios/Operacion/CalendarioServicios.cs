@@ -1,4 +1,5 @@
-﻿using FUMIT.AccesoDatos;
+﻿using CommonServiceLocator;
+using FUMIT.AccesoDatos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,12 +15,18 @@ namespace FUMIT.Formularios.Operacion
 {
     public partial class CalendarioServicios : Form
     {
+        #region Propiedades
         private int semanaActual;
         private int totalSemanas;
 
         List<string> serviciosFiltrados = new List<string>();
         public IServicio ServiciosRepositorio { get; set; }
+        public IClientes ClientesRepositorio { get; set; }
+        public IProgramacionServiciosCliente ProgramacionServiciosClienteRepositorio { get; set; }
         public IServiciosProgramados ServiciosProgramadosRepo { get; set; }
+        public ICalendarioSemanalServicios CalendarioSemanalDeServicios { get; set; }
+
+
         FUMIT.UserControls.Wpf.CalendarioSemanalUserControl CalendarioUC ;
         public int SemanaActual { get {
                 return semanaActual;
@@ -61,7 +68,7 @@ namespace FUMIT.Formularios.Operacion
             }
         }
         public int Año { get; set; }
-
+        #endregion
 
         public CalendarioServicios()
         {
@@ -71,7 +78,7 @@ namespace FUMIT.Formularios.Operacion
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             //NewMethod();
-            IEnumerable<Entidades.Serviciosprogramado> serviciosProgramadosLista = ServiciosProgramadosRepo.Recuperar();
+            IEnumerable<Entidades.UspCalendarioSemanalServiciosReturnModel> serviciosProgramadosLista = CalendarioSemanalDeServicios.RecuperarCalendarioSemanal(dtpFechaInicio.Value, dtpFechaFinal.Value);
 
             TimeSpan diasDiferencia = dtpFechaFinal.Value - dtpFechaInicio.Value;
             diasDiferencia = diasDiferencia.Add(TimeSpan.FromDays(1));
@@ -88,8 +95,8 @@ namespace FUMIT.Formularios.Operacion
 
 
 
-                Entidades.Serviciosprogramado[] serviciosprogramados = serviciosProgramadosLista
-                    .Where(w => w.FechaServicio.Date == fechaActual && serviciosFiltrados.Contains(w.Servicio.Nombre))
+                Entidades.UspCalendarioSemanalServiciosReturnModel[] serviciosprogramados = serviciosProgramadosLista
+                    .Where(w => w.FechaServicio.Value.Date == fechaActual && serviciosFiltrados.Contains(w.NombreServicio))
                     .OrderBy(o => o.Prioridad)
                     .ThenBy(t => t.ClienteId)
                     .ToArray();
@@ -107,12 +114,11 @@ namespace FUMIT.Formularios.Operacion
 
                     var nuevoServicio = new FUMIT.UserControls.Wpf.Servicio()
                     {
-                        Id = serviciosprogramados[j].ServicioProgramadoId,
-                        Cliente = serviciosprogramados[j].Clientes.Nombre,
-                        Status = serviciosprogramados[j].Cancelado ? "Cancelado" : "Pendiente",
-                        Cancelado = serviciosprogramados[j].Cancelado,
-                        DescripcionServicio = serviciosprogramados[j].Servicio.Nombre,
-                        Unidad = "Sin unidad asignada",
+                        Id = serviciosprogramados[j].ServicioProgramadoId.HasValue ? serviciosprogramados[j].ServicioProgramadoId.Value : 0,
+                        Cliente = serviciosprogramados[j].NombreCliente,
+                        Status = serviciosprogramados[j].Cancelado.HasValue ? (serviciosprogramados[j].Cancelado.Value ? "Cancelado" : "Pendiente") : "Pendiente",
+                        Cancelado = serviciosprogramados[j].Cancelado.HasValue ?  serviciosprogramados[j].Cancelado.Value : false,
+                        DescripcionServicio = serviciosprogramados[j].NombreServicio,
                         Entidad = serviciosprogramados[j],
                         
                     };
@@ -158,59 +164,17 @@ namespace FUMIT.Formularios.Operacion
             
         }
 
-        private void NewMethod()
-        {
-            IEnumerable<Entidades.Serviciosprogramado> serviciosProgramadosLista = ServiciosProgramadosRepo.Recuperar();
-
-            TimeSpan diasDiferencia = dtpFechaFinal.Value - dtpFechaInicio.Value;
-            diasDiferencia = diasDiferencia.Add(TimeSpan.FromDays(1));
-
-            List<object[]> miLista = new List<object[]>();
-
-            DateTime fechaActual = dtpFechaInicio.Value.Date;
-            //dataGridView1.Columns.Clear();
-            int i = 0;
-            while (fechaActual < dtpFechaFinal.Value.Date)
-            {
-                //dataGridView1.Columns.Add($"Fecha{i}", $"{fechaActual.ToLongDateString()}");
-
-
-
-                Entidades.Serviciosprogramado[] serviciosprogramados = serviciosProgramadosLista.Where(w => w.FechaServicio.Date == fechaActual).ToArray();
-
-
-                for (int j = 0; j < serviciosprogramados.Length; j++)
-                {
-                    object[] elemento = miLista.ElementAtOrDefault(j);
-                    if (elemento == null)
-                    {
-                        elemento = new object[Math.Abs(diasDiferencia.Days)];
-                        miLista.Add(elemento);
-                    }
-
-                    elemento[i] = serviciosprogramados[j].Clientes.Nombre;
-
-                }
-                fechaActual = fechaActual.AddDays(1);
-                i++;
-
-            }
-
-
-            var enume = miLista.GetEnumerator();
-            while (enume.MoveNext())
-            {
-                var obj = enume.Current;
-              //  dataGridView1.Rows.Add(obj);
-            }
-        }
 
         private void CalendarioServicios_Load(object sender, EventArgs e)
         {
             if (!DesignMode)
             {
-                ServiciosProgramadosRepo = new ServiciosProgramadosRepositorio();
-                ServiciosRepositorio = CommonServiceLocator.ServiceLocator.Current.GetInstance<IServicio>();
+                this.ServiciosProgramadosRepo = new ServiciosProgramadosRepositorio();
+                this.ServiciosRepositorio = ServiceLocator.Current.GetInstance<IServicio>();
+                this.CalendarioSemanalDeServicios = ServiceLocator.Current.GetInstance<ICalendarioSemanalServicios>();
+                this.ClientesRepositorio = ServiceLocator.Current.GetInstance<IClientes>();
+                this.ProgramacionServiciosClienteRepositorio = ServiceLocator.Current.GetInstance<IProgramacionServiciosCliente>();
+
 
                 //Se cargan datos en el filtro
                 IEnumerable<Entidades.Servicio> servicios = ServiciosRepositorio.Recuperar();
@@ -244,13 +208,16 @@ namespace FUMIT.Formularios.Operacion
 
         private void CalendarioUC_VerExpedienteCliente(object sender, object e)
         {
-            Entidades.Serviciosprogramado servicioProgramado = e as Entidades.Serviciosprogramado;
+            var servicioDeCalendarioSemanal = e as Entidades.UspCalendarioSemanalServiciosReturnModel;
+
+            Entidades.Cliente cliente = ClientesRepositorio.RecuperarPorId(servicioDeCalendarioSemanal.ClienteId);
 
             Formularios.Clientes.Expedientes expedientes = new Clientes.Expedientes();
             expedientes.Load += (sender_load, e_load) =>
             {
-                int indice = expedientes.clienteBindingSource.IndexOf(servicioProgramado.Clientes);
+                int indice = expedientes.clienteBindingSource.IndexOf(cliente);
                 expedientes.clienteBindingSource.Position = indice;
+                
             };
             expedientes.Show();
         }
@@ -287,7 +254,10 @@ namespace FUMIT.Formularios.Operacion
         protected void CalendarioUC_MoverServicio(object sender, object servicio)
         {
 
-            var servicioProgramad = servicio as Entidades.Serviciosprogramado;
+            var servicioDeCalendarioSemanal = servicio as Entidades.UspCalendarioSemanalServiciosReturnModel;
+            Entidades.Serviciosprogramado servicioProgramad = null;
+
+            servicioProgramad = RecuperarServicioProgramadoDeServicioCalendario(servicioDeCalendarioSemanal);
 
             var editarServicioFormulario = new Operacion.EditarServicio();
             editarServicioFormulario.ObjetoEditable = servicioProgramad;
@@ -299,6 +269,38 @@ namespace FUMIT.Formularios.Operacion
             };
 
             editarServicioFormulario.ShowDialog();
+        }
+
+        private Entidades.Serviciosprogramado RecuperarServicioProgramadoDeServicioCalendario(Entidades.UspCalendarioSemanalServiciosReturnModel servicioDeCalendarioSemanal)
+        {
+            Entidades.Serviciosprogramado servicioProgramad;
+            //La primera vez que se ven los detalles del servicio se crea el objeto en la base de datos
+            if (servicioDeCalendarioSemanal.ServicioProgramadoId.HasValue)
+            {
+                servicioProgramad = ServiciosProgramadosRepo.RecuperarPorId(servicioDeCalendarioSemanal.ServicioProgramadoId.Value);
+            }
+            else
+            {
+                servicioProgramad = new Entidades.Serviciosprogramado()
+                {
+                    FechaServicio = servicioDeCalendarioSemanal.FechaServicio.Value,
+                    ClienteId = servicioDeCalendarioSemanal.ClienteId,
+                    ServicioId = servicioDeCalendarioSemanal.ServicioId,
+                    Tipo = "Programado",
+                    Activo = true,
+                    Borrado = false,
+                    Cancelado = false,
+                    Prioridad = 1000,
+                    ProgramacionServiciosClientesId = servicioDeCalendarioSemanal.ProgramacionServiciosClienteId,
+                    Observaciones = "",
+                    Clientes = ClientesRepositorio.RecuperarPorId(servicioDeCalendarioSemanal.ClienteId),
+                    Programacionservicioscliente = this.ProgramacionServiciosClienteRepositorio.RecuperarPorId(servicioDeCalendarioSemanal.ProgramacionServiciosClienteId)
+                };
+
+                servicioProgramad = ServiciosProgramadosRepo.Crear(servicioProgramad);
+            }
+
+            return servicioProgramad;
         }
 
         private void bindingNavigatorMoveNextItem_Click(object sender, EventArgs e)

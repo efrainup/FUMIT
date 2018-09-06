@@ -68,6 +68,7 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="ReachFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -118,12 +119,14 @@
   <ItemGroup>
     <Compile Include="AccesoDatos\AOperacionesBase.cs" />
     <Compile Include="AccesoDatos\AsignacionesEquipoRepositorio.cs" />
+    <Compile Include="AccesoDatos\CalendarioSemanalServiciosRepositorio.cs" />
     <Compile Include="AccesoDatos\CiclosFactuacionClienteRepositorio.cs" />
     <Compile Include="AccesoDatos\CiclosFacturacionRepositorio.cs" />
     <Compile Include="AccesoDatos\ClientesRepositorio.cs" />
     <Compile Include="AccesoDatos\ContactosRepositorio.cs" />
     <Compile Include="AccesoDatos\EquiposRepositorio.cs" />
     <Compile Include="AccesoDatos\IAsignacionesEquipo.cs" />
+    <Compile Include="AccesoDatos\ICalendarioSemanalServicios.cs" />
     <Compile Include="AccesoDatos\ICicloFacturacionClientes.cs" />
     <Compile Include="AccesoDatos\ICiclosFacturacion.cs" />
     <Compile Include="AccesoDatos\IClientes.cs" />
@@ -263,6 +266,9 @@
       <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
     </Compile>
     <Compile Include="Entidades\TipoequipoConfiguration.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\UspCalendarioSemanalServiciosReturnModel.cs">
       <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
     </Compile>
     <Compile Include="Entidades\Vsprogramacionservicioscliente.cs">

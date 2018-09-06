@@ -40,13 +40,14 @@ namespace FUMIT
             container.RegisterType<IAsignacionesEquipo, AsignacionesEquipoRepositorio>();
             container.RegisterType<IMantenimientos, MantenimientosRepositorio>();
             container.RegisterType<IMantenimientosEquipo, MantenimientosEquipoRepositorio>();
+            container.RegisterType<ICalendarioSemanalServicios , CalendarioSemanalServiciosRepositorio>();
 
             //Se registra ExceptionManager
             Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.ExceptionManager manager = Exceptions.ExceptionHandlingPolicies.InicializarPoliticas();
-            container.RegisterInstance<Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.ExceptionManager>(manager, new SingletonLifetimeManager()); 
+            container.RegisterInstance(manager, new SingletonLifetimeManager()); 
 
             //Se registra service locator
-            CommonServiceLocator.ServiceLocator.SetLocatorProvider(() => unityServiceLocator);
+            ServiceLocator.SetLocatorProvider(() => unityServiceLocator);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

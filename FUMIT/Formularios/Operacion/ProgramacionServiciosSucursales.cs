@@ -171,10 +171,11 @@ namespace FUMIT.Formularios.Operacion
             NombreProgramacion();
 
             string resultadoDias = "";
+            int numeroSemanas = 1;
             if (ProgramacionServicioActual.Semana.HasValue)
             {
-                int numeroSemanas = Convert.ToInt32(ProgramacionServicioActual.Semana.Value);
-
+                numeroSemanas = Convert.ToInt32(ProgramacionServicioActual.Semana.Value);
+            }
                 if (numeroSemanas > 0)
                 {
                     //Efrain Hernandez 20/08/2018: Solo se indica una semana debido a que si se establece
@@ -188,7 +189,7 @@ namespace FUMIT.Formularios.Operacion
 
                     ProgramacionServicioActual.Dias = resultadoDias;
                 }
-            }
+            
 
             programacionservicioBindingSource.ResetBindings(false);
         }
@@ -289,7 +290,7 @@ namespace FUMIT.Formularios.Operacion
                         break;
                     case "Semanal":
                         chkListDiasSemana.Enabled = true;
-                        ProgramacionServicioActual.Dias = "1";
+                        ProgramacionServicioActual.Semana = 1;
                         break;
                     case "Quincenal":
                         chkListDiasSemana.Enabled = true;

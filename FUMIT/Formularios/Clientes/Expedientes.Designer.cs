@@ -878,6 +878,7 @@
             this.programacionServiciosClientes1.ClientesRepositorio = null;
             this.programacionServiciosClientes1.DataBindings.Add(new System.Windows.Forms.Binding("ClienteId", this.clienteBindingSource, "ClienteId", true));
             this.programacionServiciosClientes1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.programacionServiciosClientes1.FormExceptionManager = null;
             this.programacionServiciosClientes1.Location = new System.Drawing.Point(3, 3);
             this.programacionServiciosClientes1.ModoEditar = false;
             this.programacionServiciosClientes1.Name = "programacionServiciosClientes1";
@@ -895,7 +896,7 @@
             this.tabEquipos.Padding = new System.Windows.Forms.Padding(3);
             this.tabEquipos.Size = new System.Drawing.Size(923, 501);
             this.tabEquipos.TabIndex = 2;
-            this.tabEquipos.Text = "Equipos";
+            this.tabEquipos.Text = "Asignacion de equipos";
             this.tabEquipos.UseVisualStyleBackColor = true;
             // 
             // asignacionEquipos1
@@ -910,6 +911,7 @@
             this.asignacionEquipos1.Name = "asignacionEquipos1";
             this.asignacionEquipos1.Size = new System.Drawing.Size(917, 495);
             this.asignacionEquipos1.TabIndex = 0;
+            this.asignacionEquipos1.TiposEquiposRepositorio = null;
             // 
             // tabPage2
             // 

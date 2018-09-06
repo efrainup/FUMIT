@@ -56,7 +56,25 @@
             </Style>
 
             <DataTemplate x:Key="MyDataTemplate">
-                <Grid Margin="3px" Visibility="{Binding Id, Converter={StaticResource ClienteConverter}, FallbackValue=Hidden }" >
+                <StackPanel Margin="5px" Visibility="{Binding Entidad, Converter={StaticResource ClienteConverter}, FallbackValue=Hidden }">
+                    <WrapPanel>
+                        <TextBlock Text="{Binding Path=Cliente}"></TextBlock>
+                    </WrapPanel>
+                    <WrapPanel>
+                        <TextBlock>Servicio:</TextBlock>
+                        <TextBlock Text="{Binding Path=DescripcionServicio}"></TextBlock>
+                    </WrapPanel>
+
+                    <StackPanel.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Editar" Click="MenuItemMover_Click" CommandParameter="{Binding}"></MenuItem>
+                            <MenuItem Header="Cancelar servicio" Click="MenuItemCancelar_Click" CommandParameter="{Binding}"></MenuItem>
+                            <MenuItem Header="Ver expediente de cliente" Click="MenuItemVerExpediente_Click" CommandParameter="{Binding}"></MenuItem>
+                            <MenuItem Header="Capturar ticket" Click="MenuItemCapturarTicket_Click" CommandParameter="{Binding}"></MenuItem>
+                        </ContextMenu>
+                    </StackPanel.ContextMenu>
+                </StackPanel>
+                <!--<Grid Margin="3px" Visibility="{Binding Entidad, Converter={StaticResource ClienteConverter}, FallbackValue=Hidden }" >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
@@ -69,14 +87,14 @@
                     
                     
 
-                    <!--<TextBlock Grid.Row="0"  Grid.Column="0">Cliente:</TextBlock>-->
+                    --><!--<TextBlock Grid.Row="0"  Grid.Column="0">Cliente:</TextBlock>--><!--
                     <TextBlock Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Path=Cliente}"></TextBlock>
                     <TextBlock Grid.Row="1"  Grid.Column="0">Servicio:</TextBlock>
                     <TextBlock Grid.Row="1"  Grid.Column="1"  Text="{Binding Path=DescripcionServicio}"></TextBlock>
-                    <!--<TextBlock Grid.Row="1"  Grid.Column="0">Unidad:</TextBlock>
+                    --><!--<TextBlock Grid.Row="1"  Grid.Column="0">Unidad:</TextBlock>
                     <TextBlock Grid.Row="1"  Grid.Column="1" Text="{Binding Path=Unidad}"></TextBlock>
                     <TextBlock Grid.Row="2"  Grid.Column="0">Status:</TextBlock>
-                    <TextBlock Grid.Row="2"  Grid.Column="1" Text="{Binding Path=Status}"></TextBlock>-->
+                    <TextBlock Grid.Row="2"  Grid.Column="1" Text="{Binding Path=Status}"></TextBlock>--><!--
 
                     <Grid.ContextMenu>
                         <ContextMenu>
@@ -87,7 +105,7 @@
                         </ContextMenu>
                     </Grid.ContextMenu>
 
-                </Grid>
+                </Grid>-->
 
 
             </DataTemplate>
@@ -98,10 +116,10 @@
     <Grid>
 
 
-        <DataGrid HorizontalAlignment="Stretch" x:Name="dgS" AutoGenerateColumns="False" SelectionUnit="Cell" SelectionMode="Single">
+        <DataGrid HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*" x:Name="dgS" AutoGenerateColumns="False" SelectionUnit="Cell" SelectionMode="Single" Background="#00F0F0F0">
             
             <DataGrid.Columns>
-                <local:DataGridServiciosColumn Header="Lunes" Binding="{Binding Path=Lunes}" CellTemplate="{StaticResource MyDataTemplate}">
+                <local:DataGridServiciosColumn Header="Lunes" Binding="{Binding Path=Lunes}" CellTemplate="{StaticResource MyDataTemplate}" >
                     <local:DataGridServiciosColumn.CellStyle>
                         <Style TargetType="DataGridCell" BasedOn="{StaticResource MyDataGridCellStyle}">
                             <Style.Triggers>

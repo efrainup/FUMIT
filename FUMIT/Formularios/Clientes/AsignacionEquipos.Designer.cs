@@ -33,10 +33,18 @@
             System.Windows.Forms.Label fechaEntregaLabel;
             System.Windows.Forms.Label fechaRegresoLabel;
             System.Windows.Forms.Label numeroEconomicoLabel;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AsignacionEquipos));
             System.Windows.Forms.Label ubicacionLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AsignacionEquipos));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.asignacionesequipoDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.asignacionesequipoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ubicacionTextBox = new System.Windows.Forms.TextBox();
             this.fechaRegresoDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.fechaEntregaDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.numeroEconomicoTextBox = new System.Windows.Forms.TextBox();
@@ -56,25 +64,17 @@
             this.tsbEditar = new System.Windows.Forms.ToolStripButton();
             this.asignacionesequipoBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.tsbCancelar = new System.Windows.Forms.ToolStripButton();
-            this.ubicacionTextBox = new System.Windows.Forms.TextBox();
-            this.asignacionesequipoDataGridView = new System.Windows.Forms.DataGridView();
-            this.asignacionesequipoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             fechaAsignaciónLabel = new System.Windows.Forms.Label();
             fechaEntregaLabel = new System.Windows.Forms.Label();
             fechaRegresoLabel = new System.Windows.Forms.Label();
             numeroEconomicoLabel = new System.Windows.Forms.Label();
             ubicacionLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.asignacionesequipoDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.asignacionesequipoBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.asignacionesequipoBindingNavigator)).BeginInit();
             this.asignacionesequipoBindingNavigator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.asignacionesequipoDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.asignacionesequipoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // fechaAsignaciónLabel
@@ -113,20 +113,94 @@
             numeroEconomicoLabel.TabIndex = 14;
             numeroEconomicoLabel.Text = "Numero Economico:";
             // 
+            // ubicacionLabel
+            // 
+            ubicacionLabel.AutoSize = true;
+            ubicacionLabel.Location = new System.Drawing.Point(13, 126);
+            ubicacionLabel.Name = "ubicacionLabel";
+            ubicacionLabel.Size = new System.Drawing.Size(58, 13);
+            ubicacionLabel.TabIndex = 15;
+            ubicacionLabel.Text = "Ubicacion:";
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.asignacionesequipoDataGridView, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 59.09091F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.90909F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(824, 610);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // asignacionesequipoDataGridView
+            // 
+            this.asignacionesequipoDataGridView.AllowUserToAddRows = false;
+            this.asignacionesequipoDataGridView.AllowUserToDeleteRows = false;
+            this.asignacionesequipoDataGridView.AutoGenerateColumns = false;
+            this.asignacionesequipoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.asignacionesequipoDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6});
+            this.asignacionesequipoDataGridView.DataSource = this.asignacionesequipoBindingSource;
+            this.asignacionesequipoDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.asignacionesequipoDataGridView.Location = new System.Drawing.Point(3, 363);
+            this.asignacionesequipoDataGridView.Name = "asignacionesequipoDataGridView";
+            this.asignacionesequipoDataGridView.ReadOnly = true;
+            this.asignacionesequipoDataGridView.Size = new System.Drawing.Size(818, 244);
+            this.asignacionesequipoDataGridView.TabIndex = 18;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "Equipo";
+            this.dataGridViewTextBoxColumn9.HeaderText = "Equipo";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            this.dataGridViewTextBoxColumn9.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "Ubicacion";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Ubicacion";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "FechaAsignación";
+            this.dataGridViewTextBoxColumn4.HeaderText = "FechaAsignación";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "FechaEntrega";
+            this.dataGridViewTextBoxColumn5.HeaderText = "FechaEntrega";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "FechaRegreso";
+            this.dataGridViewTextBoxColumn6.HeaderText = "FechaRegreso";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // asignacionesequipoBindingSource
+            // 
+            this.asignacionesequipoBindingSource.DataSource = typeof(FUMIT.Entidades.Asignacionesequipo);
             // 
             // groupBox1
             // 
@@ -144,10 +218,20 @@
             this.groupBox1.Location = new System.Drawing.Point(3, 25);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 25, 3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(818, 277);
+            this.groupBox1.Size = new System.Drawing.Size(818, 332);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos de asignación";
+            // 
+            // ubicacionTextBox
+            // 
+            this.ubicacionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.asignacionesequipoBindingSource, "Ubicacion", true));
+            this.ubicacionTextBox.Location = new System.Drawing.Point(144, 123);
+            this.ubicacionTextBox.Multiline = true;
+            this.ubicacionTextBox.Name = "ubicacionTextBox";
+            this.ubicacionTextBox.ReadOnly = true;
+            this.ubicacionTextBox.Size = new System.Drawing.Size(241, 93);
+            this.ubicacionTextBox.TabIndex = 16;
             // 
             // fechaRegresoDateTimePicker
             // 
@@ -335,91 +419,6 @@
             this.tsbCancelar.Visible = false;
             this.tsbCancelar.Click += new System.EventHandler(this.tsbCancelar_Click);
             // 
-            // ubicacionLabel
-            // 
-            ubicacionLabel.AutoSize = true;
-            ubicacionLabel.Location = new System.Drawing.Point(13, 126);
-            ubicacionLabel.Name = "ubicacionLabel";
-            ubicacionLabel.Size = new System.Drawing.Size(58, 13);
-            ubicacionLabel.TabIndex = 15;
-            ubicacionLabel.Text = "Ubicacion:";
-            // 
-            // ubicacionTextBox
-            // 
-            this.ubicacionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.asignacionesequipoBindingSource, "Ubicacion", true));
-            this.ubicacionTextBox.Location = new System.Drawing.Point(144, 123);
-            this.ubicacionTextBox.Multiline = true;
-            this.ubicacionTextBox.Name = "ubicacionTextBox";
-            this.ubicacionTextBox.ReadOnly = true;
-            this.ubicacionTextBox.Size = new System.Drawing.Size(241, 102);
-            this.ubicacionTextBox.TabIndex = 16;
-            // 
-            // asignacionesequipoDataGridView
-            // 
-            this.asignacionesequipoDataGridView.AllowUserToAddRows = false;
-            this.asignacionesequipoDataGridView.AllowUserToDeleteRows = false;
-            this.asignacionesequipoDataGridView.AutoGenerateColumns = false;
-            this.asignacionesequipoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.asignacionesequipoDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn9,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6});
-            this.asignacionesequipoDataGridView.DataSource = this.asignacionesequipoBindingSource;
-            this.asignacionesequipoDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.asignacionesequipoDataGridView.Location = new System.Drawing.Point(3, 308);
-            this.asignacionesequipoDataGridView.Name = "asignacionesequipoDataGridView";
-            this.asignacionesequipoDataGridView.ReadOnly = true;
-            this.asignacionesequipoDataGridView.Size = new System.Drawing.Size(818, 299);
-            this.asignacionesequipoDataGridView.TabIndex = 18;
-            // 
-            // asignacionesequipoBindingSource
-            // 
-            this.asignacionesequipoBindingSource.DataSource = typeof(FUMIT.Entidades.Asignacionesequipo);
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "Equipo";
-            this.dataGridViewTextBoxColumn9.HeaderText = "Equipo";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
-            this.dataGridViewTextBoxColumn9.Visible = false;
-            this.dataGridViewTextBoxColumn9.Width = 65;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "Ubicacion";
-            this.dataGridViewTextBoxColumn7.HeaderText = "Ubicacion";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "FechaAsignación";
-            this.dataGridViewTextBoxColumn4.HeaderText = "FechaAsignación";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "FechaEntrega";
-            this.dataGridViewTextBoxColumn5.HeaderText = "FechaEntrega";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "FechaRegreso";
-            this.dataGridViewTextBoxColumn6.HeaderText = "FechaRegreso";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
             // AsignacionEquipos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -430,13 +429,13 @@
             this.Size = new System.Drawing.Size(824, 610);
             this.Load += new System.EventHandler(this.AsignacionEquipos_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.asignacionesequipoDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.asignacionesequipoBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.asignacionesequipoBindingNavigator)).EndInit();
             this.asignacionesequipoBindingNavigator.ResumeLayout(false);
             this.asignacionesequipoBindingNavigator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.asignacionesequipoDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.asignacionesequipoBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

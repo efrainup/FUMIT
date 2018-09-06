@@ -13,7 +13,7 @@ namespace FUMIT.UserControls.Wpf
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (System.Convert.ToInt32(value) > 0)
+            if (value != null)
             {
                 return Visibility.Visible;
             }
@@ -26,7 +26,7 @@ namespace FUMIT.UserControls.Wpf
             Visibility visibility = (Visibility)value;
             if (visibility == Visibility.Hidden)
             {
-                return 0;
+                return null;
             }
             else
             {

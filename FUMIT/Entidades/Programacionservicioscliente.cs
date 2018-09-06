@@ -88,7 +88,7 @@ namespace FUMIT.Entidades
         /// <summary>
         /// Parent Clientes pointed by [ProgramacionServiciosClientes].([ClienteId]) (FK_ProgramacionServiciosClientes_Clientes)
         /// </summary>
-        [ForeignKey("ClienteId"), Required] public virtual Clientes Clientes { get; set; } // FK_ProgramacionServiciosClientes_Clientes
+        [ForeignKey("ClienteId"), Required] public virtual Cliente Clientes { get; set; } // FK_ProgramacionServiciosClientes_Clientes
 
         /// <summary>
         /// Parent Programacionservicio pointed by [ProgramacionServiciosClientes].([ProgramacionServicioId]) (FK_ProgramacionServiciosClientes_ProgramacionServicios)

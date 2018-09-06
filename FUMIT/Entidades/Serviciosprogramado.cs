@@ -84,21 +84,20 @@ namespace FUMIT.Entidades
         public string Observaciones { get; set; } // Observaciones (length: 250)
 
         [Column(@"ProgramacionServiciosClientesId", Order = 11, TypeName = "int")]
-        [Required]
         [Display(Name = "Programacion servicios clientes ID")]
-        public int ProgramacionServiciosClientesId { get; set; } // ProgramacionServiciosClientesId
+        public int? ProgramacionServiciosClientesId { get; set; } // ProgramacionServiciosClientesId
 
         // Foreign keys
 
         /// <summary>
         /// Parent Clientes pointed by [ServiciosProgramados].([ClienteId]) (FK_ServiciosProgramados_Clientes)
         /// </summary>
-        [ForeignKey("ClienteId"), Required] public virtual Clientes Clientes { get; set; } // FK_ServiciosProgramados_Clientes
+        [ForeignKey("ClienteId"), Required] public virtual Cliente Clientes { get; set; } // FK_ServiciosProgramados_Clientes
 
         /// <summary>
         /// Parent Programacionservicioscliente pointed by [ServiciosProgramados].([ProgramacionServiciosClientesId]) (FK_ServiciosProgramados_ProgramacionServiciosClientes)
         /// </summary>
-        [ForeignKey("ProgramacionServiciosClientesId"), Required] public virtual Programacionservicioscliente Programacionservicioscliente { get; set; } // FK_ServiciosProgramados_ProgramacionServiciosClientes
+        [ForeignKey("ProgramacionServiciosClientesId")] public virtual Programacionservicioscliente Programacionservicioscliente { get; set; } // FK_ServiciosProgramados_ProgramacionServiciosClientes
 
         /// <summary>
         /// Parent Servicio pointed by [ServiciosProgramados].([ServicioId]) (FK_ServiciosProgramados_Servicios)

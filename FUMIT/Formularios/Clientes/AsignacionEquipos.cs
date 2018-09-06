@@ -9,19 +9,22 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FUMIT.Entidades;
 using System.Data.Entity.Validation;
+using CommonServiceLocator;
 
 namespace FUMIT.Formularios.Clientes
 {
     public partial class AsignacionEquipos : UserControl, IFormularioEditable, IFormularioSeleccionable<Entidades.Asignacionesequipo>
     {
-        private bool modoEdicion = false;
-        private int clienteId = 0;
 
 
         public AsignacionEquipos()
         {
             InitializeComponent();
         }
+
+        #region Propiedades
+        private bool modoEdicion = false;
+        private int clienteId = 0;
 
         public bool ModoEdicion {
             get
@@ -64,11 +67,11 @@ namespace FUMIT.Formularios.Clientes
 
             }
         }
-
-
         public Asignacionesequipo SeleccionActual => asignacionesequipoBindingSource.Current as Asignacionesequipo;
-
         IEnumerable<Entidades.Equipo> equipos;
+        public AccesoDatos.ITipoEquipos TiposEquiposRepositorio { get; set; }
+        #endregion
+
 
         public event EventHandler<Asignacionesequipo> ItemSeleccionado;
 
@@ -78,7 +81,7 @@ namespace FUMIT.Formularios.Clientes
             {
                 AsignacionesEquipoRepositorio = CommonServiceLocator.ServiceLocator.Current.GetInstance<AccesoDatos.IAsignacionesEquipo>();
                 EquiposRepositorio = CommonServiceLocator.ServiceLocator.Current.GetInstance<AccesoDatos.IEquipos>();
-
+                TiposEquiposRepositorio = ServiceLocator.Current.GetInstance<AccesoDatos.ITipoEquipos>();
                 //Autocomplete 
 
                 CargarAutocompletadoEquipos();
@@ -128,10 +131,11 @@ namespace FUMIT.Formularios.Clientes
                 else
                 {
                     await AsignacionesEquipoRepositorio.CrearAsync(SeleccionActual);
-
-                    //Se refrescan los equipos disponibles para asignar
-                    CargarAutocompletadoEquipos();
                 }
+
+                //Se refrescan los equipos disponibles para asignar
+                CargarAutocompletadoEquipos();
+
 
                 ModoEdicion = false;
             }
@@ -144,7 +148,6 @@ namespace FUMIT.Formularios.Clientes
                     foreach (DbValidationError errorvalidacion in validacion.ValidationErrors)
                     {
                         Mensaje += $"•{errorvalidacion.ErrorMessage}";
-                        //this.Controls[0].DataBindings.Add()
                     }
 
                 }
@@ -162,14 +165,59 @@ namespace FUMIT.Formularios.Clientes
             ModoEdicion = false;
         }
 
-        private void numeroEconomicoTextBox_Validating(object sender, CancelEventArgs e)
+        private async void numeroEconomicoTextBox_Validating(object sender, CancelEventArgs e)
         {
             string numeroEconomico = numeroEconomicoTextBox.Text;
 
             Equipo equipoSeleccionado = equipos.FirstOrDefault(f => f.NumeroEconomico == numeroEconomico);
 
-            SeleccionActual.EquipoId = equipoSeleccionado.EquipoId;
-            SeleccionActual.Equipo = equipoSeleccionado;
+            if (equipoSeleccionado != null)
+            {
+                SeleccionActual.EquipoId = equipoSeleccionado.EquipoId;
+                SeleccionActual.Equipo = equipoSeleccionado;
+            }
+            else
+            {
+                DialogResult entradaUsuario = MessageBox.Show($"El número económico {numeroEconomicoTextBox.Text} que ingresó no existe en la base de datos de contenedores. ¿Desea agrgarlo?","Contenedor inexistente",MessageBoxButtons.YesNo,MessageBoxIcon.Asterisk,MessageBoxDefaultButton.Button1);
+                if(entradaUsuario == DialogResult.Yes)
+                {
+                    List<Tipoequipo> tiposEquiposList = new List<Tipoequipo>();
+                    if (numeroEconomicoTextBox.Text.Contains("F03") || numeroEconomicoTextBox.Text.Contains("F3"))
+                    {
+                        tiposEquiposList = TiposEquiposRepositorio.RecuperarPorNombre(false, "Contenedor", "3").ToList();
+                    }
+                    else if (numeroEconomicoTextBox.Text.Contains("F06") || numeroEconomicoTextBox.Text.Contains("F6"))
+                    {
+                        tiposEquiposList = TiposEquiposRepositorio.RecuperarPorNombre(false, "Contenedor", "6").ToList();
+                    }
+
+                    if(tiposEquiposList.Count < 1)
+                    {
+                        MessageBox.Show("No fue posible agregar el contenedor porque no se encontró una clasificación de equipo", "Agregar contenedor", MessageBoxButtons.OK,MessageBoxIcon.Asterisk);
+                        return;
+                    }
+                    
+                    
+                    string numeroEconomicoEquipo = numeroEconomicoTextBox.Text;
+                    Entidades.Equipo equipo = new Equipo()
+                    {
+                        Activo = true,
+                        Asignado = false,
+                        Borrado = false,
+                        EnMantenimiento = false,
+                        Estado = "Bueno",
+                        Observaciones = "",
+                        NumeroEconomico = numeroEconomicoTextBox.Text,
+                        RequiereMantenimiento = false,
+                        Tipoequipo =  tiposEquiposList.First(),
+                        TipoEquipoId = tiposEquiposList.First().TipoEquipoId
+                    };
+
+                    await EquiposRepositorio.CrearAsync(equipo);
+
+                }
+
+            }
 
         }
 

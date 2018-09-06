@@ -32,6 +32,7 @@ namespace FUMIT.Entidades
         {
             Property(x => x.Tipo).IsOptional().IsUnicode(false);
             Property(x => x.Observaciones).IsOptional().IsUnicode(false);
+            Property(x => x.ProgramacionServiciosClientesId).IsOptional();
 
         }
     }
