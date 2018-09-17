@@ -54,6 +54,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="EntLibExtensions.ExceptionHandling, Version=1.0.2.0, Culture=neutral, PublicKeyToken=c4ed0f3638558493, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntLibExtensions.ExceptionHandling.1.0.2\lib\net45\EntLibExtensions.ExceptionHandling.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
     </Reference>
@@ -135,20 +138,24 @@
     <Compile Include="AccesoDatos\IMantenimientos.cs" />
     <Compile Include="AccesoDatos\IMantenimientosEquipo.cs" />
     <Compile Include="AccesoDatos\IOperacionesAccesoDatos.cs" />
+    <Compile Include="AccesoDatos\IOperadores.cs" />
     <Compile Include="AccesoDatos\IProgramacionServicios.cs" />
     <Compile Include="AccesoDatos\IProgramacionServiciosCliente.cs" />
     <Compile Include="AccesoDatos\IServicio.cs" />
     <Compile Include="AccesoDatos\IServiciosProgramados.cs" />
     <Compile Include="AccesoDatos\ISucursales.cs" />
+    <Compile Include="AccesoDatos\ITickets.cs" />
     <Compile Include="AccesoDatos\ITipoEquipos.cs" />
     <Compile Include="AccesoDatos\IVSProgramacionServiciosCliente.cs" />
     <Compile Include="AccesoDatos\MantenimientosEquipo.cs" />
     <Compile Include="AccesoDatos\MantenimientosRepositorio.cs" />
+    <Compile Include="AccesoDatos\OperadoresRepositorio.cs" />
     <Compile Include="AccesoDatos\ProgramacionServiciosClienteRepositorio.cs" />
     <Compile Include="AccesoDatos\ProgramacionServiciosRepositorio.cs" />
     <Compile Include="AccesoDatos\ServiciosProgramadosRepositorio.cs" />
     <Compile Include="AccesoDatos\ServiciosRepositorio.cs" />
     <Compile Include="AccesoDatos\SucursalesRepositorio.cs" />
+    <Compile Include="AccesoDatos\TicketsRepositorio.cs" />
     <Compile Include="AccesoDatos\TipoEquiposRepositorio.cs" />
     <Compile Include="AccesoDatos\VSProgramacionServiciosClienteRepositorio.cs" />
     <Compile Include="Class1.cs" />
@@ -185,6 +192,12 @@
       <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
     </Compile>
     <Compile Include="Entidades\ContactoConfiguration.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\Contenedoresticket.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\ContenedoresticketConfiguration.cs">
       <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
     </Compile>
     <Compile Include="Entidades\Equipo.cs">
@@ -226,6 +239,12 @@
     <Compile Include="Entidades\MantenimientosEquipoConfiguration.cs">
       <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entidades\Operador.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\OperadorConfiguration.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entidades\Programacionservicio.cs">
       <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
     </Compile>
@@ -260,6 +279,12 @@
       <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
     </Compile>
     <Compile Include="Entidades\SucursalConfiguration.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\Ticket.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\TicketConfiguration.cs">
       <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
     </Compile>
     <Compile Include="Entidades\Tipoequipo.cs">
@@ -389,6 +414,12 @@
     <Compile Include="Formularios\Operacion\CalendarioServicios.Designer.cs">
       <DependentUpon>CalendarioServicios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Operacion\CapturaDeTicketForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Operacion\CapturaDeTicketForm.Designer.cs">
+      <DependentUpon>CapturaDeTicketForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Operacion\EditarServicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -413,6 +444,12 @@
     <Compile Include="Formularios\Operacion\ServiciosProgramados.Designer.cs">
       <DependentUpon>ServiciosProgramados.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Operacion\TicketsUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Formularios\Operacion\TicketsUC.Designer.cs">
+      <DependentUpon>TicketsUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="INotificador.cs" />
     <Compile Include="NotificadorBarraEstado.cs" />
     <Compile Include="PantallaPrincipal.cs">
@@ -428,6 +465,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Recursos.resx</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Wpf\ServicioMultiValueConverter.cs" />
     <Compile Include="UserControls\Wpf\ClienteVacioConverter.cs" />
     <Compile Include="UserControls\Wpf\DataGridServiciosColumn.cs" />
     <Compile Include="UserControls\Wpf\CalendarioSemanalUserControl.xaml.cs">
@@ -485,6 +523,9 @@
     <EmbeddedResource Include="Formularios\Operacion\CalendarioServicios.resx">
       <DependentUpon>CalendarioServicios.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Operacion\CapturaDeTicketForm.resx">
+      <DependentUpon>CapturaDeTicketForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Operacion\EditarServicio.resx">
       <DependentUpon>EditarServicio.cs</DependentUpon>
     </EmbeddedResource>
@@ -496,6 +537,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Operacion\ServiciosProgramados.resx">
       <DependentUpon>ServiciosProgramados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Operacion\TicketsUC.resx">
+      <DependentUpon>TicketsUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PantallaPrincipal.resx">
       <DependentUpon>PantallaPrincipal.cs</DependentUpon>
@@ -531,6 +575,7 @@
     <None Include="Properties\DataSources\FUMIT.Entidades.Servicio.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Serviciosprogramado.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Sucursal.datasource" />
+    <None Include="Properties\DataSources\FUMIT.Entidades.Ticket.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Tipoequipo.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Vsprogramacionservicioscliente.datasource" />
     <None Include="Properties\DataSources\FUMIT.Formularios.Clientes.Expedientes.datasource" />

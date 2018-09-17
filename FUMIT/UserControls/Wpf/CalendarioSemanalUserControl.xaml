@@ -12,7 +12,7 @@
         <ResourceDictionary>
             
             <local:ClienteVacioConverter x:Key="ClienteConverter"></local:ClienteVacioConverter>
-
+            <local:ServicioMultiValueConverter x:Key="ServicioMultiValueConverter"></local:ServicioMultiValueConverter>
 
             <Style x:Key="MyDataGridCellStyle" TargetType="DataGridCell">
                 
@@ -56,6 +56,7 @@
             </Style>
 
             <DataTemplate x:Key="MyDataTemplate">
+                                
                 <StackPanel Margin="5px" Visibility="{Binding Entidad, Converter={StaticResource ClienteConverter}, FallbackValue=Hidden }">
                     <WrapPanel>
                         <TextBlock Text="{Binding Path=Cliente}"></TextBlock>
@@ -116,10 +117,18 @@
     <Grid>
 
 
-        <DataGrid HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*" x:Name="dgS" AutoGenerateColumns="False" SelectionUnit="Cell" SelectionMode="Single" Background="#00F0F0F0">
+        <DataGrid CopyingRowClipboardContent="dgS_CopyingRowClipboardContent" ClipboardCopyMode="IncludeHeader" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*" x:Name="dgS" AutoGenerateColumns="False" SelectionUnit="Cell"  SelectionMode="Extended"  Background="#00F0F0F0">
             
             <DataGrid.Columns>
                 <local:DataGridServiciosColumn Header="Lunes" Binding="{Binding Path=Lunes}" CellTemplate="{StaticResource MyDataTemplate}" >
+                    <local:DataGridServiciosColumn.ClipboardContentBinding>
+                        <MultiBinding Converter="{StaticResource ServicioMultiValueConverter}">
+                            <Binding Path="Lunes.Cliente" FallbackValue="">
+                                
+                            </Binding>
+                            <Binding Path="Lunes.DescripcionServicio" FallbackValue=""></Binding>
+                        </MultiBinding>
+                    </local:DataGridServiciosColumn.ClipboardContentBinding>
                     <local:DataGridServiciosColumn.CellStyle>
                         <Style TargetType="DataGridCell" BasedOn="{StaticResource MyDataGridCellStyle}">
                             <Style.Triggers>
@@ -139,6 +148,12 @@
                     </local:DataGridServiciosColumn.CellStyle>
                 </local:DataGridServiciosColumn>
                 <local:DataGridServiciosColumn Header="Martes" Binding="{Binding Path=Martes}" CellTemplate="{StaticResource MyDataTemplate}">
+                    <local:DataGridServiciosColumn.ClipboardContentBinding>
+                        <MultiBinding Converter="{StaticResource ServicioMultiValueConverter}">
+                            <Binding Path="Martes.Cliente" FallbackValue=""></Binding>
+                            <Binding Path="Martes.DescripcionServicio" FallbackValue=""></Binding>
+                        </MultiBinding>
+                    </local:DataGridServiciosColumn.ClipboardContentBinding>
                     <local:DataGridServiciosColumn.CellStyle>
                         <Style TargetType="DataGridCell" BasedOn="{StaticResource MyDataGridCellStyle}">
                             <Style.Triggers>
@@ -158,6 +173,12 @@
                     </local:DataGridServiciosColumn.CellStyle>
                 </local:DataGridServiciosColumn>
                 <local:DataGridServiciosColumn Header="Miercoles" Binding="{Binding Path=Miercoles}"   CellTemplate="{StaticResource MyDataTemplate}">
+                    <local:DataGridServiciosColumn.ClipboardContentBinding>
+                        <MultiBinding Converter="{StaticResource ServicioMultiValueConverter}">
+                            <Binding Path="Miercoles.Cliente" FallbackValue=""></Binding>
+                            <Binding Path="Miercoles.DescripcionServicio" FallbackValue=""></Binding>
+                        </MultiBinding>
+                    </local:DataGridServiciosColumn.ClipboardContentBinding>
                     <local:DataGridServiciosColumn.CellStyle>
                         <Style TargetType="DataGridCell" BasedOn="{StaticResource MyDataGridCellStyle}">
                             <Style.Triggers>
@@ -178,6 +199,12 @@
                     
                 </local:DataGridServiciosColumn>
                 <local:DataGridServiciosColumn Header="Jueves" Binding="{Binding Path=Jueves}" CellTemplate="{StaticResource MyDataTemplate}">
+                    <local:DataGridServiciosColumn.ClipboardContentBinding>
+                        <MultiBinding Converter="{StaticResource ServicioMultiValueConverter}">
+                            <Binding Path="Jueves.Cliente" FallbackValue=""></Binding>
+                            <Binding Path="Jueves.DescripcionServicio" FallbackValue=""></Binding>
+                        </MultiBinding>
+                    </local:DataGridServiciosColumn.ClipboardContentBinding>
                     <local:DataGridServiciosColumn.CellStyle>
                         <Style TargetType="DataGridCell" BasedOn="{StaticResource MyDataGridCellStyle}">
                             <Style.Triggers>
@@ -197,6 +224,12 @@
                     </local:DataGridServiciosColumn.CellStyle>
                 </local:DataGridServiciosColumn>
                 <local:DataGridServiciosColumn Header="Viernes" Binding="{Binding Path=Viernes}"  CellTemplate="{StaticResource MyDataTemplate}">
+                    <local:DataGridServiciosColumn.ClipboardContentBinding>
+                        <MultiBinding Converter="{StaticResource ServicioMultiValueConverter}">
+                            <Binding Path="Viernes.Cliente" FallbackValue=""></Binding>
+                            <Binding Path="Viernes.DescripcionServicio" FallbackValue=""></Binding>
+                        </MultiBinding>
+                    </local:DataGridServiciosColumn.ClipboardContentBinding>
                     <local:DataGridServiciosColumn.CellStyle>
                         <Style TargetType="DataGridCell" BasedOn="{StaticResource MyDataGridCellStyle}">
                             <Style.Triggers>
@@ -216,6 +249,12 @@
                     </local:DataGridServiciosColumn.CellStyle>
                 </local:DataGridServiciosColumn>
                 <local:DataGridServiciosColumn Header="Sabado" Binding="{Binding Path=Sabado}"   CellTemplate="{StaticResource MyDataTemplate}">
+                    <local:DataGridServiciosColumn.ClipboardContentBinding>
+                        <MultiBinding Converter="{StaticResource ServicioMultiValueConverter}">
+                            <Binding Path="Sabado.Cliente" FallbackValue=""></Binding>
+                            <Binding Path="Sabado.DescripcionServicio" FallbackValue=""></Binding>
+                        </MultiBinding>
+                    </local:DataGridServiciosColumn.ClipboardContentBinding>
                     <local:DataGridServiciosColumn.CellStyle>
                         <Style TargetType="DataGridCell" BasedOn="{StaticResource MyDataGridCellStyle}">
                             <Style.Triggers>
@@ -235,6 +274,12 @@
                     </local:DataGridServiciosColumn.CellStyle>
                 </local:DataGridServiciosColumn>
                 <local:DataGridServiciosColumn Header="Domingo" Binding="{Binding Path=Domingo}"  CellTemplate="{StaticResource MyDataTemplate}">
+                    <local:DataGridServiciosColumn.ClipboardContentBinding>
+                        <MultiBinding Converter="{StaticResource ServicioMultiValueConverter}">
+                            <Binding Path="Domingo.Cliente" FallbackValue=""></Binding>
+                            <Binding Path="Domingo.DescripcionServicio" FallbackValue=""></Binding>
+                        </MultiBinding>
+                    </local:DataGridServiciosColumn.ClipboardContentBinding>
                     <local:DataGridServiciosColumn.CellStyle>
                         <Style TargetType="DataGridCell" BasedOn="{StaticResource MyDataGridCellStyle}">
                             <Style.Triggers>

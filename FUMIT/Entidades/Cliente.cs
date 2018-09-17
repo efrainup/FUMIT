@@ -169,6 +169,10 @@ namespace FUMIT.Entidades
         /// Child Serviciosprogramados where [ServiciosProgramados].[ClienteId] point to this entity (FK_ServiciosProgramados_Clientes)
         /// </summary>
         public virtual System.Collections.Generic.ICollection<Serviciosprogramado> Serviciosprogramados { get; set; } // ServiciosProgramados.FK_ServiciosProgramados_Clientes
+        /// <summary>
+        /// Child Tickets where [Tickets].[ClienteId] point to this entity (FK_Tickets_Clientes)
+        /// </summary>
+        public virtual System.Collections.Generic.ICollection<Ticket> Tickets { get; set; } // Tickets.FK_Tickets_Clientes
 
         // Foreign keys
 
@@ -187,6 +191,7 @@ namespace FUMIT.Entidades
             Historialclientes = new System.Collections.Generic.List<HistorialCliente>();
             Programacionserviciosclientes = new System.Collections.Generic.List<Programacionservicioscliente>();
             Serviciosprogramados = new System.Collections.Generic.List<Serviciosprogramado>();
+            Tickets = new System.Collections.Generic.List<Ticket>();
             InitializePartial();
         }
 

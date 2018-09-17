@@ -36,6 +36,7 @@ namespace Exportador_FUMIT
             Property(x => x.FechaEntrega).HasColumnName(@"FechaEntrega").HasColumnType("datetime").IsOptional();
             Property(x => x.FechaRegreso).HasColumnName(@"FechaRegreso").HasColumnType("datetime").IsOptional();
             Property(x => x.Borrado).HasColumnName(@"Borrado").HasColumnType("bit").IsRequired();
+            Property(x => x.Ubicacion).HasColumnName(@"Ubicacion").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(120);
 
             // Foreign keys
             HasRequired(a => a.Cliente).WithMany(b => b.AsignacionesEquipos).HasForeignKey(c => c.ClienteId).WillCascadeOnDelete(false); // FK_AsignacionesEquipos_Clientes

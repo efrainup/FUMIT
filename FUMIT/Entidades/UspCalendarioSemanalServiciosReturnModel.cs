@@ -24,12 +24,12 @@ namespace FUMIT.Entidades
     {
         public System.DateTime? FechaServicio { get; set; }
         public System.String DiaSemana { get; set; }
-        public System.Int32 ClienteId { get; set; }
+        public System.Int32? ClienteId { get; set; }
         public System.String NombreCliente { get; set; }
         public System.String NombreProgramacion { get; set; }
-        public System.Int32 ProgramacionServicioId { get; set; }
-        public System.Int32 ProgramacionServiciosClienteId { get; set; }
-        public System.Int32 ServicioId { get; set; }
+        public System.Int32? ProgramacionServicioId { get; set; }
+        public System.Int32? ProgramacionServiciosClienteId { get; set; }
+        public System.Int32? ServicioId { get; set; }
         public System.String NombreServicio { get; set; }
         public System.Int32? ServicioProgramadoId { get; set; }
         public System.Boolean? Cancelado { get; set; }

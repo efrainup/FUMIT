@@ -29,6 +29,7 @@ namespace Exportador_FUMIT
         public bool Activo { get; set; } // Activo
         public int Prioridad { get; set; } // Prioridad
         public string Observaciones { get; set; } // Observaciones (length: 250)
+        public int? ProgramacionServiciosClientesId { get; set; } // ProgramacionServiciosClientesId
 
         // Foreign keys
 
@@ -36,6 +37,11 @@ namespace Exportador_FUMIT
         /// Parent Cliente pointed by [ServiciosProgramados].([ClienteId]) (FK_ServiciosProgramados_Clientes)
         /// </summary>
         public virtual Cliente Cliente { get; set; } // FK_ServiciosProgramados_Clientes
+
+        /// <summary>
+        /// Parent ProgramacionServiciosCliente pointed by [ServiciosProgramados].([ProgramacionServiciosClientesId]) (FK_ServiciosProgramados_ProgramacionServiciosClientes)
+        /// </summary>
+        public virtual ProgramacionServiciosCliente ProgramacionServiciosCliente { get; set; } // FK_ServiciosProgramados_ProgramacionServiciosClientes
 
         /// <summary>
         /// Parent Servicio pointed by [ServiciosProgramados].([ServicioId]) (FK_ServiciosProgramados_Servicios)

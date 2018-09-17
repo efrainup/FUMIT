@@ -97,6 +97,12 @@ namespace FUMIT.Entidades
         [Display(Name = "Nombre horario programado")]
         public string NombreHorarioProgramado { get; set; } // NombreHorarioProgramado (length: 50)
 
+        [Column(@"Area", Order = 11, TypeName = "varchar")]
+        [MaxLength(80)]
+        [StringLength(80)]
+        [Display(Name = "Area")]
+        public string Area { get; set; } // Area (length: 80)
+
         public Vsprogramacionservicioscliente()
         {
             InitializePartial();

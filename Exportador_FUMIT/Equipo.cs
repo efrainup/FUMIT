@@ -28,6 +28,7 @@ namespace Exportador_FUMIT
         public string Observaciones { get; set; } // Observaciones (length: 250)
         public bool Activo { get; set; } // Activo
         public bool Borrado { get; set; } // Borrado
+        public bool Asignado { get; set; } // Asignado
 
         // Reverse navigation
 
@@ -35,6 +36,10 @@ namespace Exportador_FUMIT
         /// Child AsignacionesEquipos where [AsignacionesEquipos].[EquipoId] point to this entity (FK_AsignacionesEquipos_Equipo)
         /// </summary>
         public virtual System.Collections.Generic.ICollection<AsignacionesEquipos> AsignacionesEquipos { get; set; } // AsignacionesEquipos.FK_AsignacionesEquipos_Equipo
+        /// <summary>
+        /// Child MantenimientosEquipoes where [MantenimientosEquipo].[EquipoId] point to this entity (FK_MantenimientosEquipo_Equipo)
+        /// </summary>
+        public virtual System.Collections.Generic.ICollection<MantenimientosEquipo> MantenimientosEquipoes { get; set; } // MantenimientosEquipo.FK_MantenimientosEquipo_Equipo
 
         // Foreign keys
 
@@ -45,11 +50,11 @@ namespace Exportador_FUMIT
 
         public Equipo()
         {
-            RequiereMantenimiento = false;
-            EnMantenimiento = false;
             Activo = true;
             Borrado = false;
+            Asignado = false;
             AsignacionesEquipos = new System.Collections.Generic.List<AsignacionesEquipos>();
+            MantenimientosEquipoes = new System.Collections.Generic.List<MantenimientosEquipo>();
         }
     }
 

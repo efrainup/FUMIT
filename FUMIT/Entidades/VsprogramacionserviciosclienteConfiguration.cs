@@ -32,6 +32,7 @@ namespace FUMIT.Entidades
         {
             Property(x => x.FechaTermino).IsOptional();
             Property(x => x.NombreHorarioProgramado).IsOptional().IsUnicode(false);
+            Property(x => x.Area).IsOptional().IsUnicode(false);
         }
     }
 

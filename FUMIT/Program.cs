@@ -41,6 +41,8 @@ namespace FUMIT
             container.RegisterType<IMantenimientos, MantenimientosRepositorio>();
             container.RegisterType<IMantenimientosEquipo, MantenimientosEquipoRepositorio>();
             container.RegisterType<ICalendarioSemanalServicios , CalendarioSemanalServiciosRepositorio>();
+            container.RegisterType<IOperadores, OperadoresRepositorio>();
+            container.RegisterType<ITickets, TicketsRepositorio>();
 
             //Se registra ExceptionManager
             Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.ExceptionManager manager = Exceptions.ExceptionHandlingPolicies.InicializarPoliticas();
@@ -51,7 +53,15 @@ namespace FUMIT
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PantallaPrincipal());
+
+            PantallaPrincipal pantallaPrincipal = new PantallaPrincipal();
+            //pantallaPrincipal.tsbEstado
+            var notificador = new NotificadorBarraEstado(pantallaPrincipal.statusStrip1);
+            notificador.ControlMostrarMensajes = pantallaPrincipal.tsbEstado;
+
+            container.RegisterInstance<INotificador>("BarraDeEstado", notificador, new SingletonLifetimeManager());
+
+            Application.Run(pantallaPrincipal);
         }
     }
 }

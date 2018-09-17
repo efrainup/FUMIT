@@ -8,6 +8,7 @@ namespace FUMIT.AccesoDatos
 {
     public interface IOperacionesAccesoDatos<T> where T: class
     {
+        
         T Crear(T entidad);
         Task<T> CrearAsync(T entidad);
         T RecuperarPorId(int Id);

@@ -210,7 +210,7 @@ namespace FUMIT.Formularios.Operacion
         {
             var servicioDeCalendarioSemanal = e as Entidades.UspCalendarioSemanalServiciosReturnModel;
 
-            Entidades.Cliente cliente = ClientesRepositorio.RecuperarPorId(servicioDeCalendarioSemanal.ClienteId);
+            Entidades.Cliente cliente = ClientesRepositorio.RecuperarPorId(servicioDeCalendarioSemanal.ClienteId.Value);
 
             Formularios.Clientes.Expedientes expedientes = new Clientes.Expedientes();
             expedientes.Load += (sender_load, e_load) =>
@@ -284,8 +284,8 @@ namespace FUMIT.Formularios.Operacion
                 servicioProgramad = new Entidades.Serviciosprogramado()
                 {
                     FechaServicio = servicioDeCalendarioSemanal.FechaServicio.Value,
-                    ClienteId = servicioDeCalendarioSemanal.ClienteId,
-                    ServicioId = servicioDeCalendarioSemanal.ServicioId,
+                    ClienteId = servicioDeCalendarioSemanal.ClienteId.Value,
+                    ServicioId = servicioDeCalendarioSemanal.ServicioId.Value,
                     Tipo = "Programado",
                     Activo = true,
                     Borrado = false,
@@ -293,8 +293,8 @@ namespace FUMIT.Formularios.Operacion
                     Prioridad = 1000,
                     ProgramacionServiciosClientesId = servicioDeCalendarioSemanal.ProgramacionServiciosClienteId,
                     Observaciones = "",
-                    Clientes = ClientesRepositorio.RecuperarPorId(servicioDeCalendarioSemanal.ClienteId),
-                    Programacionservicioscliente = this.ProgramacionServiciosClienteRepositorio.RecuperarPorId(servicioDeCalendarioSemanal.ProgramacionServiciosClienteId)
+                    Clientes = ClientesRepositorio.RecuperarPorId(servicioDeCalendarioSemanal.ClienteId.Value),
+                    Programacionservicioscliente = this.ProgramacionServiciosClienteRepositorio.RecuperarPorId(servicioDeCalendarioSemanal.ProgramacionServiciosClienteId.Value)
                 };
 
                 servicioProgramad = ServiciosProgramadosRepo.Crear(servicioProgramad);

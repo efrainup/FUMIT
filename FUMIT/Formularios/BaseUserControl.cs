@@ -10,6 +10,7 @@ namespace FUMIT.Formularios
     public class BaseUserControl : System.Windows.Forms.UserControl
     {
         public ExceptionManager FormExceptionManager { get; set; }
+        public INotificador Notificador { get; set; }
 
         public BaseUserControl()
         {
@@ -21,6 +22,7 @@ namespace FUMIT.Formularios
             if (!DesignMode)
             {
                 FormExceptionManager = CommonServiceLocator.ServiceLocator.Current.GetInstance<ExceptionManager>();
+                Notificador = CommonServiceLocator.ServiceLocator.Current.GetInstance<INotificador>("BarraDeEstado");
             }
         }
     }

@@ -26,6 +26,7 @@ namespace Exportador_FUMIT
         public System.DateTime? FechaEntrega { get; set; } // FechaEntrega
         public System.DateTime? FechaRegreso { get; set; } // FechaRegreso
         public bool Borrado { get; set; } // Borrado
+        public string Ubicacion { get; set; } // Ubicacion (length: 120)
 
         // Foreign keys
 

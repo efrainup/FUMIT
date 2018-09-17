@@ -31,6 +31,7 @@ namespace FUMIT.Entidades
         public ProgramacionserviciosclienteConfiguration(string schema)
         {
             Property(x => x.FechaTermino).IsOptional();
+            Property(x => x.Area).IsOptional().IsUnicode(false);
 
         }
     }

@@ -32,12 +32,12 @@
             System.Windows.Forms.Label activoLabel;
             System.Windows.Forms.Label nombreLabel;
             System.Windows.Forms.Label nombreLabel1;
+            System.Windows.Forms.Label areaLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProgramacionServiciosClientes));
             this.programacionserviciosclienteBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.programacionserviciosclienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
@@ -46,11 +46,13 @@
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.programacionserviciosclienteBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.tsbCancelar = new System.Windows.Forms.ToolStripButton();
             this.activoCheckBox = new System.Windows.Forms.CheckBox();
             this.nombreTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.areaTextBox = new System.Windows.Forms.TextBox();
             this.btnBusquedaServicio = new System.Windows.Forms.Button();
             this.servicioTextBox = new System.Windows.Forms.TextBox();
             this.btnProgramarServicios = new System.Windows.Forms.Button();
@@ -68,9 +70,11 @@
             this.dataGridViewCheckBoxColumn4 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.vsprogramacionserviciosclienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.tsbEditar = new System.Windows.Forms.ToolStripButton();
             activoLabel = new System.Windows.Forms.Label();
             nombreLabel = new System.Windows.Forms.Label();
             nombreLabel1 = new System.Windows.Forms.Label();
+            areaLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.programacionserviciosclienteBindingNavigator)).BeginInit();
             this.programacionserviciosclienteBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.programacionserviciosclienteBindingSource)).BeginInit();
@@ -108,6 +112,15 @@
             nombreLabel1.TabIndex = 43;
             nombreLabel1.Text = "Servicio:";
             // 
+            // areaLabel
+            // 
+            areaLabel.AutoSize = true;
+            areaLabel.Location = new System.Drawing.Point(439, 31);
+            areaLabel.Name = "areaLabel";
+            areaLabel.Size = new System.Drawing.Size(32, 13);
+            areaLabel.TabIndex = 44;
+            areaLabel.Text = "Area:";
+            // 
             // programacionserviciosclienteBindingNavigator
             // 
             this.programacionserviciosclienteBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
@@ -125,6 +138,7 @@
             this.bindingNavigatorMoveLastItem,
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorAddNewItem,
+            this.tsbEditar,
             this.bindingNavigatorDeleteItem,
             this.programacionserviciosclienteBindingNavigatorSaveItem,
             this.tsbCancelar});
@@ -159,15 +173,6 @@
             this.bindingNavigatorCountItem.Size = new System.Drawing.Size(37, 22);
             this.bindingNavigatorCountItem.Text = "de {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Número total de elementos";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(70, 22);
-            this.bindingNavigatorDeleteItem.Text = "Eliminar";
-            this.bindingNavigatorDeleteItem.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click);
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -229,6 +234,15 @@
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(70, 22);
+            this.bindingNavigatorDeleteItem.Text = "Eliminar";
+            this.bindingNavigatorDeleteItem.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click);
+            // 
             // programacionserviciosclienteBindingNavigatorSaveItem
             // 
             this.programacionserviciosclienteBindingNavigatorSaveItem.Enabled = false;
@@ -269,6 +283,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(areaLabel);
+            this.groupBox1.Controls.Add(this.areaTextBox);
             this.groupBox1.Controls.Add(this.btnBusquedaServicio);
             this.groupBox1.Controls.Add(nombreLabel1);
             this.groupBox1.Controls.Add(this.servicioTextBox);
@@ -285,6 +301,15 @@
             this.groupBox1.TabIndex = 42;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Programacion de servicio";
+            // 
+            // areaTextBox
+            // 
+            this.areaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programacionserviciosclienteBindingSource, "Area", true));
+            this.areaTextBox.Location = new System.Drawing.Point(477, 28);
+            this.areaTextBox.Name = "areaTextBox";
+            this.areaTextBox.ReadOnly = true;
+            this.areaTextBox.Size = new System.Drawing.Size(276, 20);
+            this.areaTextBox.TabIndex = 45;
             // 
             // btnBusquedaServicio
             // 
@@ -460,6 +485,15 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // tsbEditar
+            // 
+            this.tsbEditar.Image = global::FUMIT.Recursos.edit_add;
+            this.tsbEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbEditar.Name = "tsbEditar";
+            this.tsbEditar.Size = new System.Drawing.Size(57, 22);
+            this.tsbEditar.Text = "Editar";
+            this.tsbEditar.Click += new System.EventHandler(this.tsbEditar_Click);
+            // 
             // ProgramacionServiciosClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -521,5 +555,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn3;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn4;
+        private System.Windows.Forms.TextBox areaTextBox;
+        private System.Windows.Forms.ToolStripButton tsbEditar;
     }
 }

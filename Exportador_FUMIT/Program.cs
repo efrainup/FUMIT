@@ -161,6 +161,92 @@ namespace Exportador_FUMIT
 
             }
 
+
+            if(nivelDeMigracion== 3)
+            {
+
+                Cliente[] clientes = context.Clientes.ToArray();
+                for(int i=0; i < clientes.Length; i++)
+                {
+                    if (!string.IsNullOrEmpty(clientes[i].Observaciones))
+                    {
+                        var contenedors = clientes[i].Observaciones.Split(',', ' ', '/', '\n', '\r').ToArray();
+
+                        for(int k=0;k< contenedors.Length;k++)
+                        {
+                            string c = contenedors[k];
+                            if(c == "F3" || c=="F03" || c=="F6" || c=="F06")
+                            {
+                                contenedors[k] = contenedors[k] + "-" + contenedors[k + 1];
+                            }
+                            if(c == "F3-" || c == "F03-" || c == "F6-" || c == "F06-")
+                            {
+                                contenedors[k] = contenedors[k] +contenedors[k + 1];
+                            }
+                        }
+
+                        contenedors = contenedors.Where(w => w.Contains("F3") || w.Contains("F03") || w.Contains("F6") || w.Contains("F06")).ToArray();
+
+                        for (int j = 0; j < contenedors.Length; j++)
+                        {
+                            string ne = contenedors[j];
+                            var cont = context.Equipoes.FirstOrDefault(f => f.NumeroEconomico == ne);
+
+                            if(cont == null)
+                            {
+                                int tipo = contenedors[j].Contains("F03") || contenedors[j].Contains("F3") ? 1 : (contenedors[j].Contains("F6") || contenedors[j].Contains("F06") ? 2 : 3);
+                                cont = new Equipo()
+                                {
+                                    NumeroEconomico = contenedors[j],
+                                    Activo = true,
+                                    Borrado = false,
+                                    EnMantenimiento = false,
+                                    Estado = "Bueno",
+                                    Observaciones = "",
+                                    RequiereMantenimiento = false,
+                                    TipoEquipoId = tipo,
+                                    TipoEquipos = context.TipoEquipos.First(f => f.TipoEquipoId == tipo),
+                                    Asignado = true
+
+                                };
+
+                                cont = context.Equipoes.Add(cont);
+                                context.SaveChanges();
+                                Console.WriteLine("Se agrego contenedor: " + cont.NumeroEconomico);
+                            }
+                            int cid = clientes[i].ClienteId;
+                            var a1 = context.AsignacionesEquipos.FirstOrDefault(w => w.EquipoId == cont.EquipoId && w.ClienteId == cid);
+
+                            if (a1 == null)
+                            {
+                                var a = new AsignacionesEquipos()
+                                {
+                                    Borrado = false,
+                                    Equipo = cont,
+                                    EquipoId = cont.EquipoId,
+                                    Cliente = clientes[i],
+                                    ClienteId = clientes[i].ClienteId,
+                                    FechaAsignación = DateTime.Now,
+                                    FechaEntrega = null,
+                                    FechaRegreso = null,
+                                    Ubicacion = null
+                                };
+
+
+
+                                context.AsignacionesEquipos.Add(a);
+                                context.SaveChanges();
+                                Console.WriteLine("Se asigno contenedor: " + cont.NumeroEconomico+ " a "+ clientes[i].Nombre);
+                            }
+                        }
+                                
+
+                    }
+                }
+
+             
+            }
+            Console.WriteLine("Completado...");
             Console.ReadKey();
         }
     }

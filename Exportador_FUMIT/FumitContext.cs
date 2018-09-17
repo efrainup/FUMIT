@@ -28,6 +28,8 @@ namespace Exportador_FUMIT
         public System.Data.Entity.DbSet<Equipo> Equipoes { get; set; } // Equipo
         public System.Data.Entity.DbSet<Evento> Eventoes { get; set; } // Eventos
         public System.Data.Entity.DbSet<HistorialCliente> HistorialClientes { get; set; } // HistorialCliente
+        public System.Data.Entity.DbSet<Mantenimiento> Mantenimientoes { get; set; } // Mantenimientos
+        public System.Data.Entity.DbSet<MantenimientosEquipo> MantenimientosEquipoes { get; set; } // MantenimientosEquipo
         public System.Data.Entity.DbSet<ProgramacionServicio> ProgramacionServicios { get; set; } // ProgramacionServicios
         public System.Data.Entity.DbSet<ProgramacionServiciosCliente> ProgramacionServiciosClientes { get; set; } // ProgramacionServiciosClientes
         public System.Data.Entity.DbSet<Servicio> Servicios { get; set; } // Servicios
@@ -93,6 +95,8 @@ namespace Exportador_FUMIT
             modelBuilder.Configurations.Add(new EquipoConfiguration());
             modelBuilder.Configurations.Add(new EventoConfiguration());
             modelBuilder.Configurations.Add(new HistorialClienteConfiguration());
+            modelBuilder.Configurations.Add(new MantenimientoConfiguration());
+            modelBuilder.Configurations.Add(new MantenimientosEquipoConfiguration());
             modelBuilder.Configurations.Add(new ProgramacionServicioConfiguration());
             modelBuilder.Configurations.Add(new ProgramacionServiciosClienteConfiguration());
             modelBuilder.Configurations.Add(new ServicioConfiguration());
@@ -113,6 +117,8 @@ namespace Exportador_FUMIT
             modelBuilder.Configurations.Add(new EquipoConfiguration(schema));
             modelBuilder.Configurations.Add(new EventoConfiguration(schema));
             modelBuilder.Configurations.Add(new HistorialClienteConfiguration(schema));
+            modelBuilder.Configurations.Add(new MantenimientoConfiguration(schema));
+            modelBuilder.Configurations.Add(new MantenimientosEquipoConfiguration(schema));
             modelBuilder.Configurations.Add(new ProgramacionServicioConfiguration(schema));
             modelBuilder.Configurations.Add(new ProgramacionServiciosClienteConfiguration(schema));
             modelBuilder.Configurations.Add(new ServicioConfiguration(schema));

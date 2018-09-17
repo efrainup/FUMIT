@@ -59,12 +59,33 @@ namespace FUMIT.Formularios.Compartidos
 
             clienteBindingSource.DataSource = ListadoClientes;
 
+            nombreTextBox.Focus();
+
         }
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
             ClienteSeleccionado.Invoke(this, ClienteActual);
             Close();
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if(keyData == Keys.Enter)
+            {
+                if (nombreTextBox.Focused)
+                {
+                    btnBuscar.PerformClick();
+                    return true;
+                }
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void clienteDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnSeleccionar.PerformClick();
         }
     }
 }

@@ -118,6 +118,18 @@
     <Compile Include="IFumitContext.cs">
       <DependentUpon>FUMIT.tt</DependentUpon>
     </Compile>
+    <Compile Include="Mantenimiento.cs">
+      <DependentUpon>FUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MantenimientoConfiguration.cs">
+      <DependentUpon>FUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MantenimientosEquipo.cs">
+      <DependentUpon>FUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MantenimientosEquipoConfiguration.cs">
+      <DependentUpon>FUMIT.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="ProgramacionServicio.cs">
       <DependentUpon>FUMIT.tt</DependentUpon>

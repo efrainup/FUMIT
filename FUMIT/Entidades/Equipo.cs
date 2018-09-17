@@ -91,6 +91,10 @@ namespace FUMIT.Entidades
         /// </summary>
         public virtual System.Collections.Generic.ICollection<Asignacionesequipo> Asignacionesequipos { get; set; } // AsignacionesEquipos.FK_AsignacionesEquipos_Equipo
         /// <summary>
+        /// Child Contenedorestickets where [ContenedoresTickets].[ContenedorId] point to this entity (FK_ContenedoresTickets_Equipo)
+        /// </summary>
+        public virtual System.Collections.Generic.ICollection<Contenedoresticket> Contenedorestickets { get; set; } // ContenedoresTickets.FK_ContenedoresTickets_Equipo
+        /// <summary>
         /// Child Mantenimientosequipos where [MantenimientosEquipo].[EquipoId] point to this entity (FK_MantenimientosEquipo_Equipo)
         /// </summary>
         public virtual System.Collections.Generic.ICollection<MantenimientosEquipo> Mantenimientosequipos { get; set; } // MantenimientosEquipo.FK_MantenimientosEquipo_Equipo
@@ -108,6 +112,7 @@ namespace FUMIT.Entidades
             Borrado = false;
             Asignado = false;
             Asignacionesequipos = new System.Collections.Generic.List<Asignacionesequipo>();
+            Contenedorestickets = new System.Collections.Generic.List<Contenedoresticket>();
             Mantenimientosequipos = new System.Collections.Generic.List<MantenimientosEquipo>();
             InitializePartial();
         }

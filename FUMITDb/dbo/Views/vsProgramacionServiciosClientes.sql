@@ -3,7 +3,7 @@ AS
 SELECT        dbo.ProgramacionServiciosClientes.ProgramacionServiciosClienteId, dbo.ProgramacionServiciosClientes.ProgramacionServicioId, 
                          dbo.ProgramacionServiciosClientes.ClienteId, dbo.ProgramacionServiciosClientes.FechaInicio, dbo.ProgramacionServiciosClientes.FechaTermino, 
                          dbo.ProgramacionServiciosClientes.Activo, dbo.ProgramacionServiciosClientes.Borrado, dbo.ProgramacionServiciosClientes.ServicioId, dbo.Servicios.Nombre, 
-                         dbo.ProgramacionServicios.Nombre AS NombreHorarioProgramado
+                         dbo.ProgramacionServicios.Nombre AS NombreHorarioProgramado, dbo.ProgramacionServiciosClientes.Area
 FROM            dbo.ProgramacionServiciosClientes INNER JOIN
                          dbo.Servicios ON dbo.ProgramacionServiciosClientes.ServicioId = dbo.Servicios.ServicioId INNER JOIN
                          dbo.ProgramacionServicios ON dbo.ProgramacionServiciosClientes.ProgramacionServicioId = dbo.ProgramacionServicios.ProgramacionServicioId
@@ -92,7 +92,7 @@ Begin DesignProperties =
                Right = 321
             End
             DisplayFlags = 280
-            TopColumn = 0
+            TopColumn = 1
          End
          Begin Table = "Servicios"
             Begin Extent = 
@@ -102,7 +102,7 @@ Begin DesignProperties =
                Right = 611
             End
             DisplayFlags = 280
-            TopColumn = 0
+            TopColumn = 1
          End
          Begin Table = "ProgramacionServicios"
             Begin Extent = 
@@ -112,7 +112,7 @@ Begin DesignProperties =
                Right = 762
             End
             DisplayFlags = 280
-            TopColumn = 0
+            TopColumn = 1
          End
       End
    End
@@ -141,4 +141,6 @@ Begin DesignProperties =
    End
 End
 ', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'VIEW', @level1name = N'vsProgramacionServiciosClientes';
+
+
 

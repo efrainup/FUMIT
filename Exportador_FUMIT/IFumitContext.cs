@@ -26,6 +26,8 @@ namespace Exportador_FUMIT
         System.Data.Entity.DbSet<Equipo> Equipoes { get; set; } // Equipo
         System.Data.Entity.DbSet<Evento> Eventoes { get; set; } // Eventos
         System.Data.Entity.DbSet<HistorialCliente> HistorialClientes { get; set; } // HistorialCliente
+        System.Data.Entity.DbSet<Mantenimiento> Mantenimientoes { get; set; } // Mantenimientos
+        System.Data.Entity.DbSet<MantenimientosEquipo> MantenimientosEquipoes { get; set; } // MantenimientosEquipo
         System.Data.Entity.DbSet<ProgramacionServicio> ProgramacionServicios { get; set; } // ProgramacionServicios
         System.Data.Entity.DbSet<ProgramacionServiciosCliente> ProgramacionServiciosClientes { get; set; } // ProgramacionServiciosClientes
         System.Data.Entity.DbSet<Servicio> Servicios { get; set; } // Servicios

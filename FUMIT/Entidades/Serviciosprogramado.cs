@@ -87,6 +87,13 @@ namespace FUMIT.Entidades
         [Display(Name = "Programacion servicios clientes ID")]
         public int? ProgramacionServiciosClientesId { get; set; } // ProgramacionServiciosClientesId
 
+        // Reverse navigation
+
+        /// <summary>
+        /// Child Tickets where [Tickets].[ServicioProgramadoId] point to this entity (FK_Tickets_ServiciosProgramados)
+        /// </summary>
+        public virtual System.Collections.Generic.ICollection<Ticket> Tickets { get; set; } // Tickets.FK_Tickets_ServiciosProgramados
+
         // Foreign keys
 
         /// <summary>
@@ -110,6 +117,7 @@ namespace FUMIT.Entidades
             Borrado = false;
             Activo = true;
             Prioridad = 1000;
+            Tickets = new System.Collections.Generic.List<Ticket>();
             InitializePartial();
         }
 

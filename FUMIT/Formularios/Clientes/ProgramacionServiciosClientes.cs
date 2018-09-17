@@ -51,6 +51,7 @@ namespace FUMIT.Formularios.Clientes
                 btnBusquedaServicio.Enabled = modoEditar;
                 activoCheckBox.Enabled = modoEditar;
                 bindingNavigatorDeleteItem.Enabled = !modoEditar;
+                areaTextBox.ReadOnly = !modoEditar;
             }
         }
         public bool ModoNormal {
@@ -118,7 +119,7 @@ namespace FUMIT.Formularios.Clientes
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
             ModoEditar = true;
-
+            
             ProgramacionServicioClienteActual.ClienteId = ClienteId;
             ProgramacionServicioClienteActual.Activo = true;
         }
@@ -144,6 +145,7 @@ namespace FUMIT.Formularios.Clientes
 
         private async void programacionserviciosclienteBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
+            ValidateChildren();
             try
             {
                 if (ProgramacionServicioClienteActual.ProgramacionServiciosClienteId > 0)
@@ -254,6 +256,11 @@ namespace FUMIT.Formularios.Clientes
                 FormExceptionManager.HandleException(exc, Exceptions.ExceptionHandlingPolicies.CrearActualizarEntidadesDesdeUI);
             }
             //}, Exceptions.ExceptionHandlingPolicies.CrearActualizarEntidadesDesdeUI);
+        }
+
+        private void tsbEditar_Click(object sender, EventArgs e)
+        {
+            ModoEditar = true;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using FUMIT.Entidades;
+﻿using CommonServiceLocator;
+using FUMIT.Entidades;
 using FUMIT.Formularios;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,11 +16,17 @@ namespace FUMIT
 {
     public partial class PantallaPrincipal : Form
     {
+        #region Propiedades
         protected Formularios.Catalogos.Sucursales formulariosSucursales;
         protected Formularios.Catalogos.Servicios formularioServicios;
         protected Formularios.Operacion.ProgramacionServiciosSucursales formularioProgramacionServiciosSucursales;
         protected Formularios.Facturacion.CiclosFacturacion formularioCicloFacturacion;
 
+        public AccesoDatos.ISucursales SucursalesRepositorio { get; set; }
+        Entidades.Sucursal[] CatalogoSucursales;
+
+        public INotificador NotificadorEstado { get; set; }
+        #endregion
 
         public Formularios.Catalogos.Sucursales FormularioSucursales {
             get
@@ -69,7 +77,25 @@ namespace FUMIT
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            if (!DesignMode)
+            {
+                NotificadorEstado = ServiceLocator.Current.GetInstance<INotificador>("BarraDeEstado");
+                SucursalesRepositorio = ServiceLocator.Current.GetInstance<AccesoDatos.ISucursales>();
 
+
+                CatalogoSucursales = SucursalesRepositorio.Recuperar().ToArray();
+                tsbSucursalActiva.Items.AddRange(CatalogoSucursales);
+                tsbSucursalActiva.ComboBox.DisplayMember = "Nombre";
+
+                //Seleccionar la primera sucursal, solo en el caso que haya
+                if (tsbSucursalActiva.Items.Count > 0)
+                {
+                    tsbSucursalActiva.SelectedIndex = 0;
+                }
+
+                string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+                NotificadorEstado.EnviarMensaje("Sistema de operaciones FUMIT " + version);
+            }
         }
 
         private void sucursalesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -78,7 +104,7 @@ namespace FUMIT
             FormularioSucursales.Activate();
         }
 
-        private void expedientesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExpedientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var t = new Formularios.Clientes.Expedientes();
             t.MdiParent = this;
@@ -130,6 +156,13 @@ namespace FUMIT
         private void PantallaPrincipal_FormClosed(object sender, FormClosedEventArgs e)
         {
             Dispose();
+        }
+
+        private void capturaDeTicketsDeServicioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var CapturaDeTicketFormulario = new Formularios.Operacion.CapturaDeTicketForm();
+            CapturaDeTicketFormulario.MdiParent = this;
+            CapturaDeTicketFormulario.Show();
         }
     }
 }

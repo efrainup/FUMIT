@@ -76,6 +76,12 @@ namespace FUMIT.Entidades
         [Display(Name = "Servicios programados")]
         public bool ServiciosProgramados { get; set; } // ServiciosProgramados
 
+        [Column(@"Area", Order = 10, TypeName = "varchar")]
+        [MaxLength(80)]
+        [StringLength(80)]
+        [Display(Name = "Area")]
+        public string Area { get; set; } // Area (length: 80)
+
         // Reverse navigation
 
         /// <summary>

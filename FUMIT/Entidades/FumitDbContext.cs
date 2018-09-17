@@ -29,17 +29,20 @@ namespace FUMIT.Entidades
         public System.Data.Entity.DbSet<CiclosFacturacion> Ciclosfacturaciones { get; set; } // CiclosFacturacion
         public System.Data.Entity.DbSet<Cliente> Clientes { get; set; } // Clientes
         public System.Data.Entity.DbSet<Contacto> Contactos { get; set; } // Contactos
+        public System.Data.Entity.DbSet<Contenedoresticket> Contenedorestickets { get; set; } // ContenedoresTickets
         public System.Data.Entity.DbSet<Equipo> Equipos { get; set; } // Equipo
         public System.Data.Entity.DbSet<Evento> Eventos { get; set; } // Eventos
         public System.Data.Entity.DbSet<HistorialCliente> Historialclientes { get; set; } // HistorialCliente
         public System.Data.Entity.DbSet<Mantenimiento> Mantenimientos { get; set; } // Mantenimientos
         public System.Data.Entity.DbSet<MantenimientosEquipo> Mantenimientosequipos { get; set; } // MantenimientosEquipo
+        public System.Data.Entity.DbSet<Operador> Operadores { get; set; } // Operadores
         public System.Data.Entity.DbSet<Programacionservicio> Programacionservicios { get; set; } // ProgramacionServicios
         public System.Data.Entity.DbSet<Programacionservicioscliente> Programacionserviciosclientes { get; set; } // ProgramacionServiciosClientes
         public System.Data.Entity.DbSet<Servicio> Servicios { get; set; } // Servicios
         public System.Data.Entity.DbSet<Serviciosprogramado> Serviciosprogramados { get; set; } // ServiciosProgramados
         public System.Data.Entity.DbSet<Serviciossucursal> Serviciossucursales { get; set; } // ServiciosSucursales
         public System.Data.Entity.DbSet<Sucursal> Sucursales { get; set; } // Sucursales
+        public System.Data.Entity.DbSet<Ticket> Tickets { get; set; } // Tickets
         public System.Data.Entity.DbSet<Tipoequipo> Tipoequipos { get; set; } // TipoEquipos
         public System.Data.Entity.DbSet<Vsprogramacionservicioscliente> Vsprogramacionserviciosclientes { get; set; } // vsProgramacionServiciosClientes
 
@@ -96,17 +99,20 @@ namespace FUMIT.Entidades
             modelBuilder.Configurations.Add(new CiclosFacturacionConfiguration());
             modelBuilder.Configurations.Add(new ClienteConfiguration());
             modelBuilder.Configurations.Add(new ContactoConfiguration());
+            modelBuilder.Configurations.Add(new ContenedoresticketConfiguration());
             modelBuilder.Configurations.Add(new EquipoConfiguration());
             modelBuilder.Configurations.Add(new EventoConfiguration());
             modelBuilder.Configurations.Add(new HistorialClienteConfiguration());
             modelBuilder.Configurations.Add(new MantenimientoConfiguration());
             modelBuilder.Configurations.Add(new MantenimientosEquipoConfiguration());
+            modelBuilder.Configurations.Add(new OperadorConfiguration());
             modelBuilder.Configurations.Add(new ProgramacionservicioConfiguration());
             modelBuilder.Configurations.Add(new ProgramacionserviciosclienteConfiguration());
             modelBuilder.Configurations.Add(new ServicioConfiguration());
             modelBuilder.Configurations.Add(new ServiciosprogramadoConfiguration());
             modelBuilder.Configurations.Add(new ServiciossucursalConfiguration());
             modelBuilder.Configurations.Add(new SucursalConfiguration());
+            modelBuilder.Configurations.Add(new TicketConfiguration());
             modelBuilder.Configurations.Add(new TipoequipoConfiguration());
             modelBuilder.Configurations.Add(new VsprogramacionserviciosclienteConfiguration());
         }
@@ -118,17 +124,20 @@ namespace FUMIT.Entidades
             modelBuilder.Configurations.Add(new CiclosFacturacionConfiguration(schema));
             modelBuilder.Configurations.Add(new ClienteConfiguration(schema));
             modelBuilder.Configurations.Add(new ContactoConfiguration(schema));
+            modelBuilder.Configurations.Add(new ContenedoresticketConfiguration(schema));
             modelBuilder.Configurations.Add(new EquipoConfiguration(schema));
             modelBuilder.Configurations.Add(new EventoConfiguration(schema));
             modelBuilder.Configurations.Add(new HistorialClienteConfiguration(schema));
             modelBuilder.Configurations.Add(new MantenimientoConfiguration(schema));
             modelBuilder.Configurations.Add(new MantenimientosEquipoConfiguration(schema));
+            modelBuilder.Configurations.Add(new OperadorConfiguration(schema));
             modelBuilder.Configurations.Add(new ProgramacionservicioConfiguration(schema));
             modelBuilder.Configurations.Add(new ProgramacionserviciosclienteConfiguration(schema));
             modelBuilder.Configurations.Add(new ServicioConfiguration(schema));
             modelBuilder.Configurations.Add(new ServiciosprogramadoConfiguration(schema));
             modelBuilder.Configurations.Add(new ServiciossucursalConfiguration(schema));
             modelBuilder.Configurations.Add(new SucursalConfiguration(schema));
+            modelBuilder.Configurations.Add(new TicketConfiguration(schema));
             modelBuilder.Configurations.Add(new TipoequipoConfiguration(schema));
             modelBuilder.Configurations.Add(new VsprogramacionserviciosclienteConfiguration(schema));
             return modelBuilder;

@@ -12,7 +12,7 @@ namespace FUMIT.AccesoDatos
 {
     public class AOperacionesBase<T>/* : IOperacionesAccesoDatos<T> */where T : class
     {
-        public  DbContext dbContext
+        public Entidades.FumitDbContext dbContext
         {
             get
             {

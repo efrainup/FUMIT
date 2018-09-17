@@ -68,11 +68,16 @@ namespace FUMIT.Entidades
         /// Child Serviciosprogramados where [ServiciosProgramados].[ServicioId] point to this entity (FK_ServiciosProgramados_Servicios)
         /// </summary>
         public virtual System.Collections.Generic.ICollection<Serviciosprogramado> Serviciosprogramados { get; set; } // ServiciosProgramados.FK_ServiciosProgramados_Servicios
+        /// <summary>
+        /// Child Tickets where [Tickets].[ServicioId] point to this entity (FK_Tickets_Servicios)
+        /// </summary>
+        public virtual System.Collections.Generic.ICollection<Ticket> Tickets { get; set; } // Tickets.FK_Tickets_Servicios
 
         public Servicio()
         {
             Programacionserviciosclientes = new System.Collections.Generic.List<Programacionservicioscliente>();
             Serviciosprogramados = new System.Collections.Generic.List<Serviciosprogramado>();
+            Tickets = new System.Collections.Generic.List<Ticket>();
             InitializePartial();
         }
 

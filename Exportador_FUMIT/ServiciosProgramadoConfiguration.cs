@@ -39,8 +39,10 @@ namespace Exportador_FUMIT
             Property(x => x.Activo).HasColumnName(@"Activo").HasColumnType("bit").IsRequired();
             Property(x => x.Prioridad).HasColumnName(@"Prioridad").HasColumnType("int").IsRequired();
             Property(x => x.Observaciones).HasColumnName(@"Observaciones").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(250);
+            Property(x => x.ProgramacionServiciosClientesId).HasColumnName(@"ProgramacionServiciosClientesId").HasColumnType("int").IsOptional();
 
             // Foreign keys
+            HasOptional(a => a.ProgramacionServiciosCliente).WithMany(b => b.ServiciosProgramadoes).HasForeignKey(c => c.ProgramacionServiciosClientesId).WillCascadeOnDelete(false); // FK_ServiciosProgramados_ProgramacionServiciosClientes
             HasRequired(a => a.Cliente).WithMany(b => b.ServiciosProgramadoes).HasForeignKey(c => c.ClienteId).WillCascadeOnDelete(false); // FK_ServiciosProgramados_Clientes
             HasRequired(a => a.Servicio).WithMany(b => b.ServiciosProgramadoes).HasForeignKey(c => c.ServicioId).WillCascadeOnDelete(false); // FK_ServiciosProgramados_Servicios
         }

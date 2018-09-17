@@ -29,6 +29,13 @@ namespace Exportador_FUMIT
         public int ServicioId { get; set; } // ServicioId
         public bool ServiciosProgramados { get; set; } // ServiciosProgramados
 
+        // Reverse navigation
+
+        /// <summary>
+        /// Child ServiciosProgramadoes where [ServiciosProgramados].[ProgramacionServiciosClientesId] point to this entity (FK_ServiciosProgramados_ProgramacionServiciosClientes)
+        /// </summary>
+        public virtual System.Collections.Generic.ICollection<ServiciosProgramado> ServiciosProgramadoes { get; set; } // ServiciosProgramados.FK_ServiciosProgramados_ProgramacionServiciosClientes
+
         // Foreign keys
 
         /// <summary>
@@ -52,6 +59,7 @@ namespace Exportador_FUMIT
             Activo = true;
             Borrado = false;
             ServiciosProgramados = false;
+            ServiciosProgramadoes = new System.Collections.Generic.List<ServiciosProgramado>();
         }
     }
 

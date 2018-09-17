@@ -96,18 +96,23 @@ namespace FUMIT.UserControls.Wpf
 
             if ((bool)Printdlg.ShowDialog().GetValueOrDefault())
             {
-                Size pageSize = new Size(Printdlg.PrintableAreaWidth, Printdlg.PrintableAreaHeight);
+                Size pageSize = new Size(Printdlg.PrintableAreaWidth-10, Printdlg.PrintableAreaHeight-10);
 
                 // sizing of the element.
 
                 dgS.Measure(pageSize);
-                dgS.Arrange(new Rect(5, 5, pageSize.Width + 100, pageSize.Height + 100));
+                dgS.Arrange(new Rect(10, 10, pageSize.Width, pageSize.Height));
 
                 Printdlg.PrintVisual(dgS, "Calendario de servicio");
 
             }
 
             //new PrintDG().printDG(dgS, "Calendario de servicio");
+        }
+
+        private void dgS_CopyingRowClipboardContent(object sender, DataGridRowClipboardEventArgs e)
+        {
+            //e.
         }
     }
 

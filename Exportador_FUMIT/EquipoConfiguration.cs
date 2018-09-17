@@ -38,6 +38,7 @@ namespace Exportador_FUMIT
             Property(x => x.Observaciones).HasColumnName(@"Observaciones").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(250);
             Property(x => x.Activo).HasColumnName(@"Activo").HasColumnType("bit").IsRequired();
             Property(x => x.Borrado).HasColumnName(@"Borrado").HasColumnType("bit").IsRequired();
+            Property(x => x.Asignado).HasColumnName(@"Asignado").HasColumnType("bit").IsRequired();
 
             // Foreign keys
             HasRequired(a => a.TipoEquipos).WithMany(b => b.Equipoes).HasForeignKey(c => c.TipoEquipoId).WillCascadeOnDelete(false); // FK_Equipo_TipoEquipos
