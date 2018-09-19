@@ -12,7 +12,6 @@
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FUMIT.Entidades
 {
@@ -20,72 +19,62 @@ namespace FUMIT.Entidades
     using System.Runtime.Serialization;
 
     // ServiciosProgramados
-    [Table("ServiciosProgramados", Schema = "dbo")]
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.37.1.0")]
     public partial class Serviciosprogramado: INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column(@"ServicioProgramadoId", Order = 1, TypeName = "int")]
-        [Index(@"PK_ServiciosProgramados", 1, IsUnique = true, IsClustered = true)]
         [Required]
-        [Key]
         [Display(Name = "Servicio programado ID")]
+        [Key]
         public int ServicioProgramadoId { get; set; } // ServicioProgramadoId (Primary key)
 
-        [Column(@"ClienteId", Order = 2, TypeName = "int")]
         [Required]
         [Display(Name = "Cliente ID")]
         public int ClienteId { get; set; } // ClienteId
 
-        [Column(@"ServicioId", Order = 3, TypeName = "int")]
         [Required]
         [Display(Name = "Servicio ID")]
         public int ServicioId { get; set; } // ServicioId
 
-        [Column(@"FechaServicio", Order = 4, TypeName = "datetime")]
         [Required]
         [DataType(DataType.DateTime)]
         [Display(Name = "Fecha servicio")]
         public System.DateTime FechaServicio { get; set; } // FechaServicio
 
-        [Column(@"Tipo", Order = 5, TypeName = "varchar")]
         [MaxLength(50)]
         [StringLength(50)]
         [Display(Name = "Tipo")]
         public string Tipo { get; set; } // Tipo (length: 50)
 
-        [Column(@"Cancelado", Order = 6, TypeName = "bit")]
         [Required]
         [Display(Name = "Cancelado")]
         public bool Cancelado { get; set; } // Cancelado
 
-        [Column(@"Borrado", Order = 7, TypeName = "bit")]
         [Required]
         [Display(Name = "Borrado")]
         public bool Borrado { get; set; } // Borrado
 
-        [Column(@"Activo", Order = 8, TypeName = "bit")]
         [Required]
         [Display(Name = "Activo")]
         public bool Activo { get; set; } // Activo
 
-        [Column(@"Prioridad", Order = 9, TypeName = "int")]
         [Required]
         [Display(Name = "Prioridad")]
         public int Prioridad { get; set; } // Prioridad
 
-        [Column(@"Observaciones", Order = 10, TypeName = "varchar")]
         [MaxLength(250)]
         [StringLength(250)]
         [Display(Name = "Observaciones")]
         public string Observaciones { get; set; } // Observaciones (length: 250)
 
-        [Column(@"ProgramacionServiciosClientesId", Order = 11, TypeName = "int")]
         [Display(Name = "Programacion servicios clientes ID")]
         public int? ProgramacionServiciosClientesId { get; set; } // ProgramacionServiciosClientesId
+
+        [Required]
+        [Display(Name = "Realizado")]
+        public bool Realizado { get; set; } // Realizado
 
         // Reverse navigation
 
@@ -99,17 +88,17 @@ namespace FUMIT.Entidades
         /// <summary>
         /// Parent Clientes pointed by [ServiciosProgramados].([ClienteId]) (FK_ServiciosProgramados_Clientes)
         /// </summary>
-        [ForeignKey("ClienteId"), Required] public virtual Cliente Clientes { get; set; } // FK_ServiciosProgramados_Clientes
+        public virtual Cliente Clientes { get; set; } // FK_ServiciosProgramados_Clientes
 
         /// <summary>
         /// Parent Programacionservicioscliente pointed by [ServiciosProgramados].([ProgramacionServiciosClientesId]) (FK_ServiciosProgramados_ProgramacionServiciosClientes)
         /// </summary>
-        [ForeignKey("ProgramacionServiciosClientesId")] public virtual Programacionservicioscliente Programacionservicioscliente { get; set; } // FK_ServiciosProgramados_ProgramacionServiciosClientes
+        public virtual Programacionservicioscliente Programacionservicioscliente { get; set; } // FK_ServiciosProgramados_ProgramacionServiciosClientes
 
         /// <summary>
         /// Parent Servicio pointed by [ServiciosProgramados].([ServicioId]) (FK_ServiciosProgramados_Servicios)
         /// </summary>
-        [ForeignKey("ServicioId"), Required] public virtual Servicio Servicio { get; set; } // FK_ServiciosProgramados_Servicios
+        public virtual Servicio Servicio { get; set; } // FK_ServiciosProgramados_Servicios
 
         public Serviciosprogramado()
         {
@@ -117,6 +106,7 @@ namespace FUMIT.Entidades
             Borrado = false;
             Activo = true;
             Prioridad = 1000;
+            Realizado = false;
             Tickets = new System.Collections.Generic.List<Ticket>();
             InitializePartial();
         }

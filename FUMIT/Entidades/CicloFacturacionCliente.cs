@@ -12,7 +12,6 @@
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FUMIT.Entidades
 {
@@ -20,47 +19,37 @@ namespace FUMIT.Entidades
     using System.Runtime.Serialization;
 
     // CicloFacturacionCliente
-    [Table("CicloFacturacionCliente", Schema = "dbo")]
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.37.1.0")]
     public partial class CicloFacturacionCliente: INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column(@"CicloFacturacionClienteId", Order = 1, TypeName = "int")]
-        [Index(@"PK_CicloFacturacionCliente", 1, IsUnique = true, IsClustered = true)]
         [Required]
-        [Key]
         [Display(Name = "Ciclo facturacion cliente ID")]
+        [Key]
         public int CicloFacturacionClienteId { get; set; } // CicloFacturacionClienteId (Primary key)
 
-        [Column(@"CicloFacturacionId", Order = 2, TypeName = "int")]
         [Required]
         [Display(Name = "Ciclo facturacion ID")]
         public int CicloFacturacionId { get; set; } // CicloFacturacionId
 
-        [Column(@"ServicioId", Order = 3, TypeName = "int")]
         [Required]
         [Display(Name = "Servicio ID")]
         public int ServicioId { get; set; } // ServicioId
 
-        [Column(@"FechaInicioVigencia", Order = 4, TypeName = "datetime")]
         [DataType(DataType.DateTime)]
         [Display(Name = "Fecha inicio vigencia")]
         public System.DateTime? FechaInicioVigencia { get; set; } // FechaInicioVigencia
 
-        [Column(@"FechaFinVigencia", Order = 5, TypeName = "datetime")]
         [DataType(DataType.DateTime)]
         [Display(Name = "Fecha fin vigencia")]
         public System.DateTime? FechaFinVigencia { get; set; } // FechaFinVigencia
 
-        [Column(@"Activo", Order = 6, TypeName = "bit")]
         [Required]
         [Display(Name = "Activo")]
         public bool Activo { get; set; } // Activo
 
-        [Column(@"Borrado", Order = 7, TypeName = "bit")]
         [Required]
         [Display(Name = "Borrado")]
         public bool Borrado { get; set; } // Borrado
@@ -70,7 +59,7 @@ namespace FUMIT.Entidades
         /// <summary>
         /// Parent CiclosFacturacion pointed by [CicloFacturacionCliente].([CicloFacturacionId]) (FK_CicloFacturacionCliente_CicloFacturacionCliente)
         /// </summary>
-        [ForeignKey("CicloFacturacionId"), Required] public virtual CiclosFacturacion CiclosFacturacion { get; set; } // FK_CicloFacturacionCliente_CicloFacturacionCliente
+        public virtual CiclosFacturacion CiclosFacturacion { get; set; } // FK_CicloFacturacionCliente_CicloFacturacionCliente
 
         public CicloFacturacionCliente()
         {

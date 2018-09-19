@@ -12,7 +12,6 @@
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FUMIT.Entidades
 {
@@ -20,52 +19,41 @@ namespace FUMIT.Entidades
     using System.Runtime.Serialization;
 
     // ProgramacionServicios
-    [Table("ProgramacionServicios", Schema = "dbo")]
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.37.1.0")]
     public partial class Programacionservicio: INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column(@"ProgramacionServicioId", Order = 1, TypeName = "int")]
-        [Index(@"PK_ProgramacionServicios", 1, IsUnique = true, IsClustered = true)]
         [Required]
-        [Key]
         [Display(Name = "Programacion servicio ID")]
+        [Key]
         public int ProgramacionServicioId { get; set; } // ProgramacionServicioId (Primary key)
 
-        [Column(@"SucursalId", Order = 2, TypeName = "int")]
         [Required]
         [Display(Name = "Sucursal ID")]
         public int SucursalId { get; set; } // SucursalId
 
-        [Column(@"Nombre", Order = 3, TypeName = "varchar")]
         [MaxLength(50)]
         [StringLength(50)]
         [Display(Name = "Nombre")]
         public string Nombre { get; set; } // Nombre (length: 50)
 
-        [Column(@"Dias", Order = 4, TypeName = "varchar")]
         [MaxLength(50)]
         [StringLength(50)]
         [Display(Name = "Dias")]
         public string Dias { get; set; } // Dias (length: 50)
 
-        [Column(@"Semana", Order = 5, TypeName = "int")]
         [Display(Name = "Semana")]
         public int? Semana { get; set; } // Semana
 
-        [Column(@"Mes", Order = 6, TypeName = "int")]
         [Display(Name = "Mes")]
         public int? Mes { get; set; } // Mes
 
-        [Column(@"Activo", Order = 7, TypeName = "bit")]
         [Required]
         [Display(Name = "Activo")]
         public bool Activo { get; set; } // Activo
 
-        [Column(@"Borrado", Order = 8, TypeName = "bit")]
         [Required]
         [Display(Name = "Borrado")]
         public bool Borrado { get; set; } // Borrado
@@ -82,7 +70,7 @@ namespace FUMIT.Entidades
         /// <summary>
         /// Parent Sucursal pointed by [ProgramacionServicios].([SucursalId]) (FK_ProgramacionServicios_Sucursales)
         /// </summary>
-        [ForeignKey("SucursalId"), Required] public virtual Sucursal Sucursal { get; set; } // FK_ProgramacionServicios_Sucursales
+        public virtual Sucursal Sucursal { get; set; } // FK_ProgramacionServicios_Sucursales
 
         public Programacionservicio()
         {

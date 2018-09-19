@@ -1,5 +1,6 @@
 ﻿<#@ include file="EF.Reverse.POCO.Core.ttinclude" #>
 <#@ assembly name="C:\Users\Analista.Programador\Documents\Codigo fuente\FUMIT\packages\EF6.Contrib.1.0.5\lib\net45\EntityFramework.Contrib.dll" #>
+
 <#
     // v2.37.1
     // Please make changes to the settings below.
@@ -32,8 +33,8 @@
     Settings.ResultClassModifiers          = "public"; // "public partial";
     Settings.UseMappingTables = true; // If true, mapping will be used and no mapping tables will be generated. If false, all tables will be generated.
     Settings.UsePascalCase = true;    // This will rename the generated C# tables & properties to use PascalCase. If false table & property names will be left alone.
-    Settings.UseDataAnnotations = true; // If true, will add data annotations to the poco classes.
-    Settings.UseDataAnnotationsWithFluent = false; // If true, then non-Entity Framework-specific DataAnnotations (like [Required] and [StringLength]) will be applied to Entities even if UseDataAnnotations is false.
+    Settings.UseDataAnnotations = false; // If true, will add data annotations to the poco classes.
+    Settings.UseDataAnnotationsWithFluent = true; // If true, then non-Entity Framework-specific DataAnnotations (like [Required] and [StringLength]) will be applied to Entities even if UseDataAnnotations is false.
     Settings.UsePropertyInitializers = false; // Removes POCO constructor and instead uses C# 6 property initialisers to set defaults
     Settings.UseLazyLoading = true; // Marks all navigation properties as virtual or not, to support or disable EF Lazy Loading feature
     Settings.IncludeComments = CommentsStyle.AtEndOfField; // Adds comments to the generated code
@@ -460,6 +461,10 @@
                 WriteLine("        [" + dataAnnotation + "]");
             }
         }
+
+		if(c.IsPrimaryKey){
+			WriteLine("        [Key]");
+		}
 
         // Example of adding a [Required] data annotation attribute to all non-null fields
         //if (!c.IsNullable)

@@ -64,6 +64,7 @@
     <Folder Include="Security\" />
     <Folder Include="dbo\Views\" />
     <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="dbo\Functions\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Clientes.sql" />
@@ -88,5 +89,9 @@
     <Build Include="dbo\Tables\MantenimientosEquipo.sql" />
     <Build Include="dbo\Tables\Mantenimientos.sql" />
     <Build Include="dbo\Stored Procedures\USP_CalendarioSemanalServicios.sql" />
+    <Build Include="dbo\Tables\Tickets.sql" />
+    <Build Include="dbo\Tables\Operadores.sql" />
+    <Build Include="dbo\Tables\ContenedoresTickets.sql" />
+    <Build Include="dbo\Functions\ServiciosProgramadosPorDíasCalculados.sql" />
   </ItemGroup>
 </Project>

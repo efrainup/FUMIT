@@ -12,7 +12,6 @@
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FUMIT.Entidades
 {
@@ -30,7 +29,17 @@ namespace FUMIT.Entidades
 
         public MantenimientosEquipoConfiguration(string schema)
         {
+            ToTable("MantenimientosEquipo", schema);
+            HasKey(x => x.MantenimientoEquipoId);
 
+            Property(x => x.MantenimientoEquipoId).HasColumnName(@"MantenimientoEquipoId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+            Property(x => x.EquipoId).HasColumnName(@"EquipoId").HasColumnType("int").IsRequired();
+            Property(x => x.MantenimientoId).HasColumnName(@"MantenimientoId").HasColumnType("int").IsRequired();
+            Property(x => x.Borrado).HasColumnName(@"Borrado").HasColumnType("bit").IsRequired();
+
+            // Foreign keys
+            HasRequired(a => a.Equipo).WithMany(b => b.Mantenimientosequipos).HasForeignKey(c => c.EquipoId).WillCascadeOnDelete(false); // FK_MantenimientosEquipo_Equipo
+            HasRequired(a => a.Mantenimiento).WithMany(b => b.Mantenimientosequipos).HasForeignKey(c => c.MantenimientoId).WillCascadeOnDelete(false); // FK_MantenimientosEquipo_Mantenimientos
         }
     }
 

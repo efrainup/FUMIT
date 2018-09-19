@@ -143,6 +143,17 @@
                                     </Setter>
                                     <Setter Property="BorderBrush" Value="#FFFF7575"></Setter>
                                 </DataTrigger>
+                                <DataTrigger Value="True" Binding="{Binding Path=Lunes.Realizado}">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFC7FFC7" Offset="0"/>
+                                                <GradientStop Color="White" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="BorderBrush" Value="#FFFF7575"></Setter>
+                                </DataTrigger>
                             </Style.Triggers>
                         </Style>
                     </local:DataGridServiciosColumn.CellStyle>
@@ -168,6 +179,17 @@
                                     </Setter>
                                     <Setter Property="BorderBrush" Value="#FFFF7575"></Setter>
                                 </DataTrigger>
+                                <DataTrigger Value="True" Binding="{Binding Path=Martes.Realizado}">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFC7FFC7" Offset="0"/>
+                                                <GradientStop Color="White" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="BorderBrush" Value="#FFFF7575"></Setter>
+                                </DataTrigger>
                             </Style.Triggers>
                         </Style>
                     </local:DataGridServiciosColumn.CellStyle>
@@ -187,6 +209,17 @@
                                         <Setter.Value>
                                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                                 <GradientStop Color="#FFFFC7C7" Offset="0"/>
+                                                <GradientStop Color="White" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="BorderBrush" Value="#FFFF7575"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Value="True" Binding="{Binding Path=Miercoles.Realizado}">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFC7FFC7" Offset="0"/>
                                                 <GradientStop Color="White" Offset="1"/>
                                             </LinearGradientBrush>
                                         </Setter.Value>
@@ -219,6 +252,17 @@
                                     </Setter>
                                     <Setter Property="BorderBrush" Value="#FFFF7575"></Setter>
                                 </DataTrigger>
+                                <DataTrigger Value="True" Binding="{Binding Path=Jueves.Realizado}">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFC7FFC7" Offset="0"/>
+                                                <GradientStop Color="White" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="BorderBrush" Value="#FFFF7575"></Setter>
+                                </DataTrigger>
                             </Style.Triggers>
                         </Style>
                     </local:DataGridServiciosColumn.CellStyle>
@@ -238,6 +282,17 @@
                                         <Setter.Value>
                                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                                 <GradientStop Color="#FFFFC7C7" Offset="0"/>
+                                                <GradientStop Color="White" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="BorderBrush" Value="#FFFF7575"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Value="True" Binding="{Binding Path=Viernes.Realizado}">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFC7FFC7" Offset="0"/>
                                                 <GradientStop Color="White" Offset="1"/>
                                             </LinearGradientBrush>
                                         </Setter.Value>
@@ -269,6 +324,17 @@
                                     </Setter>
                                     <Setter Property="BorderBrush" Value="#FFFF7575"></Setter>
                                 </DataTrigger>
+                                <DataTrigger Value="True" Binding="{Binding Path=Sabado.Realizado}">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFC7FFC7" Offset="0"/>
+                                                <GradientStop Color="White" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="BorderBrush" Value="#FFFF7575"></Setter>
+                                </DataTrigger>
                             </Style.Triggers>
                         </Style>
                     </local:DataGridServiciosColumn.CellStyle>
@@ -288,6 +354,17 @@
                                         <Setter.Value>
                                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                                 <GradientStop Color="#FFFFC7C7" Offset="0"/>
+                                                <GradientStop Color="White" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="BorderBrush" Value="#FFFF7575"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Value="True" Binding="{Binding Path=Domingo.Realizado}">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFC7FFC7" Offset="0"/>
                                                 <GradientStop Color="White" Offset="1"/>
                                             </LinearGradientBrush>
                                         </Setter.Value>

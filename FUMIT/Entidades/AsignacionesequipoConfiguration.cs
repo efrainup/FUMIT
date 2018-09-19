@@ -12,7 +12,6 @@
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FUMIT.Entidades
 {
@@ -30,11 +29,21 @@ namespace FUMIT.Entidades
 
         public AsignacionesequipoConfiguration(string schema)
         {
-            Property(x => x.FechaAsignación).IsOptional();
-            Property(x => x.FechaEntrega).IsOptional();
-            Property(x => x.FechaRegreso).IsOptional();
-            Property(x => x.Ubicacion).IsOptional().IsUnicode(false);
+            ToTable("AsignacionesEquipos", schema);
+            HasKey(x => x.AsignacionEquipoId);
 
+            Property(x => x.AsignacionEquipoId).HasColumnName(@"AsignacionEquipoId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+            Property(x => x.EquipoId).HasColumnName(@"EquipoId").HasColumnType("int").IsRequired();
+            Property(x => x.ClienteId).HasColumnName(@"ClienteId").HasColumnType("int").IsRequired();
+            Property(x => x.FechaAsignación).HasColumnName(@"FechaAsignación").HasColumnType("datetime").IsOptional();
+            Property(x => x.FechaEntrega).HasColumnName(@"FechaEntrega").HasColumnType("datetime").IsOptional();
+            Property(x => x.FechaRegreso).HasColumnName(@"FechaRegreso").HasColumnType("datetime").IsOptional();
+            Property(x => x.Borrado).HasColumnName(@"Borrado").HasColumnType("bit").IsRequired();
+            Property(x => x.Ubicacion).HasColumnName(@"Ubicacion").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(120);
+
+            // Foreign keys
+            HasRequired(a => a.Clientes).WithMany(b => b.Asignacionesequipos).HasForeignKey(c => c.ClienteId).WillCascadeOnDelete(false); // FK_AsignacionesEquipos_Clientes
+            HasRequired(a => a.Equipo).WithMany(b => b.Asignacionesequipos).HasForeignKey(c => c.EquipoId).WillCascadeOnDelete(false); // FK_AsignacionesEquipos_Equipo
         }
     }
 

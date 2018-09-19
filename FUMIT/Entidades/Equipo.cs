@@ -12,7 +12,6 @@
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FUMIT.Entidades
 {
@@ -20,66 +19,53 @@ namespace FUMIT.Entidades
     using System.Runtime.Serialization;
 
     // Equipo
-    [Table("Equipo", Schema = "dbo")]
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.37.1.0")]
     public partial class Equipo: INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column(@"EquipoId", Order = 1, TypeName = "int")]
-        [Index(@"PK_Equipo", 1, IsUnique = true, IsClustered = true)]
         [Required]
-        [Key]
         [Display(Name = "Equipo ID")]
+        [Key]
         public int EquipoId { get; set; } // EquipoId (Primary key)
 
-        [Column(@"TipoEquipoId", Order = 2, TypeName = "int")]
         [Required]
         [Display(Name = "Tipo equipo ID")]
         public int TipoEquipoId { get; set; } // TipoEquipoId
 
-        [Column(@"NumeroEconomico", Order = 3, TypeName = "varchar")]
         [MaxLength(15)]
         [StringLength(15)]
         [Display(Name = "Numero economico")]
         public string NumeroEconomico { get; set; } // NumeroEconomico (length: 15)
 
-        [Column(@"Estado", Order = 4, TypeName = "varchar")]
         [Required(AllowEmptyStrings = true)]
         [MaxLength(50)]
         [StringLength(50)]
         [Display(Name = "Estado")]
         public string Estado { get; set; } // Estado (length: 50)
 
-        [Column(@"RequiereMantenimiento", Order = 5, TypeName = "bit")]
         [Required]
         [Display(Name = "Requiere mantenimiento")]
         public bool RequiereMantenimiento { get; set; } // RequiereMantenimiento
 
-        [Column(@"EnMantenimiento", Order = 6, TypeName = "bit")]
         [Required]
         [Display(Name = "En mantenimiento")]
         public bool EnMantenimiento { get; set; } // EnMantenimiento
 
-        [Column(@"Observaciones", Order = 7, TypeName = "varchar")]
         [MaxLength(250)]
         [StringLength(250)]
         [Display(Name = "Observaciones")]
         public string Observaciones { get; set; } // Observaciones (length: 250)
 
-        [Column(@"Activo", Order = 8, TypeName = "bit")]
         [Required]
         [Display(Name = "Activo")]
         public bool Activo { get; set; } // Activo
 
-        [Column(@"Borrado", Order = 9, TypeName = "bit")]
         [Required]
         [Display(Name = "Borrado")]
         public bool Borrado { get; set; } // Borrado
 
-        [Column(@"Asignado", Order = 10, TypeName = "bit")]
         [Required]
         [Display(Name = "Asignado")]
         public bool Asignado { get; set; } // Asignado
@@ -104,7 +90,7 @@ namespace FUMIT.Entidades
         /// <summary>
         /// Parent Tipoequipo pointed by [Equipo].([TipoEquipoId]) (FK_Equipo_TipoEquipos)
         /// </summary>
-        [ForeignKey("TipoEquipoId"), Required] public virtual Tipoequipo Tipoequipo { get; set; } // FK_Equipo_TipoEquipos
+        public virtual Tipoequipo Tipoequipo { get; set; } // FK_Equipo_TipoEquipos
 
         public Equipo()
         {

@@ -12,7 +12,6 @@
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FUMIT.Entidades
 {
@@ -30,10 +29,26 @@ namespace FUMIT.Entidades
 
         public ServiciosprogramadoConfiguration(string schema)
         {
-            Property(x => x.Tipo).IsOptional().IsUnicode(false);
-            Property(x => x.Observaciones).IsOptional().IsUnicode(false);
-            Property(x => x.ProgramacionServiciosClientesId).IsOptional();
+            ToTable("ServiciosProgramados", schema);
+            HasKey(x => x.ServicioProgramadoId);
 
+            Property(x => x.ServicioProgramadoId).HasColumnName(@"ServicioProgramadoId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+            Property(x => x.ClienteId).HasColumnName(@"ClienteId").HasColumnType("int").IsRequired();
+            Property(x => x.ServicioId).HasColumnName(@"ServicioId").HasColumnType("int").IsRequired();
+            Property(x => x.FechaServicio).HasColumnName(@"FechaServicio").HasColumnType("datetime").IsRequired();
+            Property(x => x.Tipo).HasColumnName(@"Tipo").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(50);
+            Property(x => x.Cancelado).HasColumnName(@"Cancelado").HasColumnType("bit").IsRequired();
+            Property(x => x.Borrado).HasColumnName(@"Borrado").HasColumnType("bit").IsRequired();
+            Property(x => x.Activo).HasColumnName(@"Activo").HasColumnType("bit").IsRequired();
+            Property(x => x.Prioridad).HasColumnName(@"Prioridad").HasColumnType("int").IsRequired();
+            Property(x => x.Observaciones).HasColumnName(@"Observaciones").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(250);
+            Property(x => x.ProgramacionServiciosClientesId).HasColumnName(@"ProgramacionServiciosClientesId").HasColumnType("int").IsOptional();
+            Property(x => x.Realizado).HasColumnName(@"Realizado").HasColumnType("bit").IsRequired();
+
+            // Foreign keys
+            HasOptional(a => a.Programacionservicioscliente).WithMany(b => b.Serviciosprogramados).HasForeignKey(c => c.ProgramacionServiciosClientesId).WillCascadeOnDelete(false); // FK_ServiciosProgramados_ProgramacionServiciosClientes
+            HasRequired(a => a.Clientes).WithMany(b => b.Serviciosprogramados).HasForeignKey(c => c.ClienteId).WillCascadeOnDelete(false); // FK_ServiciosProgramados_Clientes
+            HasRequired(a => a.Servicio).WithMany(b => b.Serviciosprogramados).HasForeignKey(c => c.ServicioId).WillCascadeOnDelete(false); // FK_ServiciosProgramados_Servicios
         }
     }
 

@@ -120,7 +120,7 @@ namespace FUMIT.Formularios.Operacion
                         Cancelado = serviciosprogramados[j].Cancelado.HasValue ?  serviciosprogramados[j].Cancelado.Value : false,
                         DescripcionServicio = serviciosprogramados[j].NombreServicio,
                         Entidad = serviciosprogramados[j],
-                        
+                        Realizado = serviciosprogramados[j].Realizado.HasValue ? serviciosprogramados[j].Realizado.Value : false
                     };
 
                     switch (fechaActual.DayOfWeek)
@@ -195,6 +195,7 @@ namespace FUMIT.Formularios.Operacion
                 CalendarioUC.MoverServicio += CalendarioUC_MoverServicio;
                 CalendarioUC.CancelarServicio += CalendarioUC_CancelarServicio;
                 CalendarioUC.VerExpedienteCliente += CalendarioUC_VerExpedienteCliente;
+                CalendarioUC.CapturarTicketServicio += CalendarioUC_CapturarTicketServicio;
                 elementHost2.Child = CalendarioUC;
 
 
@@ -203,6 +204,18 @@ namespace FUMIT.Formularios.Operacion
                 CalcularSemanasAño(Año);
                 btnActualizar_Click(sender, e);
             }
+
+        }
+
+        private void CalendarioUC_CapturarTicketServicio(object sender, object e)
+        {
+            Entidades.UspCalendarioSemanalServiciosReturnModel servicioCalendario = (e as Entidades.UspCalendarioSemanalServiciosReturnModel);
+            Entidades.Serviciosprogramado servicioProgramad = null;
+
+            servicioProgramad = RecuperarServicioProgramadoDeServicioCalendario(servicioCalendario);
+
+            var formularioCapturaTicket = new Formularios.Operacion.CapturaDeTicketForm(servicioProgramad);
+            formularioCapturaTicket.ShowDialog();
 
         }
 
@@ -271,6 +284,11 @@ namespace FUMIT.Formularios.Operacion
             editarServicioFormulario.ShowDialog();
         }
 
+        /// <summary>
+        /// Recupera o crea un servicio programado de un servicio de calendario
+        /// </summary>
+        /// <param name="servicioDeCalendarioSemanal"></param>
+        /// <returns></returns>
         private Entidades.Serviciosprogramado RecuperarServicioProgramadoDeServicioCalendario(Entidades.UspCalendarioSemanalServiciosReturnModel servicioDeCalendarioSemanal)
         {
             Entidades.Serviciosprogramado servicioProgramad;

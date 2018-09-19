@@ -7,6 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Dynamic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Core.Objects.DataClasses;
+using System.Data.Entity.Core.Objects;
 
 namespace FUMIT.AccesoDatos
 {
@@ -49,8 +52,11 @@ namespace FUMIT.AccesoDatos
         }
         public virtual T Actualizar(T entidad)
         {
-            entidad = dbSet.Attach(entidad);
-            dbContext.Entry<T>(entidad).State = EntityState.Modified;
+            if (dbContext.Entry(entidad).State == EntityState.Detached)
+            {
+                entidad = dbSet.Attach(entidad);
+                dbContext.Entry<T>(entidad).State = EntityState.Modified;
+            }
             dbContext.SaveChanges();
 
             return entidad;
@@ -58,8 +64,40 @@ namespace FUMIT.AccesoDatos
 
         public virtual async Task<T> ActualizarAsync(T entidad)
         {
-            entidad = dbSet.Attach(entidad);
-            dbContext.Entry<T>(entidad).State = EntityState.Modified;
+            DbEntityEntry dbEntityEntry = dbContext.Entry(entidad);
+
+            if (dbContext.Entry(entidad).State == EntityState.Detached)
+            {
+                entidad = dbSet.Attach(entidad);
+                dbContext.Entry<T>(entidad).State = EntityState.Modified;
+            }
+
+            PropertyInfo[] propiedades = typeof(T).GetProperties();
+            PropertyInfo[] propiedadesN = propiedades
+                .Where(w => w.GetCustomAttribute<System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute>() != null)
+                //.Select(s => s.GetCustomAttribute<System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute>().Name)
+                .ToArray();
+
+            //var propiedadesBuscar = propiedades.Where(w => propiedadesN.Any(a => a == w.Name));
+            //ObjectStateManager man = ((IObjectContextAdapter)dbContext).ObjectContext.ObjectStateManager//.GetRelationshipManager(entidad);
+            foreach (PropertyInfo propiedad in propiedadesN)
+            {
+
+                object valor = propiedad.GetValue(entidad);
+                Type type = propiedad.PropertyType;
+
+                dbContext.Set(type).Attach(valor);
+                dbContext.Entry(valor).State = EntityState.Unchanged;
+
+                dbContext.Entry(valor).Property(propiedad.Name).CurrentValue = null;
+                dbContext.Entry(valor).Property(propiedad.Name).IsModified = false;
+                //Convert.ChangeType(valor, type);
+
+                propiedad.SetValue(entidad,null);
+            }
+
+            //((System.Data.Entity.Infrastructure.IObjectContextAdapter)dbContext).ObjectContext.ObjectStateManager.
+            //dbContext.Entry(entidad).Property("").
             await dbContext.SaveChangesAsync();
             return entidad;
         }

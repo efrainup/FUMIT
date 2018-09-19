@@ -12,7 +12,6 @@
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FUMIT.Entidades
 {
@@ -30,10 +29,22 @@ namespace FUMIT.Entidades
 
         public EquipoConfiguration(string schema)
         {
-            Property(x => x.NumeroEconomico).IsOptional().IsUnicode(false);
-            Property(x => x.Estado).IsUnicode(false);
-            Property(x => x.Observaciones).IsOptional().IsUnicode(false);
+            ToTable("Equipo", schema);
+            HasKey(x => x.EquipoId);
 
+            Property(x => x.EquipoId).HasColumnName(@"EquipoId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+            Property(x => x.TipoEquipoId).HasColumnName(@"TipoEquipoId").HasColumnType("int").IsRequired();
+            Property(x => x.NumeroEconomico).HasColumnName(@"NumeroEconomico").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(15);
+            Property(x => x.Estado).HasColumnName(@"Estado").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(50);
+            Property(x => x.RequiereMantenimiento).HasColumnName(@"RequiereMantenimiento").HasColumnType("bit").IsRequired();
+            Property(x => x.EnMantenimiento).HasColumnName(@"EnMantenimiento").HasColumnType("bit").IsRequired();
+            Property(x => x.Observaciones).HasColumnName(@"Observaciones").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(250);
+            Property(x => x.Activo).HasColumnName(@"Activo").HasColumnType("bit").IsRequired();
+            Property(x => x.Borrado).HasColumnName(@"Borrado").HasColumnType("bit").IsRequired();
+            Property(x => x.Asignado).HasColumnName(@"Asignado").HasColumnType("bit").IsRequired();
+
+            // Foreign keys
+            HasRequired(a => a.Tipoequipo).WithMany(b => b.Equipos).HasForeignKey(c => c.TipoEquipoId).WillCascadeOnDelete(false); // FK_Equipo_TipoEquipos
         }
     }
 

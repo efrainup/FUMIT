@@ -10,11 +10,14 @@
     [Prioridad]                       INT           CONSTRAINT [DF_ServiciosProgramados_Prioridad] DEFAULT ((1000)) NOT NULL,
     [Observaciones]                   VARCHAR (250) NULL,
     [ProgramacionServiciosClientesId] INT           NULL,
+    [Realizado]                       BIT           CONSTRAINT [DF_ServiciosProgramados_Realizado] DEFAULT ((0)) NOT NULL,
     CONSTRAINT [PK_ServiciosProgramados] PRIMARY KEY CLUSTERED ([ServicioProgramadoId] ASC),
     CONSTRAINT [FK_ServiciosProgramados_Clientes] FOREIGN KEY ([ClienteId]) REFERENCES [dbo].[Clientes] ([ClienteId]),
     CONSTRAINT [FK_ServiciosProgramados_ProgramacionServiciosClientes] FOREIGN KEY ([ProgramacionServiciosClientesId]) REFERENCES [dbo].[ProgramacionServiciosClientes] ([ProgramacionServiciosClienteId]),
     CONSTRAINT [FK_ServiciosProgramados_Servicios] FOREIGN KEY ([ServicioId]) REFERENCES [dbo].[Servicios] ([ServicioId])
 );
+
+
 
 
 

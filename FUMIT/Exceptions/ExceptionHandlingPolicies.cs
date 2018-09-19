@@ -62,7 +62,7 @@ namespace FUMIT.Exceptions
 
                     foreach (DbValidationError errorvalidacion in validacion.ValidationErrors)
                     {
-                        Mensaje += $"•{errorvalidacion.ErrorMessage}";
+                        Mensaje += $"•{errorvalidacion.ErrorMessage}\r\n";
                         //this.Controls[0].DataBindings.Add()
                     }
 

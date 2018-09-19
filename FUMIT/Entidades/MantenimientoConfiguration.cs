@@ -12,7 +12,6 @@
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FUMIT.Entidades
 {
@@ -30,10 +29,17 @@ namespace FUMIT.Entidades
 
         public MantenimientoConfiguration(string schema)
         {
-            Property(x => x.FechaProgramada).IsOptional();
-            Property(x => x.FechaEntradaMantenimiento).IsOptional();
-            Property(x => x.FechaSalidaMantenimiento).IsOptional();
-            Property(x => x.Observaciones).IsOptional().IsUnicode(false);
+            ToTable("Mantenimientos", schema);
+            HasKey(x => x.MantenimientoId);
+
+            Property(x => x.MantenimientoId).HasColumnName(@"MantenimientoId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+            Property(x => x.FechaProgramada).HasColumnName(@"FechaProgramada").HasColumnType("datetime").IsOptional();
+            Property(x => x.FechaEntradaMantenimiento).HasColumnName(@"FechaEntradaMantenimiento").HasColumnType("datetime").IsOptional();
+            Property(x => x.FechaSalidaMantenimiento).HasColumnName(@"FechaSalidaMantenimiento").HasColumnType("datetime").IsOptional();
+            Property(x => x.Observaciones).HasColumnName(@"Observaciones").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(250);
+            Property(x => x.Activo).HasColumnName(@"Activo").HasColumnType("bit").IsRequired();
+            Property(x => x.Borrado).HasColumnName(@"Borrado").HasColumnType("bit").IsRequired();
+            Property(x => x.Realizado).HasColumnName(@"Realizado").HasColumnType("bit").IsRequired();
         }
     }
 

@@ -12,7 +12,6 @@
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FUMIT.Entidades
 {
@@ -34,6 +33,7 @@ namespace FUMIT.Entidades
         public System.Int32? ServicioProgramadoId { get; set; }
         public System.Boolean? Cancelado { get; set; }
         public System.Int32? Prioridad { get; set; }
+        public System.Boolean? Realizado { get; set; }
     }
 
 }

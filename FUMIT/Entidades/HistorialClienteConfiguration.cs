@@ -12,7 +12,6 @@
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FUMIT.Entidades
 {
@@ -30,8 +29,19 @@ namespace FUMIT.Entidades
 
         public HistorialClienteConfiguration(string schema)
         {
-            Property(x => x.Observaciones).IsOptional().IsUnicode(false);
+            ToTable("HistorialCliente", schema);
+            HasKey(x => x.HistorialClienteId);
 
+            Property(x => x.HistorialClienteId).HasColumnName(@"HistorialClienteId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+            Property(x => x.ClienteId).HasColumnName(@"ClienteId").HasColumnType("int").IsRequired();
+            Property(x => x.EventoClienteId).HasColumnName(@"EventoClienteId").HasColumnType("int").IsRequired();
+            Property(x => x.Fecha).HasColumnName(@"Fecha").HasColumnType("datetime").IsRequired();
+            Property(x => x.Observaciones).HasColumnName(@"Observaciones").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(250);
+            Property(x => x.Borrado).HasColumnName(@"Borrado").HasColumnType("bit").IsRequired();
+
+            // Foreign keys
+            HasRequired(a => a.Clientes).WithMany(b => b.Historialclientes).HasForeignKey(c => c.ClienteId).WillCascadeOnDelete(false); // FK_HistorialCliente_Clientes
+            HasRequired(a => a.Evento).WithMany(b => b.Historialclientes).HasForeignKey(c => c.EventoClienteId).WillCascadeOnDelete(false); // FK_HistorialCliente_Eventos
         }
     }
 

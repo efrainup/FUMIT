@@ -12,7 +12,6 @@
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FUMIT.Entidades
 {
@@ -30,11 +29,17 @@ namespace FUMIT.Entidades
 
         public SucursalConfiguration(string schema)
         {
-            Property(x => x.Numero).IsOptional().IsUnicode(false);
-            Property(x => x.Nombre).IsUnicode(false);
-            Property(x => x.Direccion).IsOptional().IsUnicode(false);
-            Property(x => x.Estado).IsOptional().IsUnicode(false);
-            Property(x => x.Ciudad).IsOptional().IsUnicode(false);
+            ToTable("Sucursales", schema);
+            HasKey(x => x.SucursalId);
+
+            Property(x => x.SucursalId).HasColumnName(@"SucursalId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+            Property(x => x.Numero).HasColumnName(@"Numero").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(5);
+            Property(x => x.Nombre).HasColumnName(@"Nombre").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(120);
+            Property(x => x.Direccion).HasColumnName(@"Direccion").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(250);
+            Property(x => x.Estado).HasColumnName(@"Estado").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(50);
+            Property(x => x.Ciudad).HasColumnName(@"Ciudad").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(50);
+            Property(x => x.Activo).HasColumnName(@"Activo").HasColumnType("bit").IsRequired();
+            Property(x => x.Borrado).HasColumnName(@"Borrado").HasColumnType("bit").IsRequired();
         }
     }
 

@@ -37,8 +37,9 @@ namespace FUMIT.AccesoDatos
                 try
                 {
                     //Actualizar el estado del equipo a asignado
-                    entidad.Equipo.Asignado = true;
-                    await EquiposRepositorio.ActualizarAsync(entidad.Equipo);
+                    Equipo equipo = EquiposRepositorio.RecuperarPorId(entidad.EquipoId);
+                    equipo.Asignado = true;
+                    await EquiposRepositorio.ActualizarAsync(equipo);
 
                     entidad = await base.CrearAsync(entidad);
                     transaccion.Commit();
@@ -59,8 +60,9 @@ namespace FUMIT.AccesoDatos
                 try
                 {
                     //Actualizar el estado del equipo a asignado
-                    entidad.Equipo.Asignado = true;
-                    EquiposRepositorio.Actualizar(entidad.Equipo);
+                    Equipo equipo = EquiposRepositorio.RecuperarPorId(entidad.EquipoId);
+                    equipo.Asignado = true;
+                    EquiposRepositorio.Actualizar(equipo);
 
                     entidad = base.Crear(entidad);
                     transaccion.Commit();
@@ -82,8 +84,9 @@ namespace FUMIT.AccesoDatos
                 try
                 {
                     //Se desasigna el equipo
-                    entidad.Equipo.Asignado = false;
-                    await EquiposRepositorio.ActualizarAsync(entidad.Equipo);
+                    Equipo equipo = EquiposRepositorio.RecuperarPorId(entidad.EquipoId);
+                    equipo.Asignado = false;
+                    await EquiposRepositorio.ActualizarAsync(equipo);
 
                     await base.EliminarAsync(entidad);
                     transaccion.Commit();
@@ -103,8 +106,9 @@ namespace FUMIT.AccesoDatos
                 try
                 {
                     //Se desasigna el equipo
-                    entidad.Equipo.Asignado = false;
-                    EquiposRepositorio.Actualizar(entidad.Equipo);
+                    Equipo equipo = EquiposRepositorio.RecuperarPorId(entidad.EquipoId);
+                    equipo.Asignado = false;
+                    EquiposRepositorio.Actualizar(equipo);
 
                     base.Eliminar(entidad);
                     transaccion.Commit();

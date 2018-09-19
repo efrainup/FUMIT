@@ -12,7 +12,6 @@
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FUMIT.Entidades
 {
@@ -30,9 +29,19 @@ namespace FUMIT.Entidades
 
         public CicloFacturacionClienteConfiguration(string schema)
         {
-            Property(x => x.FechaInicioVigencia).IsOptional();
-            Property(x => x.FechaFinVigencia).IsOptional();
+            ToTable("CicloFacturacionCliente", schema);
+            HasKey(x => x.CicloFacturacionClienteId);
 
+            Property(x => x.CicloFacturacionClienteId).HasColumnName(@"CicloFacturacionClienteId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+            Property(x => x.CicloFacturacionId).HasColumnName(@"CicloFacturacionId").HasColumnType("int").IsRequired();
+            Property(x => x.ServicioId).HasColumnName(@"ServicioId").HasColumnType("int").IsRequired();
+            Property(x => x.FechaInicioVigencia).HasColumnName(@"FechaInicioVigencia").HasColumnType("datetime").IsOptional();
+            Property(x => x.FechaFinVigencia).HasColumnName(@"FechaFinVigencia").HasColumnType("datetime").IsOptional();
+            Property(x => x.Activo).HasColumnName(@"Activo").HasColumnType("bit").IsRequired();
+            Property(x => x.Borrado).HasColumnName(@"Borrado").HasColumnType("bit").IsRequired();
+
+            // Foreign keys
+            HasRequired(a => a.CiclosFacturacion).WithMany(b => b.Ciclofacturacionclientes).HasForeignKey(c => c.CicloFacturacionId).WillCascadeOnDelete(false); // FK_CicloFacturacionCliente_CicloFacturacionCliente
         }
     }
 

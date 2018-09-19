@@ -12,7 +12,6 @@
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FUMIT.Entidades
 {
@@ -20,34 +19,27 @@ namespace FUMIT.Entidades
     using System.Runtime.Serialization;
 
     // TipoEquipos
-    [Table("TipoEquipos", Schema = "dbo")]
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.37.1.0")]
     public partial class Tipoequipo: INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column(@"TipoEquipoId", Order = 1, TypeName = "int")]
-        [Index(@"PK_TipoEquipos", 1, IsUnique = true, IsClustered = true)]
         [Required]
-        [Key]
         [Display(Name = "Tipo equipo ID")]
+        [Key]
         public int TipoEquipoId { get; set; } // TipoEquipoId (Primary key)
 
-        [Column(@"Nombre", Order = 2, TypeName = "varchar")]
         [MaxLength(30)]
         [StringLength(30)]
         [Display(Name = "Nombre")]
         public string Nombre { get; set; } // Nombre (length: 30)
 
-        [Column(@"Descripcion", Order = 3, TypeName = "varchar")]
         [MaxLength(100)]
         [StringLength(100)]
         [Display(Name = "Descripcion")]
         public string Descripcion { get; set; } // Descripcion (length: 100)
 
-        [Column(@"Borrado", Order = 4, TypeName = "bit")]
         [Required]
         [Display(Name = "Borrado")]
         public bool Borrado { get; set; } // Borrado

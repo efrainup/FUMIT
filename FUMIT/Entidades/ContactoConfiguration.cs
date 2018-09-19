@@ -12,7 +12,6 @@
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FUMIT.Entidades
 {
@@ -30,11 +29,19 @@ namespace FUMIT.Entidades
 
         public ContactoConfiguration(string schema)
         {
-            Property(x => x.Nombre).IsUnicode(false);
-            Property(x => x.Telefono).IsOptional().IsUnicode(false);
-            Property(x => x.Correo).IsOptional().IsUnicode(false);
-            Property(x => x.Tipo).IsOptional().IsUnicode(false);
+            ToTable("Contactos", schema);
+            HasKey(x => x.ContactoId);
 
+            Property(x => x.ContactoId).HasColumnName(@"ContactoId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+            Property(x => x.ClienteId).HasColumnName(@"ClienteId").HasColumnType("int").IsRequired();
+            Property(x => x.Nombre).HasColumnName(@"Nombre").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(120);
+            Property(x => x.Telefono).HasColumnName(@"Telefono").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(100);
+            Property(x => x.Correo).HasColumnName(@"Correo").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(100);
+            Property(x => x.Tipo).HasColumnName(@"Tipo").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(20);
+            Property(x => x.Borrado).HasColumnName(@"Borrado").HasColumnType("bit").IsRequired();
+
+            // Foreign keys
+            HasRequired(a => a.Clientes).WithMany(b => b.Contactos).HasForeignKey(c => c.ClienteId).WillCascadeOnDelete(false); // FK_Contactos_Clientes
         }
     }
 

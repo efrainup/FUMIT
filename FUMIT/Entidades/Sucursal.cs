@@ -12,7 +12,6 @@
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FUMIT.Entidades
 {
@@ -20,58 +19,47 @@ namespace FUMIT.Entidades
     using System.Runtime.Serialization;
 
     // Sucursales
-    [Table("Sucursales", Schema = "dbo")]
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.37.1.0")]
     public partial class Sucursal: INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column(@"SucursalId", Order = 1, TypeName = "int")]
-        [Index(@"PK_Sucursales", 1, IsUnique = true, IsClustered = true)]
         [Required]
-        [Key]
         [Display(Name = "Sucursal ID")]
+        [Key]
         public int SucursalId { get; set; } // SucursalId (Primary key)
 
-        [Column(@"Numero", Order = 2, TypeName = "varchar")]
         [MaxLength(5)]
         [StringLength(5)]
         [Display(Name = "Numero")]
         public string Numero { get; set; } // Numero (length: 5)
 
-        [Column(@"Nombre", Order = 3, TypeName = "varchar")]
         [Required(AllowEmptyStrings = true)]
         [MaxLength(120)]
         [StringLength(120)]
         [Display(Name = "Nombre")]
         public string Nombre { get; set; } // Nombre (length: 120)
 
-        [Column(@"Direccion", Order = 4, TypeName = "varchar")]
         [MaxLength(250)]
         [StringLength(250)]
         [Display(Name = "Direccion")]
         public string Direccion { get; set; } // Direccion (length: 250)
 
-        [Column(@"Estado", Order = 5, TypeName = "varchar")]
         [MaxLength(50)]
         [StringLength(50)]
         [Display(Name = "Estado")]
         public string Estado { get; set; } // Estado (length: 50)
 
-        [Column(@"Ciudad", Order = 6, TypeName = "varchar")]
         [MaxLength(50)]
         [StringLength(50)]
         [Display(Name = "Ciudad")]
         public string Ciudad { get; set; } // Ciudad (length: 50)
 
-        [Column(@"Activo", Order = 7, TypeName = "bit")]
         [Required]
         [Display(Name = "Activo")]
         public bool Activo { get; set; } // Activo
 
-        [Column(@"Borrado", Order = 8, TypeName = "bit")]
         [Required]
         [Display(Name = "Borrado")]
         public bool Borrado { get; set; } // Borrado

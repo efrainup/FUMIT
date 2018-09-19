@@ -12,7 +12,6 @@
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FUMIT.Entidades
 {
@@ -20,40 +19,32 @@ namespace FUMIT.Entidades
     using System.Runtime.Serialization;
 
     // Servicios
-    [Table("Servicios", Schema = "dbo")]
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.37.1.0")]
     public partial class Servicio: INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column(@"ServicioId", Order = 1, TypeName = "int")]
-        [Index(@"PK__Servicios__117F9D94", 1, IsUnique = true, IsClustered = true)]
         [Required]
-        [Key]
         [Display(Name = "Servicio ID")]
+        [Key]
         public int ServicioId { get; set; } // ServicioId (Primary key)
 
-        [Column(@"Nombre", Order = 2, TypeName = "nvarchar")]
         [Required(AllowEmptyStrings = true)]
         [MaxLength(50)]
         [StringLength(50)]
         [Display(Name = "Nombre")]
         public string Nombre { get; set; } // Nombre (length: 50)
 
-        [Column(@"Descripcion", Order = 3, TypeName = "nvarchar")]
         [MaxLength(250)]
         [StringLength(250)]
         [Display(Name = "Descripcion")]
         public string Descripcion { get; set; } // Descripcion (length: 250)
 
-        [Column(@"Activo", Order = 4, TypeName = "bit")]
         [Required]
         [Display(Name = "Activo")]
         public bool Activo { get; set; } // Activo
 
-        [Column(@"Borrado", Order = 5, TypeName = "bit")]
         [Required]
         [Display(Name = "Borrado")]
         public bool Borrado { get; set; } // Borrado

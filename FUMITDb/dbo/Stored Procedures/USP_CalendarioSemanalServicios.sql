@@ -1,7 +1,7 @@
 ﻿-- =============================================
 -- Author:		Efrain Hernandez
 -- Create date: 05/09/2018
--- Description:	Obtiene el calendario semanal de servicios programados
+-- Description:	Obtiene el calendario semanal de servicios programados. 
 -- =============================================
 CREATE PROCEDURE [dbo].[USP_CalendarioSemanalServicios] 
 	-- Add the parameters for the stored procedure here
@@ -31,6 +31,7 @@ BEGIN
 		SET @DiaSemana = @DiaSemana + 1
 	END
 	
+	--Se obtienen servicios programados semanales
 	SELECT 
 		d.Fecha AS [FechaServicio],
 		d.nombre AS [DiaSemana], 
@@ -43,7 +44,8 @@ BEGIN
 		s.Nombre AS [NombreServicio], 
 		SP.ServicioProgramadoId, 
 		Sp.Cancelado AS [Cancelado],
-		SP.Prioridad AS [Prioridad]
+		SP.Prioridad AS [Prioridad],
+		SP.Realizado AS [Realizado]
 	
 	FROM [dbo].[ProgramacionServicios] p
 		INNER JOIN @dias d on p.Dias like '%' + d.dia + '%'
@@ -54,9 +56,31 @@ BEGIN
 	WHERE (PSC.FechaInicio <= @fechaFin) and (PSC.FechaTermino IS NULL OR PSC.FechaTermino >= @fechaInicio)
 		AND (SP.FechaServicio IS NULL OR DATEADD(DD,0,DATEDIFF(DD,0,SP.FechaServicio))=D.Fecha )
 		AND PSC.Borrado=0 AND CL.Borrado=0 AND S.Borrado=0 AND (SP.Borrado IS NULL OR SP.Borrado=0)
-		AND (SP.Tipo IS NULL OR SP.Tipo='Programado')
+		AND (SP.Tipo IS NULL OR SP.Tipo='Programado') AND (p.Semana=1)
 
-	UNION ALL --Servicios extra
+	UNION ALL 
+	--Servicios programados quincenales
+
+	SELECT 
+		 SPDC.Fecha AS [FechaServicio],
+		 D.Nombre AS [DiaSemana],
+		 SPDC.ClienteId AS [ClienteId],
+		 SPDC.NombreCliente AS [NombreCliente],
+		 SPDC.Nombre AS [NombreProgramacion],
+		 SPDC.ProgramacionServicioId AS [ProgramacionServicioId],
+		 SPDC.ProgramacionServiciosClienteId AS [ProgramacionServiciosClienteId],
+		 SPDC.ServicioId AS [ServicioId],
+		 SPDC.NombreServicio AS [NombreServicio],
+		 SPDC.ServicioProgramadoId AS [ServicioProgramadoId],
+		 SPDC.ServicioCancelado,
+	     SPDC.ServicioPrioridad,
+		 SPDC.ServicioRealizado
+	FROM [dbo].ServiciosProgramadosPorDíasCalculados(@fechaInicio,@fechaFin) SPDC
+	INNER JOIN @dias D ON D.Fecha=SPDC.Fecha
+	
+
+	UNION ALL
+	--Servicios extra
 	SELECT 
 		SP.FechaServicio AS [FechaServicio],
 		d.nombre AS [DiaSemana], 
@@ -69,12 +93,13 @@ BEGIN
 		s.Nombre AS [NombreServicio], 
 		SP.ServicioProgramadoId, 
 		Sp.Cancelado AS [Cancelado],
-		SP.Prioridad AS [Prioridad]
+		SP.Prioridad AS [Prioridad],
+		SP.Realizado AS [Realizado]
 	FROM [dbo].[ServiciosProgramados] SP
 	INNER JOIN @dias d on d.fecha=SP.FechaServicio
 	INNER JOIN [dbo].[Servicios] s ON s.ServicioId=SP.ServicioId
 	INNER JOIN [dbo].[Clientes] cl ON cl.ClienteId=SP.ClienteId
-	WHERE SP.Tipo='Expresss' AND SP.FechaServicio BETWEEN @fechaInicio and @fechafin
+	WHERE SP.Tipo='Express' AND SP.FechaServicio BETWEEN @fechaInicio and @fechafin
 	ORDER BY D.Fecha
 
 END

@@ -201,6 +201,7 @@
             // asignacionesequipoBindingSource
             // 
             this.asignacionesequipoBindingSource.DataSource = typeof(FUMIT.Entidades.Asignacionesequipo);
+            this.asignacionesequipoBindingSource.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.asignacionesequipoBindingSource_ListChanged);
             // 
             // groupBox1
             // 
@@ -256,7 +257,7 @@
             // numeroEconomicoTextBox
             // 
             this.numeroEconomicoTextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.numeroEconomicoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.asignacionesequipoBindingSource, "Equipo.NumeroEconomico", true));
+            this.numeroEconomicoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.asignacionesequipoBindingSource, "Equipo.NumeroEconomico", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.numeroEconomicoTextBox.Location = new System.Drawing.Point(144, 19);
             this.numeroEconomicoTextBox.Name = "numeroEconomicoTextBox";
             this.numeroEconomicoTextBox.ReadOnly = true;

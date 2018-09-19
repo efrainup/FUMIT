@@ -246,6 +246,7 @@ namespace FUMIT.UserControls.Wpf
         public string Unidad { get; set; }
         public string Status { get; set; }
         public bool Cancelado { get; set; }
+        public bool Realizado { get; set; }
         public object Entidad {
             get {
                 return entidadServicio;

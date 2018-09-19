@@ -12,7 +12,6 @@
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FUMIT.Entidades
 {
@@ -30,9 +29,21 @@ namespace FUMIT.Entidades
 
         public CiclosFacturacionConfiguration(string schema)
         {
-            Property(x => x.Dia).IsUnicode(false);
-            Property(x => x.Nombre).IsOptional().IsUnicode(false);
+            ToTable("CiclosFacturacion", schema);
+            HasKey(x => x.CicloFacturacionId);
 
+            Property(x => x.CicloFacturacionId).HasColumnName(@"CicloFacturacionId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+            Property(x => x.SucursalId).HasColumnName(@"SucursalId").HasColumnType("int").IsRequired();
+            Property(x => x.Dia).HasColumnName(@"Dia").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(100);
+            Property(x => x.Semana).HasColumnName(@"Semana").HasColumnType("int").IsRequired();
+            Property(x => x.Mes).HasColumnName(@"Mes").HasColumnType("int").IsRequired();
+            Property(x => x.PorDefecto).HasColumnName(@"PorDefecto").HasColumnType("bit").IsRequired();
+            Property(x => x.Activo).HasColumnName(@"Activo").HasColumnType("bit").IsRequired();
+            Property(x => x.Borrado).HasColumnName(@"Borrado").HasColumnType("bit").IsRequired();
+            Property(x => x.Nombre).HasColumnName(@"Nombre").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(50);
+
+            // Foreign keys
+            HasRequired(a => a.Sucursal).WithMany(b => b.Ciclosfacturaciones).HasForeignKey(c => c.SucursalId).WillCascadeOnDelete(false); // FK_CiclosFacturacion_Sucursales
         }
     }
 

@@ -159,8 +159,9 @@
             // capturaDeTicketsDeServicioToolStripMenuItem
             // 
             this.capturaDeTicketsDeServicioToolStripMenuItem.Name = "capturaDeTicketsDeServicioToolStripMenuItem";
+            this.capturaDeTicketsDeServicioToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
             this.capturaDeTicketsDeServicioToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
-            this.capturaDeTicketsDeServicioToolStripMenuItem.Text = "Captura de tickets de servicio";
+            this.capturaDeTicketsDeServicioToolStripMenuItem.Text = "Captura de &tickets de servicio";
             this.capturaDeTicketsDeServicioToolStripMenuItem.Click += new System.EventHandler(this.capturaDeTicketsDeServicioToolStripMenuItem_Click);
             // 
             // calendarioDeServiciosProgramadosToolStripMenuItem
@@ -283,6 +284,7 @@
             // tsbSucursalActiva
             // 
             this.tsbSucursalActiva.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbSucursalActiva.Enabled = false;
             this.tsbSucursalActiva.Name = "tsbSucursalActiva";
             this.tsbSucursalActiva.Size = new System.Drawing.Size(121, 23);
             // 

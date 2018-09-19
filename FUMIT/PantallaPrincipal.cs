@@ -143,6 +143,7 @@ namespace FUMIT
         {
             var serviciosProgramados = new Formularios.Operacion.CalendarioServicios();
             serviciosProgramados.MdiParent = this;
+            
             serviciosProgramados.Show();
         }
 
@@ -163,6 +164,11 @@ namespace FUMIT
             var CapturaDeTicketFormulario = new Formularios.Operacion.CapturaDeTicketForm();
             CapturaDeTicketFormulario.MdiParent = this;
             CapturaDeTicketFormulario.Show();
+        }
+
+        private void flowLayoutPanel1_DragDrop(object sender, DragEventArgs e)
+        {
+            Console.WriteLine(sender);
         }
     }
 }

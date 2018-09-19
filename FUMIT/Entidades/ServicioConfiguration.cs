@@ -12,7 +12,6 @@
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FUMIT.Entidades
 {
@@ -30,7 +29,14 @@ namespace FUMIT.Entidades
 
         public ServicioConfiguration(string schema)
         {
-            Property(x => x.Descripcion).IsOptional();
+            ToTable("Servicios", schema);
+            HasKey(x => x.ServicioId);
+
+            Property(x => x.ServicioId).HasColumnName(@"ServicioId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+            Property(x => x.Nombre).HasColumnName(@"Nombre").HasColumnType("nvarchar").IsRequired().HasMaxLength(50);
+            Property(x => x.Descripcion).HasColumnName(@"Descripcion").HasColumnType("nvarchar").IsOptional().HasMaxLength(250);
+            Property(x => x.Activo).HasColumnName(@"Activo").HasColumnType("bit").IsRequired();
+            Property(x => x.Borrado).HasColumnName(@"Borrado").HasColumnType("bit").IsRequired();
         }
     }
 

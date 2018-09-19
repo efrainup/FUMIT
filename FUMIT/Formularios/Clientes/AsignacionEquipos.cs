@@ -10,10 +10,11 @@ using System.Windows.Forms;
 using FUMIT.Entidades;
 using System.Data.Entity.Validation;
 using CommonServiceLocator;
+using EntLibExtensions.ExceptionHandling;
 
 namespace FUMIT.Formularios.Clientes
 {
-    public partial class AsignacionEquipos : UserControl, IFormularioEditable, IFormularioSeleccionable<Entidades.Asignacionesequipo>
+    public partial class AsignacionEquipos : BaseUserControl, IFormularioEditable, IFormularioSeleccionable<Entidades.Asignacionesequipo>
     {
 
 
@@ -25,6 +26,7 @@ namespace FUMIT.Formularios.Clientes
         #region Propiedades
         private bool modoEdicion = false;
         private int clienteId = 0;
+        Entidades.Asignacionesequipo asignacionesequipoActual;
 
         public bool ModoEdicion {
             get
@@ -36,9 +38,17 @@ namespace FUMIT.Formularios.Clientes
                 modoEdicion = value;
                 tsbCancelar.Visible = modoEdicion;
                 tsbCancelar.Enabled = modoEdicion;
-                tsbEditar.Enabled = !modoEdicion;
-                 bindingNavigatorAddNewItem.Enabled = !modoEdicion;
-                 bindingNavigatorDeleteItem.Enabled = !modoEdicion;
+                if (asignacionesequipoBindingSource != null)
+                {
+                    tsbEditar.Enabled = !modoEdicion && asignacionesequipoBindingSource.Count > 0;
+                }
+                else
+                {
+                    tsbEditar.Enabled = !modoEdicion;
+                }
+
+                bindingNavigatorAddNewItem.Enabled = !modoEdicion;
+                bindingNavigatorDeleteItem.Enabled = !modoEdicion;
                 asignacionesequipoBindingNavigatorSaveItem.Enabled = modoEdicion;
 
                 ubicacionTextBox.ReadOnly = !modoEdicion;
@@ -46,6 +56,7 @@ namespace FUMIT.Formularios.Clientes
                 fechaAsignaciónDateTimePicker.Enabled = modoEdicion;
                 fechaEntregaDateTimePicker.Enabled = modoEdicion;
                 fechaRegresoDateTimePicker.Enabled = modoEdicion;
+
             }
         }
         public AccesoDatos.IAsignacionesEquipo AsignacionesEquipoRepositorio { get; set; }
@@ -105,6 +116,8 @@ namespace FUMIT.Formularios.Clientes
             IEnumerable<Asignacionesequipo> asignacionesequipos = AsignacionesEquipoRepositorio.RecuperarEquiposPorCliente(ClienteId);
             BindingList<Entidades.Asignacionesequipo> bindingList = new BindingList<Asignacionesequipo>(asignacionesequipos.ToList());
             asignacionesequipoBindingSource.DataSource = bindingList;
+
+            //Checar si 
         }
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
@@ -114,6 +127,7 @@ namespace FUMIT.Formularios.Clientes
 
         private void tsbEditar_Click(object sender, EventArgs e)
         {
+            //No se puede editar 
             ModoEdicion = true;
         }
 
@@ -121,45 +135,26 @@ namespace FUMIT.Formularios.Clientes
         {
             ValidateChildren();
 
-            try
+            await FormExceptionManager.ProcessAsync(Exceptions.ExceptionHandlingPolicies.CrearActualizarEntidadesDesdeUI ,async () =>
             {
-                SeleccionActual.ClienteId = ClienteId;
-                SeleccionActual.Clientes = new AccesoDatos.ClientesRepositorio().RecuperarPorId(ClienteId);
+                    SeleccionActual.ClienteId = ClienteId;
+                    SeleccionActual.Clientes = new AccesoDatos.ClientesRepositorio().RecuperarPorId(ClienteId);
 
-                if (SeleccionActual.AsignacionEquipoId > 0)
-                {
-                    await AsignacionesEquipoRepositorio.ActualizarAsync(SeleccionActual);
-                }
-                else
-                {
-                    await AsignacionesEquipoRepositorio.CrearAsync(SeleccionActual);
-                }
-
-                //Se refrescan los equipos disponibles para asignar
-                CargarAutocompletadoEquipos();
-
-
-                ModoEdicion = false;
-            }
-            catch (DbEntityValidationException excepcionValidacion)
-            {
-                string Mensaje = "";
-                foreach (DbEntityValidationResult validacion in excepcionValidacion.EntityValidationErrors)
-                {
-
-                    foreach (DbValidationError errorvalidacion in validacion.ValidationErrors)
+                    if (SeleccionActual.AsignacionEquipoId > 0)
                     {
-                        Mensaje += $"•{errorvalidacion.ErrorMessage}";
+                        await AsignacionesEquipoRepositorio.ActualizarAsync(SeleccionActual);
+                    }
+                    else
+                    {
+                        await AsignacionesEquipoRepositorio.CrearAsync(SeleccionActual);
                     }
 
-                }
-                MessageBox.Show(Mensaje, "Errores de validacion");
+                    //Se refrescan los equipos disponibles para asignar
+                    CargarAutocompletadoEquipos();
 
-            }
-            catch (Exception excepcion)
-            {
-                MessageBox.Show("Se produjo un error. Favor de intentar nuevamente", "Error");
-            }
+                    ModoEdicion = false;
+                
+            });
         }
 
         private void tsbCancelar_Click(object sender, EventArgs e)
@@ -180,13 +175,15 @@ namespace FUMIT.Formularios.Clientes
             }
 
             string numeroEconomico = numeroEconomicoTextBox.Text;
-
-            Equipo equipoSeleccionado = equipos.FirstOrDefault(f => f.NumeroEconomico == numeroEconomico);
+            
+            //Efrain Hernandez 19/09/2018: Se modificó porque se enecesita saber si el contenedor está en el catálogo. Y no si está en el catalogo de disponibles.
+            Equipo equipoSeleccionado = EquiposRepositorio.RecuperarPorNumeroEconomico(numeroEconomico);
 
             if (equipoSeleccionado != null)
             {
                 SeleccionActual.EquipoId = equipoSeleccionado.EquipoId;
-                //SeleccionActual.Equipo = equipoSeleccionado;
+                SeleccionActual.Equipo = equipoSeleccionado; //Se tiene que asignar el equipo por que sino el equipo actual sufre cambios en el número económico y se actualiza en la base de datos
+                asignacionesequipoBindingSource.ResetBindings(false);
             }
             else
             {
@@ -238,7 +235,7 @@ namespace FUMIT.Formularios.Clientes
                 equipos.Add(equipo);
 
                 SeleccionActual.EquipoId = equipo.EquipoId;
-                SeleccionActual.Equipo = equipo;
+                //SeleccionActual.Equipo = equipo;
             }
             else if (entradaUsuario == DialogResult.No)
             {
@@ -259,6 +256,16 @@ namespace FUMIT.Formularios.Clientes
             catch (Exception exception)
             {
                 MessageBox.Show("Hubo un error al eliminar la asignacion");
+            }
+        }
+
+        private void asignacionesequipoBindingSource_ListChanged(object sender, ListChangedEventArgs e)
+        {
+            //Cuando la lista no contiene elementos no se debe poder editar
+            //Se dispara el evento cuando se inicializa la lista, se agrega o se borran elementos
+            if(e.ListChangedType == ListChangedType.PropertyDescriptorChanged  || e.ListChangedType== ListChangedType.ItemAdded || e.ListChangedType == ListChangedType.ItemDeleted)
+            {
+                tsbEditar.Enabled = !ModoEdicion && (sender as BindingSource).Count > 0;
             }
         }
     }
