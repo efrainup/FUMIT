@@ -20,6 +20,7 @@ namespace FUMIT.Formularios.Operacion
         private int totalSemanas;
 
         List<string> serviciosFiltrados = new List<string>();
+        List<string> FrecuenciasFiltradas = new List<string>();
         public IServicio ServiciosRepositorio { get; set; }
         public IClientes ClientesRepositorio { get; set; }
         public IProgramacionServiciosCliente ProgramacionServiciosClienteRepositorio { get; set; }
@@ -96,7 +97,7 @@ namespace FUMIT.Formularios.Operacion
 
 
                 Entidades.UspCalendarioSemanalServiciosReturnModel[] serviciosprogramados = serviciosProgramadosLista
-                    .Where(w => w.FechaServicio.Value.Date == fechaActual && serviciosFiltrados.Contains(w.NombreServicio))
+                    .Where(w => w.FechaServicio.Value.Date == fechaActual && serviciosFiltrados.Contains(w.NombreServicio) && FrecuenciasFiltradas.Any(a => w.NombreProgramacion.Contains(a)))
                     .OrderBy(o => o.Prioridad)
                     .ThenBy(t => t.ClienteId)
                     .ToArray();
@@ -120,7 +121,8 @@ namespace FUMIT.Formularios.Operacion
                         Cancelado = serviciosprogramados[j].Cancelado.HasValue ?  serviciosprogramados[j].Cancelado.Value : false,
                         DescripcionServicio = serviciosprogramados[j].NombreServicio,
                         Entidad = serviciosprogramados[j],
-                        Realizado = serviciosprogramados[j].Realizado.HasValue ? serviciosprogramados[j].Realizado.Value : false
+                        Realizado = serviciosprogramados[j].Realizado.HasValue ? serviciosprogramados[j].Realizado.Value : false,
+                        Area = serviciosprogramados[j].Area
                     };
 
                     switch (fechaActual.DayOfWeek)
@@ -185,8 +187,15 @@ namespace FUMIT.Formularios.Operacion
                     serviciosFiltrados.Add(servicio.Nombre);
                 }
                 serviciosCheckList.ItemCheck += serviciosCheckList_ItemCheck;
-                
-                //serviciosCheckList.Items.AddRange(ServiciosRepositorio.Recuperar().Select(s => s.Nombre).ToArray());
+
+                //Se chequean los checkbox de cada frecuencia 
+                FrecuenciasCheckListBox.ItemCheck -= FiltroFrecuenciaServicios_ItemCheck;
+                for (int i=0;i< FrecuenciasCheckListBox.Items.Count;i++)
+                {
+                    FrecuenciasCheckListBox.SetItemChecked(i, true);
+                    FrecuenciasFiltradas.Add(FrecuenciasCheckListBox.Items[i].ToString());
+                }
+                FrecuenciasCheckListBox.ItemCheck += FiltroFrecuenciaServicios_ItemCheck;
 
 
                 //Se agrega calendario
@@ -392,6 +401,28 @@ namespace FUMIT.Formularios.Operacion
         private void button1_Click(object sender, EventArgs e)
         {
             CalendarioUC.Print();
+        }
+
+        private void tsbSemanaActual_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            btnActualizar_Click(sender, null);
+        }
+
+        private void FiltroFrecuenciaServicios_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            //Se obtienen los filtros
+            FrecuenciasFiltradas = (sender as CheckedListBox).CheckedItems.OfType<string>().ToList();
+
+            if (e.NewValue == CheckState.Checked)
+            {
+                FrecuenciasFiltradas.Add(FrecuenciasCheckListBox.Items[e.Index].ToString());
+            }
+            else
+            {
+                FrecuenciasFiltradas.Remove(FrecuenciasCheckListBox.Items[e.Index].ToString());
+            }
+
+            btnActualizar_Click(sender, null);
         }
     }
 }

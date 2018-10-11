@@ -70,12 +70,12 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.contenedoresticketsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.contenedoresDataGrid = new System.Windows.Forms.DataGridView();
-            this.Contenedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Levantes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AgregarContenedorButton = new System.Windows.Forms.Button();
             this.eliminarContenedorButton = new System.Windows.Forms.Button();
             this.servicioTextBox = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.Contenedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Levantes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             fechaLabel = new System.Windows.Forms.Label();
             folioLabel = new System.Windows.Forms.Label();
             observacionesLabel = new System.Windows.Forms.Label();
@@ -222,6 +222,8 @@
             // ticketBindingSource
             // 
             this.ticketBindingSource.DataSource = typeof(FUMIT.Entidades.Ticket);
+            this.ticketBindingSource.CurrentChanged += new System.EventHandler(this.ticketBindingSource_CurrentChanged);
+            this.ticketBindingSource.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.ticketBindingSource_ListChanged);
             // 
             // bindingNavigatorCountItem
             // 
@@ -464,37 +466,25 @@
             // 
             // contenedoresticketsBindingSource
             // 
-            this.contenedoresticketsBindingSource.DataMember = "Contenedorestickets";
-            this.contenedoresticketsBindingSource.DataSource = this.ticketBindingSource;
+            this.contenedoresticketsBindingSource.DataSource = typeof(FUMIT.Entidades.Contenedoresticket);
+            this.contenedoresticketsBindingSource.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.contenedoresticketsBindingSource_ListChanged);
             // 
             // contenedoresDataGrid
             // 
             this.contenedoresDataGrid.AllowUserToAddRows = false;
             this.contenedoresDataGrid.AllowUserToDeleteRows = false;
+            this.contenedoresDataGrid.AutoGenerateColumns = false;
             this.contenedoresDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.contenedoresDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Contenedor,
             this.Levantes});
+            this.contenedoresDataGrid.DataSource = this.contenedoresticketsBindingSource;
             this.contenedoresDataGrid.Location = new System.Drawing.Point(24, 185);
             this.contenedoresDataGrid.Name = "contenedoresDataGrid";
             this.contenedoresDataGrid.ReadOnly = true;
             this.contenedoresDataGrid.Size = new System.Drawing.Size(381, 101);
             this.contenedoresDataGrid.TabIndex = 35;
             this.contenedoresDataGrid.Validating += new System.ComponentModel.CancelEventHandler(this.contenedoresDataGrid_Validating);
-            // 
-            // Contenedor
-            // 
-            this.Contenedor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Contenedor.HeaderText = "Contenedor";
-            this.Contenedor.Name = "Contenedor";
-            this.Contenedor.ReadOnly = true;
-            // 
-            // Levantes
-            // 
-            this.Levantes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Levantes.HeaderText = "Levantes";
-            this.Levantes.Name = "Levantes";
-            this.Levantes.ReadOnly = true;
             // 
             // AgregarContenedorButton
             // 
@@ -516,7 +506,6 @@
             this.eliminarContenedorButton.TabIndex = 37;
             this.eliminarContenedorButton.TabStop = false;
             this.eliminarContenedorButton.UseVisualStyleBackColor = true;
-            this.eliminarContenedorButton.Visible = false;
             this.eliminarContenedorButton.Click += new System.EventHandler(this.eliminarContenedorButton_Click);
             // 
             // servicioTextBox
@@ -534,6 +523,22 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // Contenedor
+            // 
+            this.Contenedor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Contenedor.DataPropertyName = "NumeroEconomico";
+            this.Contenedor.HeaderText = "Contenedor";
+            this.Contenedor.Name = "Contenedor";
+            this.Contenedor.ReadOnly = true;
+            // 
+            // Levantes
+            // 
+            this.Levantes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Levantes.DataPropertyName = "Levantes";
+            this.Levantes.HeaderText = "Levantes";
+            this.Levantes.Name = "Levantes";
+            this.Levantes.ReadOnly = true;
             // 
             // TicketsUC
             // 
@@ -614,13 +619,13 @@
         private System.Windows.Forms.Label LevantesLabel;
         private System.Windows.Forms.NumericUpDown levantesUpDown;
         private System.Windows.Forms.DataGridView contenedoresDataGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Contenedor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Levantes;
         private System.Windows.Forms.Button AgregarContenedorButton;
         private System.Windows.Forms.ToolStripButton tsbEditar;
         private System.Windows.Forms.ToolStripButton tsbCancelar;
         private System.Windows.Forms.Button eliminarContenedorButton;
         private System.Windows.Forms.TextBox servicioTextBox;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Contenedor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Levantes;
     }
 }

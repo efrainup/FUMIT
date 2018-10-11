@@ -89,6 +89,8 @@ namespace FUMIT.Formularios.Operacion
                 return ticketBindingSource.Current as Ticket;
             }
         }
+
+        BindingList<ContentedoresTicketsView<Contenedoresticket>> ContenedoresTicketBindingList { get; set; }
         #endregion
 
         #region Constructores
@@ -303,7 +305,7 @@ namespace FUMIT.Formularios.Operacion
             string contenedor = contenedorTextBox.Text;
             int levantes = Convert.ToInt32(levantesUpDown.Value);
             
-            int indiceFila = contenedoresDataGrid.Rows.Add(contenedor, levantes);
+            //int indiceFila = contenedoresDataGrid.Rows.Add(contenedor, levantes);
             //contenedoresDataGrid.Rows[indiceFila]
 
             //Se crea un objeto para asociar con el contenedor
@@ -311,12 +313,19 @@ namespace FUMIT.Formularios.Operacion
             {
                 Levantes = levantes,
                 Equipo = equipo,
-                ContenedorId = equipo.EquipoId
+                ContenedorId = equipo.EquipoId,
             };
 
             SeleccionActual.Contenedorestickets.Add(contenedorTicket);
+            contenedoresticketsBindingSource.Add(new ContentedoresTicketsView<Contenedoresticket>() {
+                NumeroEconomico = contenedorTicket.Equipo.NumeroEconomico,
+                Levantes = contenedorTicket.Levantes,
+                ContenedorTicket = contenedorTicket
+            });
 
+            contenedoresticketsBindingSource.ResetBindings(false);
 
+            contenedoresDataGrid.Refresh();
         }
 
         private void contenedorTextBox_Validating(object sender, CancelEventArgs e)
@@ -392,7 +401,15 @@ namespace FUMIT.Formularios.Operacion
 
         private void eliminarContenedorButton_Click(object sender, EventArgs e)
         {
-            
+            FormExceptionManager.Process(() =>
+            {
+                // int rowIndex = contenedoresDataGrid.CurrentRow.Index;
+                var element = contenedoresticketsBindingSource.Current as ContentedoresTicketsView<Contenedoresticket>;//<.ElementAt(rowIndex);
+                                                                                                                       //ContenedoresTicketBindingList.RemoveAt(rowIndex);
+                SeleccionActual.Contenedorestickets.Remove(element.ContenedorTicket);
+                contenedoresticketsBindingSource.RemoveCurrent();
+                contenedoresticketsBindingSource.ResetBindings(false);
+            },FUMIT.Exceptions.ExceptionHandlingPolicies.CrearActualizarEntidadesDesdeUI);
         }
 
         private void operadorTextBox_Validating(object sender, CancelEventArgs e)
@@ -465,7 +482,7 @@ namespace FUMIT.Formularios.Operacion
                 if (!string.IsNullOrEmpty(clienteTextBox.Text))
                 {
                     clienteTextBox.Tag = null;
-                    Cliente cliente = CatalogoClientes.FirstOrDefault(f => f.Nombre.Contains(clienteTextBox.Text));
+                    Cliente cliente = CatalogoClientes.FirstOrDefault(f => f.Nombre + (string.IsNullOrEmpty(f.SucursalCliente) ? "" : " - " + f.SucursalCliente) == clienteTextBox.Text);
 
                     if (cliente == null)
                     {
@@ -531,5 +548,51 @@ namespace FUMIT.Formularios.Operacion
             fechaDateTimePicker.Value = fechaDateTimePicker.Value.Date;
         }
         #endregion
+
+        private void ticketBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
+            //BindingList<Contenedoresticket> contenedorestickets = new BindingList<Contenedoresticket>(SeleccionActual.Contenedorestickets);
+        }
+
+        private void ticketBindingSource_ListChanged(object sender, ListChangedEventArgs e)
+        {
+            if(e.ListChangedType == ListChangedType.ItemAdded)
+            {
+                
+                contenedoresticketsBindingSource.DataSource = Convertir(SeleccionActual.Contenedorestickets);
+                
+            }
+            
+        }
+
+        static IEnumerable<ContentedoresTicketsView<Contenedoresticket>> Convertir(IEnumerable<Contenedoresticket> ctickets)
+        {
+            List<ContentedoresTicketsView<Contenedoresticket>> contenedoresTicketList = new List<ContentedoresTicketsView<Contenedoresticket>>();
+
+            foreach(Contenedoresticket cticket in ctickets)
+            {
+                contenedoresTicketList.Add(new ContentedoresTicketsView<Contenedoresticket>()
+                {
+                    NumeroEconomico = cticket.Equipo.NumeroEconomico,
+                     Levantes=cticket.Levantes,
+                     ContenedorTicket = cticket
+                });
+            }
+
+            return contenedoresTicketList;
+        }
+
+        private void contenedoresticketsBindingSource_ListChanged(object sender, ListChangedEventArgs e)
+        {
+            
+        }
+    }
+
+    class ContentedoresTicketsView<T>
+    {
+        public string NumeroEconomico { get; set; }
+        public int Levantes { get; set; }
+        public T ContenedorTicket { get; set; }
     }
 }

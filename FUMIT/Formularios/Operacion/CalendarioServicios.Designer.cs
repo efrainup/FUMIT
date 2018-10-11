@@ -50,9 +50,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.AgregarServicioButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.FrecuenciasCheckListBox = new System.Windows.Forms.CheckedListBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.serviciosCheckList = new System.Windows.Forms.CheckedListBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.elementHost2 = new System.Windows.Forms.Integration.ElementHost();
             this.calendarioSemanalUserControl1 = new FUMIT.UserControls.Wpf.CalendarioSemanalUserControl();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
@@ -129,6 +131,7 @@
             this.tsbSemanaActual.Size = new System.Drawing.Size(50, 23);
             this.tsbSemanaActual.Text = "0";
             this.tsbSemanaActual.ToolTipText = "Posición actual";
+            this.tsbSemanaActual.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tsbSemanaActual_KeyPress);
             // 
             // bindingNavigatorCountItem
             // 
@@ -234,6 +237,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.FrecuenciasCheckListBox);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.serviciosCheckList);
             this.panel1.Controls.Add(this.label3);
@@ -247,6 +252,41 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1266, 171);
             this.panel1.TabIndex = 12;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(349, 51);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(106, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Filtrar por frecuencia:";
+            // 
+            // FrecuenciasCheckListBox
+            // 
+            this.FrecuenciasCheckListBox.CheckOnClick = true;
+            this.FrecuenciasCheckListBox.FormattingEnabled = true;
+            this.FrecuenciasCheckListBox.Items.AddRange(new object[] {
+            "Diaria",
+            "Semanal",
+            "Quincenal",
+            "Express"});
+            this.FrecuenciasCheckListBox.Location = new System.Drawing.Point(461, 51);
+            this.FrecuenciasCheckListBox.Name = "FrecuenciasCheckListBox";
+            this.FrecuenciasCheckListBox.Size = new System.Drawing.Size(216, 94);
+            this.FrecuenciasCheckListBox.TabIndex = 8;
+            this.FrecuenciasCheckListBox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.FiltroFrecuenciaServicios_ItemCheck);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1143, 46);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(111, 31);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Imprimir";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // serviciosCheckList
             // 
@@ -267,17 +307,6 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Filtrar por servicios:";
             this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(1143, 46);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(111, 31);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Imprimir";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // elementHost2
             // 
@@ -338,5 +367,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckedListBox serviciosCheckList;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckedListBox FrecuenciasCheckListBox;
     }
 }
