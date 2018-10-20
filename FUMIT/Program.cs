@@ -43,6 +43,7 @@ namespace FUMIT
             container.RegisterType<ICalendarioSemanalServicios , CalendarioSemanalServiciosRepositorio>();
             container.RegisterType<IOperadores, OperadoresRepositorio>();
             container.RegisterType<ITickets, TicketsRepositorio>();
+            container.RegisterType<IContenedoresTicket, ContenedoresTicketRepositorio>();
 
             //Se registra ExceptionManager
             Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.ExceptionManager manager = Exceptions.ExceptionHandlingPolicies.InicializarPoliticas();

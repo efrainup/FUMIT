@@ -3,7 +3,7 @@
 -- Create date: 19/09/2018
 -- Description:	Obtiene los servicios programados por días calculados
 -- =============================================
-CREATE FUNCTION ServiciosProgramadosPorDíasCalculados 
+CREATE FUNCTION [dbo].[ServiciosProgramadosPorDíasCalculados] 
 (
 	-- Add the parameters for the function here
 	 @FechaInicio DATETIME,
@@ -27,7 +27,8 @@ RETURNS
 	NombreServicio VARCHAR(50),
 	ServicioCancelado BIT,
 	ServicioPrioridad INT,
-	ServicioRealizado BIT
+	ServicioRealizado BIT,
+	Area varchar(80)
 	
 )
 AS
@@ -62,7 +63,8 @@ BEGIN
 		S.Nombre AS [NombreServicio],
 		SP.Cancelado,
 		SP.Prioridad,
-		SP.Realizado
+		SP.Realizado,
+		PSC.Area
 	FROM ProgramacionServicios PS
 	INNER JOIN ProgramacionServiciosClientes PSC ON PSC.ProgramacionServicioId=PS.ProgramacionServicioId
 	INNER JOIN Clientes C ON C.ClienteId=PSC.ClienteId

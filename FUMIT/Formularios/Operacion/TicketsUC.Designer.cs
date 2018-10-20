@@ -222,8 +222,10 @@
             // ticketBindingSource
             // 
             this.ticketBindingSource.DataSource = typeof(FUMIT.Entidades.Ticket);
+            this.ticketBindingSource.AddingNew += new System.ComponentModel.AddingNewEventHandler(this.ticketBindingSource_AddingNew);
             this.ticketBindingSource.CurrentChanged += new System.EventHandler(this.ticketBindingSource_CurrentChanged);
             this.ticketBindingSource.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.ticketBindingSource_ListChanged);
+            this.ticketBindingSource.PositionChanged += new System.EventHandler(this.ticketBindingSource_PositionChanged);
             // 
             // bindingNavigatorCountItem
             // 

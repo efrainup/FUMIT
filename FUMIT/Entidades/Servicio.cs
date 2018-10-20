@@ -52,6 +52,10 @@ namespace FUMIT.Entidades
         // Reverse navigation
 
         /// <summary>
+        /// Child Gruposoperaciones where [GruposOperaciones].[ServicioId] point to this entity (FK_GruposOperaciones_Servicios)
+        /// </summary>
+        public virtual System.Collections.Generic.ICollection<Gruposoperacion> Gruposoperaciones { get; set; } // GruposOperaciones.FK_GruposOperaciones_Servicios
+        /// <summary>
         /// Child Programacionserviciosclientes where [ProgramacionServiciosClientes].[ServicioId] point to this entity (FK_ProgramacionServiciosClientes_Servicios)
         /// </summary>
         public virtual System.Collections.Generic.ICollection<Programacionservicioscliente> Programacionserviciosclientes { get; set; } // ProgramacionServiciosClientes.FK_ProgramacionServiciosClientes_Servicios
@@ -66,6 +70,7 @@ namespace FUMIT.Entidades
 
         public Servicio()
         {
+            Gruposoperaciones = new System.Collections.Generic.List<Gruposoperacion>();
             Programacionserviciosclientes = new System.Collections.Generic.List<Programacionservicioscliente>();
             Serviciosprogramados = new System.Collections.Generic.List<Serviciosprogramado>();
             Tickets = new System.Collections.Generic.List<Ticket>();

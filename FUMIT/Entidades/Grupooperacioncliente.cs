@@ -18,29 +18,29 @@ namespace FUMIT.Entidades
     using System.ComponentModel;
     using System.Runtime.Serialization;
 
-    // ContenedoresTickets
+    // GrupoOperacionClientes
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.37.1.0")]
-    public partial class Contenedoresticket: INotifyPropertyChanged
+    public partial class Grupooperacioncliente: INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
 
         [Required]
-        [Display(Name = "Contenedor ticket ID")]
+        [Display(Name = "Grupo operacion cliente ID")]
         [Key]
-        public int ContenedorTicketId { get; set; } // ContenedorTicketId (Primary key)
+        public int GrupoOperacionClienteId { get; set; } // GrupoOperacionClienteId (Primary key)
 
         [Required]
-        [Display(Name = "Ticket ID")]
-        public int TicketId { get; set; } // TicketId
+        [Display(Name = "Grupo operacion ID")]
+        public int GrupoOperacionId { get; set; } // GrupoOperacionId
 
         [Required]
-        [Display(Name = "Contenedor ID")]
-        public int ContenedorId { get; set; } // ContenedorId
+        [Display(Name = "Cliente ID")]
+        public int ClienteId { get; set; } // ClienteId
 
         [Required]
-        [Display(Name = "Levantes")]
-        public int Levantes { get; set; } // Levantes
+        [Display(Name = "Orden")]
+        public int Orden { get; set; } // Orden
 
         [Required]
         [Display(Name = "Borrado")]
@@ -49,17 +49,18 @@ namespace FUMIT.Entidades
         // Foreign keys
 
         /// <summary>
-        /// Parent Equipo pointed by [ContenedoresTickets].([ContenedorId]) (FK_ContenedoresTickets_Equipo)
+        /// Parent Clientes pointed by [GrupoOperacionClientes].([ClienteId]) (FK_GrupoOperacionClientes_Clientes)
         /// </summary>
-        public virtual Equipo Equipo { get; set; } // FK_ContenedoresTickets_Equipo
+        public virtual Cliente Clientes { get; set; } // FK_GrupoOperacionClientes_Clientes
 
         /// <summary>
-        /// Parent Tickets pointed by [ContenedoresTickets].([TicketId]) (FK_ContenedoresTickets_Tickets)
+        /// Parent Gruposoperacion pointed by [GrupoOperacionClientes].([GrupoOperacionId]) (FK_GrupoOperacionClientes_GruposOperaciones)
         /// </summary>
-        public virtual Ticket Tickets { get; set; } // FK_ContenedoresTickets_Tickets
+        public virtual Gruposoperacion Gruposoperacion { get; set; } // FK_GrupoOperacionClientes_GruposOperaciones
 
-        public Contenedoresticket()
+        public Grupooperacioncliente()
         {
+            Orden = 0;
             Borrado = false;
             InitializePartial();
         }

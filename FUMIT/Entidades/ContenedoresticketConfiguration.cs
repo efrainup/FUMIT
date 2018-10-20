@@ -36,6 +36,7 @@ namespace FUMIT.Entidades
             Property(x => x.TicketId).HasColumnName(@"TicketId").HasColumnType("int").IsRequired();
             Property(x => x.ContenedorId).HasColumnName(@"ContenedorId").HasColumnType("int").IsRequired();
             Property(x => x.Levantes).HasColumnName(@"Levantes").HasColumnType("int").IsRequired();
+            Property(x => x.Borrado).HasColumnName(@"Borrado").HasColumnType("bit").IsRequired();
 
             // Foreign keys
             HasRequired(a => a.Equipo).WithMany(b => b.Contenedorestickets).HasForeignKey(c => c.ContenedorId).WillCascadeOnDelete(false); // FK_ContenedoresTickets_Equipo

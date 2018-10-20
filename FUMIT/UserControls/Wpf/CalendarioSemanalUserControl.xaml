@@ -62,6 +62,10 @@
                         <TextBlock Text="{Binding Path=Cliente}"></TextBlock>
                     </WrapPanel>
                     <WrapPanel>
+                        <TextBlock>Area:</TextBlock>
+                        <TextBlock Text="{Binding Path=Area}"></TextBlock>
+                    </WrapPanel>
+                    <WrapPanel>
                         <TextBlock>Servicio:</TextBlock>
                         <TextBlock Text="{Binding Path=DescripcionServicio}"></TextBlock>
                     </WrapPanel>

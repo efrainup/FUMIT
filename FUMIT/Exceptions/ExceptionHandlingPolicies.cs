@@ -1,10 +1,13 @@
 ﻿using Microsoft.Practices.EnterpriseLibrary.ExceptionHandling;
 using Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging;
 using Microsoft.Practices.EnterpriseLibrary.Logging;
+using Microsoft.Practices.EnterpriseLibrary.Logging.Formatters;
+using Microsoft.Practices.EnterpriseLibrary.Logging.TraceListeners;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Data.Entity.Validation;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -22,12 +25,24 @@ namespace FUMIT.Exceptions
 
         public static ExceptionManager InicializarPoliticas()
         {
+            TextFormatter formatterF = new TextFormatter("Timestamp:...");
+
+            var flatFileTraceListener = new FlatFileTraceListener(@"c:\fumit.log");
+            
+
+            var eventLog = new EventLog("Application", ".", "Enterprise Library Logging");
+            var eventLogTraceListener = new FormattedEventLogTraceListener(eventLog);
+
+
             LoggingConfiguration conf = new LoggingConfiguration();
-            conf.AddLogSource("Error", System.Diagnostics.SourceLevels.Error,true, new System.Diagnostics.EventLogTraceListener(), new System.Diagnostics.ConsoleTraceListener());
+            conf.AddLogSource("General", System.Diagnostics.SourceLevels.All,true, flatFileTraceListener);
+            conf.SpecialSources.LoggingErrorsAndWarnings.AddTraceListener(eventLogTraceListener);
+            conf.SpecialSources.LoggingErrorsAndWarnings.AddTraceListener(flatFileTraceListener);
             
             LogWriter logWriter = new LogWriter(conf); //new LogWriterFactory().Create();
             
-            //logWriter.Configure((A) => A.AddLogSource("", new System.Diagnostics.ConsoleTraceListener(), new System.Diagnostics.EventLogTraceListener()));
+            //var v = new  RollingFlatFileTraceListener("",)
+            //logWriter.Configure((A) => A.AddLogSource("General", new System.Diagnostics.ConsoleTraceListener(), eventLogTraceListener));
 
 
             policies.Add(new ExceptionPolicyDefinition(CrearActualizarEntidadesDesdeUI, new ExceptionPolicyEntry[] {
@@ -35,7 +50,7 @@ namespace FUMIT.Exceptions
                     new NotificarUsuarioEFValidationExceptionHandler()
                 }),
                 new ExceptionPolicyEntry(typeof(Exception),PostHandlingAction.None,new IExceptionHandler[]{
-                    new LoggingExceptionHandler("Error",10,System.Diagnostics.TraceEventType.Error,"Ocurrió una excepción no controlada",10,typeof(CustomFormatter),logWriter),
+                    new LoggingExceptionHandler("Error",10,System.Diagnostics.TraceEventType.Error,"Ocurrió una excepción no controlada",10,typeof(TextExceptionFormatter),logWriter),
                     new NotificarUsuarioMessageBoxExceptionHandler()
                 })
                 //,

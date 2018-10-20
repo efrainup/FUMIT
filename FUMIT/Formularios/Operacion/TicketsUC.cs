@@ -31,6 +31,7 @@ namespace FUMIT.Formularios.Operacion
         public ITipoEquipos TiposEquiposRepositorio { get; set; }
         public IOperadores OperadoresRepositorio { get; set; }
         public ISucursales SucursalesRepositorio { get; set; }
+        public IContenedoresTicket ContenedoresTicketRepositorio { get; set; }
         public List<Equipo> CatalogoEquipos { get; set; }
         public List<Operador> CatalogoOperadores { get; set; }
         public List<Cliente> CatalogoClientes { get; set; }
@@ -168,6 +169,10 @@ namespace FUMIT.Formularios.Operacion
                 TicketsRepositorio = ServiceLocator.Current.GetInstance<ITickets>();
                 ClientesRepositorio = ServiceLocator.Current.GetInstance<IClientes>();
                 ServiciosRepositorio = ServiceLocator.Current.GetInstance<IServicio>();
+                ContenedoresTicketRepositorio = ServiceLocator.Current.GetInstance<IContenedoresTicket>();
+
+                ticketBindingSource.DataSource = TicketsRepositorio.Recuperar();
+
 
                 //Se agrega el Autocomplete de contenedores
                 CargarAutocompletadoCatalogoEquipos();
@@ -228,6 +233,11 @@ namespace FUMIT.Formularios.Operacion
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
             ModoEdicion = true;
+            contenedoresDataGrid.Rows.Clear();
+            contenedoresticketsBindingSource.Clear();
+            contenedoresticketsBindingSource.DataSource = Convertir(SeleccionActual.Contenedorestickets.Where(w => !w.Borrado).ToArray());
+            contenedoresticketsBindingSource.ResetBindings(false);
+            contenedoresDataGrid.DataSource = contenedoresticketsBindingSource;
         }
 
         private void tsbEditar_Click(object sender, EventArgs e)
@@ -280,10 +290,19 @@ namespace FUMIT.Formularios.Operacion
             ModoEdicion = false;
         }
 
-        private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
+        private async void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
-            ticketBindingSource.RemoveCurrent();
-            ModoEdicion = false;
+            await FormExceptionManager.ProcessAsync(Exceptions.ExceptionHandlingPolicies.CrearActualizarEntidadesDesdeUI, async () =>
+             {
+                 string folio = SeleccionActual.Folio;
+
+                 await TicketsRepositorio.EliminarAsync(SeleccionActual);
+                 ticketBindingSource.RemoveCurrent();
+
+                 Notificador.EnviarMensaje($"Se eliminó el ticket {folio} correctamente");
+
+                 ModoEdicion = false;
+             });
         }
 
         private void tsbCancelar_Click(object sender, EventArgs e)
@@ -405,8 +424,12 @@ namespace FUMIT.Formularios.Operacion
             {
                 // int rowIndex = contenedoresDataGrid.CurrentRow.Index;
                 var element = contenedoresticketsBindingSource.Current as ContentedoresTicketsView<Contenedoresticket>;//<.ElementAt(rowIndex);
-                                                                                                                       //ContenedoresTicketBindingList.RemoveAt(rowIndex);
-                SeleccionActual.Contenedorestickets.Remove(element.ContenedorTicket);
+                element.ContenedorTicket.Borrado = true;
+                if (element.ContenedorTicket.ContenedorTicketId > 0)
+                {
+                    ContenedoresTicketRepositorio.Eliminar(element.ContenedorTicket);                                                                                      //ContenedoresTicketBindingList.RemoveAt(rowIndex);
+                }
+                //SeleccionActual.Contenedorestickets.Remove(element.ContenedorTicket);
                 contenedoresticketsBindingSource.RemoveCurrent();
                 contenedoresticketsBindingSource.ResetBindings(false);
             },FUMIT.Exceptions.ExceptionHandlingPolicies.CrearActualizarEntidadesDesdeUI);
@@ -557,13 +580,18 @@ namespace FUMIT.Formularios.Operacion
 
         private void ticketBindingSource_ListChanged(object sender, ListChangedEventArgs e)
         {
-            if(e.ListChangedType == ListChangedType.ItemAdded)
+
+            if (e.ListChangedType == ListChangedType.ItemAdded)
             {
-                
-                contenedoresticketsBindingSource.DataSource = Convertir(SeleccionActual.Contenedorestickets);
-                
+
+                //contenedoresDataGrid.Rows.Clear();
+                //contenedoresticketsBindingSource.Clear();
+                //contenedoresticketsBindingSource.DataSource = Convertir(SeleccionActual.Contenedorestickets);
+                //contenedoresticketsBindingSource.ResetBindings(false);
+                //contenedoresDataGrid.DataSource = contenedoresticketsBindingSource;
+
             }
-            
+
         }
 
         static IEnumerable<ContentedoresTicketsView<Contenedoresticket>> Convertir(IEnumerable<Contenedoresticket> ctickets)
@@ -585,6 +613,25 @@ namespace FUMIT.Formularios.Operacion
 
         private void contenedoresticketsBindingSource_ListChanged(object sender, ListChangedEventArgs e)
         {
+            
+        }
+
+        private void ticketBindingSource_PositionChanged(object sender, EventArgs e)
+        {
+            contenedoresticketsBindingSource.DataSource = Convertir(SeleccionActual.Contenedorestickets.Where(w => !w.Borrado));
+            contenedoresticketsBindingSource.ResetBindings(false);
+        }
+
+        private void ticketBindingSource_AddingNew(object sender, AddingNewEventArgs e)
+        {
+           
+
+                //contenedoresDataGrid.Rows.Clear();
+                //contenedoresticketsBindingSource.Clear();
+                //contenedoresticketsBindingSource.DataSource = Convertir((e.NewObject as Ticket).Contenedorestickets);
+                //contenedoresticketsBindingSource.ResetBindings(false);
+                //contenedoresDataGrid.DataSource = contenedoresticketsBindingSource;
+
             
         }
     }

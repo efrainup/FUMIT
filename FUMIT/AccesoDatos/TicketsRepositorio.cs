@@ -41,6 +41,13 @@ namespace FUMIT.AccesoDatos
 
                 if (serviciosprogramado == null)
                 {
+                    //Existe una programación?
+                    int f = (int)entidad.Fecha.DayOfWeek + 1;
+                    string diaCadena = f.ToString();
+
+                    //Existe una programación?
+                    var programacionCLiente = dbContext.Programacionserviciosclientes.FirstOrDefault(w => w.ClienteId == entidad.ClienteId && w.ServicioId == entidad.ServicioId && (w.FechaInicio <= entidad.Fecha && (w.FechaTermino == null || entidad.Fecha <= w.FechaTermino)) && w.Borrado == false && w.Activo == true && w.Programacionservicio.Dias.Contains(diaCadena));
+
                     serviciosprogramado = new Serviciosprogramado()
                     {
                         Borrado = false,
@@ -51,8 +58,8 @@ namespace FUMIT.AccesoDatos
                         FechaServicio = entidad.Fecha.Date,
                         Observaciones = "",
                         ServicioId = entidad.ServicioId,
-                        Tipo = "Express",
-                        ProgramacionServiciosClientesId = null,
+                        Tipo = programacionCLiente == null ? "Express" : "Programado",
+                        ProgramacionServiciosClientesId = programacionCLiente == null ? null : (Nullable<int>)programacionCLiente.ProgramacionServiciosClienteId,
                         Clientes = entidad.Clientes,
                         Servicio = entidad.Servicio,
                         Realizado = true
@@ -93,9 +100,18 @@ namespace FUMIT.AccesoDatos
             if (entidad.ServicioProgramadoId == 0 && entidad.Serviciosprogramado == null)
             {
                 serviciosprogramado = dbContext.Serviciosprogramados.FirstOrDefault(w => w.ClienteId == entidad.ClienteId && w.ServicioId == entidad.ServicioId && w.FechaServicio == entidad.Fecha );
-
+                
                 if (serviciosprogramado == null)
                 {
+
+                    //Existe una programación?
+                    int f = (int)entidad.Fecha.DayOfWeek;
+                    f = f == 0 ? 7 : f;
+                    string diaCadena = f.ToString();
+                    
+
+                    var programacionCLiente = dbContext.Programacionserviciosclientes.FirstOrDefault(w => w.ClienteId == entidad.ClienteId && w.ServicioId == entidad.ServicioId && (w.FechaInicio <= entidad.Fecha && (w.FechaTermino == null || entidad.Fecha <= w.FechaTermino)) && w.Borrado == false && w.Activo == true && w.Programacionservicio.Dias.Contains(diaCadena));
+                    
                     serviciosprogramado = new Serviciosprogramado()
                     {
                         Borrado = false,
@@ -106,8 +122,8 @@ namespace FUMIT.AccesoDatos
                         FechaServicio = entidad.Fecha.Date,
                         Observaciones = "",
                         ServicioId = entidad.ServicioId,
-                        Tipo = "Express",
-                        ProgramacionServiciosClientesId = null,
+                        Tipo = programacionCLiente == null ? "Express" : "Programado",
+                        ProgramacionServiciosClientesId = programacionCLiente == null ? null : (Nullable<int>)programacionCLiente.ProgramacionServiciosClienteId,
                         Clientes = entidad.Clientes,
                         Servicio = entidad.Servicio,
                         Realizado = true

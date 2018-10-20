@@ -34,6 +34,7 @@ namespace FUMIT.Entidades
         public System.Boolean? Cancelado { get; set; }
         public System.Int32? Prioridad { get; set; }
         public System.Boolean? Realizado { get; set; }
+        public System.String Area { get; set; }
     }
 
 }

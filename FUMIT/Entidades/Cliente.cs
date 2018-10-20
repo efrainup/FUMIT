@@ -133,6 +133,10 @@ namespace FUMIT.Entidades
         /// </summary>
         public virtual System.Collections.Generic.ICollection<Contacto> Contactos { get; set; } // Contactos.FK_Contactos_Clientes
         /// <summary>
+        /// Child Grupooperacionclientes where [GrupoOperacionClientes].[ClienteId] point to this entity (FK_GrupoOperacionClientes_Clientes)
+        /// </summary>
+        public virtual System.Collections.Generic.ICollection<Grupooperacioncliente> Grupooperacionclientes { get; set; } // GrupoOperacionClientes.FK_GrupoOperacionClientes_Clientes
+        /// <summary>
         /// Child Historialclientes where [HistorialCliente].[ClienteId] point to this entity (FK_HistorialCliente_Clientes)
         /// </summary>
         public virtual System.Collections.Generic.ICollection<HistorialCliente> Historialclientes { get; set; } // HistorialCliente.FK_HistorialCliente_Clientes
@@ -163,6 +167,7 @@ namespace FUMIT.Entidades
             RequiereManifiesto = false;
             Asignacionesequipos = new System.Collections.Generic.List<Asignacionesequipo>();
             Contactos = new System.Collections.Generic.List<Contacto>();
+            Grupooperacionclientes = new System.Collections.Generic.List<Grupooperacioncliente>();
             Historialclientes = new System.Collections.Generic.List<HistorialCliente>();
             Programacionserviciosclientes = new System.Collections.Generic.List<Programacionservicioscliente>();
             Serviciosprogramados = new System.Collections.Generic.List<Serviciosprogramado>();

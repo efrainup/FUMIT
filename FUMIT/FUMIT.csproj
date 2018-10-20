@@ -11,6 +11,24 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>H:\Sica\LisRep\FUMIT\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Unc</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>false</MapFileExtensions>
+    <InstallUrl>\\dah-291\DAH3\\Sica\LisRep\FUMIT\</InstallUrl>
+    <TargetCulture>es-MX</TargetCulture>
+    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,6 +51,18 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Resources\Icono.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>E44C387825884E6FC8A2CE36316AF6324640ACEC</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>FUMIT_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Common.Logging, Version=2.1.2.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
@@ -127,14 +157,18 @@
     <Compile Include="AccesoDatos\CiclosFacturacionRepositorio.cs" />
     <Compile Include="AccesoDatos\ClientesRepositorio.cs" />
     <Compile Include="AccesoDatos\ContactosRepositorio.cs" />
+    <Compile Include="AccesoDatos\ContenedoresTicketRepositorio.cs" />
     <Compile Include="AccesoDatos\EquiposRepositorio.cs" />
+    <Compile Include="AccesoDatos\GruposOperacionesRepositorio.cs" />
     <Compile Include="AccesoDatos\IAsignacionesEquipo.cs" />
     <Compile Include="AccesoDatos\ICalendarioSemanalServicios.cs" />
     <Compile Include="AccesoDatos\ICicloFacturacionClientes.cs" />
     <Compile Include="AccesoDatos\ICiclosFacturacion.cs" />
     <Compile Include="AccesoDatos\IClientes.cs" />
     <Compile Include="AccesoDatos\IContactos.cs" />
+    <Compile Include="AccesoDatos\IContenedoresTicket.cs" />
     <Compile Include="AccesoDatos\IEquipos.cs" />
+    <Compile Include="AccesoDatos\IGruposOperaciones.cs" />
     <Compile Include="AccesoDatos\IMantenimientos.cs" />
     <Compile Include="AccesoDatos\IMantenimientosEquipo.cs" />
     <Compile Include="AccesoDatos\IOperacionesAccesoDatos.cs" />
@@ -216,6 +250,18 @@
       <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
     </Compile>
     <Compile Include="Entidades\FumitDbContextFactory.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\Grupooperacioncliente.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\GrupooperacionclienteConfiguration.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\Gruposoperacion.cs">
+      <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\GruposoperacionConfiguration.cs">
       <DependentUpon>BasedeDatosFUMIT.tt</DependentUpon>
     </Compile>
     <Compile Include="Entidades\HistorialCliente.cs">
@@ -382,6 +428,12 @@
     <Compile Include="Formularios\Clientes\ProgramacionServiciosClientes.Designer.cs">
       <DependentUpon>ProgramacionServiciosClientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Cobranza\MonitorEnviosFacturasARevisionUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Formularios\Cobranza\MonitorEnviosFacturasARevisionUC.Designer.cs">
+      <DependentUpon>MonitorEnviosFacturasARevisionUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Compartidos\BusquedaClientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -425,6 +477,12 @@
     </Compile>
     <Compile Include="Formularios\Operacion\EditarServicio.Designer.cs">
       <DependentUpon>EditarServicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Operacion\GruposOperacionesUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Formularios\Operacion\GruposOperacionesUC.Designer.cs">
+      <DependentUpon>GruposOperacionesUC.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Operacion\MantenimientoEquipoUC.cs">
       <SubType>UserControl</SubType>
@@ -529,6 +587,9 @@
     <EmbeddedResource Include="Formularios\Operacion\EditarServicio.resx">
       <DependentUpon>EditarServicio.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Operacion\GruposOperacionesUC.resx">
+      <DependentUpon>GruposOperacionesUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Operacion\MantenimientoEquipoUC.resx">
       <DependentUpon>MantenimientoEquipoUC.cs</DependentUpon>
     </EmbeddedResource>
@@ -559,14 +620,18 @@
     </EmbeddedResource>
     <None Include="Entidades\EF.Reverse.POCO.Core.ttinclude" />
     <None Include="Entidades\EF.Reverse.POCO.ttinclude" />
+    <None Include="FUMIT_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Asignacionesequipo.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.CicloFacturacionCliente.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.CiclosFacturacion.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Cliente.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Contacto.datasource" />
+    <None Include="Properties\DataSources\FUMIT.Entidades.Contenedoresticket.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Equipo.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Evento.datasource" />
+    <None Include="Properties\DataSources\FUMIT.Entidades.Grupooperacioncliente.datasource" />
+    <None Include="Properties\DataSources\FUMIT.Entidades.Gruposoperacion.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.HistorialCliente.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.Mantenimiento.datasource" />
     <None Include="Properties\DataSources\FUMIT.Entidades.MantenimientosEquipo.datasource" />
@@ -656,6 +721,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

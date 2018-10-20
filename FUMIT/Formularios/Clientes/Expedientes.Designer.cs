@@ -50,7 +50,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Expedientes));
             this.clienteBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
@@ -66,7 +65,6 @@
             this.clienteBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.toolBtnBusqueda = new System.Windows.Forms.ToolStripButton();
             this.claveTextBox = new System.Windows.Forms.TextBox();
-            this.expedientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.clienteIdTextBox = new System.Windows.Forms.TextBox();
             this.contactoTextBox = new System.Windows.Forms.TextBox();
             this.direccionTextBox = new System.Windows.Forms.TextBox();
@@ -98,18 +96,20 @@
             this.nombreFiscalTextBox = new System.Windows.Forms.TextBox();
             this.direccionFiscalTextBox = new System.Windows.Forms.TextBox();
             this.tabContactos = new System.Windows.Forms.TabPage();
-            this.contactos1 = new FUMIT.Formularios.Clientes.Contactos();
             this.tabProgramacionServiciosCliente = new System.Windows.Forms.TabPage();
-            this.programacionServiciosClientes1 = new FUMIT.Formularios.Clientes.ProgramacionServiciosClientes();
             this.tabEquipos = new System.Windows.Forms.TabPage();
-            this.asignacionEquipos1 = new FUMIT.Formularios.Clientes.AsignacionEquipos();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.serviciosProgramados1 = new FUMIT.Formularios.Operacion.ServiciosProgramados();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.cicloFacturacionClientes1 = new FUMIT.Formularios.Clientes.CicloFacturacionClientes();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.historialCliente1 = new FUMIT.Formularios.Clientes.HistorialCliente();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.expedientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.contactos1 = new FUMIT.Formularios.Clientes.Contactos();
+            this.programacionServiciosClientes1 = new FUMIT.Formularios.Clientes.ProgramacionServiciosClientes();
+            this.asignacionEquipos1 = new FUMIT.Formularios.Clientes.AsignacionEquipos();
+            this.serviciosProgramados1 = new FUMIT.Formularios.Operacion.ServiciosProgramados();
+            this.cicloFacturacionClientes1 = new FUMIT.Formularios.Clientes.CicloFacturacionClientes();
+            this.historialCliente1 = new FUMIT.Formularios.Clientes.HistorialCliente();
             claveLabel = new System.Windows.Forms.Label();
             clienteIdLabel = new System.Windows.Forms.Label();
             contactoLabel = new System.Windows.Forms.Label();
@@ -130,8 +130,6 @@
             requiereManifiestoLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingNavigator)).BeginInit();
             this.clienteBindingNavigator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.expedientesBindingSource)).BeginInit();
             this.groupBoxDatosComerciales.SuspendLayout();
             this.tabDatosCliente.SuspendLayout();
             this.tabInformacion.SuspendLayout();
@@ -146,6 +144,8 @@
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.expedientesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // claveLabel
@@ -354,12 +354,6 @@
             this.bindingNavigatorAddNewItem.ToolTipText = "Agregar (Ctrl+N)";
             this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
             // 
-            // clienteBindingSource
-            // 
-            this.clienteBindingSource.DataSource = typeof(FUMIT.Entidades.Cliente);
-            this.clienteBindingSource.CurrentItemChanged += new System.EventHandler(this.clienteBindingSource_CurrentItemChanged_1);
-            this.clienteBindingSource.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.clienteBindingSource_ListChanged);
-            // 
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
@@ -488,10 +482,6 @@
             this.claveTextBox.ReadOnly = true;
             this.claveTextBox.Size = new System.Drawing.Size(57, 20);
             this.claveTextBox.TabIndex = 3;
-            // 
-            // expedientesBindingSource
-            // 
-            this.expedientesBindingSource.DataSource = typeof(FUMIT.Formularios.Clientes.Expedientes);
             // 
             // clienteIdTextBox
             // 
@@ -848,6 +838,75 @@
             this.tabContactos.Text = "Contactos";
             this.tabContactos.UseVisualStyleBackColor = true;
             // 
+            // tabProgramacionServiciosCliente
+            // 
+            this.tabProgramacionServiciosCliente.Controls.Add(this.programacionServiciosClientes1);
+            this.tabProgramacionServiciosCliente.Location = new System.Drawing.Point(4, 22);
+            this.tabProgramacionServiciosCliente.Name = "tabProgramacionServiciosCliente";
+            this.tabProgramacionServiciosCliente.Padding = new System.Windows.Forms.Padding(3);
+            this.tabProgramacionServiciosCliente.Size = new System.Drawing.Size(923, 501);
+            this.tabProgramacionServiciosCliente.TabIndex = 1;
+            this.tabProgramacionServiciosCliente.Text = "Programacion de servicios";
+            this.tabProgramacionServiciosCliente.UseVisualStyleBackColor = true;
+            // 
+            // tabEquipos
+            // 
+            this.tabEquipos.Controls.Add(this.asignacionEquipos1);
+            this.tabEquipos.Location = new System.Drawing.Point(4, 22);
+            this.tabEquipos.Name = "tabEquipos";
+            this.tabEquipos.Padding = new System.Windows.Forms.Padding(3);
+            this.tabEquipos.Size = new System.Drawing.Size(923, 501);
+            this.tabEquipos.TabIndex = 2;
+            this.tabEquipos.Text = "Asignacion de equipos";
+            this.tabEquipos.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.serviciosProgramados1);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(923, 501);
+            this.tabPage2.TabIndex = 3;
+            this.tabPage2.Text = "Servicios Programados";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.cicloFacturacionClientes1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(923, 501);
+            this.tabPage3.TabIndex = 4;
+            this.tabPage3.Text = "Ciclos de facturación";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.historialCliente1);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(923, 501);
+            this.tabPage4.TabIndex = 5;
+            this.tabPage4.Text = "Historial";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.DataSource = this.clienteBindingSource;
+            // 
+            // expedientesBindingSource
+            // 
+            this.expedientesBindingSource.DataSource = typeof(FUMIT.Formularios.Clientes.Expedientes);
+            this.expedientesBindingSource.CurrentChanged += new System.EventHandler(this.expedientesBindingSource_CurrentChanged);
+            // 
+            // clienteBindingSource
+            // 
+            this.clienteBindingSource.DataSource = typeof(FUMIT.Entidades.Cliente);
+            // 
             // contactos1
             // 
             this.contactos1.ClienteId = 0;
@@ -861,17 +920,6 @@
             this.contactos1.Size = new System.Drawing.Size(917, 495);
             this.contactos1.TabIndex = 0;
             // 
-            // tabProgramacionServiciosCliente
-            // 
-            this.tabProgramacionServiciosCliente.Controls.Add(this.programacionServiciosClientes1);
-            this.tabProgramacionServiciosCliente.Location = new System.Drawing.Point(4, 22);
-            this.tabProgramacionServiciosCliente.Name = "tabProgramacionServiciosCliente";
-            this.tabProgramacionServiciosCliente.Padding = new System.Windows.Forms.Padding(3);
-            this.tabProgramacionServiciosCliente.Size = new System.Drawing.Size(923, 501);
-            this.tabProgramacionServiciosCliente.TabIndex = 1;
-            this.tabProgramacionServiciosCliente.Text = "Programacion de servicios";
-            this.tabProgramacionServiciosCliente.UseVisualStyleBackColor = true;
-            // 
             // programacionServiciosClientes1
             // 
             this.programacionServiciosClientes1.ClienteId = 0;
@@ -882,22 +930,12 @@
             this.programacionServiciosClientes1.Location = new System.Drawing.Point(3, 3);
             this.programacionServiciosClientes1.ModoEditar = false;
             this.programacionServiciosClientes1.Name = "programacionServiciosClientes1";
+            this.programacionServiciosClientes1.Notificador = null;
             this.programacionServiciosClientes1.ProgramacionServiciosClienteRepositorio = null;
             this.programacionServiciosClientes1.Size = new System.Drawing.Size(917, 495);
             this.programacionServiciosClientes1.TabIndex = 0;
             this.programacionServiciosClientes1.vistaProgramacionServiciosCliente = null;
             this.programacionServiciosClientes1.Load += new System.EventHandler(this.programacionServiciosClientes1_Load);
-            // 
-            // tabEquipos
-            // 
-            this.tabEquipos.Controls.Add(this.asignacionEquipos1);
-            this.tabEquipos.Location = new System.Drawing.Point(4, 22);
-            this.tabEquipos.Name = "tabEquipos";
-            this.tabEquipos.Padding = new System.Windows.Forms.Padding(3);
-            this.tabEquipos.Size = new System.Drawing.Size(923, 501);
-            this.tabEquipos.TabIndex = 2;
-            this.tabEquipos.Text = "Asignacion de equipos";
-            this.tabEquipos.UseVisualStyleBackColor = true;
             // 
             // asignacionEquipos1
             // 
@@ -906,23 +944,14 @@
             this.asignacionEquipos1.DataBindings.Add(new System.Windows.Forms.Binding("ClienteId", this.clienteBindingSource, "ClienteId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.asignacionEquipos1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.asignacionEquipos1.EquiposRepositorio = null;
+            this.asignacionEquipos1.FormExceptionManager = null;
             this.asignacionEquipos1.Location = new System.Drawing.Point(3, 3);
             this.asignacionEquipos1.ModoEdicion = false;
             this.asignacionEquipos1.Name = "asignacionEquipos1";
+            this.asignacionEquipos1.Notificador = null;
             this.asignacionEquipos1.Size = new System.Drawing.Size(917, 495);
             this.asignacionEquipos1.TabIndex = 0;
             this.asignacionEquipos1.TiposEquiposRepositorio = null;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.serviciosProgramados1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(923, 501);
-            this.tabPage2.TabIndex = 3;
-            this.tabPage2.Text = "Servicios Programados";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // serviciosProgramados1
             // 
@@ -936,17 +965,6 @@
             this.serviciosProgramados1.Size = new System.Drawing.Size(917, 495);
             this.serviciosProgramados1.TabIndex = 0;
             // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.cicloFacturacionClientes1);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(923, 501);
-            this.tabPage3.TabIndex = 4;
-            this.tabPage3.Text = "Ciclos de facturación";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
             // cicloFacturacionClientes1
             // 
             this.cicloFacturacionClientes1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -956,17 +974,6 @@
             this.cicloFacturacionClientes1.Size = new System.Drawing.Size(917, 495);
             this.cicloFacturacionClientes1.TabIndex = 0;
             // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.historialCliente1);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(923, 501);
-            this.tabPage4.TabIndex = 5;
-            this.tabPage4.Text = "Historial";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
             // historialCliente1
             // 
             this.historialCliente1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -974,11 +981,6 @@
             this.historialCliente1.Name = "historialCliente1";
             this.historialCliente1.Size = new System.Drawing.Size(917, 495);
             this.historialCliente1.TabIndex = 0;
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            this.errorProvider1.DataSource = this.clienteBindingSource;
             // 
             // Expedientes
             // 
@@ -994,8 +996,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingNavigator)).EndInit();
             this.clienteBindingNavigator.ResumeLayout(false);
             this.clienteBindingNavigator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.expedientesBindingSource)).EndInit();
             this.groupBoxDatosComerciales.ResumeLayout(false);
             this.groupBoxDatosComerciales.PerformLayout();
             this.tabDatosCliente.ResumeLayout(false);
@@ -1014,6 +1014,8 @@
             this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.expedientesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

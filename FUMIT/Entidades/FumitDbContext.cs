@@ -31,6 +31,8 @@ namespace FUMIT.Entidades
         public System.Data.Entity.DbSet<Contenedoresticket> Contenedorestickets { get; set; } // ContenedoresTickets
         public System.Data.Entity.DbSet<Equipo> Equipos { get; set; } // Equipo
         public System.Data.Entity.DbSet<Evento> Eventos { get; set; } // Eventos
+        public System.Data.Entity.DbSet<Grupooperacioncliente> Grupooperacionclientes { get; set; } // GrupoOperacionClientes
+        public System.Data.Entity.DbSet<Gruposoperacion> Gruposoperaciones { get; set; } // GruposOperaciones
         public System.Data.Entity.DbSet<HistorialCliente> Historialclientes { get; set; } // HistorialCliente
         public System.Data.Entity.DbSet<Mantenimiento> Mantenimientos { get; set; } // Mantenimientos
         public System.Data.Entity.DbSet<MantenimientosEquipo> Mantenimientosequipos { get; set; } // MantenimientosEquipo
@@ -101,6 +103,8 @@ namespace FUMIT.Entidades
             modelBuilder.Configurations.Add(new ContenedoresticketConfiguration());
             modelBuilder.Configurations.Add(new EquipoConfiguration());
             modelBuilder.Configurations.Add(new EventoConfiguration());
+            modelBuilder.Configurations.Add(new GrupooperacionclienteConfiguration());
+            modelBuilder.Configurations.Add(new GruposoperacionConfiguration());
             modelBuilder.Configurations.Add(new HistorialClienteConfiguration());
             modelBuilder.Configurations.Add(new MantenimientoConfiguration());
             modelBuilder.Configurations.Add(new MantenimientosEquipoConfiguration());
@@ -126,6 +130,8 @@ namespace FUMIT.Entidades
             modelBuilder.Configurations.Add(new ContenedoresticketConfiguration(schema));
             modelBuilder.Configurations.Add(new EquipoConfiguration(schema));
             modelBuilder.Configurations.Add(new EventoConfiguration(schema));
+            modelBuilder.Configurations.Add(new GrupooperacionclienteConfiguration(schema));
+            modelBuilder.Configurations.Add(new GruposoperacionConfiguration(schema));
             modelBuilder.Configurations.Add(new HistorialClienteConfiguration(schema));
             modelBuilder.Configurations.Add(new MantenimientoConfiguration(schema));
             modelBuilder.Configurations.Add(new MantenimientosEquipoConfiguration(schema));

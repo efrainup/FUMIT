@@ -108,6 +108,7 @@ namespace FUMIT.Formularios.Clientes
 
         private async void clienteBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
+            ValidateChildren();
             await GuardarEdicion();
 
         }
@@ -313,19 +314,9 @@ namespace FUMIT.Formularios.Clientes
 
         }
 
-        private async void clienteBindingSource_ListChanged(object sender, ListChangedEventArgs e)
-        {
-            if(e.ListChangedType == ListChangedType.ItemDeleted)
-            {
-                await RepositorioClientes.EliminarAsync(clienteBorrar);
-            }
-        }
 
 
-        private void clienteBindingSource_CurrentItemChanged_1(object sender, EventArgs e)
-        {
-            clienteBorrar = ClienteActual;
-        }
+       
 
         private async void bindingNavigatorDeleteItem_Click_2(object sender, EventArgs e)
         {
@@ -366,7 +357,7 @@ namespace FUMIT.Formularios.Clientes
             }
             if (keyData == (Keys.Control | Keys.G) && ModoEdicion)
             {
-                GuardarEdicion().RunSynchronously();
+                GuardarEdicion();
                 return true;
             }
             if (keyData == (Keys.Down | Keys.Control))
@@ -382,6 +373,11 @@ namespace FUMIT.Formularios.Clientes
 
 
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void expedientesBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

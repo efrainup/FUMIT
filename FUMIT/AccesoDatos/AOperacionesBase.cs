@@ -104,9 +104,11 @@ namespace FUMIT.AccesoDatos
 
         public virtual void Eliminar(T entidad)
         {
-
-            dbSet.Attach(entidad);
-            dbContext.Entry<T>(entidad).Property("Borrado").CurrentValue = false;//.CurrentValues.SetValues(
+            if (dbContext.Entry(entidad).State == EntityState.Detached)
+            {
+                dbSet.Attach(entidad);
+            }
+            dbContext.Entry<T>(entidad).Property("Borrado").CurrentValue = true;//.CurrentValues.SetValues(
             dbContext.Entry<T>(entidad).Property("Borrado").IsModified = true;
             dbContext.Entry<T>(entidad).State = EntityState.Modified;
              dbContext.SaveChanges();
@@ -114,7 +116,10 @@ namespace FUMIT.AccesoDatos
 
         public virtual async Task EliminarAsync(T entidad)
         {
-            dbSet.Attach(entidad);
+            if (dbContext.Entry(entidad).State == EntityState.Detached)
+            {
+                dbSet.Attach(entidad);
+            }
             dbContext.Entry<T>(entidad).Property("Borrado").CurrentValue = true;//.CurrentValues.SetValues(
             dbContext.Entry<T>(entidad).Property("Borrado").IsModified = true;
             dbContext.Entry<T>(entidad).State = EntityState.Modified;

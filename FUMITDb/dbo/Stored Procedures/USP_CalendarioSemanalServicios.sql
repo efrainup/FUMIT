@@ -45,14 +45,14 @@ BEGIN
 		SP.ServicioProgramadoId, 
 		Sp.Cancelado AS [Cancelado],
 		SP.Prioridad AS [Prioridad],
-		SP.Realizado AS [Realizado]
-	
+		SP.Realizado AS [Realizado],
+		PSC.Area AS [Area]
 	FROM [dbo].[ProgramacionServicios] p
 		INNER JOIN @dias d on p.Dias like '%' + d.dia + '%'
 		INNER JOIN [dbo].[ProgramacionServiciosClientes] PSC ON PSC.ProgramacionServicioId=p.ProgramacionServicioId
 		INNER JOIN [dbo].[Clientes] cl ON cl.ClienteId=psc.ClienteId
 		INNER JOIN [dbo].[Servicios] s ON s.ServicioId=PSC.ServicioId
-		LEFT JOIN  [dbo].[ServiciosProgramados] SP ON SP.ProgramacionServiciosClientesId=PSC.ProgramacionServiciosClienteId
+		LEFT JOIN  [dbo].[ServiciosProgramados] SP ON SP.ProgramacionServiciosClientesId=PSC.ProgramacionServiciosClienteId AND (SP.FechaServicio IS NULL OR DATEADD(DD,0,DATEDIFF(DD,0,SP.FechaServicio))=D.Fecha )
 	WHERE (PSC.FechaInicio <= @fechaFin) and (PSC.FechaTermino IS NULL OR PSC.FechaTermino >= @fechaInicio)
 		AND (SP.FechaServicio IS NULL OR DATEADD(DD,0,DATEDIFF(DD,0,SP.FechaServicio))=D.Fecha )
 		AND PSC.Borrado=0 AND CL.Borrado=0 AND S.Borrado=0 AND (SP.Borrado IS NULL OR SP.Borrado=0)
@@ -74,7 +74,8 @@ BEGIN
 		 SPDC.ServicioProgramadoId AS [ServicioProgramadoId],
 		 SPDC.ServicioCancelado,
 	     SPDC.ServicioPrioridad,
-		 SPDC.ServicioRealizado
+		 SPDC.ServicioRealizado,
+		 SPDC.Area
 	FROM [dbo].ServiciosProgramadosPorDíasCalculados(@fechaInicio,@fechaFin) SPDC
 	INNER JOIN @dias D ON D.Fecha=SPDC.Fecha
 	
@@ -86,7 +87,7 @@ BEGIN
 		d.nombre AS [DiaSemana], 
 		SP.ClienteId AS [ClienteId],
 		cl.Nombre AS [NombreCliente],
-		'' AS [NombreProgramacion], 
+		'Express' AS [NombreProgramacion], 
 		0 AS [ProgramacionServicioId], 
 		SP.ProgramacionServiciosClientesId,
 		SP.ServicioId AS [ServicioId],
@@ -94,7 +95,8 @@ BEGIN
 		SP.ServicioProgramadoId, 
 		Sp.Cancelado AS [Cancelado],
 		SP.Prioridad AS [Prioridad],
-		SP.Realizado AS [Realizado]
+		SP.Realizado AS [Realizado],
+		'' AS Area
 	FROM [dbo].[ServiciosProgramados] SP
 	INNER JOIN @dias d on d.fecha=SP.FechaServicio
 	INNER JOIN [dbo].[Servicios] s ON s.ServicioId=SP.ServicioId

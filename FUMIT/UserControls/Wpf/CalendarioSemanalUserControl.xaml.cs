@@ -257,6 +257,7 @@ namespace FUMIT.UserControls.Wpf
             }
         }
         public string Observaciones { get; set; }
+        public string Area { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
     }

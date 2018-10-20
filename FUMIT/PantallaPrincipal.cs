@@ -170,5 +170,14 @@ namespace FUMIT
         {
             Console.WriteLine(sender);
         }
+
+        private void monitorDeEnvíosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //var monitorEnvíos = new EnvioLF.FrMonitorEnviosFumit();
+            //monitorEnvíos.MdiParent = this;
+
+            //monitorEnvíos.Show();
+            //monitorEnvíos.Activate();
+        }
     }
 }
